@@ -18,16 +18,21 @@ Alive智能课堂致力于解决在线教育教师备课难，数字素材准备
     ├── main
         ├── java  
             ├── com.wechat
-                ├── controller            
-                ├── jfinal
-                    ├── api
-                        ├── lesson
-                        ├── student
-                        ├── teacher
-                ├── qiniu
-                ├── service
-        ├── resources
-        ├── webapp  
+                ├── controller   业务接口控制层(重写)       
+                ├── jfinal    业务接口控制层(在使用)
+                    ├── api   
+                        ├── lesson  课程操作接口控制层 
+                        ├── student  学生操作接口控制层
+                        ├── teacher  教师操作接口控制层
+                    ├── service   业务逻辑服务层
+                    ├── model   业务对象
+                    ├── Oauth2   开放授权服务
+                    ├── renderPage  重定向服务
+                    ├── common   共享服务
+                ├── qiniu    对象存储服务
+                ├── service    后台业务处理服务(重写) 
+        ├── resources     项目配置文件
+        ├── webapp   
         
 ```
 
