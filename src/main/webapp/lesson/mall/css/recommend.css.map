@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,aAAa;EACX,UAAU,EAAE,KAAmB;EAC/B,MAAM,EAAE,YAAiB",
+"sources": ["recommend.scss"],
+"names": [],
+"file": "recommend.css"
+}

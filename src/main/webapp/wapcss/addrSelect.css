@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+
+.fill-addr{}
+.fill-addr ul{background-color:#fff;padding:10px;}
+.fill-addr ul li{border-bottom:1px solid #ccc;padding:10px 0;}
+.fill-addr ul li span{display:block;float:left;width:30%;max-width:80px;font:16px/25px "微软雅黑";color:#333;}
+.fill-addr ul li input[type='text'],.fill-addr ul li textarea{display:block;float:left;width:70%;float:left;font:16px/25px "微软雅黑";color:#333;border:none;}
+.fill-addr ul li textarea{resize:none}
+
+.select-cnt .select-action button.b-submit{background-color:#4B96C2;}
+.select-cnt dd.focus:not(:first-child){color:#4B96C2;}
+.select-cnt h3{font:18px/35px "微软雅黑";color:#333;text-indent:10px;margin-bottom:10px;}
+
+.select-cnt .select-scroll p{height:40px;top:40px;}
+.select-cnt .select-scroll ul li{height:120px;}
+.select-cnt .select-scroll ul li dl dd{height:40px;line-height:40px;}
+

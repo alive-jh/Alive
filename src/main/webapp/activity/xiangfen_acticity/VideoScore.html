@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>英语新势力&蛋蛋机器人英语秀【襄汾站】</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+<link rel="stylesheet" href="/wechat/activity/xiangfen_acticity/css/VideoScore_style.css">
+<link rel="stylesheet" href="/wechat/activity/xiangfen_acticity/star/star.css">
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/wechat/dialog/dialog.css">
+</head>
+<body>
+
+	<div class='header'>
+		<a href="/wechat/api/getAllVideoCompetitionByVerifSuccess?memberId=#(memberId)" target="_top"><i class=" icon-angle-left"></i>&lt; 首页</a>
+	</div>
+
+	<div class="main" style="padding-bottom: 100px;">
+
+		<div class="video-box">
+
+			<div class="title">
+				<hr class="hide-hr0" align="center" width="100%" color="#987cb9" size="1">
+				<h4>参赛选手：纪雄峰&nbsp;&nbsp;&nbsp;&nbsp;高级班</h4>
+				<hr align="center" width="100%" color="#987cb9" size="1">
+			</div>
+
+			<div class="video">
+				<video width="100%" height="300px" controls="controls" poster="">
+					<source src="http://word.fandoutech.com.cn/app/upStudentMovie/18824258050/97b924185b9f441c5b81d9692fe20e87.mp4">
+				</video>
+			</div>
+
+			<div class="video-buttons">
+				<button id="8082" class="btn btn-warning" style="vertical-align: text-top;" onclick="vote(this)">
+					<i class="glyphicon glyphicon-thumbs-up jiange"></i>
+					16
+				</button>
+				<button class="btn btn-warning open-popup" style="vertical-align: text-top;" data-target="#half">打个分</button>
+			</div>
+
+
+		</div>
+		
+	</div>
+	
+	<input type="hidden" id="memberId" value="137569"/>
+
+	<div id="half" class='weui-popup__container popup-bottom juzhong'>
+		<div class="weui-popup__modal">
+			<div class="modal-content" style="padding-top: 1rem">
+				<div class="weui-grids">
+					<div id="starRating">
+						<p class="photo">
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+				   		 </p>
+					</div>
+					<div class="star-score">
+						<button class="btn btn-warning" onclick="score()">提交评分</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">Copyright © 2018  东莞市凡豆信息科技有限公司</div>
+</body>
+<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="/wechat/activity/xiangfen_acticity/star/star.js"></script>
+<script src="/wechat/dialog/script/dialog.js"></script>
+<script type="text/javascript">
+	var memberId = $('#memberId').val();
+	
+	function vote(_this){
+		var vid = _this.id;
+		var message = '';
+		var type = 'ok';
+		$.ajax({
+            type: "POST",
+            url:'/wechat/v2/video/vote?_time'+new Date().getTime(),
+            data:{memberId:memberId,vId:vid},
+            async: false,
+            beforeSend: function(){
+            	$.showLoading();
+            },
+            complete: function(){
+            	$.hideLoading();
+            },
+            error: function(request) {
+                alert("错误！！");
+            },
+            success: function(success) {
+            	console.log(success);
+            	if(success.code==200){
+    				console.log(success);
+    				message = "投票成功，您今天还可以为"+success.data.count+"位小朋友投票";
+    			}else{
+    				message = success.msg;
+    				type = 'warning';
+    			}
+            }
+        });
+		
+		var d=$.dialog(
+				{
+							delay:2500,
+							//弹框类型
+							type:type,
+							//描述文字
+							message:message,
+							//尺寸
+							width:200,
+							//对话框遮罩层透明度
+							maskOpacity:0.2,
+							animate:true
+				});
+	}
+	
+	function score(){
+		$.toast("感谢您的点评");
+		$('#half').trigger("click");
+		$('.photo span').find('.high').css('z-index', 0);
+	}
+	
+</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/wechat/js/wechat/wechat-share.js"></script>
+<script type="text/javascript">
+var config = {
+		link : "http://test.fandoutech.com.cn/wechat/api/videoLoginIndex",
+		title : "英语新势力&蛋蛋机器人英语秀",
+		imgUrl : "http://wechat.fandoutech.com.cn/wechat/wechatImages/image/20161221/20161221161442_60.png",
+		desc : '快来帮我投上你宝贵的一票吧',
+		debug : false
+	}
+	
+</html>

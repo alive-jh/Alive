@@ -1,0 +1,421 @@
+body {
+    background-color: #F0F8FF;
+}
+
+#box {
+    text-align: center;
+    line-height: 33px;
+}
+
+.title {
+    margin-top: 60px;
+}
+
+.margin_top40 {
+    margin-top: 40px;
+}
+.margin_top10 {
+    margin-top: 10px;
+}
+
+.title > div:first-child {
+    font-family: NotoSansHans-Medium;
+    font-size: 20px;
+    color: #333333;
+    text-align: center;
+    font-weight: 700;
+}
+
+.title > div:last-child {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #999999;
+}
+
+.box3 .input {
+    width: 220px;
+    margin: 14px auto 0 auto;
+    background-color: #fff;
+    position: relative;
+    border-radius: 8px;
+}
+
+.box4 .input {
+    width: 220px;
+    margin: 10px auto 0 auto !important;
+    background-color: #fff;
+    position: relative;
+    border-radius: 8px;
+}
+
+.input {
+    width: 220px;
+    margin: 8px auto 0 auto;
+    background-color: #fff;
+    position: relative;
+    border-radius: 8px;
+}
+
+.input > div:first-child {
+    font-family: NotoSansHans-Regular;
+    font-size: 18px;
+    color: #333333;
+    line-height: 36px;
+    position: absolute;
+    left: -92px;
+}
+
+.input > div:nth-child(2) input {
+    border-radius: 8px;
+    border: none;
+    width: 220px;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #333333;
+    height: 36px;
+}
+
+.phone {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #333333;
+    text-align: center;
+    margin-top: 22px;
+}
+
+.phone a {
+    color: #64AEEB;
+}
+
+.btn {
+    width: 220px;
+    background: #72C0FF;
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    border-radius: 20px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    margin: 10px auto 0 auto;
+}
+
+.msg {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    width: 160px;
+    color: #999999;
+    position: absolute;
+    right: -170px;
+    top: 0px;
+    text-align: left;
+    line-height: 17px;
+}
+
+.next {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    opacity: 0.7;
+    border: 1px solid #DDDDDD;
+    border-radius: 16px;
+    padding: 5px;
+}
+
+body #box .red694e {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #FF694E;
+}
+
+body #box .col333 {
+    font-family: NotoSansHans-Regular;
+    font-size: 16px;
+    color: #333333;
+}
+
+body #box .col64a {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #64AEEB;
+}
+
+.box2 .phone {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #333333;
+    text-align: center;
+}
+
+.box3 .phone {
+    font-family: NotoSansHans-Regular;
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.box2 .phone a {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #64AEEB;
+}
+
+.box2 .msg {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    width: 160px;
+    color: #999999;
+    position: absolute;
+    right: -190px;
+    top: 0px;
+    text-align: left;
+}
+
+.box2 .btn {
+    background: #b1dcff;
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+}
+
+.phone2 {
+    margin-top: 24px;
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #999999;
+}
+
+.btn2 {
+    display: block;
+    width: 136px;
+    margin: 8px auto;
+    padding: 5px;
+    opacity: 0.7;
+    border: 1px solid #DDDDDD;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #666;
+}
+
+.timeCol input {
+    font-family: NotoSansHans-Regular;
+    font-size: 14px;
+    color: #64AEEB !important;
+}
+
+.copy {
+    top: 0 !important;
+}
+
+.copy > div {
+    font-family: NotoSansHans-Regular;
+    font-size: 14px;
+    color: #64AEEB;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 84px;
+    padding: 8.5px 0;
+}
+
+.menceng {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.menceng > div {
+    position: absolute;
+    background-color: #fff;
+    top: 98px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    text-align: center;
+    border-radius: 8px;
+    width: 280px;
+}
+
+.menceng2 > div {
+    position: absolute;
+    background-color: #fff;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    text-align: center;
+    border-radius: 8px;
+    width: 250px;
+}
+
+.menceng > div > div:first-child {
+    font-family: NotoSansHans-Medium;
+    font-size: 16px;
+    color: #333333;
+    padding: 13px 0;
+}
+
+.menceng > div > div:nth-child(2) {
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    padding: 13px 0;
+}
+
+.menceng > div > div:nth-child(2) > d:first-child {
+    font-size: 16px;
+    color: #FF694E;
+}
+
+.menceng > div > div:nth-child(2) > d:nth-child(2) {
+    font-size: 16px;
+    color: #71ff6a;
+}
+
+.menceng > div > div:nth-child(2) > span {
+    font-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #999999;
+}
+
+.menceng > div > div:nth-child(3) {
+    font-family: NotoSansHans-Medium;
+    font-size: 16px;
+    color: #64AEEB;
+    padding: 13px 0;
+}
+
+.box5 {
+    text-align: center;
+    font-family: NotoSansHans-Regular;
+    font-size: 20px;
+    color: #999999;
+    text-align: center;
+    margin-top: 92px;
+}
+
+.box5 img {
+    width: 48px;
+}
+
+.box5 > div:last-child {
+    font-family: NotoSansHans-Regular;
+    font-size: 20px;
+    color: #64AEEB;
+}
+
+.box5 > div:last-child > a:first-child {
+    font-size: 14px;
+    display: block;
+    padding: 10px 0;
+}
+
+.box5 > div:last-child > a:nth-child(2) {
+    font-size: 12px;
+    display: block;
+    color: red;
+}
+
+.customer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: #64AEEB;
+}
+
+#playCode {
+    text-align: center;
+}
+
+#playCode img {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#playCode canvas {
+    width: 70%;
+}
+
+.box6 {
+    width: 300px;
+    background: #FFFFFF;
+    border: 2px solid #C9E7FF;
+    border-radius: 16px;
+    margin: 28px auto;
+}
+
+.box6 > div:first-child {
+    font-family: NotoSansHans-Medium;
+    font-size: 17px;
+    color: #4397DE;
+    text-align: center;
+    padding: 18px 0;
+}
+
+.box6 > div:nth-child(2) {
+    background: #DDDDDD;
+    border-radius: 3px;
+    height: 1px;
+    width: 240px;
+    margin: 0 auto;
+}
+
+.box6 > div:nth-child(3) {
+    padding: 20px 0 20px 30px;
+    text-align: left;
+}
+
+.box6 span {
+    font-family: NotoSansHans-Regular;
+    font-size: 16px;
+    color: #64AEEB;
+}
+
+.box6 l {
+    ont-family: NotoSansHans-Regular;
+    font-size: 12px;
+    color: #999999;
+}
+
+.box6_btn {
+    background: #72C0FF;
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    width: 180px;
+    color: #fff;
+    padding: 5px 0;
+    margin: 0 auto;
+}
+
+.menceng3 > div {
+    width: 500px;
+    background: none;
+    display: flex;
+    justify-content: space-around;
+    top: 130px;
+}
+
+.menceng3 img {
+    width: 40px;
+    line-height: 90px;
+    vertical-align: middle;
+}
+
+.menceng3 a {
+    display: block;
+    width: 200px;
+    height: 90px;
+    background-color: #fff;
+    font-family: NotoSansHans-Medium;
+    font-size: 20px;
+    color: #333333;
+    line-height: 90px;
+    border-radius: 8px;
+}
+
+.menceng3 a span {
+    line-height: 90px;
+}

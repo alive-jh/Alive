@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/*tab样式*/
+.order-tab .tab-head{background-color:#fff;padding:0 10px;border-bottom:1px solid #B4B4B4;}
+.order-tab .tab-head ul li{width:33.3%;display: block;float: left;text-align: center;font:16px/25px "微软雅黑";color:#003859;margin-bottom:-1px;}
+.order-tab .tab-head ul li a{display: block;padding:10px 0;}
+.order-tab .tab-head ul li.active{border-bottom:2px solid #003859;}
+
+/*订单列表样式*/
+.order-tab .tab-cont{padding:10px;}
+.order-tab .tab-cont ul li{background-color:#fff;margin-bottom:10px;}
+.order-tab .tab-cont ul li a{display: table;width:100%;text-align: left;padding:10px 0;font: 16px/25px "微软雅黑";color:#333;}
+.order-tab .tab-cont ul li a .order-info{display: table-cell;width:100%;padding:0 10px;vertical-align: middle;}
+.order-tab .tab-cont ul li a .order-info h3{padding-left:30px;position: relative;font: 16px/25px "微软雅黑";color:#333;}
+.order-tab .tab-cont ul li a .order-info h3 .order-icon{position: absolute;left:0; top:0;}
+.order-tab .tab-cont ul li a .order-info p.colored{color:#003859;}
+.order-tab .tab-cont ul li a .order-info p.small{font-size:14px;color:#807F83;}
+
+.order-tab .tab-cont ul li a .order-state{display: table-cell;border-left:1px solid #B6B6B8;padding:0 10px;vertical-align: middle;}
+.order-tab .tab-cont ul li a .order-state span{display: block;word-break: keep-all;color:#7E7F83;}
+
+@media only screen and (min-width:768px ) {
+	.content-body{padding: 0;width:768px;}
+}

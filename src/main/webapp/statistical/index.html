@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0047)http://www.jq22.com/demo/jqueryTcc201801240054/ -->
+<html lang="en" style="font-size: 253.733px;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>查看学习记录</title>
+<link rel="stylesheet" href="./alert_files/style.css">
+<script src="./alert_files/jquery-1.10.2.js"></script>
+<script src="./alert_files/jquery.min.js"></script>
+<style>
+.adinfo, .adsbygoogle {
+	display: none !important;
+}
+</style>
+<style>
+img[src="http://www.jq22.com/img/ad/dwad820-90.png"] {
+	display: none !important;
+}
+</style>
+<script src="./alert_files/popups.js"></script>
+<script>
+	setSize();
+	addEventListener('resize', setSize);
+	function setSize() {
+		document.documentElement.style.fontSize = document.documentElement.clientWidth
+				/ 750 * 100 + 'px';
+	}
+</script>
+<style>
+.show-list {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.show-list li {
+	height: 1rem;
+	font-size: .3rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #dcdcdc;
+}
+</style>
+</head>
+<body style="">
+	<script>
+		jqalert({
+			title : '提示',
+			prompt : ' ',
+			yestext : '确定',
+			notext : '取消',
+			yesfn : function(e) {
+				var mobile = $('.prompt-text').val();
+				location.href = "/wechat/h5/route/showStudent?mobile="+mobile;
+			},
+			nofn : function() {
+				jqtoast('你点击了取消');
+			}
+		})
+	</script>
+</body>
+</html>

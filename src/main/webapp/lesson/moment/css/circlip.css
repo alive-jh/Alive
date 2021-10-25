@@ -1,0 +1,497 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    width:100%;
+    background:rgba(245,246,250,1);
+}
+#allCard{
+    width:50%;
+    height:48px;
+    background:rgba(255,255,255,1);
+    text-align: center;
+    line-height: 48px;
+    float: left;
+}
+.checked_span{
+    width:63px;
+    height:16px;
+    font-size:16px;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+    color:rgba(25,26,30,1);
+}
+
+.hr{
+    width:30px;
+    height:3px;
+    background:rgba(38,219,255,1);
+    border: 0px;
+    /*position: relative;
+    bottom: 13px;*/
+    margin: -6px auto;
+}
+
+
+#myCard{
+    width:50%;
+    height:48px;
+    background:rgba(255,255,255,1);
+    text-align: center;
+    line-height: 48px;
+    float: left;
+}
+.unChecked_span{
+    width:55px;
+    height:13px;
+    font-size:14px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(135,136,140,1);
+}
+
+.av_div{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 176px;
+    /*background-image:url("../images/audio-bg-default.png");*/
+
+}
+.createTime{
+    width:98px;
+    height:24px;
+    background:rgba(0,0,0,0.1);
+    /*opacity:0.5;*/
+    border-radius:24px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.time_span{
+    width:74px;
+    height:10px;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    position: relative;
+    bottom: 2px;
+}
+
+
+.deleteBtn{
+    width:48px;
+    height:24px;
+    background:rgba(0,0,0,0.1);
+    /*opacity:0.5;*/
+    border-radius:24px;
+    position: absolute;
+    right: 67px;
+    top: 10px;
+}
+.delete_span{
+    width:74px;
+    height:10px;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    position: relative;
+    bottom: 2px;
+}
+
+.shareBtn{
+    width:48px;
+    height:24px;
+    background:rgba(0,0,0,0.1);
+    /*opacity:0.5;*/
+    border-radius:24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.share_span{
+    width:74px;
+    height:10px;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    position: relative;
+    bottom: 2px;
+}
+
+
+
+
+
+
+.playBtn{
+    position: absolute;
+    top: 69px;
+    margin-left: -19px;
+    width: 38px;
+    height: 38px;
+}
+.mvContent{
+    width: 93.5%;
+    height: 312px;
+    background:rgba(255,255,255,1);
+    border-radius:8px;
+    margin: 12px auto 0px auto;
+}
+.myVideo{
+    width: 100%;
+    height: 176px;
+    background-color: black;
+}
+.course{
+    width:93.5%;
+    height:50px;
+    background:rgba(245,246,250,1);
+    border-radius:8px;
+    margin: 12px auto 0px auto;
+    line-height:50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.classImg {
+    width:38px;
+    height:38px;
+    margin: 3px 8px 6px 6px;
+    vertical-align:middle;
+}
+.className{
+    width:262px;
+    height: 14px;
+    font-size:14px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(25,26,30,1);
+}
+
+
+.userInfo{
+    width:93.5%;
+    height:50px;
+    margin: 10px auto;
+    line-height:50px;
+    /*background:rgba(245,246,250,1);*/
+    position: relative;
+}
+.avatar_and_username{
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+}
+.avatar{
+    width:34px;
+    height:34px;
+    margin: 3px 8px 6px 8px;
+    vertical-align:middle;
+    border-radius:50%;
+}
+.studentName{
+    width:auto;
+    height:12px;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(85,86,90,1);
+}
+
+.user_pinglun{
+    display: inline-block;
+    position: absolute;
+    right: 80px;
+}
+.pinglun_and_zan_span{
+    width:auto;
+    height:9px;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(85,86,90,1);
+}
+.pinglun_and_zan_img{
+    width: 18px;
+    height: 18px;
+    vertical-align:middle;
+}
+
+.user_zan{
+    display: inline-block;
+    position: absolute;
+    right: 8px;
+}
+
+.paragraph{
+    position: absolute;
+    top: 16px;
+    margin: 0px 7%;
+    width: 85%;
+    text-align:center;
+    height: 155px;
+    background: rgba(255,255,255,0.3);
+    font-size: 13px;
+    font-family: PingFangSC-Medium;
+    font-weight: 600;
+    color: rgba(51,51,51,1);
+    line-height: 20px;
+    display: none;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 2px;
+}
+.text{
+    padding: 0;
+    margin: 4px;
+    position: absolute;
+    bottom: 0;
+    width: 97%;
+}
+
+.publicBtn{
+    border: 0;
+    outline: none;
+    background:rgba(255,255,255,1);
+    width:auto;
+    height:auto;
+    font-size:14px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(87,107,149,1);
+    display: none;
+    margin-left: 6px;
+}
+
+.private_or_public{
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    display: none;
+}
+
+.avBg{
+    position: absolute;
+    width: 100%;
+    height: 176px;
+    object-fit: cover;
+    top: 0px;
+    left: 0px;
+}
+.megaphoneGif{
+    position: absolute;
+    top: 34px;
+    margin-left: -49px;
+    width: 105px;
+    display: none;
+}
+/*
+#div1{
+    padding-top: 50px;
+}
+.card_div{
+    width:100%;
+    height:48px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}*/
+
+
+.weui-popup__modal{
+    border-radius:10px 10px 0px 0px;
+}
+
+.comment{
+    height: 500px;
+    background:rgba(255,255,255,1);
+    border-radius:10px 10px 0px 0px;
+    overflow:auto;
+}
+
+.Top{
+    font-size: 20px;
+    line-height:35px;
+    position:relative;
+    width:100%;
+    height:50px;
+    background:rgba(245,246,250,1);
+    border-radius:10px 10px 0px 0px;
+}
+.closepopup {
+    width: 15px;
+    height: 15px;
+    top: 18px;
+    position: absolute;
+    right: 12px;
+}
+
+.images img{
+    width: 30pt;
+    height: 30pt;
+    background-image:none;
+    margin-outside: 10px;
+}
+
+.Time {
+    border-radius: 24px;
+    position: absolute;
+    left: 50px;
+    top: 44px;
+    width:auto;
+    height:auto;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(135,136,140,1);
+}
+
+.Top span{
+    position: absolute;
+    top: 7px;
+    left: 12px;
+    width:auto;
+    height:16px;
+    font-size:16px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(85,86,90,1);
+}
+.delete {
+    position: absolute;
+    right: 13px;
+    top: 24px;
+    width:auto;
+    height:auto;
+    font-size:14px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(135,136,140,1);
+}
+.parentName{
+    position: absolute;
+    left: 51px;
+    top: 24px;
+    width:auto;
+    height:auto;
+    font-size:14px;
+    font-family:PingFang-SC-Medium;
+    color:rgba(25,26,30,1);
+}
+.images_and_name{
+    position: relative;
+    width: 93%;
+    height: 128px;
+    margin: 0px auto;
+    overflow:hidden;
+}
+.student_avatar{
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    top: 24px;
+    border-radius: 50%;
+}
+.commentContent {
+    position: absolute;
+    width: 83%;
+    height: auto;
+    font-size: 16px;
+    font-family: PingFang-SC-Medium;
+    color: rgba(25,26,30,1);
+    top: 80px;
+    left: 50px;
+    border-bottom: 1px solid #E4E5E9;
+    padding-bottom: 20px;
+    word-break:break-all;
+}
+.input{
+    font-size: 14px;
+    outline: none;
+    border: 0px;
+    border-radius: 4px;
+    width: 76%;
+    height: 20px;
+    background: rgba(245,246,250,1);
+    overflow: hidden;
+    resize: none;
+    position: absolute;
+    line-height: 20px;
+    bottom: 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 8px 6px 8px 8px;
+    contenteditable: true;
+}
+
+.Button{
+    border: 0px;
+    font-family: NotoSansHans-Regular;
+    border-radius:4px;
+    color:rgba(255,255,255,1);
+    font-size: 14px;
+    background:rgba(38,183,255,1);
+    padding: 9px;
+    height: 36px;
+    position: absolute;
+    width: 54px;
+    bottom: 10px;
+    right: 0px;
+}
+
+#lastrolad {
+    width: 95%;
+    margin: 1.5em auto;
+    line-height: 1.6em;
+    font-size: 14px;
+    position: absolute;
+    text-align: center;
+    bottom: 25px;
+    display: none;
+}
+
+.BigComment{
+    height: 382px;
+    overflow-x: hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.teacher_span{
+    width: 28px;
+    height: 14px;
+    background: rgba(255,191,102,1);
+    border-radius: 2px;
+    font-size: 10px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(255,255,255,1);
+    padding: 3px 3px 0px 3px;
+    position: relative;
+    top: 20px;
+    left: 125px;
+}
+
+.student_span{
+    width: 28px;
+    height: 14px;
+    background: rgba(102,204,255,1);
+    border-radius: 2px;
+    font-size: 10px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(255,255,255,1);
+    padding: 3px 3px 0px 3px;
+    position: relative;
+    top: 20px;
+    left: 125px;
+}
+
+
+
+

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+	name="viewport" />
+<title></title>
+<!-- head 中 -->
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+<style type="text/css">
+	.lessons {
+		display: flex;
+		padding: 10px 0px 10px 30px;
+		flex-wrap: wrap;
+		margin: 0 auto;
+	}
+	.lesson {
+		display: flex;
+		margin-top: 10px;
+		position: relative;
+	}
+	.cover img {
+		width: 100px;
+		height: 150px;
+		border-radius: 10px;
+	}
+	.intro {
+		width: 200px;
+		margin-left: 10px;
+	}
+	.title {
+		font-size: 20px;
+	}
+	.label {
+		font-size: 11px;
+		color: rgba(153, 153, 153, 1);
+	}
+	.label span {
+		margin-right: 2px;
+	}
+	.integrak-pay {
+		position: absolute;
+		bottom: 10px;
+	}
+	.intro p {
+		margin-bottom: 5px;
+	}
+	.integrak-pay {
+		border: 0;
+		background-color: rgba(255, 195, 8, 1);
+		color: white;
+		width: 110px;
+		border-radius: 100px;
+		height: 30px;
+	}
+	.weui-select-modal{
+	height: 250px;
+	}
+</style>
+</head>
+<body>
+	<div id="app">
+		<div class="lessons">
+
+			<div class="lesson" v-for="lesson in data.list">
+				<div class="cover">
+					<img alt="" v-bind:src="lesson.cover">
+				</div>
+				<div class="intro">
+					<p class="title">{{lesson.productName}}</p>
+					<p class="label">
+						<span>标签一</span> <span>标签二</span> <span>标签三</span><span>标签一</span>
+						<span>标签二</span> <span>标签三</span><span>标签一</span> <span>标签二</span>
+						<span>标签三</span>
+					</p>
+					<button class="integrak-pay"
+						v-on:click="integraPay(lesson.id,lesson.integral)">{{lesson.integral}}积分兑换</button>
+				</div>
+			</div>
+
+		</div>
+
+		<input class="weui-input" id="student" type="text" style="display: none">
+	</div>
+
+</body>
+<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script
+	src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+<script type="text/javascript">
+	window.onload = function() {
+
+		$.ajaxSetup({
+			beforeSend : function(XMLHttpRequest) {
+				$.showLoading();
+			},
+			complete : function() {
+				$.hideLoading();
+			},
+			error : function(data) {
+				$.toptip("网络似乎有点问题 ~", 'error');
+			}
+
+		});
+
+		app.init();
+
+	}
+
+	var app = new Vue({
+		el : '#app',
+		data : {
+			data : {},
+			pageNumber : 1,
+			pageSize : 10,
+			account : 0
+		},
+		methods : {
+			init : function() {
+				$.get('/wechat/v2/classproduct/integralProductList', {
+					pageNumber : this.pageNumber,
+					pageSize : this.pageSize
+				}, function(success) {
+					console.log(success);
+					app.data = success.data;
+				}, 'json');
+			},
+			integraPay : function(product, integra) {
+				this.checkIntegra(this, function(self, success) {
+					app.account = success.accountId;
+					if (success.integral < integra) {
+						alert("积分不足");
+					} else {
+
+						self.studentList(self, function(self, success) {
+
+							$("#student").select(
+									{
+										title : "请选择学生",
+										items : success,
+										onChange : function(input) {
+											if(input.values > 0){
+												var flag = confirm("是否将课程添加到'"
+														+ input.titles + "'名下");
+												
+												if(flag){
+													$.post('/wechat/v2/classproduct/integralPay',{account:app.account,product:product,student:input.values,member:0},function(result){
+														if(result.code){
+															alert("兑换成功");
+														}
+													},'json')
+												}
+											}
+										},
+										onClose:function(){
+											$('#student').val(0);
+										}
+									});
+							$("#student").click();
+							console.log(success);
+						});
+					}
+				});
+			},
+			studentList : function(self, callBack) {
+				$.get('/wechat/v2/classproduct/studentList', {
+					pageNumber : this.pageNumber,
+					pageSize : this.pageSize
+				}, function(result) {
+
+					if (result.code == 200) {
+						callBack(self, result.data);
+					}
+
+				}, 'json');
+			},
+			checkIntegra : function(self, callBack) {
+				$.get('/wechat/v2/classproduct/checkIntegra', {
+					pageNumber : this.pageNumber,
+					pageSize : this.pageSize
+				}, function(result) {
+
+					if (result.code == 200) {
+						callBack(self, result.data);
+					}
+
+				}, 'json');
+			},
+
+		},
+		filters : {
+
+		}
+	})
+</script>
+</html>

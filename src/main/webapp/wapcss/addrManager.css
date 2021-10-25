@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/*地址列表样式*/
+.addr-list{background-color:#fff;}
+.addr-list li{padding:10px 0;border-bottom:1px solid #D7D7D7;display:table;width:100%;}
+.addr-list .addr-left,.addr-list .addr-center,.addr-list .addr-right{display: table-cell;vertical-align: middle;}
+.addr-list .addr-left,.addr-list .add-right{width:30px;text-align: center;}
+.addr-list .addr-center{line-height: 25px;font-size:16px;padding:0 10px;width: 100%;}
+.addr-list .addr-center h3{font-weight: bold;line-height: 30px;}
+.addr-list .addr-center p{word-break: break-all;}
+.addr-list li.default{background-color:#5F6B85;color:#fff;}
+.addr-list li.default .addr-center p::before{content:'[默认]';display:inline;}
+.addr-list li.default .addr-right a{background-position:0px -125px;}
+.addr-list .addr-tel{float: right;}
+
+
+/*操作按钮样式*/
+
+.control-bar{padding:10px;background-color:#F8F8F8;border-top:1px solid #D7D7D7;position: fixed;max-width: 768px;left:0;right:0;bottom:0;margin:0 auto;text-align: center;}
+.control-bar .add-icon,.control-bar .delete-icon{display: inline-block;}
+.control-bar span{padding:0 20px;}
+
+@media only screen and (min-width:768px ) {
+	.content-body{padding: 0;width:768px;}
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购买成功</title>
+    <link rel="stylesheet" href="/wechat/lesson/payClass/css/productPayComplete.css">
+</head>
+<body>
+<div class="device-heard" style="display: none">
+
+    点击右上角按钮，然后在弹出的菜单中，点击在
+    浏览器中打开，即可安装
+    <img src="/wechat/lesson/payClass/images/goumai_zhixiang_icon@2x.png" alt="">
+</div>
+<div class="content-box">
+    <div>
+        <img src="/wechat/lesson/payClass/images/goumai_chengong_icon@2x.png" alt="">
+    </div>
+    <div>
+        <h3>购买成功</h3>
+        <div>
+            您已加入《少儿英语口语强化班》<br>
+            下载少年派英语APP学习吧
+
+        </div>
+    </div>
+    <div>
+        <div><span>当前状态</span><span>购买支付成功</span></div>
+        <div><span>加入班级</span><span>少儿英语口语强化班</span></div>
+        <div><span>机构名称</span><span>少年派英语伤害旗舰店</span></div>
+        <div><span>交易单号</span><span>15999996337800001</span></div>
+    </div>
+    <a href="#" onclick="CopyUrl()">
+        前往app
+    </a>
+    <a href="#">
+        帮助
+    </a>
+    <div id="cardList" style="display: none">
+        <div class="btn">复制我</div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".device-heard").slideDown("slow");
+
+        let div = document.createElement("div");
+        div.innerText = "这是一段测试的文本";
+        div.style.display = "none";
+        document.body.appendChild(div);
+
+        $(".device-heard").select();
+        // div.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+
+
+    });
+
+    function CopyUrl() {
+        $("#cardList .btn").click();
+    }
+
+    function copy(str) {
+        var save = function (e) {
+            e.clipboardData.setData('text/plain', str);//下面会说到clipboardData对象
+            e.preventDefault();//阻止默认行为
+        }
+        document.addEventListener('copy', save);
+        document.execCommand("copy");//使文档处于可编辑状态，否则无效
+    }
+
+    document.getElementById('cardList').addEventListener('click', function (ev) {
+        copy(ev.target.innerText)
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+    margin: 0;
+    padding: 0;
+}
+.title-bar{
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(#e56a6a, #970808);
+    text-align: center;
+    position: relative;
+}
+.title-bar h4{
+    line-height: 50px;
+    color: white;
+}
+.title-bar img{
+
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.fandou-ad{
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+}
+
+.fandou-ad .img-ad{
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    z-index: 99;
+    box-shadow: -5px 5px 10px #888888
+}
+
+.fandou-ad .img-ad img{
+    border-radius: 8px;
+}
+.data-list{
+    width: 100%;
+    padding: 20px 8px 20px 8px;
+    text-align: center;
+}
+.data-list .data-title{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.study-video-image{
+    margin-top: 20px;
+    width: 48%;
+    float: left;
+    margin: 2% 1% 5% 1%;
+}
+.study-video-image .video-image img{
+    border-radius: 8px;
+    width: 100%;
+    height:125px;
+}
+.video-text{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 20px;
+}
+.video-text span{
+    line-height: 45px;
+    font-size: 12px;
+}
+span{
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        -o-text-overflow: ellipsis;
+        white-space:nowrap;
+        width:150px;
+        height:50px;
+        display:block;
+        text-align: center;
+        margin: 0 auto;
+}

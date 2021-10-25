@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5, maximum-scale=1.0, minimum-scale=1.0">
+    <title>搜索</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.min.css">
+    <link href="../css/searchResult.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/index.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="weui-search-bar weui-search-bar_focusing" id="searchBar">
+        <!--<img src="../images/backtrack.png"  onClick="javascript:history.back(-1);">-->
+        <div class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入关键字查询"
+                       v-on:keypress="searchEnt">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+        </div>
+        <a class="search_btn" v-on:click="searchBtn">搜索</a>
+    </div>
+
+    <div class="search_result">
+        <p v-show="searchMsg" class='not_found_hint'>没找到输入的内容，请查看输入是否正确</p>
+        <div class="product_item" v-for="item in searchData.list" v-on:click="courseDetails(item.id)">
+            <img class="product_pic" v-bind:src="getProductPicUrl(item)">
+            <div class="product_info_right">
+                <b class="product_name">{{item.name}}</b>
+                <p class="details">{{item.desc}}</p>
+                <div class="price_info">
+                    <span>{{getPriceRange(item)}}</span><span>豆币</span>
+                    <span v-show="oldPrice">价格{{item.originalCoin}}</span>
+                </div>
+                <span class="purchased_num">{{getPayNum(item.id)}}人已购买</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/public.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="https://cn.vuejs.org/js/vue.js"></script>
+<script>
+
+    var host = window.location.protocol+"//"+window.location.host +"/snp/v2/";
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            searchMsg: false,
+            oldPrice:true,
+            searchData: {},
+            payNum:{}
+        },
+        methods: {
+            doSearch: function (searchVal, that) {
+                $.ajax({
+                    //http://test.fandoutech.com.cn
+                    url: host + 'mall/searchGoods',
+                    data: {
+                        name: searchVal,
+                    },
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            console.log(res.data)
+                            that.searchData = res.data;
+                            if (res.data.list.length == 0) {
+                                that.searchMsg = true;
+                            } else {
+                                that.searchMsg = false;
+                            }
+                        }
+                    }
+                })
+            },
+            searchBtn: function () {
+                let searchVal = $('#searchInput').val();
+                if (searchVal == "" || searchVal == null) return;
+                var that = this;
+                that.doSearch(searchVal, that);
+            },
+            searchEnt: function (event) {
+                if (event.keyCode == 13) {
+                    let searchVal = $('#searchInput').val();
+                    if (searchVal == "" || searchVal == null) return;
+                    var that = this;
+                    that.doSearch(searchVal, that);
+                }
+            },
+            courseDetails:function(productId){
+                window.location ="./courseDetails.html?productId="+productId;
+            },
+            getPayNumData:function(){
+                var that = this;
+                $.ajax({
+                    //http://test.fandoutech.com.cn
+                    url: host + 'mall/peoPleCount',
+                    data: {},
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            that.payNum=res.data;
+                        }
+                    }
+                })
+            },
+            getPayNum:function (id) {
+                return this.payNum[''+id];
+            },
+            getProductPicUrl:function(item){
+                if (item.pics!=undefined){
+                    return  item.pics.split(',')[0];
+                }
+                return '../images/picture-81.png'
+            },
+            getPriceRange:function (item) {
+                if (item.priceRange1==undefined||item.priceRange==0){
+                    this.oldPrice=false;
+                    return item.originalCoin;
+                }
+                return item.priceRange;
+            }
+        }
+    });
+    app.getPayNumData();
+</script>
+</body>
+</html>

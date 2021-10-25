@@ -1,0 +1,100 @@
+body {
+    padding: 0;
+    margin: 0;
+
+}
+
+.content-box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.content-box > div:first-child img {
+    width: 150px;
+}
+
+.content-box > div:nth-child(2) {
+    width: 84%;
+    border-bottom: 1px solid rgba(228, 229, 233, 1);
+    margin: 0px auto 24px auto;
+    padding: 0px 0 20px 0;
+}
+
+.content-box > div:nth-child(2) > div {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+    line-height: 21px;
+}
+
+.content-box > div:nth-child(3) {
+    border-bottom: 1px solid rgba(228, 229, 233, 1);
+    width: 84%;
+    margin: 0px auto 24px auto;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.content-box > div:nth-child(3) > div {
+    margin-bottom: 17px;
+}
+
+.content-box > div:nth-child(3) > div span:first-child {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+}
+
+.content-box > div:nth-child(3) > div span:last-child {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(25, 26, 30, 1);
+    margin-left: 32px;
+}
+
+.content-box > a:nth-child(4) {
+    display: block;
+    width: 84%;
+    margin: 10px auto;
+    background: rgba(38, 183, 255, 1);
+    border-radius: 4px;
+    color: #fff;
+    padding: 13px 0;
+    text-decoration: none;
+}
+
+.content-box > a:nth-child(5) {
+    display: block;
+    width: 84%;
+    margin: 24px auto;
+    font-size: 18px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(38, 183, 255, 1);
+    line-height: 21px;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.device-heard {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+    line-height: 21px;
+    background: rgba(52, 52, 52, 1);
+    padding: 34px 30px;
+    position: relative;
+}
+
+.device-heard img {
+    display: block;
+    position: absolute;
+    width: 34px;
+    top: 14px;
+    right: 13px;
+}

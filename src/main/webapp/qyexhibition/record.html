@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>#(date)学习记录</title>
+    <link rel="stylesheet" href="/wechat/qyexhibition/css/record.css?id=666">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+</head>
+
+<body>
+
+	<input type="hidden" name="student" value="#(student)">
+	<input type="hidden" name="date" value="#(date)">
+	
+	<audio src="" id="player" style="display: none;"></audio>
+
+	<div class="weui-gallery" style="display: none;" onclick="hideGallery()">
+		<span class="weui-gallery__img" style="background-image: url(xxx);" id="gallery"></span>
+		<div class="weui-gallery__opr">
+		</div>
+	</div>
+	
+	<video x5-video-player-type='h5' playsinline='true' webkit-playsinline='true' id="video-player" width="100%" height="100%" style="position: fixed;z-index: 99999;top: 0;left: 0;background-color: black;display: none;" onclick="hideVideo()" >
+		<source id="video-player-source">
+	</video>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+<script type="text/javascript" src="/wechat/js/wechat/wx-jssdk-reg.js"></script>
+<script type="text/javascript">
+	
+	init();
+	
+	function init(){
+		
+		$.get('/wechat/v2/qyExhibition/lessonRecord'
+				,{student:$("input[name='student']").val(),
+				  date:$("input[name='date']").val(),
+				  _sign:'D0523DACB0F33CBADC73B539CD94BC04',
+				  _time:'1525842696825'
+		}
+				,function(success){
+					console.log(success);
+					if(success.code==200){
+						showDate(success.data.list);
+					}else{
+						alert(success.msg);
+					}
+				}
+			)
+	}
+	
+	
+	function hideVideo(){
+		$('#video-player')[0].pause();
+		$('#video-player').hide();
+	}
+	
+	function showImage(url){
+		$('#gallery').css({'background-image': 'url('+url+')'});
+		$('.weui-gallery').show();
+	}
+	
+	function showImage2(_this){
+		$('#gallery').css({'background-image': 'url('+_this.src+')'});
+		$('.weui-gallery').show();
+	}
+	
+	function hideGallery(){
+		$('.weui-gallery').hide();
+	}
+	
+	function playVideo(_this){
+		$('#video-player').attr('src',_this.id);
+		$('#video-player').show();
+		$('#video-player')[0].play();
+		
+	}
+	
+	var optionIndex = ["A","B","C","D"];
+	function showDate(list){
+		
+		$.each(list, function(index, record) {
+			var card = '';
+			
+			if(record.type==1){
+				
+				if(record.classScriptContent[0].command==216){
+					
+					card = `<div class="card">
+						        <div class="card-content">
+						            <video width="100%" controls="" poster="/wechat/qyexhibition/images/Group 9@2x.png">
+						                <source src="`+record.lessonReplyContent[0].content+`" type="video/mp4">
+						            </video>
+					        	</div>
+						        <div class="card-footer">
+						            <div class="time">`+record.time+`</div>
+						        </div>
+			    			</div>`;
+				}
+				
+				
+				if(record.classScriptContent[0].command==301){
+					card = `<div class="card">
+						        <div class="card-content audio-pad">
+						        	<div class="tile">
+						           	 	<p>`+(record.classScriptContent[0].ext.resourcesName).replace(/\n/, '<br>')+`</p>
+						           	 	<p>`+(record.classScriptContent[0].ext.readContent).replace(/\n/, '<br>')+`</p>
+						        	</div>
+						            <div class="audio" id="`+record.lessonReplyContent[0].content+`" onclick="playMusic(this)">
+						                <div>
+						                    <img src="/wechat/qyexhibition/images/ico_audio@1x.png" alt="">
+						                </div>
+						            </div>
+					       		</div>
+						        <div class="card-footer">
+						            <div class="time">`+record.time+`</div>
+						        </div>
+					   		</div>`;
+				}
+				
+				if(record.classScriptContent[0].command==207){
+					card = `<div class="card">
+						        <div class="card-content audio-pad">
+						        	<div class="tile">
+						           	 	<p>`+(record.classScriptContent[0].content).replace(/\n/, '<br>')+`</p>
+						        	</div>
+						            <div class="audio" id="`+record.lessonReplyContent[0].content+`" onclick="playMusic(this)">
+						                <div>
+						                    <img src="/wechat/qyexhibition/images/ico_audio@1x.png" alt="">
+						                </div>
+						            </div>
+					       		</div>
+						        <div class="card-footer">
+						            <div class="time">`+record.time+`</div>
+						        </div>
+					   		</div>`;
+				}
+				
+				if(record.classScriptContent[0].command==226){
+					card = `<div class="card">
+				        		<div class="card-content">
+			            			<img class="lesson-photo" src="`+record.lessonReplyContent[0].content+`" alt="">
+			       				 </div>
+						        <div class="card-footer">
+						            <div class="time">`+record.time+`</div>
+						        </div>
+			    			</div>`
+				}
+				
+				if(record.classScriptContent[0].command==401){
+					card = `<div class="card">
+						        <div class="card-content">
+					            <div class="question">
+					                <div class="til">-选择题-</div>
+					                <div class="text">`+record.classScriptContent[0].ext.practice.question.text+`</div><div class="images">`;
+					                
+					 if(record.classScriptContent[0].ext.practice.question.picUrl!=""){
+						 card+=`<div>
+		                        <img src="`+record.classScriptContent[0].ext.practice.question.picUrl+`" alt="" onclick="showImage2(this)">
+			                    </div>`;
+					 }
+					 
+					 if(record.classScriptContent[0].ext.practice.question.audioUrl!=""){
+						 card+=`<div class="audio-image" onclick="playMusic(this)" id="`+record.classScriptContent[0].ext.practice.question.audioUrl+`">
+		                        	<img src="/wechat/qyexhibition/images/ico_voice@2x.png" alt="">
+			                    </div>`;
+					 }
+					 
+					 if(record.classScriptContent[0].ext.practice.question.videoUrl!=""){
+						 card+=`<div class="video-image-question" onclick="playVideo(this)" id="`+record.classScriptContent[0].ext.practice.question.videoUrl+`">
+							 		<img src="/wechat/qyexhibition/images/ico_video@2x.png" alt="" >
+			                    </div>`;
+					 }
+					 
+					 card+=`</div>
+					            </div>
+					            <div class="line_5">
+					                <div></div>
+					            </div>`;
+					            
+					            for(var j=0;j<record.classScriptContent[0].ext.practice.options.length;j++){
+					            	card += `<div class="option">
+								                <div class="til">选项`+optionIndex[j];
+								                
+								                if(record.classScriptContent[0].ext.practice.options[j].bAnswer && record.classScriptContent[0].ext.practice.hasAnswer){
+								                	card+=`<span class="yellow">正确答案</span>`;
+								                }
+								                
+								                if(record.lessonReplyContent[0].content.indexOf(optionIndex[j]) != -1){
+								                	card+=`<span class="red">我的选择</span>`;
+								                }
+								                
+								                card +=`</div>
+								                <div class="text">`+record.classScriptContent[0].ext.practice.options[j].text+`</div>
+								                <div class="images">`;
+								                
+								        if(record.classScriptContent[0].ext.practice.options[j].picUrl!=""){
+											card+=`<div>
+						                        		<img src="`+record.classScriptContent[0].ext.practice.options[j].picUrl+`" alt="" onclick="showImage2(this)">
+							                    	</div>`;
+										}	
+								        
+								        if(record.classScriptContent[0].ext.practice.options[j].audioUrl!=""){
+								        	card+=`<div class="audio-image" onclick="playMusic(this)" id="`+record.classScriptContent[0].ext.practice.options[j].audioUrl+`">
+						                        		<img src="/wechat/qyexhibition/images/ico_voice@2x.png" alt="">
+							                    	</div>`;
+										}
+								        
+								        if(record.classScriptContent[0].ext.practice.options[j].videoUrl!=""){
+											 card+=`<div class="video-image-question" onclick="playVideo(this)" id="`+record.classScriptContent[0].ext.practice.options[j].videoUrl+`">
+												 		<img src="/wechat/qyexhibition/images/ico_video@2x.png" alt="">
+								                    </div>`;
+										 }
+								                
+								        card +=`  
+								                </div>
+						            		</div>`
+					            }
+					   card += `</div>
+					        <div class="card-footer">
+					            <div class="time">`+record.time+`</div>
+					        </div>
+			   			 </div>`
+				}
+				
+				if(record.classScriptContent[0].command==403){
+					card = `<div class="card">
+						        <div class="card-content">
+					            <div class="question">
+					                <div class="til">-问答题-</div>
+					                <div class="text">`+(record.classScriptContent[0].ext.practice.question.text).replace('[blank]','_____')+`</div>
+					                <div class="images">`;
+					         
+					          if(record.classScriptContent[0].ext.practice.question.picUrl!=""){
+					        	  card+=`<div>
+				                        	<img src="`+record.classScriptContent[0].ext.practice.question.picUrl+`" alt="" onclick="showImage2(this)">
+					                    </div>`;
+					          }
+					          
+					          if(record.classScriptContent[0].ext.practice.question.audioUrl!=""){
+					        	  card+=`<div class="audio-image" id="`+record.classScriptContent[0].ext.practice.question.audioUr+`" onclick="playMusic(this)">
+				                        	<img src="./images/ico_voice@2x.png" alt="">
+					                    </div>`;
+					          }
+					                    
+					   card+=`  </div>
+					            </div>
+					            <div class="line_5">
+					                <div></div>
+					            </div>
+					            <div class="daan">
+					                <div class="til">回答</div>
+					                <div class="text">`+record.classScriptContent[0].ext.practice.answers[0].content+`</div>
+					            </div>
+					        </div>
+					        <div class="card-footer">
+					            <div class="time">`+record.time+`</div>
+					        </div>
+			    		</div>`
+				}
+				
+			}else if(record.type==2){
+				
+				card = `<div class="card">
+					        <div class="card-head">`+record.lessonReplyContent[0].content+`</div>
+					        <div class="card-content">
+					            <img src="`+record.lessonReplyContent[1].content+`" alt="">
+					        </div>
+					        <div class="card-footer">
+					            <span class="grey">阅读记录</span>
+					            <div class="time">`+record.time+`</div>
+					        </div>
+			    		</div>`
+			    		
+			}
+			
+			$('body').append(card);
+			
+			build();
+			
+		});
+		
+	}
+	
+	function playMusic(_this){
+		
+		$('#player').attr('src',_this.id);
+		$('#player')[0].play();
+		
+	}
+	
+	function build(){
+		$('.lesson-photo').click(function(){
+			showImage(this.src);
+		})
+	}
+	
+</script>
+
+</html>

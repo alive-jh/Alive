@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+body{background-color:#fff;}
+.content-body{padding:10px;}
+
+.total-num{display: table;margin: 20px auto;}
+.num-text{display: table-cell;font:16px/40px "微软雅黑";vertical-align: middle;color:#333;}
+.num-text span{font-size:30px;}
+.type-text{display: table-cell;vertical-align: middle;}
+.type-text span{display: block;margin-left:20px;font:16px/35px "微软雅黑";width:60px;height:60px;line-height:60px;text-align:center;border-radius:50%;background-color:#f80;color:#fff;}
+
+.sub-title-middle{border-bottom:1px solid #ccc;text-align: center;margin:-15px 0 15px;}
+.sub-title-middle span{position:relative;font:15px/30px "微软雅黑";color:#ccc;top:15px;background-color:#fff;padding:0 5px;}
+
+.num-list-box a{display: block;padding:10px 0;border-bottom:1px solid #ccc;}
+
+.list-left{float: left;width:35%;text-align: left;}
+.list-left h3{font:20px/25px "微软雅黑";color:#f80;}
+.list-left p{font:16px/25px "微软雅黑";color:#333;}
+
+.list-right{float: left;width:64%;text-align: right;}
+.list-right p{font:16px/25px "微软雅黑";color:#999;}
+.list-right p span{margin-left:5px;}

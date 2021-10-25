@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+		window.onload = function() {
+			onpenApp();
+		}
+
+		function onpenApp() {
+			var inviteCode = getUrlPara(inviteCode);
+			copy(inviteCode)
+			location.href = "fandou://com.fandou.afandle/alive?inviteCode="
+					+ inviteCode;
+		}
+
+		function copy(str) {
+			var input = document.createElement('input');
+			input.value = str;
+			input.style.display = 'none';
+			document.body.appendChild(input);
+			input.select();
+			document.execCommand("Copy");
+		}
+
+		function getUrlPara(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null)
+				return unescape(r[2]);
+			return;
+		}
+	</script>
+</body>
+</html>

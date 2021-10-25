@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <title>凡豆英语测评</title>
+    <link rel="stylesheet" href="/wechat/eval/css/bootstrap.css">
+
+
+    <link rel="stylesheet" href="/wechat/eval/web-icons/web-icons.css">
+    <link rel="stylesheet" href="/wechat/eval/css/font-awesome.css">
+
+    <!--<link rel="stylesheet" href="../../css/examples/components/structure/ribbon.css">-->
+
+    <script src="/wechat/eval/js/jquery.min.js"></script>
+    <script src="/wechat/eval/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+        background-color: #f8f8f8;
+    }
+
+    .top {
+        background-color: #fff;
+        padding: 7px;
+        text-align: right;
+    }
+
+    .top > div {
+        margin: 0 !important;
+    }
+
+    .top > div:nth-child(2) {
+        display: inline-block;
+    }
+
+    .title_question {
+        display: flex;
+        justify-content: start;
+    }
+    .title_question div:first-child {
+        margin-left: 16px;
+        margin-right: 12px;
+    }
+
+    .title_question div:first-child i {
+        font-size: 35px;
+    }
+
+    .title_question div {
+        vertical-align: middle;
+    }
+
+    .title_question div:nth-child(2) span {
+        font-size: 24px;
+        display: block;
+        margin-top: 6px;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 1px;
+        left: 0;
+        right: 0;
+    }
+
+    .footer button {
+        font-size: 18px;
+    }
+
+    .context {
+        margin-top: 20px;
+    }
+
+    .context .row {
+        margin: 0 !important;
+    }
+
+    .am {
+        -webkit-animation: myfirst 3s; /* Safari and Chrome */
+    }
+
+    .check_options {
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .check_options i {
+        color: #fff;
+        font-size: 25px;
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        -webkit-transform: translateX(-40%);
+        -webkit-transform: translateY(-40%);
+    }
+
+    .thumbnail {
+        position: relative;
+    }
+
+    @keyframes myfirst {
+        0% {
+            background: red;
+            color: #fff;
+        }
+        25% {
+            background: yellow;
+            color: #fff;
+        }
+        50% {
+            background: blue;
+            color: #fff;
+        }
+        75% {
+            background: green;
+            color: #fff;
+        }
+        100% {
+            background: red;
+            color: #fff;
+        }
+    }
+    .toast {
+        position: fixed;
+        background-color: rgba(0,0,0,0.6);
+        width: 50%;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        border-radius: 6px;
+        bottom: 25%;
+        left: 50%;
+        font-size: 16px;
+        transform: translateX(-50%);
+        display: none;
+        z-index: 999;
+    }
+</style>
+<body>
+<div class="toast">请选择答案！</div>
+<div class="top">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" aria-valuenow="20" aria-valuemin="0"
+             aria-valuemax="100" style="width: 20%" role="progressbar">
+            <span class="sr-only">20%</span>
+        </div>
+    </div>
+    <div>1/5</div>
+</div>
+
+<div class="title_question" onclick="playSound()">
+    <div class="">
+        <i class="icon wb-volume-high" aria-hidden="true"></i>
+    </div>
+    <div>
+        <span></span>
+    </div>
+</div>
+<div class="context">
+    <div class="row">
+
+    </div>
+</div>
+<div class="footer">
+    <button type="button" onclick="nextQuestion()" class="btn btn-block btn-primary">下一题</button>
+</div>
+<audio id="question_audio" src=""></audio>
+<audio id="option_audio" src=""></audio>
+<script>
+
+    var QuestionGrade = 1;
+    var level = [1, 43, 45, 47, 49, 51];
+    var len;
+    var dataQuestion;
+    var index = 0;
+    var bingo = 0;
+    getQuestions();
+
+    function getQuestions() {
+        $.ajax({
+            url: '/wechat/h5/evaluation/getEvaluation?',
+            // data: {level: level[QuestionGrade], all: 1},
+            data: {
+            	level:level[QuestionGrade],all:1
+            },
+            type: 'get',
+            success: function (data) {
+                dataQuestion = data.data.list;
+                len = dataQuestion.length;
+                questionList(index);
+            }
+        });
+    }
+
+    function questionList(i) {
+        console.log("i:" + i);
+        if (i == 5) {
+            if (bingo >= 4) {
+                QuestionGrade++;
+                index = 0;
+                if(confirm("答对"+bingo+"道题,是否挑战下一关")){
+                	bingo = 0;
+                	getQuestions();
+                	return;
+                }else{
+                	 window.location.href = "https://api.fandoutech.com.cn/wechat/eval/evalEnd.jsp?level=" + QuestionGrade;
+                	 return;
+                }
+            } else {
+                if (QuestionGrade > 4) {
+                    QuestionGrade = 4;
+                }
+                window.location.href = "https://api.fandoutech.com.cn/wechat/eval/evalEnd.jsp?level=" + QuestionGrade;
+            }
+        }
+        $('.title_question div:nth-child(2) span').text(dataQuestion[i].question.questionText);
+        $('#question_audio').attr("src", dataQuestion[i].question.questionSound);
+        var html = '';
+        $.each(dataQuestion[i].options, function (n, v) {
+            if (v.optionPic != 'not') {
+                html += `<div class="col-xs-6 col-sm-6" >
+                <div class="example">
+                    <a class="thumbnail" data-isc="${v.isCorrect}" href="javascript:;">
+                        <img src="${v.optionPic}" alt="...">
+                        <div class="" style="display: none"><i class="icon wb-check" aria-hidden="true"></i></div>
+                    </a>
+                </div>
+            </div>`;
+            } else {
+                html += `<div class="col-xs-6 col-sm-6" >
+                <div class="example">
+                    <a class="thumbnail music_option" onclick="optionPlay('${v.optionSound}')" data-isc="${v.isCorrect}" href="javascript:;">
+                        <img src="../../images/music.png" alt="...">
+                        <div class="" style="display: none"><i class="icon wb-check" aria-hidden="true"></i></div>
+                    </a>
+                    <h3>${v.optionText}</h3>
+                </div>
+            </div>`;
+            }
+        });
+        $('.context .row').html(html);
+        $('.top div:nth-child(2)').text((i + 1) + "/5");
+        $('.progress > div').attr("style", "width:" + (i + 1) * 100 / 5 + "%");
+        if ((i + 1) == 5) {
+            $('.footer button').text("提交答案");
+        }else{
+            $('.footer button').text("下一题");
+        }
+    }
+
+    $('.row').on('click', '.example a', function () {
+        $('.check_options').attr('style', 'display:none');
+        $('.check_options').removeClass("check_options");
+        $(this).children('div').addClass("check_options");
+        $(this).children('div').attr("style", "");
+    });
+
+    function playSound() {
+        $('#question_audio')[0].play();
+        $('.title_question').addClass("am");
+        setTimeout(function () {
+            $('.title_question').removeClass("am");
+        }, 3000);
+    }
+    
+    function optionPlay(src) {
+        $('#option_audio').attr("src",src);
+        $('#option_audio')[0].play();
+    }
+
+    function nextQuestion() {
+        var num = $('.check_options').length;
+        if (num > 0) {
+            if ($('.check_options').parent().data("isc") == 1) {
+                bingo++;
+            }
+            index++;
+            questionList(index);
+        } else {
+            toast();
+        }
+    }
+    
+    function toast() {
+        $('.toast').show();
+        $(".toast").fadeOut(2000);
+    }
+</script>
+</body>
+</html>

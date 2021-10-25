@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+
+		function onpenApp() {
+			var inviteCode = getUrlPara("inviteCode");
+			copy(inviteCode)
+			location.href = "fandou://com.fandou.afandle/alive?inviteCode="
+					+ inviteCode;
+		}
+
+		function copy(str) {
+			var oInput = document.createElement('input');
+	        oInput.value = str;
+	        document.body.appendChild(oInput);
+	        oInput.select(); // 选择对象
+	        document.execCommand("Copy"); // 执行浏览器复制命令
+	        oInput.className = 'oInput';
+	        oInput.style.display='none';
+		}
+
+		function getUrlPara(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null)
+				return unescape(r[2]);
+			return;
+		}
+	</script>
+	<button onclick="onpenApp()">打开app</button>
+</body>
+</html>

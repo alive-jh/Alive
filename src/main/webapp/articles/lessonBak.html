@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>凡豆体验课堂</title>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #FFF6E0;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	font-size: 0;
+}
+
+footer img {
+	width: 100%;
+}
+
+.lesson-box {
+	padding: 20px;
+	background-image: url(./images/card@2x.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	width: 78%;
+	margin: 0 auto;
+	margin-top: 30px;
+	height: 350px;
+}
+
+.lesson-box p {
+	margin: 0;
+	padding: 0;
+}
+
+.teacher-info {
+	height: 110px;
+	padding: 18px;
+	text-align: center;
+	position: relative;
+}
+
+.lesson-info {
+	height: 110px;
+	padding: 0px;
+	text-align: center;
+	margin-top: 36px;
+}
+
+.teacher-head {
+	width: 44pt;
+	height: 44pt;
+	position: absolute;
+	bottom: 0;
+	left: 40%;
+	position: absolute;
+	bottom: 0;
+}
+
+.teacher-head img {
+	width: 44pt;
+	height: 44pt;
+	border: 3px solid white;
+	border-radius: 100pt;
+}
+
+.teacher-name {
+	margin: 0;
+	padding: 0;
+	font-size: 15px;
+	font-weight: 800;
+}
+
+.lesson-name {
+	font-weight: 800;
+	font-size: 15px;
+}
+
+.lesson-summary {
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 20px;
+}
+
+.teacher-info {
+	color: white;
+}
+
+.number-input {
+	float: left;
+}
+
+.input-box {
+	width: 75%;
+	margin: 0 auto;
+	background-color: white;
+	line-height: 50px;
+	border-radius: 13px;
+	height: 50px;
+	margin-bottom: 30px;
+	position: relative;
+}
+
+.number-input {
+	width: 54%;
+	float: left;
+}
+
+.number-btn {
+	width: 46%;
+	float: left;
+	text-align: center;
+}
+
+button {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 15px;
+	background-color: white;
+	padding: 9px;
+}
+
+input {
+	outline: none;
+	padding: 10px;
+	font-size: 15px;
+}
+
+button {
+	outline: none;
+	padding: 10px;
+	font-size: 85%;
+}
+
+.erweima1 {
+	position: absolute;
+	left: 42%;
+	top: 160%;
+}
+
+.teacher-say {
+	font-size: 15px;
+	line-height: 21px;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+</head>
+<body>
+	<div class="page">
+		<div class="lesson-box">
+			<div class="teacher-info">
+				<p class="teacher-say">大家好，我是郑铭强老师，im from fandou,很高兴给你们带来我的课堂丑小鸭,欢迎试听</p>
+				<div class="teacher-head">
+					<img class="member-headimg member" th:src="${inviteMember.headimgurl}" src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJEma36hMicqClxRyRficxlykkJP9CTMrn66Uo7sOw6tYrsbGjiaWEe7msSOuDktNVwm5ezBwn84hIibg/132">
+					<span class="teacher-name" style="color: black;">王老师</span>
+				</div>
+			</div>
+			<div class="lesson-info">
+				<p class="lesson-name">课程名称：三年级unit1 A let's learn</p>
+				<p class="lesson-summary">小学英语三年级起点人教版第一单元</p>
+			</div>
+		</div>
+
+		<div class="input-box">
+			<div class="number-input">
+				<input type="tel" placeholder="请输入手机号" id="mobile-num" style="text-align: left; padding-left: 28px;border: 0;">
+			</div>
+			<div class="number-btn">
+				<button style="color: red;" onclick="sendMsg()">获取VIP邀请码</button>
+			</div>
+			<img class="erweima1" alt="" src="./images/ewm@2x.png" width="50px" height="50px">
+		</div>
+	</div>
+
+	<footer>
+		<img alt="" src="./images/bg@2x.png">
+	</footer>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/wechat/js/wechat/wechat-share.js"></script>
+<script type="text/javascript">
+	$("input,textarea").focus(function() {
+		$("footer").css("position", "static");
+	}).blur(function() {
+		$("footer").css("position", "fixed");
+	});
+</script>
+</html>

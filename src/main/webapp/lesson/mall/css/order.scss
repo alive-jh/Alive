@@ -1,0 +1,62 @@
+@function px2rem($px){
+  $rem:37.5px;
+  @return ($px / $rem) + rem;
+}
+.order_item{
+  width: px2rem(351px);
+  height: px2rem(171px);
+  margin: px2rem(12px) auto;
+  background: rgba(255,255,255,1);
+}
+.product_info{
+  width: px2rem(351px);
+  height: px2rem(78px);
+}
+.product_pic{
+  width: px2rem(54px);
+  height: px2rem(54px);
+  border-radius: px2rem(4px);
+  margin: px2rem(12px);
+  float: left;
+}
+.product_info_right{
+  width: px2rem(273px);
+  float: left;
+  margin-top: px2rem(17px);
+}
+.product_name{
+  width: px2rem(226px);
+  font-size: px2rem(16px);
+  color: rgba(25,26,30,1);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.details{
+  font-size: px2rem(14px);
+  font-weight: 400;
+  color: rgba(135,136,140,1);
+  margin-top: px2rem(5px);
+}
+.order_info{
+  width: px2rem(327px);
+  height: px2rem(77px);
+  background: rgba(245,246,250,1);
+  border-radius: px2rem(4px);
+  margin: 0 auto;
+}
+.order_info_ul{
+  float: left;
+  margin-left: px2rem(10px);
+  margin-top: px2rem(7px);
+}
+.order_info_ul li{
+  list-style: none;
+  margin-bottom: px2rem(3px);
+}
+.order_num,.order_user,.order_time{
+  font-size: px2rem(14px);
+  font-weight: 400;
+  color: rgba(135,136,140,1);
+}

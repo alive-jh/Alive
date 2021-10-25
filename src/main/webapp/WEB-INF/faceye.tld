@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+ <description>faceye core library</description>
+ <display-name>faceye core</display-name>
+ <tlib-version>1.0</tlib-version>`
+ <short-name>f</short-name>
+ <uri>http://www.faceye.com/core</uri>
+ <tag>
+  <name>page</name>
+  <tag-class>com.wechat.util.WebPageTag</tag-class>
+  <body-content>scriptless</body-content>
+
+  <attribute>
+   <description>Paget object in Request.</description>
+   <name>page</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <description>url of list page</description>
+   <name>url</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <description>params map</description>
+   <name>params</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+</taglib>

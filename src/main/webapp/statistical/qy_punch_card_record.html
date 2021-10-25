@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap337.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap337.min.css">
+    <script src="js/echarts.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-8 column">
+            <div class="page-header">
+                <h1>
+                    清园教育
+                    <small>为中国而教 为孩子奠基</small>
+                </h1>
+            </div>
+        </div>
+        <div class="col-md-2 column">
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-8 column">
+            <div class="tabbable" id="tabs-689371">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#panel-655666" data-toggle="tab">考勤统计</a>
+                    </li>
+                    <li>
+                        <a href="#panel-884411" data-toggle="tab">运动量统计</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="panel-655666">
+                        <p>
+                        <div class="row clearfix">
+                            <div class="col-md-2 column">
+                                <div class="btn-group btn-group-vertical">
+                                    <button class="btn btn-default" type="button"><em
+                                            class="glyphicon glyphicon-align-left"></em> 近七天
+                                    </button>
+                                    <button class="btn btn-default" type="button"><em
+                                            class="glyphicon glyphicon-align-center"></em> 三十天
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-10 column" id="table_1" style="height: 350px">
+                            </div>
+
+                        </div>
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="panel-884411">
+                        <p>
+                            Howdy, I'm in Section 2.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 column">
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-8 column">
+        </div>
+        <div class="col-md-2 column">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // 格式化成时/分
+    var convert = function (timestemp) {
+        var date = new Date(timestemp);
+        var minu = date.getMinutes();
+        if (minu == 0) minu = '00';
+        else if (minu < 10) minu = "0" + minu;
+        var texts = [(date.getHours()), minu];
+        return texts.join(':');
+    }
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('table_1'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '何小宝考勤记录',
+            subtext: '近七天'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                return params[0].name
+                    + (params.length > 1 ? '：' + '到园：' + convert(params[0].data) + ' 离园：' + convert(params[1].data) : '');
+            }
+        },
+        legend: {
+            data: ['到园', '离园']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                dataView: {readOnly: false},
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: ['1-18(周四)', '1-19(周五)', '1-22(周一)', '1-23(周二)', '1-24(周三)', '1-25(周四)', '1-26(周五)']
+        },
+        yAxis: [{
+            type: 'value',
+            axisLabel: {
+                formatter: function (value, index) {
+                    return convert(value);
+                }
+            },
+            min: 1517011200000,
+            max: function (value) {
+                return value.max + 60000;
+            },
+            splitLine: {
+                show: false
+            },
+            axisPointer: {
+                show: false
+            },
+            minInterval:60000
+        }, {
+            type: 'value',
+            axisLabel: {
+                formatter: function (value, index) {
+                    return convert(value);
+                }
+            },
+            min: 1517040000000,
+            max: function (value) {
+                return value.max + 60000;
+            },
+            splitLine: {
+                show: false
+            },
+            minInterval:60000
+        }],
+        series: [
+            {
+                name: '到园',
+                type: 'line',
+                data: [1517011440000, 1517011260000, 1517011440000, 1517011440000, 1517011440000, 1517011260000, 1517011380000],
+                markLine: {
+                    data: [
+                        {
+                            type: 'average',
+                            name: '平均值'
+                        }
+                    ],
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'start',
+                            formatter: function (a) {
+                                return convert(a.value);
+                            }
+                        }
+                    },
+                    lineStyle:'dotted'
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                        formatter: function (a) {
+                            return convert(a.data);
+                        }
+                    }
+                },
+                yAxisIndex: 0
+
+            },
+            {
+                name: '离园',
+                type: 'line',
+                data: [1517040180000, 1517040300000, 1517040240000, 1517040180000, 1517040360000, 1517040300000, 1517040240000],
+                markLine: {
+                    data: [
+                        {
+                            type: 'average',
+                            name: '平均值'
+                        }
+                    ],
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (a) {
+                                return convert(a.value);
+                            }
+                        }
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'bottom',
+                        formatter: function (a) {
+                            return convert(a.data);
+                        }
+                    }
+                },
+                yAxisIndex: 1
+            }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+
+</script>
+</body>
+</html>

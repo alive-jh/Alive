@@ -1,0 +1,294 @@
+@charset "utf-8";
+
+body,html{
+    background-color:#E3EDEF;
+}
+
+.search-box{
+    background-color:rgba(255,255,255,.6);
+    border-bottom:1px solid #ddd;
+    position:static;
+    height:46px;
+}
+.search-box h1{
+    text-align: center;
+    margin: 0;
+    line-height: 46px;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color:#333;
+    white-space: nowrap;
+}
+.search-box .head-left-btn{
+    left:1.5rem;
+    background-position:0.25rem -17.2rem;
+}
+.search-box button{
+    display: block;
+    position:absolute;
+    top:9px;
+    width:28px;
+    height:28px;
+    padding:0;
+    border:none;
+    border-radius:100%;
+    background:url(../images/icons-detail.png) no-repeat 0 0;
+    background-size:95%;
+}
+
+.money-bolck{
+    margin:40px 10px 0;
+    background-color:#fff;
+    border-radius: 5px;
+    border:1px solid #ddd;
+    position:relative;
+    padding-top:50px;
+    text-align: center;
+}
+
+.money-bolck:before{
+    content:"";
+    display: block;
+    position:absolute;
+    width:40px;
+    height:40px;
+    top:-20px;
+    left:50%;
+    margin-left:-20px;
+    background:url(../images/money-icon.png) no-repeat 0 0;
+    background-size:40px;
+}
+
+.d-money-block:before{
+    background-position:0 0;
+}
+
+.r-money-block:before{
+    background-position:0 -40px;
+}
+.money-bolck h3{
+    font-size:2.5rem;
+    color:#76A5B3;
+    font-weight: bolder;
+}
+.money-bolck h3.disabled{
+    opacity: .3;
+}
+
+.money-bolck h3 span{
+    font-size:3.5rem;
+}
+
+.money-bolck h3 span.d-icon-bf:before{
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 1.5rem;
+    background: url(../images/d-icon.png) no-repeat center;
+    background-size: 1.5rem;
+}
+
+.money-bolck .recharge-btn{
+    padding:0;
+    display: block;
+    margin:20px auto 10px;
+    background-color:#76A5B3;
+    height:3.5rem;
+    line-height: 3.5rem;
+    font-size:2rem;
+    color:#fff;
+    border-radius: 4rem;
+    width:90%;
+
+}
+
+.money-bolck .recharge-info-btns{
+    border-top:1px solid #ddd;
+}
+.money-bolck .recharge-info-btns li a{
+    display: block;
+    width:49.5%;
+    float: left;
+    line-height: 3.5rem;
+    height:3.5rem;
+    text-align: center;
+    font-size:2rem;
+    color:#76A5B3;
+}
+.money-bolck .recharge-info-btns li:first-child a{
+    border-right:1px solid #ddd;
+}
+
+.money-bolck .recharge-info-btns li a span:before{
+    content:"";
+    display: inline-block;
+    width:2rem;
+    height:1.5rem;
+    background:url(../images/more-icon.png) no-repeat 0 0.2rem;
+    background-size:100%;
+    margin-right:5px;
+}
+
+.money-bolck .recharge-info-btns li a.recharge-record span:before{
+    background-position: 0 0.2rem;
+}
+
+.money-bolck .recharge-info-btns li a.recharge-matter span:before{
+    background-position: 0 -1.34rem;
+    padding-bottom: 1px;
+}
+
+.money-bolck .tips{
+    margin:30px 0;
+    font-size:1rem;
+    color:#ccc;
+}
+.money-bolck .tips:after{
+    content:"?";
+    color:#76A5B3;
+    border:1px solid #ddd;
+    padding:0 5px;
+    border-radius: 10px;
+    margin-left:5px;
+}
+
+.expend-info a{
+    font-size: 2rem;
+    font-weight: normal;
+    color: #76A5B3;
+    line-height: 2.5rem;
+    padding: 10px 15px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    padding-right: 40px;
+    background-color:#fff;
+    margin:40px 0 50px;
+    color:#76A5B3;
+    display: block;
+    position: relative;
+}
+
+.expend-info a:before{
+    content:"";
+    display: inline-block;
+    width:2rem;
+    height:1.5rem;
+    background:url(../images/more-icon.png) no-repeat 0 0.32rem;
+    background-size:100%;
+    margin-right:5px;
+}
+
+.expend-info a .left-arrow {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background: url(../images/icons-detail.png) no-repeat 0 0;
+    background-size: 100%;
+    transform: rotateZ(180deg);
+    -webkit-transform: rotateZ(180deg);
+    position: absolute;
+    top: 12px;
+    right: 10px;
+}
+
+/*充值*/
+body.white-bg,html.white-bg{
+    background-color:#fff;
+}
+.search-box.no-opacity{
+    background-color:#fff;
+}
+.search-box .close-btn{
+    background-image: url(../images/close.png);
+    background-position: 0 0;
+}
+
+.recharge-list li{
+    height:46px;
+    line-height:46px;
+    border-bottom:1px solid #ddd;
+    padding:0 1.5rem;
+    position: relative;
+    font-size:1.5rem;
+    color:#2e2e2e;
+    font-weight:bold;
+}
+
+.recharge-list li span:before{
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 1rem;
+    background: url(../images/d-icon-d.png) no-repeat center;
+    background-size: 1.2rem;
+}
+
+.recharge-list li i{
+    position: absolute;
+    top: 7px;
+    right: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 2rem;
+    line-height: 32px;
+    width: 80px;
+    text-align: center;
+    color: #76A5B3;
+}
+
+.rechage-explain{
+    padding-top:20px;
+    padding-bottom:40px;
+}
+
+.rechage-explain h3{
+    margin: 0;
+    line-height: 46px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #333;
+    padding:0 1.5rem;
+}
+
+.rechage-explain ul li{
+    font-size:1.5rem;
+    line-height: 2rem;
+    padding:0 1.5rem 0 2.5rem;
+    list-style: disc;
+    position: relative;
+}
+.rechage-explain ul li:before{
+    content:"";
+    position:absolute;
+    width:4px;
+    height:4px;
+    background-color:#2e2e2e;
+    border-radius: 4px;
+    top:1rem;
+    left:1.5rem;
+
+}
+
+/*充值记录*/
+.recharge-record-list li{
+    height: 46px;
+    line-height: 46px;
+    border-bottom: 1px solid #ddd;
+    padding: 0 1.5rem;
+    position: relative;
+    font-size: 1.5rem;
+    color: #2e2e2e;
+}
+.recharge-record-list li span{
+    color:#76A5B3;
+}
+.recharge-record-list li span:before {
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 1rem;
+    background: url(../images/d-icon.png) no-repeat center;
+    background-size: 1.2rem;
+}
+.recharge-record-list li time{
+    float:right;
+}

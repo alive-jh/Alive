@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5, maximum-scale=1.0, minimum-scale=1.0">
+    <title>订单列表</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/order.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="order_item" v-for="item in list">
+        <div class="product_info">
+            <img class="product_pic" v-bind:src="getProductPicUrl(item)">
+            <div class="product_info_right">
+                <b class="product_name">{{item.name}}</b>
+                <p class="details">{{item.desc}}</p>
+            </div>
+        </div>
+        <div class="order_info">
+            <ul class="order_info_ul">
+                <li class="order_num">订单编号：{{item.orderNumber}}</li>
+                <li class="order_user">课程学生：{{item.studentName}}</li>
+                <li class="order_time">创建时间：{{setCreateTime(item.createTime)}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getUrlPara(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return;
+    }
+</script>
+<script src="../js/public.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cn.vuejs.org/js/vue.js"></script>
+<script>
+    var host = window.location.protocol+"//"+window.location.host +"/snp/v2/";
+    var app = new Vue({
+        el: '#app',
+        data: {
+            list:[]
+        },
+        methods: {
+            init:function(){
+                $.get(host + 'mall/getOrderList?account='+getUrlPara('account'),function (res) {
+                    if (res.code == 200){
+                        app.list = res.data;
+                        console.log(app.list)
+                    }
+                })
+            },
+            getProductPicUrl:function(item){
+                if (item.pics!=undefined){
+                   return  item.pics.split(',')[0];
+                }
+                return '../images/picture-54.png'
+            },
+            setCreateTime:function (inputTime) {
+                var date = new Date(inputTime);
+                var y = date.getFullYear();
+                var m = date.getMonth() + 1;
+                m = m < 10 ? ('0' + m) : m;
+                var d = date.getDate();
+                d = d < 10 ? ('0' + d) : d;
+                var h = date.getHours();
+                h = h < 10 ? ('0' + h) : h;
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                minute = minute < 10 ? ('0' + minute) : minute;
+                second = second < 10 ? ('0' + second) : second;
+                return y + '年' + m + '月' + d + '日';
+            }
+        }
+    });
+
+    app.init();
+
+</script>
+</body>
+</html>

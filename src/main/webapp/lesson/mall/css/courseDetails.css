@@ -1,0 +1,224 @@
+body {
+  background: white; }
+
+.vp_box {
+  width: 10rem;
+  height: 10rem;
+  position: relative; }
+
+.checked_btn, .unchecked_btn {
+  width: 1.2533333333rem;
+  height: 0.5866666667rem;
+  background: #26b7ff;
+  border-radius: 0.2933333333rem;
+  font-size: 0.2666666667rem;
+  font-weight: 400;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99; }
+
+.video_btn {
+  position: absolute;
+  bottom: 0.2666666667rem;
+  left: 3.6266666667rem; }
+
+.pic_btn {
+  position: absolute;
+  bottom: 0.2666666667rem;
+  right: 3.6266666667rem; }
+
+.pic_btn2 {
+  position: absolute;
+  bottom: 0.2666666667rem;
+  left: 3.6266666667rem; }
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-width: 0.1333333333rem;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+  display: inline-block;
+  margin-right: -0.08rem; }
+
+.unchecked_btn {
+  background: #f5f6fa;
+  color: rgba(25, 26, 30, 0.6); }
+
+.unchecked_btn > .triangle {
+  border-color: transparent transparent transparent rgba(25, 26, 30, 0.6); }
+
+.swiper-container {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white; }
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
+
+.swiper-pagination-bullet-active {
+  background-color: #26b7ff; }
+
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 1.0666666667rem; }
+
+.v_box {
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  line-height: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99; }
+
+.my_video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.v_play_icon {
+  position: relative; }
+
+.content_top {
+  padding: 0.3733333333rem 0.32rem; }
+
+/*price_and_purchased_num-->papn*/
+.papn {
+  height: 0.5333333333rem;
+  font-size: 0.32rem; }
+
+.papn span:nth-child(1) {
+  font-size: 0.48rem;
+  color: #ffa526;
+  font-weight: 500; }
+
+.papn span:nth-child(2) {
+  font-size: 0.4266666667rem;
+  color: #ffa526;
+  font-weight: 500; }
+
+.papn span:nth-child(3) {
+  margin-left: 0.2666666667rem; }
+
+.papn span:nth-child(3), .papn span:nth-child(5) {
+  font-size: 0.32rem;
+  font-weight: 400;
+  color: #87888c; }
+
+.papn span:nth-child(4) {
+  font-size: 0.32rem;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: #87888c; }
+
+.papn span:nth-child(5) {
+  float: right;
+  margin-top: 0.16rem; }
+
+.details {
+  font-size: 0.44rem;
+  font-weight: 600;
+  color: #191a1e;
+  line-height: 0.64rem;
+  margin-top: 0.4rem;
+  letter-spacing: 0.0266666667rem; }
+
+.bottom_nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 0.32rem;
+  /*align-content :space-around;*/ }
+
+.checked_span {
+  font-size: 0.3733333333rem;
+  font-weight: 600;
+  color: #191a1e;
+  padding: 0 0.3466666667rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .checked_span:after {
+    content: ' ';
+    display: block;
+    width: 0.64rem;
+    height: 0.08rem;
+    background: #26b7ff;
+    border-radius: 0.0533333333rem;
+    margin-top: 0.16rem; }
+
+.unchecked_span {
+  font-size: 0.3733333333rem;
+  font-weight: 400;
+  color: #87888c;
+  padding: 0 0.3466666667rem; }
+
+.catalog {
+  height: 5.6rem;
+  padding: 0.32rem;
+  border-top: 0.0266666667rem solid #e3e4e5;
+  overflow-y: auto;
+  margin-bottom: 1.3066666667rem; }
+
+.catalog ul li {
+  list-style: none;
+  height: 1.12rem;
+  background: #f5f6fa;
+  border-radius: 0.1066666667rem;
+  font-size: 0.3733333333rem;
+  font-weight: 400;
+  color: #191a1e;
+  line-height: 1.12rem;
+  padding-left: 0.32rem;
+  margin-bottom: 0.32rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.catalog ul li:last-child {
+  margin-bottom: 0; }
+
+.bottom {
+  width: 10rem;
+  height: 1.3066666667rem;
+  background: #26b7ff;
+  position: fixed;
+  bottom: 0;
+  font-size: 0.48rem;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  line-height: 1.3066666667rem; }
+
+.introduction {
+  border-top: 0.0266666667rem solid #e3e4e5;
+  padding: 0.32rem;
+  font-size: 0.3733333333rem;
+  font-weight: 400;
+  color: #191a1e;
+  margin-bottom: 1.28rem; }
+
+.weui-photo-browser-modal {
+  position: absolute;
+  height: 10rem;
+  background: none; }
+
+.weui-photo-browser-modal .photo-container img {
+  margin-top: 0; }
+
+.weui-photo-browser-modal .swiper-container .swiper-pagination {
+  bottom: 0.9333333333rem; }
+
+/*# sourceMappingURL=courseDetails.css.map */

@@ -1,0 +1,459 @@
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background: rgba(245, 246, 250, 1);
+    width: 100%;
+}
+
+#content {
+    width: 100%;
+}
+
+/*本周聆听情况等的div...*/
+.div_title{
+    width: 93.5%;
+    height: 48px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px 4px 0px 0px;
+    margin: 12px 12px 0px 12px;
+    position: relative;
+}
+
+/*本周聆听情况等的字体...*/
+.title_font {
+    width: auto;
+    height: 16px;
+    title_font-size: 16px;
+    title_font-family: PingFang-SC-Medium;
+    title_font-weight: 500;
+    color: rgba(25, 26, 30, 1);
+    position: absolute;
+    top: 14px;
+    left: 12px;
+}
+
+/*共计32min*/
+.total_time {
+    width: auto;
+    /*height: 12px;*/
+    font-size: 12px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+    position: absolute;
+    top: 16px;
+    right: 12px;
+}
+
+.tag {
+    width: 93.5%;
+    height: 108px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0px 0px 4px 4px;
+    margin: 1px 12px 0px 12px;
+    position: relative;
+    text-align: center;
+}
+
+.schedule_tag {
+    height: auto;
+}
+
+
+ul li{
+    list-style: none;
+    float: left;
+    margin:0 1%;
+    text-align: left;
+}
+.schedule_ul{
+    display: inline-block;
+    height: auto;
+    margin: 23px 0px;
+    width: 300px;
+    max-width: 300px;
+}
+
+/*周一*/
+/*分钟数*/
+.schedule_font {
+    width: 16px;
+    /*height: 8px;*/
+    font-size: 10px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+    display: block;
+    text-align: center;
+}
+
+/*黄色进度条*/
+.progress_bar {
+    width: 16px;
+    /*height: 60px;*/
+    max-height: 120px;
+    background: rgba(255, 186, 89, 1);
+    display: inline-block;
+}
+
+/*灰色进度条*/
+.progress_bar2 {
+    width: 16px;
+    height: 120px;
+    background: rgba(245, 246, 250, 1);
+    display: inline-block;
+}
+
+.day_font {
+    width: auto;
+    height: auto;
+    font-size: 10px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+    display: block;
+}
+
+/*周二*/
+.tuesday_schedule_font {
+    /*left: 20.08%;*/
+    left: 20.13%;
+}
+
+.tuesday_progress_bar {
+    width: 16px;
+    /*height: 20px;*/
+    left: 20.37%;
+}
+
+.tuesday_progress_bar2 {
+    width: 16px;
+    height: 120px;
+    left: 27.27%;
+}
+
+.tuesday_day_font {
+    left: 19.94%;
+}
+
+/*周三*/
+.wednesday_schedule_font {
+    left: 32.9%;
+}
+
+.wednesday_progress_bar {
+    width: 16px;
+    /*height: 55px;*/
+    left: 34.05%;
+}
+
+.wednesday_progress_bar2 {
+    width: 16px;
+    height: 120px;
+    left: 40.88%;
+}
+
+.wednesday_day_font {
+    left: 33.48%;
+}
+
+/*周四*/
+.thursday_schedule_font {
+    /*left: 46.86%;*/
+    left: 46.5%;
+}
+
+.thursday_progress_bar {
+    width: 16px;
+    /*height: 50px;*/
+    left: 47.72%;
+}
+
+.thursday_progress_bar2 {
+    width: 16px;
+    height: 120px;
+    left: 54.56%;
+}
+
+.thursday_day_font {
+    left: 47.44%;
+}
+
+/*周五*/
+.friday_schedule_font {
+    /*left: 60.25%;*/
+    left: 60.5%;
+}
+
+.friday_progress_bar {
+    width: 16px;
+    /*height: 50px;*/
+    left: 61.4%;
+}
+
+.friday_progress_bar2 {
+    width: 16px;
+    height: 120px;
+    left: 68.23%;
+}
+
+.friday_day_font {
+    left: 60.97%;
+}
+
+/*周六*/
+.saturday_schedule_font {
+    /*left: 74.78%;*/
+    left: 75.1%;
+}
+
+.saturday_progress_bar {
+    width: 16px;
+    /*height: 80px;*/
+    left: 75.07%;
+}
+
+.saturday_progress_bar2 {
+    width: 16px;
+    height: 120px;
+    left: 81.91%;
+}
+
+.saturday_day_font {
+    left: 74.64%;
+}
+
+/*周日*/
+.sunday_schedule_font {
+    /*left: 88.46%;*/
+    left: 88.77%;
+}
+
+.sunday_progress_bar {
+    width: 16px;
+    /*height: 80px;*/
+    /*background: rgba(245, 246, 250, 1);*/
+    left: 88.75%;
+}
+
+.sunday_day_font {
+    left: 88.46%;
+}
+
+
+/*128..等的字体*/
+.num_font {
+    width: auto;
+    display: block;
+    /*height: 21px;*/
+    font-size: 30px;
+    padding-top: 22px;
+    font-family: FZKANGJW--GB1-0;
+    font-weight: 400;
+    color: rgba(64, 191, 255, 1);
+    /*position: absolute;*/
+    /*top: 20%;*/
+    /*left: 43%;*/
+}
+
+/*单位字体（主课：...）*/
+.unit_font {
+    width: auto;
+    display: block;
+    /*height: 12px;*/
+    font-size: 12px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+    /*position: absolute;*/
+    /*top: 57%;*/
+    /*left: 40%;*/
+}
+
+/*早晚读左边*/
+.tag_left {
+    width: 49.5%;
+    height: 108px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0px 0px 0px 4px;
+    float: left;
+    border-right: 1px solid rgba(245, 246, 250, 1);
+    position: relative;
+}
+
+/*早晚读右边*/
+.tag_right {
+    width: 49.5%;
+    height: 108px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0px 0px 0px 4px;
+    float: left;
+    margin-left: 1px;
+    position: relative;
+}
+
+/*左边数字*/
+.left_num_font {
+    left: 36%;
+    color: rgba(255, 102, 115, 1);
+}
+
+/*左边单位*/
+.left_util_font {
+    left: 30%;
+}
+
+/*右边数字*/
+.right_num_font {
+    left: 41%;
+    color: rgba(102, 153, 255, 1);
+}
+
+/*课时数字*/
+.classHour_num_font {
+    left: 31%;
+    color: rgba(255, 186, 89, 1);
+}
+
+/*课时单位*/
+.classHour_util_font {
+    left: 24%;
+}
+
+/*上课次数*/
+.classNum_num_font {
+    color: rgba(69, 230, 163, 1);
+}
+
+/*上课次数单位*/
+.classNum_util_font {
+    left: 36%;
+}
+
+
+.tag2 {
+    position: relative;
+    height: 154px;
+}
+
+/*已完成图标*/
+.icon {
+    width: 10px;
+    height: 10px;
+    background: rgba(102, 153, 255, 1);
+    position: absolute;
+    left: 12px;
+    top: 12px;
+}
+
+/*已完成字体*/
+.icon + span {
+    width: auto;
+    height: 10px;
+    font-size: 10px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+    position: absolute;
+    left: 28px;
+    top: 8px;
+}
+
+/*未完成图标*/
+.icon2 {
+    background: rgba(245, 246, 250, 1);
+    top: 28px;
+    left: 12px;
+}
+
+/*未完成字体*/
+.icon2 + span {
+    top: 24px;
+}
+
+
+/*百分率（75%）*/
+.ratio {
+    width: 122px;
+    height: 122px;
+    position: absolute;
+    top: 10%;
+    left: 32.62%;
+    text-align: center;
+    line-height: 122px;
+}
+
+.ratio span {
+    width: 33px;
+    height: 13px;
+    font-size: 16px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(135, 136, 140, 1);
+}
+
+
+/*课程完成率进度*/
+.circleProgress_wrapper {
+    width: 122px;
+    height: 122px;
+    margin: 50px auto;
+    position: absolute;
+    top: -23%;
+    left: 32.62%;
+    /*border:1px solid #ddd;*/
+}
+
+.wrapper {
+    width: 61px;
+    height: 122px;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+}
+
+.right {
+    right: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.circleProgress {
+    width: 82px;
+    height: 82px;
+    border: 20px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    transform: rotate(45deg);
+}
+
+/*第一个圆：此处两个圆重叠*/
+.rightcircle {
+    /* border-top:20px solid rgba(102,153,255,1);*/
+    border-right: 20px solid rgba(102, 153, 255, 1);
+    right: 0;
+}
+
+.leftcircle {
+    border-bottom: 20px solid rgba(102, 153, 255, 1);
+    border-left: 20px solid rgba(102, 153, 255, 1);
+    left: 0;
+}
+
+/*第二个圆*/
+.rightcircle2 {
+    border-top: 20px solid rgba(245, 246, 250, 1);
+    border-right: 20px solid rgba(245, 246, 250, 1);
+    right: 0;
+}
+
+.leftcircle2 {
+    border-bottom: 20px solid rgba(245, 246, 250, 1);
+    border-left: 20px solid rgba(245, 246, 250, 1);
+    left: 0;
+}
+

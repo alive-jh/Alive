@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信测评</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="css/style2.css">
+<link rel="stylesheet" href="css/bootstrap337.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap337.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="js/evalJS2.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="modal-hander">
+			<div class="progress">
+				<div class="progress-bar" id="jindu" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 10%"></div>
+			</div>
+			<span class="span1">1/10</span>
+		</div>
+		<div id="question" class="question">
+			<div>
+				<div style="float: left;width: 20%;">
+					<img id="icons" src="images/laba2x.png">
+				</div>
+				<div style="float: left;width: 80%">
+					<span id="qtitle"></span>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div>
+				<ul id="ul1" style="margin: 0 auto;width: 100%">
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<audio src="" id="audio"></audio>
+		<button type="button"
+			class="btn btn-default btn btn-primary btn-lg btn-block" id="btn">下一题</button>
+		<button type="button"
+			class="btn btn-default btn btn-primary btn-lg btn-block" id="btn2"
+			style="display: none;">提交答案</button>
+		<button type="button"
+			class="btn btn-default btn btn-primary btn-lg btn-block" id="btn3"
+			style="display: none;">挑战下一关</button>
+	</div>
+</body>
+</html>

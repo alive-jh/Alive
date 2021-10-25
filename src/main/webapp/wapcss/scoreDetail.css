@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+body{background-color:#eee;}
+
+/*积分列表部分样式*/
+.score-header{padding:10px;background-color:#fff;}
+.score-header p{font:16px/30px "微软雅黑";color:#333;}
+.score-header p span,.score-header p i{color:#003859;}
+
+
+
+/*积分项样式*/
+.main-info{background-color:#eee;border-top:1px solid #ccc;padding:10px;}
+
+.main-info ul{padding:10px 0 0 35px;}
+.main-info ul li{border-left: 1px dashed #999;position:relative;padding-bottom:10px;}
+.main-info .score-info{position: relative;border:1px solid #ccc;margin-left:45px;padding:15px 10px;font: 17px/30px "微软雅黑";color:#333;background-color:#F8F7F7;}
+.main-info .score-info p{width:50%;display: inline-block;}
+.main-info .score-info img{display: inline-block;height:25px;max-width:35px;margin-right:8px;vertical-align: middle;}
+.main-info .score-info .score-num{color:#138A13;}
+.main-info .score-info:before{content:"";border:11px solid transparent;border-right-color:#ccc;position:absolute;left:-22px;top:50%;margin-top:-10px;}
+.main-info .score-info:after{content:"";border:10px solid transparent;border-right-color:#F8F7F7;position:absolute;left:-20px;top:50%;margin-top:-9px;}
+
+.main-info .score-time{position:absolute;top:0;left:-35px;padding-bottom:10px;min-width:64px;text-align:center;background-color:#eee;}
+.main-info .score-time span{position:absolute;bottom:-100%;left:50%;margin-left:-13px;width:30px;height:30px;text-align:center;border-radius:50%;background-color:#333;color:#fff;line-height:30px;}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预约直播课</title>
+    <link rel="stylesheet" href="/wechat/live/css/booking.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+</head>
+<body>
+<div class="menceng menceng3" id="menceng" style="display: none">
+    <div>
+        <a class="wechatpay" href="">
+            <img src="/wechat/live/ic_wechat.png" alt="">
+            <span>微信支付</span>
+        </a>
+        <a class="zhifubaopay" href="javascript:;">
+            <img src="/wechat/live/ic_zhifubao.png" alt="">
+            <span>支付宝支付</span>
+        </a>
+    </div>
+</div>
+<div id="box">
+    <form>
+        <!--<div class="next">跳过</div>-->
+        <div class="title margin_top10">
+            <div>预约英语实战PVP</div>
+            <div></div>
+        </div>
+        <div class="box6">
+            <div>外教一对一直播，针对性强<br>快速提升听说</div>
+            <div></div>
+            <div>
+                <div>总课时：<span>180节</span>(25分钟/节)</div>
+                <div>优惠价：<span>¥3888 </span>
+                    <l>
+                        <del>¥4099</del>
+                    </l>
+                </div>
+            </div>
+        </div>
+        <div class="box6_btn" onclick="openPay()">立即购买</div>
+    </form>
+</div>
+<div class="customer">客服电话：4009919799‬</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    function openPay() {
+        $.ajax({
+            url: 'http://wechat.fandoutech.com.cn/wechat/v2/classproduct/productPay?studentId='+getQueryString('student')+'&mallProductId=3349&&payType=MWEB',
+            data: {},
+            type: "post",
+            success: function (data) {
+                if (data.code == 200) {
+                	$('.menceng3').show();
+                    $('.wechatpay').attr("href", data.data.mwebUrl)
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

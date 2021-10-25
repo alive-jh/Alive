@@ -1,0 +1,345 @@
+html {
+    /*-moz-user-select: none; !*火狐*!*/
+    /*-webkit-user-select: none; !*webkit浏览器*!*/
+    /*-ms-user-select: none; !*IE10*!*/
+    /*-khtml-user-select: none; !*早期浏览器*!*/
+    /*user-select: none;*/
+}
+
+.header > div:first-child {
+    padding: 14px 13px 0 13px;
+}
+
+.header > div:first-child > div {
+    display: inline-block;
+    overflow: hidden;
+    width: 84px;
+    height: 84px;
+    background-color: #0d0d0d;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+.header > div:first-child > div img {
+    height: 100%;
+
+}
+
+.header > div:first-child > span {
+    font-weight: bold;
+    color: rgba(25, 26, 30, 1);
+    font-size: 20px;
+    margin-left: 13px;
+}
+
+.header-item {
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.header-item > div {
+    padding: 20px 0;
+    font-size: 18px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(25, 26, 30, 1);
+    border-bottom: 1px solid rgba(228, 229, 233, 1);
+}
+
+.header-item > div > span:first-child {
+    margin-right: 28px;
+    font-weight: 500;
+    color: rgba(85, 86, 90, 1);
+
+}
+
+.header .header-item:last-child {
+    border-bottom: 13px solid rgba(228, 229, 233, 1);
+}
+
+.header-item:last-child > div {
+    border-bottom: 0 solid rgba(228, 229, 233, 1);
+}
+
+.school {
+    margin-bottom: 80px;
+}
+
+.school > .title {
+    font-size: 18px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(85, 86, 90, 1);
+    padding: 14px 13px;
+}
+
+.school > .cover {
+    height: 207px;
+    overflow: hidden;
+    position: relative;
+}
+
+.school > .cover img {
+    width: 100%;
+    height: 100%;
+}
+
+.school > .cover div {
+    position: absolute;
+    top: 175px;
+    left: 13px;
+    font-size: 20px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    line-height: 24px;
+}
+
+.school .pic {
+    padding: 0 13px;
+    text-align: left;
+}
+
+.school .pic img {
+    vertical-align: middle;
+    width: 30%;
+}
+
+.school .header-item:last-child > div {
+    border-bottom: none;
+}
+
+.footer {
+    overflow: hidden;
+    height: 54px;
+    border-top: 1px solid rgba(228, 229, 233, 1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+}
+
+.footer > div:last-child {
+    font-size: 20px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(38, 183, 255, 1);
+    float: right;
+    height: 100%;
+    width: 28%;
+    text-align: center;
+    line-height: 54px;
+}
+
+.footer > div:first-child {
+    color: #87888C;
+    float: left;
+    margin-left: 13px;
+}
+
+.footer > div:first-child span {
+    color: #FF6F26;
+}
+
+.footer > div:first-child span:last-child {
+    font-size: 30px;
+}
+
+.info {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.info > div {
+    /*width: 364px;*/
+    width: 90%;
+    position: absolute;
+    top: 25%;
+    background-color: #fff;
+    border-radius: 4px;
+    left: 50%;
+    /*margin-left: -182px;*/
+    margin-left: -45%;
+    overflow: hidden;
+}
+
+.info > div .blue {
+    color: rgba(38, 183, 255, 1);
+    font-size: 15px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+}
+
+.info > div > div:first-child {
+    /*background: rgba(251, 252, 254, 1);*/
+    font-size: 18px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(25, 26, 30, 1);
+    padding: 18px 0;
+    text-align: center;
+}
+
+.info > div > div:nth-child(2) > div {
+    width: 96px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.info > div > div:nth-child(2) > div > div {
+    background: rgba(245, 246, 250, 1);
+    color: rgba(190, 191, 195, 1);
+    float: left;
+}
+
+.info > div > div:nth-child(2) > div > div:nth-child(odd) {
+    width: 22px;
+    height: 22px;
+    border: 1px solid rgba(245, 246, 250, 1);
+    border-radius: 50%;
+    line-height: 22px;
+}
+
+.info > div > div:nth-child(2) > div > div:nth-child(2) {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: rgba(245, 246, 250, 1);
+    margin: 11px 0;
+}
+
+.info > div > div:nth-child(2) > div .blue {
+    background: rgba(38, 183, 255, 1);
+    border: 1px solid rgba(38, 183, 255, 1) !important;
+    color: #fff;
+}
+
+.info > div > div:nth-child(3) {
+    padding: 0 20px 20px 20px;
+}
+
+.info > div > div:nth-child(3) .info-item {
+    padding: 20px 0 20px 12px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(25, 26, 30, 1);
+    background: rgba(245, 246, 250, 1);
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.student-view2 input {
+    width: 90% !important;
+}
+
+/*.info > div > div:nth-child(3) .info-item {*/
+/*border-bottom: 1px solid rgba(228, 229, 233, 1);*/
+/*padding: 20px 0;*/
+/*text-align: left;*/
+/*font-size: 18px;*/
+/*font-weight: 500;*/
+/*color: rgba(25, 26, 30, 1);*/
+/*}*/
+
+body #payInfoView > div .student-view1 {
+    display: block;
+    padding: 5px 0 5px 12px;
+    position: relative;
+    height: 54px;
+}
+
+body #payInfoView > div .student-view1 input {
+    background: rgba(245, 246, 250, 0);
+    width: 100%;
+    padding: 15px 0;
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    z-index: 5;
+}
+
+#payInfoView > div .student-view1 img {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -6.65px;
+}
+
+.info > div > div:nth-child(3) .info-item:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.info > div > div:nth-child(3) .info-item:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.info > div > div:nth-child(3) .info-item:first-child img {
+    width: 20px;
+    vertical-align: middle;
+    margin-left: 42%;
+}
+
+.info > div > div:nth-child(3) .info-item:last-child img {
+    width: 20px;
+    vertical-align: middle;
+    /*margin-left: 70%;*/
+    margin-right: 15px;
+}
+
+.info > div > div:nth-child(3) .info-item input {
+    width: 46%;
+    background: rgba(245, 246, 250, 1);
+    font-size: 18px;
+    font-family: PingFang-SC-Medium;
+    border: none;
+    font-weight: 500;
+    color: rgba(25, 26, 30, 1);
+}
+
+/*.info > div > div:nth-child(3) .info-item input {*/
+/*width: 50%;*/
+/*font-size: 18px;*/
+/*font-family: PingFang-SC-Medium;*/
+/*border: none;*/
+/*font-weight: 500;*/
+/*color: rgba(25, 26, 30, 1);*/
+/*}*/
+
+.info > div > div:nth-child(3) .info-item:nth-child(2) span {
+    border-left: 1px solid rgba(228, 229, 233, 1);
+    padding-left: 13%;
+    margin-left: 10%;
+}
+
+.info > div > div:nth-child(4) {
+    font-size: 20px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    height: 49px;
+    line-height: 49px;
+    background: rgba(38, 183, 255, 1);
+    border-radius: 4px;
+    margin: 0 20px 15px 20px;
+}
+
+.info > div .clear-info {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+}
+
+.info > div .clear-info img {
+    width: 15px;
+}

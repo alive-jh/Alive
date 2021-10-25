@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+.content{background-color:#BBDCFD;}
+
+
+
+/*注册表单样式*/
+
+.sign-info,.post-btn{margin:0 auto;margin-top:55px;width:70%;}
+.sign-info .input-block{position: relative;}
+.sign-info .input-icon{position: absolute;width:40px;height:40px;top:0;left:0px;background:url(../images/login-icons.png) no-repeat;background-size:100%;}
+.sign-info input[type="text"],.sign-info input[type="password"]{display: block;width:100%;height:40px;margin-bottom:20px;text-indent:40px;border:none;background-color:#fff;font:16px/40px "微软雅黑";color:#073958;}
+
+.sign-info .input-icon.tel{background-position: 0px -38px;}
+.sign-info .input-icon.check{background-position: 0px -76px;}
+.sign-info .input-icon.pass{background-position: 0px -116px;}
+
+.post-btn{margin-top:0;}
+.post-btn input[type='button']{display: block;width:100%;height:40px;margin-bottom:8px;border:none;background-color:#fff;font:18px/40px "微软雅黑";color:#073958;}
+.post-btn input[type='button'].acitve{background-color:#0D7ABB;color:#fff;}
+
+/*登录表单样式*/
+
+.login-form .sign-info{margin-top:90px;}
+.sign-info .input-icon.user{background-position: 0px 2px;}
+
+.login-form .post-btn{margin-top:90px;}
+.post-btn a{float: right;font:16px/25px "微软雅黑";color:#333;}
+
+.login-footer{width:100%;max-width:768px;position:absolute;bottom:20px;text-align: center;}
+.login-footer p{font:16px/25px "微软雅黑";color:#333;}
+.login-footer ul{width:100%;text-align: center;margin-top:20px;}
+.login-footer ul li{display: inline-block;width:35px;height:35px;margin:0 10px;background:url(../images/login-icons2.png) no-repeat;background-size:100%;}
+.login-footer ul li a{display: block;height:100%;width:100%;}
+
+.login-footer ul li.xinlang{background-position: 0px 0px;}
+.login-footer ul li.qq{background-position: 0px -36px;}
+.login-footer ul li.wechart{background-position: 0px -72px;}
+
+/*预约上门样式*/
+.sub-title{padding:0;font-size:16px;}
+.sign-info .input-icon.time{background-position:0px -156px;}
+.sign-info .input-icon.location{background-position:0px -196px;}
+.sign-info input[type="text"].no-margin{margin-bottom:1px;}
+.sign-info .input-icon.addr{background-position:0px -236px;}
+
+
+.sign-info .input-icon.search{background-position:0px -272px;}
+

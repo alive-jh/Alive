@@ -1,0 +1,33 @@
+#namespace("student")
+  #include("/sql/student.sql")
+#end
+#namespace("grade")
+  #include("/sql/grade.sql")
+#end
+#namespace("teacher")
+  #include("/sql/teacher.sql")
+#end
+#namespace("course")
+  #include("/sql/course.sql")
+#end
+#namespace("slot")
+  #include("/sql/slot.sql")
+#end
+#namespace("courseSchedule")
+  #include("/sql/courseSchedule.sql")
+#end
+#namespace("record")
+  #include("/sql/record.sql")
+#end
+#namespace("deviceSchedule")
+  #include("/sql/deviceSchedule.sql")
+#end
+#namespace("train")
+  #include("/sql/train.sql")
+#end
+#namespace("agentSchool")
+  #include("/sql/agentSchool.sql")
+#end
+#namespace("audioInfo")
+  #include("/sql/audioInfo.sql")
+#end

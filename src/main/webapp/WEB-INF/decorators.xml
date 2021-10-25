@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/">
+    <!-- Any urls that are excluded will never be decorated by Sitemesh -->
+    <excludes>
+        <pattern>/css/*</pattern>
+        <pattern>/images/*</pattern>
+        <pattern>/index.jsp</pattern>
+        <pattern>/*.html</pattern>
+        <pattern>/*.htc</pattern>
+        
+    </excludes>
+    
+	<decorator name="main" page="/sitemesh/main.jsp">
+		<!-- 用户管理 -->
+		
+		<pattern>main.jsp</pattern>
+		<pattern>/user/userManager</pattern>
+		<pattern>/user/userManagerView</pattern>
+		<pattern>/user/saveUser</pattern>
+		<pattern>/user/updateUserStatus</pattern>
+		<pattern>/user/updateUserPwd</pattern>
+		<pattern>/user/getUserPwd</pattern>
+		<pattern>/user/changePwd</pattern>
+		<pattern>/user/toMain</pattern>
+		<pattern>/agent/agentManager</pattern>
+		<pattern>/agent/teacherManager</pattern>
+		<pattern>/agent/classGradesManager</pattern>
+		<pattern>/agent/studentManager</pattern>
+		<pattern>/agent/classRoomManager</pattern>
+
+		
+		<!-- 产品管理 -->
+		<pattern>/product/product*</pattern>
+		<pattern>/product/delete*</pattern>
+		<pattern>/product/save*</pattern>
+
+		<!-- 音频管理 -->
+		<pattern>/channel/channelManage</pattern>
+		<pattern>/channel/albumManage</pattern>
+		<pattern>/channel/soundManage</pattern>
+		<pattern>/channel/recommendManage</pattern>
+		<pattern>/channel/soundSearchManage</pattern>
+		<pattern>/channel/soundPlayManage</pattern>
+		<pattern>/channel/soundTagGroupManage</pattern>
+		<pattern>/sound/DailyRecommendManage</pattern>
+				
+		<!-- 模块管理 -->
+		<pattern>/module/*</pattern>
+		
+		<pattern>/server/UpgradeConfigManage</pattern>
+		
+		<!-- 统计管理 -->
+		
+		<pattern>/statistical/deviceOnlineTimeManager</pattern>
+		<pattern>/statistical/onlineManager</pattern>
+		<pattern>/statistical/sixtyDayCourseManager</pattern>
+		<pattern>/statistical/onlineDeviceManager</pattern>
+		<pattern>/statistical/rankingList</pattern>
+
+		<!-- 问卷调查 -->
+		<pattern>/question/quesionManage</pattern>
+		
+		<!-- 文章管理 -->
+		
+		<pattern>/article/articleManager</pattern>
+		<pattern>/article/articleManagerView</pattern>
+		<pattern>/article/articleInfo</pattern>
+		<pattern>/article/saveArticle</pattern>
+		<pattern>/article/deleteArticle</pattern>
+		
+		
+		
+		
+		
+		<!-- 关键词管理 -->
+		<pattern>/keyword/*</pattern>
+		<!-- 素材管理 -->
+		<pattern>/material/*</pattern>
+		<!-- 自定义菜单管理 -->
+		<pattern>/menu/*</pattern>
+		<!-- 社区商城管理 -->
+		<pattern>/mall/mallManager</pattern>
+		<pattern>/mall/mallManagerView</pattern>
+		<pattern>/mall/saveMall</pattern>
+		<pattern>/mall/deleteMall</pattern>
+		<pattern>/mall/mallOrderManager</pattern>
+		<pattern>/mall/updateStatus</pattern>
+		<pattern>/mall/orderServiceManager</pattern>
+		<pattern>/mall/updateOrderServiceStatus</pattern>
+		<pattern>/mall/MallLabelManager</pattern>
+		<pattern>/mall/mallBannerManager</pattern>
+		<pattern>/mall/updateMallBannerStatus</pattern>
+		<pattern>/mall/mallLabelManager</pattern>
+		<pattern>/mall/mallCategory</pattern>
+		
+		
+		<!-- 关注推送 -->
+		<pattern>/account/*</pattern>
+		<!-- 客户管理 -->
+		<pattern>/member/memberManager</pattern>
+		<pattern>/member/memberManagerView</pattern>
+		<pattern>/member/searchIntegral</pattern>
+		<!-- 电工管理 -->
+		<pattern>/electrism/electrismManager</pattern>
+		<pattern>/electrism/electrismManagerView</pattern>
+		<pattern>/electrism/updateElectrismStatus</pattern>
+		<pattern>/electrism/deleteElectrism</pattern>
+		<pattern>/electrism/saveElectrism</pattern>
+		<pattern>/electrism/electrismOrderManager</pattern>
+		<pattern>/electrism/orderPaymentManager</pattern>
+	
+	
+		<!-- 优惠券管理 -->
+		<pattern>/coupons/couponsManager</pattern>
+		<pattern>/coupons/saveCoupons</pattern>
+		<pattern>/coupons/deleteCoupons</pattern>
+		<!-- 角色管理 -->
+		<pattern>/role/*</pattern>
+		<!-- 书籍管理 -->
+		<pattern>/book/bookManager</pattern>
+		<pattern>/book/saveCategory</pattern>
+		<pattern>/book/removeCategory</pattern>
+		<pattern>/book/removeBook</pattern>
+		<pattern>/book/removeBookByAjax</pattern>
+		<pattern>/book/saveBookByAjax</pattern>
+		<pattern>/book/saveLabel</pattern>
+		<pattern>/book/deleteLabel</pattern>
+		<pattern>/book/labelManager</pattern>
+		<pattern>/book/bookLabelManager</pattern>
+		<pattern>/book/updateBookLabel</pattern>
+		<pattern>/book/deleteBookLabel</pattern>
+		<pattern>/book/deleteBookLabel</pattern>
+		<pattern>/book/saveBookLabel</pattern>
+		<pattern>/book/bookExpressManager</pattern>
+		<pattern>/book/bookCategory</pattern>
+		<pattern>/book/stockManager</pattern>
+		<pattern>/book/upExcel</pattern>
+		<pattern>/book/upExcelBook</pattern>
+		
+		
+		
+		<!-- 书籍管理 -->
+		<pattern>/special/specialManager</pattern>
+		<pattern>/special/specialMallManager</pattern>
+		<pattern>/special/saveSpecial</pattern>
+		<pattern>/special/removeSpecial</pattern>
+		
+		<!-- 会员管理 -->
+		
+		<!-- 设备管理 -->
+		<pattern>/device/getDeviceTestsInfo</pattern>
+		<pattern>/device/getDeviceList</pattern>
+		<pattern>/device/getDeviceSharesInfo</pattern>
+		<pattern>/device/replacementManager</pattern>
+		<pattern>/device/categoryManager</pattern>
+		
+
+		<pattern>/app/getDeviceOnlineTimes</pattern>
+		
+		<!-- 课程管理 -->
+		<pattern>/course/courseManager</pattern>
+		<pattern>/course/courseSchedule</pattern>
+		<pattern>/course/courseWordManager</pattern>
+		
+		<!-- APP首页设置 -->
+		<pattern>/appIndex/*</pattern>
+		
+		<!-- 书院店铺管理 -->
+		<pattern>/bookShop/bookShopManager</pattern>
+		<pattern>/bookShop/bookMemberManager</pattern>
+		<pattern>/bookShop/coursePlanActive</pattern>
+		<pattern>/bookShop/coursePlanManager</pattern>
+		<pattern>/bookShop/bookShopSaleManager</pattern>
+		<pattern>/bookShop/anchorManager</pattern>
+		<pattern>/bookShop/bookManager</pattern>
+		<pattern>/bookShop/saveCategory</pattern>
+		
+		
+		
+
+		<!-- 问卷调查 -->
+		<pattern>/question/quesionManage</pattern>
+		
+		<!-- 热词管理 -->
+		<pattern>/HotKeys/HotKeysManage</pattern>
+		
+		<!-- 在线课堂资源管理 -->
+		<pattern>/app/audioInfoManager</pattern>
+		
+		<pattern>/app/saveAudioInfo</pattern>
+		<pattern>/lesson/findClassGrades</pattern>
+		<pattern>/lesson/findClassRooms</pattern>
+		<pattern>/lesson/findClassRoomsIndex</pattern>
+		<pattern>/lesson/delClassGrades</pattern>
+		<pattern>/lesson/saveClassGrades</pattern>
+		<pattern>/lesson/packageManage</pattern>
+		<pattern>/agent/shipmentManager</pattern>
+		
+		<!-- 知识库 -->
+		<pattern>/knowledge/myKnowledge</pattern>
+		
+		<pattern>/eval/evaluationManager</pattern>
+		
+	</decorator>
+
+	<decorator name="header" page="/sitemesh/header.jsp" />
+	<decorator name="menuer" page="/sitemesh/menu.jsp" />
+	<decorator name="footer" page="/sitemesh/footer.jsp" />
+</decorators>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>thisclasscard</title>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <link href="../css/circlip.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/customize-audio.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .weui-search-bar{
+            top: 0px;
+            display: flex;
+        }
+        #all_moment{
+            margin-top: 48px;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="header">
+    <div id="all_card">
+        <span class="checked_card" id="all_card_span">所有打卡</span>
+        <hr id="all_card_hr">
+    </div>
+    <div id="my_card">
+        <span class="un_checked_card" id="my_card_span">我的打卡</span>
+        <hr id="my_card_hr" style="display: none">
+    </div>
+</div>-->
+<!--<button id="autoClick"></button>-->
+<div class="weui-pull-to-refresh__layer">
+    <div class='weui-pull-to-refresh__arrow'></div>
+    <div class='weui-pull-to-refresh__preloader'></div>
+    <div class="down">下拉刷新</div>
+    <div class="up">释放刷新</div>
+    <div class="refresh">正在刷新</div>
+</div>
+
+<div class="weui-search-bar weui-search-bar_focusing" id="searchBar">
+    <!--<img src="../images/backtrack.png"  onClick="javascript:history.back(-1);">-->
+    <div class="weui-search-bar__form">
+        <div class="weui-search-bar__box">
+            <i class="weui-icon-search"></i>
+            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入学生名字搜索">
+            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+        </div>
+        <label class="weui-search-bar__label" id="searchText">
+            <i class="weui-icon-search"></i>
+            <span>请输入学生名字搜索</span>
+        </label>
+    </div>
+    <!-- <a href="javascript:searchBtn()" class="weui-search-bar__cancel-btn" id="searchCancel">搜索</a>-->
+    <a href="javascript:searchBtn()" class="search_btn" id="">搜索</a>
+</div>
+
+<hr style="border: 0">
+
+<!--所有打卡-->
+<div id="all_moment">
+
+</div>
+
+<!--<video  id="myVideo" controls style="width: 100%;height:100%; object-fit: fill"></video>-->
+
+<div class="v_box" id="v_box">
+    <video id="myVideo"
+           webkit-playsinline="true"
+           x-webkit-airplay="true"
+           playsinline="true"
+           airplay="true"
+           x5-video-player-type="h5"
+           x5-video-orientation="h5"
+           x5-video-player-fullscreen="true"
+    ></video>
+</div>
+
+<div class="v_close" id="v_close" onclick="closeVideo()">
+    <img src="../images/video-guanbi.png" style="width: 30px;height: 30px;">
+</div>
+
+<div class="weui-loadmore" id="infinite_div">
+    <i class="weui-loading"></i>
+    <span class="weui-loadmore__tips" id="weui-loadmore__tips">正在加载</span>
+</div>
+
+
+<!--
+<div id="gallery" class="weui-gallery" style="display:none" onclick="this.style.display = 'none'">
+    <span class="weui-gallery__img"></span>
+</div>
+-->
+
+
+<div id="about" class="weui-popup__container popup-bottom">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal" id="popup__modal111">
+        <div class="comment" id="View">
+            <div class="Top">
+                <span>评论区</span>
+                <img onclick="closeComment()" class='closepopup' src="../images/pinglun_guanbi_icon@2x.png">
+            </div>
+            <div id="randcomment" class="BigComment">
+                <div id="test" >
+
+                </div>
+            </div>
+
+            <div class="weui-loadmore"   id="lastrolad">
+                <i class="weui-loading"></i>
+                <span class="weui-loadmore__tips" id="weui-loadmore__tips2">正在加载</span>
+            </div>
+
+            <div>
+                <div style="position: fixed; bottom: 0;width: 93%; height:54px;word-wrap:break-word;margin: 0px 3.5%;">
+                    <form id="form"  method="post">
+                        <img class="maikefeng" onclick="callDevice()" src="../images/pinglun_luyin_icon@2x.png" alt="">
+                        <textarea id="text" class="input" placeholder="在此处输入评论"></textarea>
+                        <button type="button" onclick="save(txt,momentId,studentId,teacherId)" class="Button">发布</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<!--<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>-->
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.js"></script>
+
+<script type="text/javascript" src="../js/format-date-time.js"></script>
+<script type="text/javascript" src="../js/search-card-data.js"></script>
+<script type="text/javascript" src="../js/customize-audio.js"></script>
+<script type="text/javascript" src="../js/comment-data.js"></script>
+<script type="text/javascript" src="../js/click-like.js"></script>
+<script type="text/javascript" src="../js/delete-moment.js"></script>
+<script type="text/javascript" src="../js/set-public-or-private.js"></script>
+<script type="text/javascript" src="../js/share.js"></script>
+<script type="text/javascript" src="../js/call.js"></script>
+
+<!--文本框高度随输入行数增高或降低-->
+<script type="text/javascript">
+    $(function(){
+        $("#text").on("input propertychange",function(e){
+            var target = e.target;
+            var dh = $(target).attr('defaultHeight') || 0;
+            console.log(dh)
+            if (!dh) {
+                dh = target.clientHeight-16;
+                $(target).attr('defaultHeight', dh);
+            }
+            console.log("dh"+dh)
+            target.style.height = dh + 'px';
+            console.log(target.style.height)
+            var clientHeight = target.clientHeight-16;
+            var scrollHeight = target.scrollHeight-16;
+            if (clientHeight !== scrollHeight) {
+                target.style.height = scrollHeight + 0 + "px";
+            }
+        });
+
+    });
+</script>
+
+
+
+</body>
+</html>

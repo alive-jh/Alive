@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.box-head img {
+    width: 100%;
+}
+.box-link a {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.box-link a img {
+    width: 100%;;
+}
+.box-link a:last-child {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.box-content1 img {
+    vertical-align: middle;
+    width: 100%;
+}
+.box-email {
+    padding: 0 2.67% 2.6% 2.67%;
+}
+.box-email img {
+    width: 100%;
+}

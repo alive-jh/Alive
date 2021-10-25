@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/*头部按钮*/
+.search-box button.head-right-btn{
+    background-image: none;
+    right:1.5rem;
+    font-size:1.8rem;
+    line-height: 28px;
+    width:auto;
+}
+.search-box button.delete{
+    color:red;
+}
+
+.book-list .info-box .price {
+    color: #f60;
+}
+
+/*底部按钮*/
+.submit-group{
+    position: fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:40px;
+    background-color:#fff;
+    border-top:1px solid #ddd;
+}
+
+.submit-group .footer-center-btn{
+	display: block;
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size:16px;
+    color:#f60;
+    padding: 0;
+    border: none;
+    background-color: #fff;
+}
+
+.submit-group b{
+    display: none;
+}
+.price-info{
+    padding-right: 10px;
+    text-align: right;
+    color: #f60;
+    line-height: 40px;
+    font-size: 1.2rem;
+    background-color:#fff;
+    border:none;
+    float: right;
+}
+.select-all{
+    display: none;
+}

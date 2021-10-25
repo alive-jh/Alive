@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    background: rgba(245, 246, 250, 1);
+    font-family: PingFang SC;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+[v-cloak]{
+    display: none;
+}

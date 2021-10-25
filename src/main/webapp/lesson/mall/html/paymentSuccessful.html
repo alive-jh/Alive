@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5, maximum-scale=1.0, minimum-scale=1.0">
+    <title>支付成功</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/paymentSuccessful.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="content" id="app" v-cloak>
+    <div class="success_prompt">
+        <img class="success_icon" src="../images/zhifu_successful.png">
+        <span>支付成功</span>
+        <label class="btn_box">
+            <div class="order_list_btn" v-on:click="orderList">订单列表</div>
+            <div class="goto_class" v-on:click="gotoClass">前往上课</div>
+        </label>
+    </div>
+
+    <div class="invite_friends">
+        <img src="../images/bi_icon.png">
+        <label class="invite_prompt">
+            <span>邀请好友领豆币</span>
+            <span>成功邀请一个好友奖励20豆币</span>
+        </label>
+        <div class="invite_btn" v-on:click="invite">邀请</div>
+    </div>
+</div>
+
+<script src="../js/public.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cn.vuejs.org/js/vue.js"></script>
+
+<script>
+    var host = window.location.protocol+"//"+window.location.host +"/snp/v2/";
+    var app=new Vue({
+        el:"#app",
+        data:{},
+        methods:{
+            //订单列表
+            orderList:function(){
+                window.location=host + "mall/orderList";
+            },
+            //前往上课
+            gotoClass:function () {
+                var message = {
+
+                };
+                try {
+                    window.webkit.messageHandlers.gotoClass.postMessage(message);
+                } catch (e) {
+                    console.log(e);
+                }
+                try {
+                    jsGotoClass.gotoClass();
+                } catch (e) {
+                    console.log(e);
+                }
+            },
+            //邀请好友
+            invite:function () {
+                var message = {
+
+                };
+                try {
+                    window.webkit.messageHandlers.toInvite.postMessage(message);
+                } catch (e) {
+                    console.log(e);
+                }
+                try {
+                    jsInvite.toInvite();
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+        },
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+ul{
+list-style-type:none;
+}
+img{
+height:200px;
+width:200px;
+}
+
+#icons{
+width:20px;
+height:20px;
+float:right;
+margin-right:10px;
+margin-top:8px;
+border-radius: 100%;
+}
+
+@-webkit-keyframes scaleout {
+  0% { -webkit-transform: scale(0.0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+.progress{
+margin-top: 10px;
+}
+.span1{
+	float:right;
+	margin-top: -15px;
+}
+
+.span2{
+   background-image:url(http://i.6npc.com/resource/r3/dot.gif);
+   background-repeat:no-repeat;
+   padding-left:10px;   
+}
+
+#qtitle{
+font-size: 20px;
+text-align: right;
+}
+
+.container-fluid{
+margin: 0 auto;	
+}
+ li{
+ margin-bottom: 18px;
+ }
+
+span{
+margin-right: 10px;
+}
+
+#img1{
+margin-right: 10px;
+}
+
+#ico1{
+width:20px;
+height:20px;
+border-radius: 100%;
+}

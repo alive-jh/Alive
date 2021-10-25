@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5, maximum-scale=1.0, minimum-scale=1.0">
+    <title>商城</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.min.css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div id="app" v-cloak>
+    <div class="my_header">
+        <div class="search" v-on:click="search">
+            <img class="search_icon" src="../images/chaxun_icon.png">
+            <span>请输入关键字查询</span>
+        </div>
+
+        <!--<div class="advertising">
+            <img v-bind:src="headerDate.mallBanners[0].pic">
+        </div>-->
+
+        <div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in headerDate.mallBanners"><img v-bind:src="item.pic" alt=""></div>
+            </div>
+            <div class="swiper-pagination swiper-pagination-bullets">
+                <span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+            </div>
+        </div>
+
+        <!--<div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+            </div>
+            <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
+        </div>-->
+
+        <div class="category">
+            <div class="category_item" v-for="(item,index) in headerDate.categoryName" v-on:click="productList(item.id)" v-if="index<6"><span>{{item.name}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="daily_recommend" v-for="item in activityData">
+        <div class="top">
+            <b class="title">{{item.categoryName}}</b>
+            <span class="more_icon" v-on:click="more(item.categoryId)">更多</span>
+        </div>
+        <div class="product_item" v-for="(item,index) in item.data" v-if="index<2" v-on:click="courseDetails(item.id)">
+            <img class="product_pic" v-bind:src="getProductPicUrl(item)">
+            <div class="product_info_right">
+                <b class="product_name">{{item.name}}</b>
+                <p class="details">{{item.desc}}</p>
+                <div class="price_info">
+                    <span>{{getPriceRange(item)}}</span><span>豆币</span>
+                    <span v-show="oldPrice">价格{{item.originalCoin}}</span>
+                </div>
+                <span class="purchased_num" >{{getPayNum(item.id)}}人已购买</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/public.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js"></script>
+<script src="https://cn.vuejs.org/js/vue.js"></script>
+
+<script>
+    function getUrlPara(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return;
+    }
+
+    var host = window.location.protocol+"//"+window.location.host +"/snp/v2/";
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            oldPrice:true,
+            headerDate: {
+                categoryName: {},
+                mallBanners: {}
+            },
+            activityData: {},
+            payNum:{},
+        },
+        methods: {
+            search: function () {
+                window.location = "./searchResult.html";
+            },
+            more: function (categoryId) {
+                window.location = "./recommend.html?categoryId="+categoryId;
+            },
+            courseDetails:function(productId){
+                window.location ="./courseDetails.html?productId="+productId;
+            },
+            productList:function(categoryNameIndex){
+                window.location ="./productList.html?categoryNameIndex="+categoryNameIndex;
+            },
+            init: function () {
+                let that = this;
+                $.ajax({
+                    url: host + 'mall/mallIndex',
+                    data: {},
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            that.headerDate = res.data;
+                            console.log(res.data)
+                        }
+                    }
+                })
+            },
+            init2: function () {
+                let that = this;
+                $.ajax({
+                    url: host + 'mall/activityInfo',
+                    data: {},
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            console.log(res.data)
+                            res.data.activityZone.forEach(function(v,i){
+                                if (!that.activityData[v.categoryId]) {
+                                    that.activityData[v.categoryId]={};
+                                    that.activityData[v.categoryId]['categoryId']=v.categoryId;
+                                    that.activityData[v.categoryId]['categoryName']=v.categoryName;
+                                    that.activityData[v.categoryId]['data']=[];
+                                }
+                                v.pics = v.pics.split(",");
+                                that.activityData[v.categoryId].data.push(v);
+                            });
+                        }
+                    }
+                })
+            },
+            getPayNumData:function(){
+                var that = this;
+                $.ajax({
+                    url: host + 'mall/peoPleCount',
+                    data: {},
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            that.payNum=res.data;
+                        }
+                    }
+                })
+            },
+            getPayNum:function (id) {
+                return this.payNum[''+id];
+            },
+            getProductPicUrl:function(item){
+                if (item.pics!=undefined){
+                    return  item.pics[0];
+                }
+                return '../images/picture-81.png'
+            },
+            getPriceRange:function (item) {
+                if (item.priceRange==undefined||item.priceRange==0){
+                    this.oldPrice=false;
+                    return item.originalCoin;
+                }
+                return item.priceRange;
+            }
+        }
+    });
+    app.init();
+    app.init2();
+    app.getPayNumData();
+</script>
+<script>
+    $(".swiper-container").swiper({
+        loop: true,
+        speed: 400,
+        spaceBetween: 0,
+        autoplay: 3000
+    });
+</script>
+
+</body>
+</html>

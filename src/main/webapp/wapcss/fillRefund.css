@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+body{background-color:#F1F1F1;}
+
+.content-body{padding-top:10px;}
+.info-block{margin:0 10px 10px;font:16px/25px "微软雅黑";color:#333;}
+span.red{color:#DD3B3B;}
+span.gray{color:#ccc;}
+span.small{font-size:12px;}
+.info-block .info-text{line-height:25px;background-color:#fff;padding:10px;position: relative;border-bottom: 1px solid #D9D9D9;}
+.info-block .info-tex:last-child{border:none;}
+.info-block .info-text a{display: block;position: absolute;top:10px;right:10px;}
+.info-block .info-text a.arrow{width:25px;height:25px;background:url(../images/arrow.png) no-repeat center;background-size:30%;padding:0;}
+.info-block .info-text input[type='text']{width:100%;border: none;}
+
+.tog-arrow.active{transform: rotateZ(90deg);-webkit-transform: rotateZ(90deg);-moz-transform: rotateZ(90deg);-o-transform: rotateZ(90deg);-ms-transform: rotateZ(90deg);}
+
+
+.btn-group{max-width:768px;position:fixed;left:0;right:0;bottom:0;margin: 0 auto;}
+.btn-group input[type='button']{display: block;width:100%;text-align: center;font:16px/45px "微软雅黑";color:#fff;border:none;background-color:#DD2626;}
+
+
+/*选择列表自定义样式*/
+.cha-scorll-box .cha-scorll-head input[type="button"].blue{text-align:right;background-color:transparent;color:#4d90fe;}
+.cha-scorll-box .cha-scorll-head input[type="button"].gray{text-align:left;background-color:transparent;color:#ccc;}
+.cha-scorll-box .cha-scorll-head{margin:0;}
+.cha-scorll-slider{padding:0}

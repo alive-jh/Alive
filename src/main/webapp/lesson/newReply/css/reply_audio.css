@@ -1,0 +1,146 @@
+.a_audio{
+    background:rgba(255,255,255,1);
+    width: 93%;
+    height: 122px;
+    margin: 12px auto;
+    border-radius:6px;
+}
+.audio_resource{
+    width: 180px;
+    height: 180px;
+    background-color: #01AC00;
+    margin-left: 12px;
+    position: relative;
+}
+.audio{
+    width: 100%;
+    height: 100%;
+}
+
+.audio-wrapper {
+    max-width: 670px;
+    height: 50px;
+    background:rgba(244,245,247,1);
+    border-radius: 4px;
+    width: 93%;
+    margin-left: 12px;
+}
+
+.audio-left {
+    float: right;
+    /*text-align: center;*/
+    /*width: 18%;*/
+    margin-right: 20px;
+    height: 100%;
+}
+
+.audio-left img {
+    width: 26px;
+    position: relative;
+    top: 12px;
+    margin: 0;
+    display: initial;   /* 解除与app的样式冲突 */
+    cursor: pointer;
+}
+
+.audio-right {
+    margin-left: 6%;
+    float: left;
+    width: 75%;
+    height: 100%;
+}
+
+.audio-right p {
+    font-size: 15px;
+    height: 35%;
+    margin: 8px 0;
+
+    /* 歌曲名称只显示在一行，超出部分显示为省略号 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 243px;   /* 要适配小屏幕手机，所以最大宽度先设小一点，后面js根据屏幕大小重新设置 */
+}
+
+.progress-bar-bg {
+    background-color: #d9d9d9;
+    position: relative;
+    height: 3px;
+    cursor: pointer;
+    margin-top: 24px;
+    width: 64%;
+    float: left;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.progress-bar {
+    /*background-color: #649fec;*/
+    width: 0;
+    height: 3px;
+
+    background:rgba(255,147,38,1);
+    border-radius:4px;
+}
+/*
+.progress-bar-bg span {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    !*background-color: #3e87e8;*!
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -5px;
+    margin-left: -5px;
+    cursor: pointer;
+    background:rgba(255,255,255,1);
+}*/
+
+.audio-time {
+    overflow: hidden;
+    margin-top: 2px;
+}
+
+.audio-length-total {
+    float: left;
+}
+
+.audio-length-current {
+    float: left;
+
+}
+.audio-length-total,.audio-length-current{
+    font-size: 12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(100,102,104,1);
+    margin-top: 17px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 359px){
+    .progress-bar-bg {
+        width: 60%;
+    }
+}
+@media screen and (min-width: 400px){
+    .audio-right{
+        width: 80%;
+    }
+}
+@media screen and (min-width: 360px){
+    .progress-bar-bg {
+        width: 67%;
+    }
+}
+@media screen and (min-width: 768px){
+    .audio-right{
+        width: 85%;
+    }
+    .progress-bar-bg {
+        width: 82%;
+    }
+}

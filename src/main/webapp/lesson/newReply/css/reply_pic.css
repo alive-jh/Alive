@@ -1,0 +1,19 @@
+.a_pic{
+    background:rgba(255,255,255,1);
+    width: 93%;
+    height: 252px;
+    margin: 12px auto;
+    border-radius:6px;
+}
+.pic_resource{
+    width: 180px;
+    height: 180px;
+    margin-left: 12px;
+    position: relative;
+}
+.pic{
+    width: 100%;
+    height: 100%;
+    border-radius:8px;
+    object-fit: cover;
+}

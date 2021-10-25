@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/*头部样式*/
+.comment-head{background-color:#EBEBEB;padding:20px 0;display: table;width:100%;text-align: center;}
+.head-icon{display: table-cell;vertical-align: middle;width:35%;}
+.head-icon .icon-bg{width:100px;height:100px;background-color:#FF2704;border-radius: 50%;margin:0 auto;}
+.head-icon .icon-bg img{display: block;width:55%;padding-top:16px;margin:0 auto;}
+.head-icon .icon-bg span{font:18px/30px "微软雅黑";color:#fff;}
+
+.head-data{display: table-cell;vertical-align: middle;text-align: left;}
+.head-data h3{font: 16px/25px "微软雅黑";color:#ff2704;}
+.head-data h3 p.progress-bar{display: inline-block;width:200px;height:15px;max-width:65%;margin-right:5px;background-color:#fff;position: relative;}
+.head-data h3 p.progress-bar i{position: absolute;left: 0;top:0;bottom:0;width:0;background-color:#ff2704;}
+
+/*评论内容样式*/
+.comment-list{background-color:#fff;padding:10px;padding-bottom:0;}
+.comment-list ul li{border-bottom:1px solid #DDDDDD;}
+.comment-list ul li .num-star,.comment-list .comment-time{font: 15px/30px "微软雅黑";color:#717173;}
+
+.comment-list .stars img{width:20px;height:20px;padding:5px;float: left;}
+.comment-list .comment-text{font: 16px/20px "微软雅黑";color:#333;margin:8px 0 10px;}
+.comment-list .img-list ul li{width:24%;margin:0 0.5%;float:left;}
+.comment-list .img-list ul li img{width:100%;}
+
+
+
+@media only screen and (min-width:768px ) {
+	.content-body{padding: 0;width:768px;}
+}
+

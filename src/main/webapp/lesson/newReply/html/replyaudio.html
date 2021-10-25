@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>audio</title>
+    <link href="../css/reply_public.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/reply_audio.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="all">
+    <!--<div class="a_audio">
+        <div class="user_info">
+            <img class="avatar" src="../images/defaultAvatar.png">
+            <span class="user_name">陈小龙</span>
+        </div>
+        <div class="audio-wrapper">
+            <audio>
+                <source src="http://word.fandoutech.com.cn/app/snp/18205901032/fdiB6n4sPK.mp3" type="audio/mp3">
+            </audio>
+            <div class="audio-left"><img id="audioPlayer" src="../images/audio_play_icon.png"></div>
+            <div class="audio-right">
+                &lt;!&ndash;<p style="max-width: 536px;">Beta-B_Kan R. Gao.mp3</p>&ndash;&gt;
+                <div class="progress-bar-bg" id="progressBarBg">
+                    &lt;!&ndash;<span id="progressDot"></span>&ndash;&gt;
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="audio-time">
+                    <span class="audio-length-current" id="audioCurTime">00:00</span>
+                    <span class="audio-length-total" id="audio-length-total">00:00</span>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+<script src="../js/customize-audio.js"></script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/reply.js"></script>
+
+</body>
+</html>

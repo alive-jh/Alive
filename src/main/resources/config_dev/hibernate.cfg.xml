@@ -1,0 +1,255 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+
+	<!-- 1,数据库连接配置 -->
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<!--
+		
+		<property
+		name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql:///127.0.0.1\:3306/wechat</property>
+		<property name="connection.username">wechat_user</property> <property
+		name="connection.password">Bds6NGlVaBN</property>
+	-->
+
+	<!-- 2,其他配置 -->
+	<property name="show_sql">true</property>
+
+	<!-- 自动生成数据表<property name="hbm2ddl.auto">update</property>
+	-->
+
+	<!-- 3,引入映射文件(不采用注解的情况下) -->
+	<mapping resource="Material.hbm.xml" />
+	<mapping resource="MallOrder.hbm.xml" />
+	<mapping class="com.wechat.entity.User" />
+	<mapping class="com.wechat.entity.Module" />
+	<mapping class="com.wechat.entity.Product" />
+	<mapping class="com.wechat.entity.ProductInfo" />
+	<mapping class="com.wechat.entity.Article" />
+	<mapping class="com.wechat.entity.Keyword" />
+	<mapping class="com.wechat.entity.Menu" />
+	<mapping class="com.wechat.entity.MallProduct" />
+	<mapping class="com.wechat.entity.ProductCategory" />
+	<mapping class="com.wechat.entity.Account" />
+	<mapping class="com.wechat.entity.SMSCode" />
+	<mapping class="com.wechat.entity.Member" />
+	<mapping class="com.wechat.entity.MallSpecifications" />
+	<mapping class="com.wechat.entity.MallOrderProduct" />
+	<mapping class="com.wechat.entity.UserAddress" />
+	<mapping class="com.wechat.entity.Province" />
+	<mapping class="com.wechat.entity.City" />
+	<mapping class="com.wechat.entity.ShoppingCart" />
+	<mapping class="com.wechat.entity.Integral" />
+	<mapping class="com.wechat.entity.Electrism" />
+	<mapping class="com.wechat.entity.District" />
+	<mapping class="com.wechat.entity.ElectrismOrderTime" />
+	<mapping class="com.wechat.entity.ElectrismOrder" />
+	<mapping class="com.wechat.entity.Coupons" />
+	<mapping class="com.wechat.entity.CouponsInfo" />
+	<mapping class="com.wechat.entity.Comment" />
+	<mapping class="com.wechat.entity.CommentImg" />
+	<mapping class="com.wechat.entity.Complaint" />
+	<mapping class="com.wechat.entity.Role" />
+	<mapping class="com.wechat.entity.RoleModular" />
+	<mapping class="com.wechat.entity.Modular" />
+	<mapping class="com.wechat.entity.MallProductLog" />
+	<mapping class="com.wechat.entity.MallOrderService" />
+	<mapping class="com.wechat.entity.ElectrismOrderPayment" />
+	<mapping class="com.wechat.entity.MemberAccount" />
+	<mapping class="com.wechat.entity.MemberChildren" />
+	<mapping class="com.wechat.entity.SoundCollection" />
+	<mapping class="com.wechat.entity.SoundBest" />
+	<mapping class="com.wechat.entity.CourseWord" />
+	<mapping class="com.wechat.entity.CourseWordLabel" />
+	<mapping class="com.wechat.entity.Question" />
+	<mapping class="com.wechat.entity.Answer" />
+	<mapping class="com.wechat.entity.UserAnswerHistory" />
+	<mapping class="com.wechat.entity.Library" />
+	<mapping class="com.wechat.entity.Friends" />
+	<mapping class="com.wechat.entity.GroupInfo" />
+	<mapping class="com.wechat.entity.Book" />
+	<mapping class="com.wechat.entity.Category" />
+	<mapping class="com.wechat.entity.RightCategory" />
+	<mapping class="com.wechat.entity.LeftCategory" />
+	<mapping class="com.wechat.entity.Label" />
+	<mapping class="com.wechat.entity.CategoryLabel" />
+	<mapping class="com.wechat.entity.Special" />
+	<mapping class="com.wechat.entity.SpecialInfo" />
+	<mapping class="com.wechat.entity.BookVehicle" />
+	<mapping class="com.wechat.entity.BookKeyword" />
+	<mapping class="com.wechat.entity.ProductLabel" />
+	<mapping class="com.wechat.entity.MemberKeyword" />
+	<mapping class="com.wechat.entity.MallProductKeyword" />
+	<mapping class="com.wechat.entity.MemberMp3" />
+	<mapping class="com.wechat.entity.MemberCollection" />
+	<mapping class="com.wechat.entity.MallLabel" />
+	<mapping class="com.wechat.entity.MallBanner" />
+	<mapping class="com.wechat.entity.MemberPayment" />
+	<mapping class="com.wechat.entity.MemberBook" />
+	<mapping class="com.wechat.entity.BookLabel" />
+	<mapping class="com.wechat.entity.BookShop" />
+	<mapping class="com.wechat.entity.BookCategory" />
+	<mapping class="com.wechat.entity.BookOrder" />
+	<mapping class="com.wechat.entity.BookOrderInfo" />
+	<mapping class="com.wechat.entity.Device" />
+	<mapping class="com.wechat.entity.DeviceShare" />
+	<mapping class="com.wechat.entity.DeviceRelation" />
+	<mapping class="com.wechat.entity.DeviceHeartBeat" />
+	<mapping class="com.wechat.entity.DeviceSoundPlayHistory" />
+	<mapping class="com.wechat.entity.DeviceFile" />
+	<mapping class="com.wechat.entity.BookExpress" />
+	<mapping class="com.wechat.entity.MemberBookInfo" />
+	<mapping class="com.wechat.entity.XMLYChannel" />
+	<mapping class="com.wechat.entity.XMLYAlbum" />
+	<mapping class="com.wechat.entity.XMLYSound" />
+	<mapping class="com.wechat.entity.UserChannel" />
+	<mapping class="com.wechat.entity.XMLYChannelAlbum" />
+	<mapping class="com.wechat.entity.XMLYAlbumSound" />
+	<mapping class="com.wechat.entity.SoundRecommendGroup" />
+	<mapping class="com.wechat.entity.SoundRecommendGroupToSound" />
+	<mapping class="com.wechat.entity.SoundTag" />
+	<mapping class="com.wechat.entity.SoundTagGroup" />
+	<mapping class="com.wechat.entity.PublicRoomFidToStudent" />
+	<mapping class="com.wechat.entity.UserToClassGrades" />
+	
+	
+	<mapping class="com.wechat.entity.ClassCourseScoreRecord" />
+	<mapping class="com.wechat.entity.OnlineClassComment" />
+	<mapping class="com.wechat.entity.Replacement" />
+	<mapping class="com.wechat.entity.DeviceOnlineRecordCount" />
+	<mapping class="com.wechat.entity.DeviceOnlineRecord" />
+	<mapping class="com.wechat.entity.ClassCourseComment" />
+	<mapping class="com.wechat.entity.ClassCourseRankingCategory" />
+	
+
+	<mapping class="com.wechat.entity.DailyRecommendDate" />
+	<mapping class="com.wechat.entity.DailyRecommendTag" />
+	<mapping class="com.wechat.entity.DailyRecommendSource" />
+	<mapping class="com.wechat.entity.SoundAlias" />
+	<mapping class="com.wechat.entity.AlbumAlias" />
+	<mapping class="com.wechat.entity.ZhuboAlias" />
+	<mapping class="com.wechat.entity.OnlineClassCommentModel" />
+	<mapping class="com.wechat.entity.OnlineClassDeleteStudentRecord" />
+	<mapping class="com.wechat.entity.DeviceCategory" />
+	
+	<mapping class="com.wechat.entity.Activity" />
+	<mapping class="com.wechat.entity.ActivityInfo" />
+	<mapping class="com.wechat.entity.ActivityPrize" />
+	<mapping class="com.wechat.entity.FileCach" />
+	<mapping class="com.wechat.entity.AppIndex" />
+	<mapping class="com.wechat.entity.BookCard" />
+	<mapping class="com.wechat.entity.Device" />
+	<mapping class="com.wechat.entity.DeviceShare" />
+	<mapping class="com.wechat.entity.DeviceStudy" />
+	<mapping class="com.wechat.entity.DeviceRelation" />
+	<mapping class="com.wechat.entity.DeviceCollection" />
+	<mapping class="com.wechat.entity.DevicePlayRecord" />
+	<mapping class="com.wechat.entity.DeviceProperty" />
+	<mapping class="com.wechat.entity.DeviceSchedule" />
+	<mapping class="com.wechat.entity.DeviceStory" />
+	<mapping class="com.wechat.entity.DeviceTest" />
+	<mapping class="com.wechat.entity.HistorySchedules" />
+	
+	<mapping class="com.wechat.entity.ShopOrder" />
+	<mapping class="com.wechat.entity.ShopOrderInfo" />
+	<mapping class="com.wechat.entity.AppTime" />
+	<mapping class="com.wechat.entity.Course" />
+	<mapping class="com.wechat.entity.CoursePeriod" />
+	<mapping class="com.wechat.entity.CoursePlan" />
+	<mapping class="com.wechat.entity.CoursePlanInfo" />
+	<mapping class="com.wechat.entity.CourseSchedule" />
+	<mapping class="com.wechat.entity.CourseScheduleNow" />
+	<mapping class="com.wechat.entity.CourseProject" />
+	<mapping class="com.wechat.entity.CourseProjectSystem" />
+	<mapping class="com.wechat.entity.CourseProjectInfo" />
+	<mapping class="com.wechat.entity.CourseProjectActive" />
+	<mapping class="com.wechat.entity.CourseBookLib" />
+	<mapping class="com.wechat.entity.AppFucShow" />
+	<mapping class="com.wechat.entity.ProductCategoryShow" />
+	<mapping class="com.wechat.entity.EpalSystem" />
+	<mapping class="com.wechat.entity.ClassRoom" />
+	<mapping class="com.wechat.entity.ClassScriptType" />
+	<mapping class="com.wechat.entity.ClassScriptNormal" />
+	<mapping class="com.wechat.entity.ClassTeacher" />
+	<mapping class="com.wechat.entity.ClassStudentRela" />
+	<mapping class="com.wechat.entity.ClassStudent" />
+	<mapping class="com.wechat.entity.ClassScriptDone" />
+	<mapping class="com.wechat.entity.ClassRoomCategory" />
+	<mapping class="com.wechat.entity.ClassGrades" />
+	<mapping class="com.wechat.entity.ClassGradesRela" />
+	<mapping class="com.wechat.entity.ClassRoomGradesRela" />
+	<mapping class="com.wechat.entity.ClassRoomSign" />
+	<mapping class="com.wechat.entity.ClassRoomPush" />
+	<mapping class="com.wechat.entity.ClassCourse" />
+	<mapping class="com.wechat.entity.ClassCourseRecordIntegral" />
+	<mapping class="com.wechat.entity.ClassCourseRecordAllIntegral" />
+
+	<mapping class="com.wechat.entity.DeviceActivity" />
+	<mapping class="com.wechat.entity.SoundTagSource" />
+	<mapping class="com.wechat.entity.AudioInfo" />
+	<mapping class="com.wechat.entity.CurriculumAudio" />
+	
+	
+	<mapping class="com.wechat.entity.Anchor" />
+	<mapping class="com.wechat.entity.ClassRoomTemp" />
+	<mapping class="com.wechat.entity.ClassScriptNormalTemp" />
+	<mapping class="com.wechat.entity.ClassCourseSchedule" />
+	<mapping class="com.wechat.entity.ClassSlot" />
+	<mapping class="com.wechat.entity.ClassCourseRecord" />
+	<mapping class="com.wechat.entity.ClassCourseReply" />
+	<mapping class="com.wechat.entity.BookShopCategory" />
+	
+	
+	<mapping class="com.wechat.entity.EvalLabel" />
+	<mapping class="com.wechat.entity.EvalQuestion" />
+	<mapping class="com.wechat.entity.EvalLabelRelation" />
+	<mapping class="com.wechat.entity.EvalOption" />
+	<mapping class="com.wechat.entity.EvalQuestionOption" />
+	<mapping class="com.wechat.entity.EvalWxUser" />
+	<mapping class="com.wechat.entity.EvalRecord" />
+	<mapping class="com.wechat.entity.EvalTemplate" />
+	<mapping class="com.wechat.entity.ReportDayActive" />
+	
+	<mapping class="com.wechat.entity.EnrollInfo" />
+	<mapping class="com.wechat.entity.VideoInfo" />
+	<mapping class="com.wechat.entity.ExhibitionSign" />
+	<mapping class="com.wechat.entity.UserSign" />
+	<mapping class="com.wechat.entity.ClassQRInfo" />
+
+	<mapping class="com.wechat.entity.RoomPackage" />
+	<mapping class="com.wechat.entity.ClassTest"/>
+
+	<mapping class="com.wechat.entity.DeviceSoundQuestionAnswer" />
+	<mapping class="com.wechat.entity.DeviceSoundQuestion"/>
+	
+	<mapping class="com.wechat.entity.AgentBillOfSales"/>
+	<mapping class="com.wechat.entity.ShipmentRecord"/>
+
+	<mapping class="com.wechat.entity.VideoAcitivity"/>
+	<mapping class="com.wechat.entity.VideoCompetition"/>
+	<mapping class="com.wechat.entity.Message"/>
+	<mapping class="com.wechat.entity.DeviceLiber"/>
+	<mapping class="com.wechat.entity.DeviceUploadFile"/>
+	<mapping class="com.wechat.entity.VideoScore"/>
+	<mapping class="com.wechat.entity.StdDiyStudyDay"/>
+	<mapping class="com.wechat.entity.VideoComment"/>
+	<mapping class="com.wechat.entity.TrainQuestionItem"/>
+	<mapping class="com.wechat.entity.TrainAnswerItem"/>
+	<mapping class="com.wechat.entity.TrainKnowledge"/>
+	
+
+
+
+
+
+</session-factory>
+</hibernate-configuration>
+
+
+

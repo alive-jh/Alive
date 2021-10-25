@@ -1,0 +1,87 @@
+.audio-wrapper {
+    /*background-color: #fcfcfc;*/
+    margin: 10px auto;
+    max-width: 93.5%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    background:rgba(184,192,204,1);
+    border-radius:4px;
+}
+
+.audio-left {
+    float: right;
+    text-align: center;
+    width: 18%;
+    height: 100%;
+}
+
+.audio-left img {
+    width: 27px;
+    position: relative;
+    top: 12px;
+    margin: 0;
+    display: initial;   /* 解除与app的样式冲突 */
+    cursor: pointer;
+}
+
+.audio-right {
+    margin-left: 7%;
+    float: left;
+    width: 75%;
+    height: 100%;
+}
+
+.progress-bar-bg {
+    background-color: #d9d9d9;
+    position: relative;
+    height: 4px;
+    cursor: pointer;
+    margin-top: 23px;
+    width: 80%;
+}
+
+.progress-bar {
+    /*background-color: #649fec;*/
+    width: 0;
+    height: 4px;
+
+    background:rgba(255,255,255,1);
+}
+
+.progress-bar-bg span {
+    content: " ";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    /*background-color: #3e87e8;*/
+    position: absolute;
+    left: 0;
+    top: 30%;
+    margin-top: -5px;
+    margin-left: -5px;
+    cursor: pointer;
+
+    background:rgba(255,255,255,1);
+}
+
+.audio-time {
+    overflow: hidden;
+    margin-top: -11px;
+}
+
+.audio-length-total {
+    float: right;
+}
+
+.audio-length-current {
+    float: right;
+
+}
+.audio-length-total,.audio-length-current{
+    font-size: 12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}

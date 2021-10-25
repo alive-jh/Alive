@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<link rel="stylesheet" href="../../jquery-weui/css/weui.min.css">
+<link rel="stylesheet" href="../../jquery-weui/css/jquery-weui.min.css">
+<title>课堂分享</title>
+
+<style type="text/css">
+#app {
+	padding: 20px;
+}
+
+.bg-card {
+	width: 100%;
+}
+
+.lesson-info {
+	background-image: url(./images/card@2x.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 100%;
+}
+
+.introduce {
+	text-align: center;
+	width: 300px;	
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.teacher-head {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.teacher-head img {
+	width: 100%;
+	position: absolute;
+	border: 3px solid white;
+	border-radius: 50px;
+}
+
+.teacher-name {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+	<div id="app">
+	
+		<div class="lesson-info">
+			<div class="introduce">大家好，我是郑铭强老师,im from fandou,很高兴给你们带来我的课堂丑小鸭,欢迎试听</div>
+			<div class="teacher-head">
+				<img class="member-headimg member" src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJEma36hMicqClxRyRficxlykkJP9CTMrn66Uo7sOw6tYrsbGjiaWEe7ms4duqhia5ibVEZP66wY35sQZw/132">
+			</div>
+			<div class=teacher-name>
+				<p class="name" style="color: black;">#(teacherName)</p>
+			</div>
+			
+			<div class="content">
+				<div>
+					
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+</body>
+<script src="../../js/jquery.min.js"></script>  
+<script src="../../jquery-weui/js/jquery-weui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/wechat/js/wechat/wechat-share.js?v=0.2"></script>
+</html>

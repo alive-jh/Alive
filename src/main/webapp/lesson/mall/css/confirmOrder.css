@@ -1,0 +1,124 @@
+.product_item {
+  background: white;
+  margin: 0.32rem auto; }
+
+.stu_selection_box {
+  width: 9.36rem;
+  background: white;
+  margin: 0.32rem auto; }
+
+.stu_selection {
+  width: 9.36rem;
+  height: 5.3333333333rem;
+  background: white;
+  overflow-y: auto; }
+
+.stu_selection_box > p, .stu_item {
+  height: 1.28rem;
+  font-size: 0.4266666667rem;
+  font-weight: 400;
+  color: #87888c;
+  line-height: 1.28rem;
+  padding: 0 12px; }
+
+input[type="radio"] {
+  display: none; }
+
+.radio_label {
+  font-size: 0.4266666667rem;
+  font-weight: 400;
+  color: #191a1e; }
+
+.radio_label::after {
+  display: inline-block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #e3e4e5;
+  float: right;
+  margin-top: 14px; }
+
+input:checked + label::after {
+  display: inline-block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  background-image: url("../images/checked_icon.png");
+  float: right;
+  margin-top: 14px; }
+
+.footer {
+  width: 9.36rem;
+  height: 1.44rem;
+  background: white;
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.32rem; }
+
+.total {
+  font-size: 0.4rem;
+  white-space: nowrap; }
+
+.total span:nth-child(1) {
+  font-weight: 400;
+  color: #191a1e; }
+
+.total span:nth-child(2) {
+  font-size: 0.64rem;
+  font-weight: 500;
+  color: #ffa526; }
+
+.total span:nth-child(3) {
+  color: #ffa526; }
+
+.pay_btn, .pay_btn2, .recharge_btn {
+  width: 2.6666666667rem;
+  height: 1.0666666667rem;
+  background: #26b7ff;
+  border-radius: 0.5333333333rem;
+  font-size: 0.4rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.0666666667rem;
+  text-align: center; }
+
+.pay_btn2 {
+  background: #e3e4e5; }
+
+.weui-dialog__btn {
+  color: #26b7ff; }
+
+.recharge {
+  width: 9.36rem;
+  height: 5.4133333333rem;
+  background: white;
+  margin: 0.32rem auto 1.76rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly; }
+
+.recharge span:nth-child(2) {
+  font-size: 0.48rem;
+  font-weight: 600;
+  color: #191a1e; }
+
+.recharge span:nth-child(3) {
+  font-size: 0.3733333333rem;
+  font-weight: 400;
+  color: #87888c; }
+
+.recharge_btn {
+  width: 5.3333333333rem; }
+
+.recharge, .stu_selection_box, .product_item {
+  border-radius: 0.1066666667rem; }
+
+/*# sourceMappingURL=confirmOrder.css.map */

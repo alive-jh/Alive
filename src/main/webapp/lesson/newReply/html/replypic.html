@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>pic</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <link href="../css/reply_public.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/reply_pic.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="all">
+    <!--<div class="a_pic">
+        <div class="user_info">
+            <img class="avatar" src="../images/defaultAvatar.png">
+            <span class="user_name">陈小龙</span>
+        </div>
+        <div class="pic_resource">
+            <img class="pic" src="../images/1.jpg">
+        </div>
+    </div>-->
+</div>
+
+<div id="gallery" class="weui-gallery" style="display:none" onclick="this.style.display = 'none'">
+    <span class="weui-gallery__img"></span>
+</div>
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<!--<script src="../js/jquery-weui.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="../js/reply.js"></script>
+</body>
+</html>

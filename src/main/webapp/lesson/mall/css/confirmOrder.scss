@@ -1,0 +1,148 @@
+@function px2rem($px) {
+  $rem: 37.5px;
+  @return ($px / $rem) + rem;
+}
+
+.product_item {
+  background: rgba(255, 255, 255, 1);
+  margin: px2rem(12px) auto;
+}
+
+.stu_selection_box {
+  width: px2rem(351px);
+  background: rgba(255, 255, 255, 1);
+  margin: px2rem(12px) auto;
+}
+
+.stu_selection {
+  width: px2rem(351px);
+  height: px2rem(200px);
+  background: rgba(255, 255, 255, 1);
+  overflow-y: auto;
+}
+
+.stu_selection_box > p, .stu_item {
+  height: px2rem(48px);
+  font-size: px2rem(16px);
+  font-weight: 400;
+  color: rgba(135, 136, 140, 1);
+  line-height: 1.28rem;
+  padding: 0 12px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio_label {
+  font-size: px2rem(16px);
+  font-weight: 400;
+  color: rgba(25, 26, 30, 1);
+}
+
+.radio_label::after {
+  display: inline-block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(227, 228, 229, 1);
+  float: right;
+  margin-top: 14px;
+}
+
+input:checked + label::after {
+  display: inline-block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  background-image: url("../images/checked_icon.png");
+  float: right;
+  margin-top: 14px;
+}
+
+.footer {
+  width: px2rem(351px);
+  height: px2rem(54px);
+  background: rgba(255, 255, 255, 1);
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 px2rem(12px);
+}
+
+.total {
+  font-size: px2rem(15px);
+  white-space: nowrap;
+}
+
+.total span:nth-child(1) {
+  font-weight: 400;
+  color: rgba(25, 26, 30, 1);
+}
+
+.total span:nth-child(2) {
+  font-size: px2rem(24px);
+  font-weight: 500;
+  color: rgba(255, 165, 38, 1);
+}
+
+.total span:nth-child(3) {
+  color: rgba(255, 165, 38, 1);
+}
+
+.pay_btn, .pay_btn2, .recharge_btn {
+  width: px2rem(100px);
+  height: px2rem(40px);
+  background: rgba(38, 183, 255, 1);
+  border-radius: px2rem(20px);
+  font-size: px2rem(15px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: px2rem(40px);
+  text-align: center;
+}
+
+.pay_btn2 {
+  background: rgba(227, 228, 229, 1);
+}
+
+.weui-dialog__btn {
+  color: rgba(38, 183, 255, 1);
+}
+
+.recharge {
+  width: px2rem(351px);
+  height: px2rem(203px);
+  background: rgba(255, 255, 255, 1);
+  margin: px2rem(12px) auto px2rem(66px) auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.recharge span:nth-child(2) {
+  font-size: px2rem(18px);
+  font-weight: 600;
+  color: rgba(25, 26, 30, 1);
+}
+
+.recharge span:nth-child(3) {
+  font-size: px2rem(14px);
+  font-weight: 400;
+  color: rgba(135, 136, 140, 1);
+}
+
+.recharge_btn {
+  width: px2rem(200px);
+}
+
+.recharge, .stu_selection_box, .product_item {
+  border-radius: px2rem(4px);
+}

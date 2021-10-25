@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>超智多多</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<style>
+    img {
+        width: 100%;
+    }
+
+    button {
+        background-color: #89bceb;
+        border: none;
+        color: #fff;
+        border-radius: 100px;
+        padding: 4px 12px;
+        font-size: 14px;
+        line-height: 1.6;
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: 20px;
+        font-family: "Helvetica Neue",Helvetica,Tahoma,Arial,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+    }
+</style>
+
+<body>
+    <div>
+        <img src="http://source.fandoutech.com.cn/15241948362882344.jpg" alt="">
+    </div>
+	<button onclick="pay()">成为VIP</button>
+	<input id="mobile" type="hidden" value="#(mobile)"/>
+	<input id="pay_status" type="hidden" value="#(pay_status)"/>
+</body>
+<script type="text/javascript">
+
+	$(function(){
+		var pay_status = $('#pay_status').val();
+		
+		if(pay_status==1){
+			alert("购买成功，请返回app登录");
+		}
+		
+	});
+	
+	function pay() {
+
+		var mobile = $('#mobile').val();
+		
+		$.get('/wechat/ajax/chaozhi/h5Pay', {mobile:mobile}, function(
+				success) {
+			location.href = success.data.mwebUrl;
+		}, "json")
+	}
+</script>
+
+</html>

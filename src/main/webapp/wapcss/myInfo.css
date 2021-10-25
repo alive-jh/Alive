@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/*我的账户样式*/
+.center-info{background-color:#fff;padding:10px;}
+.center-info ul li a{display: block;position: relative;font:16px/38px "微软雅黑";color:#333;border-bottom:1px solid #ccc;}
+.center-info ul li:last-child a{border:none;}
+.center-info ul li a b{position: absolute;top:7px;right:0;}
+.center-info ul li a img.head-img{width:34px;height:34px;border-radius: 50%;position: absolute;top:2px;right:35px;}
+.center-info ul li a i{padding-right:35px;}
+/*我的订单*/
+
+
+

@@ -1,0 +1,125 @@
+@media screen and (min-width: 320px) and (max-width: 359px){
+    .user_name{
+        width: 90px;
+        height: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+@media screen and (min-width: 360px) and (max-width: 374px){
+    .user_name{
+        width: 105px;
+        height: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.a_grade{
+    background:rgba(255,255,255,1);
+    width: 93%;
+    margin: 12px auto;
+    border-radius:6px;
+    /*padding-bottom: 12px;*/
+}
+.grade_resource{
+    width: 93%;
+    height: auto;
+    background:rgba(244,245,247,1);
+    margin-left: 12px;
+    position: relative;
+}
+/*.green_grade_icon{
+    float: left;
+    margin: 8px 16px 0px 8px;
+
+    width:24px;
+    height:24px;
+    background:rgba(185,224,67,1);
+    border-radius:50%;
+
+    text-align: center;
+    line-height: 24px;
+
+    font-size:12px;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}
+.red_grade_icon{
+    float: left;
+    margin: 8px 16px 0px 8px;
+
+    width:24px;
+    height:24px;
+    background:rgba(255,115,102,1);
+    border-radius:50%;
+
+    text-align: center;
+    line-height: 24px;
+
+    font-size:12px;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}*/
+.all_grade_icon{
+    float: right;
+}
+.green_grade_icon{
+    float: left;
+    margin: 20px 3px 0px 0px;
+
+    width:24px;
+    height:24px;
+    background:rgba(185,224,67,1);
+    border-radius:50%;
+
+    text-align: center;
+    line-height: 24px;
+
+    font-size:12px;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}
+.red_grade_icon{
+    float: left;
+    margin: 8px 16px 0px 8px;
+
+    width:24px;
+    height:24px;
+    background:rgba(255,115,102,1);
+    border-radius:50%;
+
+    text-align: center;
+    line-height: 24px;
+
+    font-size:12px;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}
+
+
+.paragraph{
+    width: 74%;
+    height: auto;
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+    /* white-space: nowrap; */
+    /* word-break: break-all; */
+    word-wrap: break-word;
+}
+.paragraph p{
+    margin-top: 9px;
+    margin-bottom: 9px;
+
+    font-size:16px;
+    font-family:PingFang SC;
+    font-weight:200;
+    color:rgba(100,102,104,1);
+    line-height:24px;
+}

@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+.content{margin-bottom: 0;}
+.content-body{background-color:#fff;padding:10px;}
+
+/*基本信息样式*/
+.short-info{border-bottom:1px solid #DBDBDB;text-align: center;}
+.short-info .info-box{display: table;margin: 0 auto;margin-bottom:10px;}
+.short-info .head-img{width:30%;display: table-cell;vertical-align: middle;}
+.short-info .head-img img{width:100%;max-width:90px;border-radius: 50%;vertical-align: middle;}
+.short-info .text-info{display: table-cell;vertical-align: middle;padding-left:20px;text-align: left;font: 16px/25px "微软雅黑";color:#9A9A9A;}
+.short-info .text-info h3{color:#333;}
+.short-info .text-info ul{display: inline-block;}
+.short-info .text-info ul li{display: block;width:25px;height:25px;float: left;}
+.short-info .text-info ul li img{width:100%;vertical-align: middle;}
+
+.grade,.opr-btn,.tab-head{border-bottom:1px solid #DBDBDB;}
+.grade ul li{display: block;float: left;margin:10px 0;width:33.3%;text-align: center;}
+.grade ul li p{font: 16px/25px "微软雅黑";color:#333;}
+.grade ul li:nth-child(2) p{border-left:1px solid #DBDBDB;border-right: 1px solid #DBDBDB;}
+.grade ul li p span.acitve{color:#f60;}
+
+.opr-btn{paddign:10px 0;}
+.opr-btn input[type='button']{width:49%;display: inline-block;text-align: center;font: 16px/25px "微软雅黑";color: #333;margin:10px 0;border:none;background-color:#fff;}
+.opr-btn input[type='button']:first-child{border-right: 1px solid #DBDBDB;}
+
+.serve-place{padding:30px 0;font: 16px/20px "微软雅黑"; color:#9A9A9A;}
+.serve-place h3{font: 16px/25px "微软雅黑"; color:#333;}
+
+.tab-head {margin-bottom:10px;}
+.tab-head ul li{display:block;float:left;width:50%;margin-bottom: -1px;text-align: center;}
+.tab-head ul li a{display:inline-block;font:16px/35px "微软雅黑";color:#333;}
+.tab-head ul li.active a{border-bottom:2px solid #003859;color:#003859;}
+
+
+.serve-info ul li{width:50%;display: block;float: left;margin-bottom: 10px;}
+.serve-info ul li a{display: block;border:1px solid #ccc;}
+.serve-info ul li:nth-child(odd) a{margin-right:5px;}
+.serve-info ul li:nth-child(even) a{margin-left:5px;}
+.serve-info ul li img{width: 95%;padding:2.5%;}
+.serve-info ul li p{padding:10px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+
+.person-content p{font:  16px/25px "微软雅黑";color: #333;}
+.person-content img{width: 100%;}
+

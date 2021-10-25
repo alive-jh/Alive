@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=0.5, maximum-scale=1.0, minimum-scale=1.0">
+    <title>详情</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.min.css">
+    <link href="../css/courseDetails.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="vp_box">
+        <!--<video width="100%" height="100%" controls="controls" v-show="vShow">
+            <source src="" type="video/mp4">
+        </video>-->
+
+        <div class="v_box" v-show="videoBoxShow">
+            <video class="my_video" id="myVideo" v-bind:poster="setVideoBg()"
+                   webkit-playsinline="true"
+                   x-webkit-airplay="true"
+                   playsinline="true"
+                   airplay="true"
+                   x5-video-player-type="h5-page"
+                   x5-video-player-fullscreen="true"
+            >
+                <!--<source v-for="item in courseData.packDetails.media.v" v-bind:src="item" type="video/mp4">-->
+            </video>
+            <img class="v_play_icon" src="../images/video-play.png" v-show="videoPlayIcon" v-on:click="videoPlay">
+        </div>
+
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in courseData.packDetails.pics">
+                    <img v-bind:src="item" alt="">
+                </div>
+            </div>
+            <div class="swiper-pagination swiper-pagination-bullets">
+                <span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+            </div>
+        </div>
+
+        <div class="video_btn" v-bind:class="{'checked_btn': checkedBtn,'unchecked_btn': uncheckedBtn,}" v-on:click="videoBtn" v-show="videoBtnShow()">
+            <div class="triangle"></div>视频
+        </div>
+        <div class="pic_btn" v-bind:class="{'checked_btn': !checkedBtn,'unchecked_btn': !uncheckedBtn}" v-on:click="picBtn">图片</div>
+    </div>
+
+
+
+    <div class="content">
+        <div class="content_top">
+            <!--price_and_purchased_num-->
+            <div class="papn">
+                <span class="price">{{getPriceRange()}}</span><span>豆币</span>
+                <span v-show="oldPrice">原价</span><span v-show="oldPrice">{{courseData.packDetails.originalCoin}}豆币</span>
+                <span>{{getPayNum(courseData.packDetails.id)}}人已购买</span>
+            </div>
+            <p class="details">
+                {{courseData.packDetails.name}}
+            </p>
+        </div>
+        <div class="content_bottom">
+            <div class="bottom_nav">
+                <span v-bind:class="{'checked_span':checkedSpan,'unchecked_span':uncheckedSpan}" v-on:click="catalogBtn">课程目录</span>
+                <span v-bind:class="{'checked_span':!checkedSpan,'unchecked_span':!uncheckedSpan}" v-on:click="introductionBtn">课程简介</span>
+            </div>
+
+            <div class="catalog" v-show="catalogList">
+                <ul>
+                    <li v-for="(item,index) in courseData.classRoomNameList">{{index+1+"."}}{{item.className}}</li>
+                </ul>
+            </div>
+
+            <p class="introduction"  v-html="courseData.packDetails.content" v-show="introduction">
+
+            </p>
+        </div>
+    </div>
+    <div class="bottom" v-on:click="confirmOrder">
+        立即购买
+    </div>
+</div>
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+<script src="../js/public.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js"></script>
+<script src="https://cn.vuejs.org/js/vue.js"></script>
+
+<script>
+    var host = window.location.protocol+"//"+window.location.host +"/snp/v2/";
+    var productId = getQueryString('productId');
+    var app = new Vue({
+        el: '#app',
+        data: {
+            oldPrice:true,
+            checkedBtn: true,
+            uncheckedBtn: false,
+            videoBoxShow: true,
+            checkedSpan: true,
+            uncheckedSpan: false,
+            catalogList: true,
+            introduction: false,
+            videoPlayIcon:true,
+            courseData: {
+                classRoomNameList: {},
+                packDetails: {
+                    pics:[],
+                    video:''
+                }
+            },
+            payNum:{}
+        },
+        methods: {
+            init: function (productId) {
+                let that = this;
+                $.ajax({
+                    //http://test.fandoutech.com.cn
+                    url: host + 'mall/classRoomPackInfo',
+                    data: {
+                        productId: productId,
+                    },
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            console.log(res.data)
+                            that.courseData = res.data;
+                            that.courseData.packDetails.pics = that.courseData.packDetails.pics.split(',');
+                        }
+                    }
+                })
+            },
+            videoPlay: function () {
+                var that=this;
+                var myVideo = document.getElementById('myVideo');
+                that.videoPlayIcon=false;
+                myVideo.src=that.courseData.packDetails.video;
+                myVideo.play();
+                myVideo.addEventListener('ended', function (ev) {
+                    that.videoPlayIcon=true;
+                });
+            },
+            videoBtn: function () {
+                this.checkedBtn = !false;
+                this.uncheckedBtn = !true;
+                this.videoBoxShow = true;
+            },
+            picBtn: function () {
+                this.checkedBtn = false;
+                this.uncheckedBtn = true;
+                this.videoBoxShow = false;
+                if (myVideo) {
+                    this.videoPlayIcon=true;
+                    document.getElementById('myVideo').pause();
+                }
+            },
+            catalogBtn: function () {
+                this.checkedSpan = !false;
+                this.uncheckedSpan = !true;
+                this.catalogList = true;
+                this.introduction = false;
+            },
+            introductionBtn: function () {
+                this.checkedSpan = false;
+                this.uncheckedSpan = true;
+                this.catalogList = false;
+                this.introduction = true;
+            },
+            setVideoBg:function(){
+                if (this.courseData.packDetails.video==undefined){
+                    return;
+                }
+                return this.courseData.packDetails.video+'?vframe/jpg/offset/1/w/375/h/375';
+            },
+            confirmOrder: function(){
+                window.location ="./confirmOrder.html?productId="+productId;
+            },
+            getPayNumData:function(){
+                var that = this;
+                $.ajax({
+                    url: host + 'mall/peoPleCount',
+                    data: {},
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            that.payNum=res.data;
+                        }
+                    }
+                })
+            },
+            getPayNum:function (id) {
+                return this.payNum[''+id];
+            },
+            videoBtnShow:function () {
+                if (this.courseData.packDetails.video==undefined){
+                    $('.pic_btn').attr('class','pic_btn2 checked_btn');
+                    this.videoBoxShow = false;
+                    return false;
+                }
+                return true;
+            },
+           getPriceRange:function () {
+                this.$nextTick(function () {
+                    var coin = this.courseData.packDetails.coin;
+                    var originalCoin = this.courseData.packDetails.originalCoin;
+                    if (coin == undefined||coin == 0){
+                        this.oldPrice = false;
+                        $(".price").text(originalCoin);
+                    }
+                    $(".price").text(coin);
+                });
+            },
+        }
+    });
+    app.init(productId);
+    app.getPayNumData();
+</script>
+<script>
+    window.onload = function (){
+        $(".swiper-container").swiper({
+            loop: false,
+            speed: 800,
+            spaceBetween: 0,
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/*地址样式*/
+.addr-text{background-color:#fff;padding:10px;font:16px/30px "微软雅黑";color:#0c7abb;border-bottom:1px solid #ccc;margin-bottom:20px;}
+.addr-text .addr-area:after{content: "|";padding:0px 8px;}
+
+/*头部tab样式*/
+.order-by ul{display: table;width:100%;padding:5px 0;text-align:center;margin:0 auto;background-color:#fff;}
+.order-by ul li{display: table-cell;padding:0px 5px;background-color:#fff;color:#333;}
+.order-by ul li:not(:last-child){border-right:1px solid #ccc;}
+.order-by ul li span{display: inline-block;min-width:60%;padding:8px 0;}
+.order-by ul li.active span{border-bottom:2px solid #0c7abb;color:#0c7abb;}
+
+.filter-detail{position: absolute;width:100%;min-height:80px;top:100%;left:0;border-bottom:1px solid #E0E0E0;display: none;background-color:#eee;}
+
+
+/*电工列表*/
+.elecrician-lists{padding:10px 0;padding-bottom:0;font: 16px/25px "微软雅黑"; color: #9C9C9C;}
+.elecrician-lists li.list-box{background-color:#fff;margin-bottom:10px;}
+.elecrician-lists li a{display:block;padding:5px 0;display: table;width:100%;}
+.elecrician-lists li a:active{background-color:#F5F5F5;}
+
+.elecrician-lists li.list-box .head-img,.elecrician-lists li.list-box .name-info,.elecrician-lists li.list-box .price{display: table-cell;vertical-align: middle;}
+.elecrician-lists li.list-box .head-img{width:30%;max-width:90px;padding:0 10px;}
+.elecrician-lists li.list-box .head-img img{width:95%;max-width:90px;border:2px solid #eee;border-radius: 50%;vertical-align: middle;}
+
+.elecrician-lists li.list-box .name-info{min-width:35%;text-align: left;vertical-align: top;;}
+.name-info h3{font-weight: bold;font: 16px/30px "微软雅黑"; color: #9777A81;}
+.name-info h3 b{font-weight:bold;color:#333;padding-right:8px;}
+.name-info p,.price p{line-height: 30px;color:#777A81;}
+.name-info p span,.price p span{color:#333;position:relative;padding-left:20px;}
+.name-info p span:before,.price p span:before{content:"";position:absolute;width:20px;height:25px;top:0;left:0;background:url(../images/listIcons.png) no-repeat left top;background-size:20px auto;}
+.elecrician-lists li.list-box .collect-icon span:before{background-position:0px -24px;}
+.elecrician-lists li.list-box .orders-icon span:before{background-position:0px -45px;}
+.elecrician-lists li.list-box .score-icon span:before{background-position:0px 0px;}
+.elecrician-lists li.list-box .addr-icon span:before{background-position:0px -67px;}
+
+.price{min-width:35%;text-align: right;vertical-align: bottom;padding-right:10px;}
+
+
+
+/*底部样式*/
+.list-footer{position: fixed;max-width: 768px;left:0;right:0;margin:0 auto;bottom:0;border-top:2px solid #7E99AA;background-color:#DCDCDC;}
+.list-footer a{position: relative;display: block;text-align: center;padding:10px 0;}
+.list-footer a p{font: 16px/40px "微软雅黑";}
+.list-footer a span.loading-icon{position: absolute;top:17px;left:10px;}
+.list-footer a span.arrow{position: absolute;top:17px;right:10px;}
+
+@media only screen and (min-width:768px ) {
+	.content-body{padding: 0;width:768px;}
+}

@@ -1,0 +1,55 @@
+@function px2rem($px){
+  $rem:37.5px;
+  @return ($px / $rem) + rem;
+}
+body{
+  background: rgba(255,255,255,1);
+}
+.weui-search-bar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  /* margin-top: 48px;*/
+  height: 48px;
+  background: rgba(255,255,255,1);
+}
+.weui-search-bar__form{
+  height: 32px;
+  background-color: rgba(255,255,255,1);
+}
+.weui-search-bar__box{
+  background: rgba(245,246,250,1);
+  border-radius: 4px;
+}
+.weui-search-bar__box .weui-search-bar__input{
+  height: 100%;
+  padding: 0;
+}
+.weui-search-bar__form:after{
+  border: 0;
+
+}
+.weui-search-bar.weui-search-bar_focusing .search_btn{
+  display: block;
+}
+.weui-search-bar:after, .weui-search-bar:before{
+  content: none;
+}
+.search_btn{
+  color: rgba(38,183,255,1);
+  font-size: 15px;
+  margin-left: px2rem(10px);
+  white-space: nowrap;
+}
+.search_result{
+  margin-top: px2rem(48px);
+}
+.product_item{
+  background: rgba(255,255,255,1);
+  margin:0 auto px2rem(12px) auto;
+}
+.not_found_hint{
+  text-align: center;
+  color: rgba(135,136,140,1);
+}

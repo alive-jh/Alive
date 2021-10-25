@@ -1,0 +1,64 @@
+.weui-cell{
+    text-align: center;
+}
+.weui-cells_radio .weui-check:checked+.weui-icon-checked:before{
+    color: #26B7FF;
+    font-size: 18px;
+}
+.weui-cell__bd p{
+    font-size:16px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(25,26,30,1);
+}
+.toolbar .picker-button{
+    color: #26B7FF;
+}
+.cycle_selection{
+    width: 100%;
+    height: 48px;
+    background: rgba(255, 255, 255, 1);
+    position: relative;
+    top: 0;
+    left: 0;
+}
+#job{
+    width: 100%;
+    height: 100%;
+    border: 0;
+    text-align: center;
+    outline: none;
+}
+#job,.this_week{
+    font-size:16px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(25,26,30,1);
+}
+.this_week{
+    color: #FFBA59;
+    position: absolute;
+    top: 11px;
+    left: 25px;
+}
+.zhoubao_xiala_icon{
+    position: absolute;
+    top: 19px;
+    right: 15px;
+}
+.this_week2{
+    color: #FFBA59;
+    position: absolute;
+    top: 11px;
+    left: 12px;
+    font-size: 15px;
+}
+/*
+.set_year{
+    background:rgba(255, 255, 255, 1 );
+}
+.a_certain_year{
+    height: 44px;
+    line-height: 44px;
+    border-top: 1px red solid;
+     }*/

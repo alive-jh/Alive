@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=yes, width=640">
+<title>学习记录</title>
+<style type="text/css">
+.header {
+	width: 100%;
+	text-align: center;
+}
+
+.header p {
+	font-size: 30px;
+	color: white;
+	font-weight: 500;
+}
+
+p{margin:0px;}
+.box {
+	position: relative;
+	top: 100px;
+	left: 100px;
+	width: 180px;
+	height: 100px;
+	background: white;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	padding: 15PX;
+	margin-top: 10px;
+}
+
+.box:before {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	right: 100%;
+	top: 38px;
+	border-top: 13px solid transparent;
+	border-right: 26px solid white;
+	border-bottom: 13px solid transparent;
+}
+
+.p-student {
+	height: 30px;
+}
+
+.p-student:BEFORE {
+	top: 15px;
+	border-top: 5px solid transparent;
+	border-right: 19px solid white;
+	border-bottom: 7px solid transparent;
+}
+
+.box span {
+	font-size: 18px;
+}
+
+.info{
+margin-top: 10px;
+}
+
+.info p{
+font-size:30px; 
+line-height: 50px;
+margin-top: 30px;
+}
+
+.header p{
+margin-top: 20px;
+}
+
+.code p{
+margin-top: 0px;
+}
+</style>
+<script type="text/javascript">
+	var data = #(notdata);
+	if(data==1){
+		alert("暂无学习记录");
+	}
+</script>
+</head>
+<body background="/wechat/statistical/img/_20180319131222.png">
+
+	<div class="header">
+		<p>#(StudentName)</p>
+		<p>加入凡豆英语课堂</p>
+		<p>累计学习#(joinDays)天</p>
+	</div>
+	
+	
+	<div class="info" style="width: 80%;margin: 0 auto;background-color: yellow;height: 400px;border-radius: 10px;text-align: center;padding: 10px;margin-top: 50px;">
+		<p>最高得分:#(maxScore)分</p>
+		<p>总学习时间：#(totalCostTime)小时</p>
+		<p>每节课耗时间:#(perCostTime)分钟</p>
+		<p>上过的课程:#(countCourse)节</p>
+		<p>平均得分:#(perScore)分</p>
+	</div>
+	
+	<div class="info" style="width: 90%;margin: 0 auto;background-color: white;height: 200px;border-radius: 10px;text-align: center;padding: 10px;margin-top: 80px;position: fixed;bottom: 58px;left: 4%">
+			
+			<div class="code" style="float: left;padding-left: 20px;font-size: 10px;">
+				<p>&nbsp;</p>
+				<p>长按扫描二维码</p>
+				<p>查看精彩学习视频</p>
+				<p>&nbsp;</p>
+			</div>
+			<div class="img" style="float: right;margin-top: 20px;margin-right: 20px">
+				<img alt="" src="https://qr.api.cli.im/qr?data=http%253A%252F%252Fwechat.fandoutech.com.cn%252Fwechat%252Fh5%252FuserVideo%252FgetShowStudents&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=0b1346650f0d8d0d556fa3c04942e328" width="160px" height=""160px">
+			</div>
+	</div>
+</body>
+</html>

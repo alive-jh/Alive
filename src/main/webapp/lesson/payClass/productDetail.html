@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>班级详情</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="/wechat/lesson/payClass/css/common.css">
+</head>
+<body>
+<div class="header">
+    <div>
+        <div>
+            <img src=""
+                 onerror='this.src="http://word.fandoutech.com.cn/app/OnlineCourse/18675590049/bb6aee9f554532a7efd038eb3053af22.jpg"'
+                 alt="">
+        </div>
+        <span id="classGradesName">班级</span>
+    </div>
+    <div class="header-item">
+        <div>
+            <span>班级简介</span>
+            <span class="summary">课堂简介</span>
+        </div>
+    </div>
+    <div class="header-item">
+        <div>
+            <span>带班老师</span>
+            <span class="teacherName">老师</span>
+        </div>
+    </div>
+</div>
+<div class="school">
+    <div class="title">
+        所属机构
+    </div>
+    <div class="cover">
+        <img src=""
+             onerror='this.src="/wechat/lesson/payClass/images/school_default.png"'
+             alt="">
+        <div class="schoolName">学校</div>
+    </div>
+    <div class="header-item">
+        <div>
+            <span>机构地址</span>
+            <span class="address">地址</span>
+        </div>
+    </div>
+    <div class="header-item">
+        <div>
+            <span>机构电话</span>
+            <span class="tel">电话</span>
+        </div>
+    </div>
+    <div class="header-item">
+        <div>
+            <span>上课时间</span>
+            <span>09:00~21:00</span>
+        </div>
+    </div>
+    <div class="header-item">
+        <div style="border-bottom: none;">
+            <span>机构形象</span>
+        </div>
+    </div>
+    <div class="pic">
+        <img src="http://www.fandoutech.com/zb_users/theme/tx_fandoutech/include/center-01.jpg" alt="">
+        <img src="http://www.fandoutech.com/zb_users/theme/tx_fandoutech/include/center-01.jpg" alt="">
+        <img src="http://www.fandoutech.com/zb_users/theme/tx_fandoutech/include/center-01.jpg" alt="">
+    </div>
+</div>
+<div class="footer">
+    <div>
+        加班费用
+        <span>¥</span>
+        <span class="price">36.00</span>
+    </div>
+    <div onclick="payView()">购买</div>
+</div>
+<!--<script src="../../js/jquery.min.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script>
+
+    function device() {
+        const u = navigator.userAgent;
+        const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid)
+            return 'android';
+        if (isiOS)
+            return 'ios';
+    }
+
+    let students;
+    let studentsDisplayValues;
+
+    let isReset = true;//是否归为
+    let isGetCode = true;
+    let mobile;
+    let studentId;
+
+
+    var product = '#(product)';
+    $.ajax({
+        url: 'http://office.fandoutech.com:8809/sell/productInfo?product=' + product,
+        data: {},
+        success: function (res) {
+            console.log(res)
+            $("#classGradesName").text(res.data.grade.classGradesName)
+            $(".header img").attr("src", res.data.grade.cover)
+            $(".summary").text(res.data.grade.summary)
+            $(".teacherName").text(res.data.grade.teacherName)
+            //---------------------------------------------------
+
+            $(".address").text(res.data.grade.school.address)
+            $(".tel").text(res.data.grade.school.tel)
+            $(".schoolName").text(res.data.grade.school.name)
+
+
+            $(".price").text(res.data.grade.price)
+
+            var imgs = '';
+            res.data.grade.school.pics.forEach(function (v) {
+                console.log(v)
+                imgs += '<img src="' + v + '" alt="">'
+            })
+            $(".pic").html(imgs)
+        },
+        error: function (e) {
+            console.log(e)
+        }
+    });
+
+    function payView() {
+        $("body").css("overflow", "hidden");
+        var html = `<div class="info" id="payInfoView">
+                        <div id="info-content">
+                            <div>完善以下信息</div>
+                            <div>
+                                <div>
+                                    <div class="blue step1">1</div>
+                                    <div></div>
+                                    <div class="step2">2</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="info-item phone-view"><input type="number" placeholder="请输入手机号码"> <img style="display: none" src="/wechat/lesson/payClass/images/goumai_qingchu_icon@2x.png" alt=""></div>
+                                <div class="info-item code-view"><input type="number" placeholder="请输入验证码"><span class="blue" onclick="getCode()">获取验证码</span></div>
+
+                                <div style="display: none" class="info-item student-view1"><input type="text" value="请选择"/><img src="/wechat/lesson/payClass/images/goumai_xuanz_icon@2x.png" alt=""></div>
+                                <div style="display: none" class="info-item student-view2"><input type="text" placeholder="请输入学生名"/><img style="display: none" src="/wechat/lesson/payClass/images/goumai_qingchu_icon@2x.png" alt=""></div>
+                            </div>
+                            <div class="action-view" onclick="success()" style="display: none">
+                                确定
+                            </div>
+                            <div class="clear-info" onclick="closePayInfoView()"><img src="/wechat/lesson/payClass/images/goumai_guanbi_icon@2x.png" alt=""></div>
+                        </div>
+                    </div>`;
+
+        $('body').append(html)
+
+
+        $(".student-view1 input").picker({
+            title: "请选择您的学生",
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: ["123", "123"],
+                    // displayValues: studentsDisplayValues
+                }
+            ],
+            onChange: function (e) {
+                // studentId = studentsDisplayValues[e.cols[0].activeIndex]
+            }
+        });
+
+        $(".phone-view input").focus(function () {
+            $(".phone-view img").show();
+        });
+        $(".code-view input").keyup(function () {
+            let num = $(this).val();
+            let account = $(".phone-view input").val();
+            if (num.length >= 6) {
+                mobile = $(this).val();
+                $.showLoading();
+                $.ajax({
+                    url: 'http://office.fandoutech.com:8809/user/acStudent',
+                    data: {
+                        account: account,
+                        code: num
+                    },
+                    success: function (res) {
+                        console.log(res)
+                        console.log("输入完毕")
+                        if (res.code == 200) {
+                            //关闭步骤1
+                            $(".phone-view").remove();
+                            $(".code-view").remove();
+                            $(".info > div > div:nth-child(2) > div > div:nth-child(2)").css("background-color", "rgba(38,183,255,1)")
+                            $(".step1").css("background-color", "#fff");
+                            $(".step1").css("color", "rgba(38,183,255,1)");
+                            //打开步骤2
+                            $(".student-view1").show()
+                            $(".action-view").show()
+                            $(".step2").addClass("blue")
+                            window.scrollTo(0, 0);
+                            $.hideLoading();
+
+                            students = [];
+                            studentsDisplayValues = [];
+                            res.data.students.forEach(function (v) {
+                                students.push(v.name);
+                                studentsDisplayValues.push(v.id);
+                            });
+                            $(".student-view1 input").picker({
+                                title: "请选择您的学生",
+                                cols: [
+                                    {
+                                        textAlign: 'center',
+                                        values: students,
+                                        // displayValues: studentsDisplayValues
+                                    }
+                                ],
+                                onChange: function (e) {
+                                    studentId = studentsDisplayValues[e.cols[0].activeIndex]
+                                }
+                            });
+                        } else if (res.code == 20501) {
+                            $.toast(res.msg, "text");
+                        } else if (res.code == 20502) {
+                            //关闭步骤1
+                            $(".phone-view").remove();
+                            $(".code-view").remove();
+                            $(".info > div > div:nth-child(2) > div > div:nth-child(2)").css("background-color", "rgba(38,183,255,1)")
+                            $(".step1").css("background-color", "#fff");
+                            $(".step1").css("color", "rgba(38,183,255,1)");
+                            //打开步骤2
+                            students = [];
+                            $(".student-view2").show()
+                            $(".action-view").show()
+                            $(".step2").addClass("blue")
+                            $(".student-view2 input").focus(function () {
+                                $(".student-view2 img").show();
+                            });
+                            window.scrollTo(0, 0);
+                            $.hideLoading();
+                        } else {
+                            $.hideLoading();
+                            $.toast("服务器繁忙，请稍后再试", "text");
+                        }
+
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    }
+                });
+            }
+        });
+    }
+
+    function getCode() {
+        mobile = $(".phone-view input").val();
+        if (mobile == "" || mobile.length != 11) {
+            $.toast("请输入正确手机号码", "forbidden");
+            return;
+        }
+        if (isGetCode) {
+            isGetCode = false;
+            let num = 60;
+            let fashi = setInterval(function () {
+                if (num <= 0) {
+                    window.clearInterval(fashi);
+                    $(".code-view span").text("获取验证码")
+                    isGetCode = true;
+                    return;
+                }
+                $(".code-view span").text(num)
+                num--;
+            }, 1000);
+        } else {
+            return;
+        }
+        $.ajax({
+            url: 'http://office.fandoutech.com:8809/user/lrCode',
+            data: {
+                mobile: mobile
+            },
+            success: function (res) {
+                console.log(res)
+
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        });
+    }
+
+    function success() {
+        if (students.length <= 0) {
+            var name = $(".student-view2 input").val();
+            $.ajax({
+                url: 'http://office.fandoutech.com:8809/user/randc',
+                data: {
+                    account: mobile,
+                    code: "073166",
+                    name: name
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code == 200) {
+                        pay(res.data.id);
+                    }
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+            return;
+        }
+        if (studentId) {
+            pay(studentId)
+            return;
+        }
+        $.toast("请选择学生", "forbidden");
+    }
+
+    function pay(studentId) {
+        $.ajax({
+            url: 'http://office.fandoutech.com:8809/sell/pay',
+            data: {
+                student: studentId,
+                specification: 5025,
+                type: "offcia"
+            },
+            success: function (res) {
+                console.log(res)
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        });
+    }
+
+    function closePayInfoView() {
+        $("body").css("overflow", "")
+        $("#payInfoView").remove()
+    }
+
+    function stopBubble(e) {
+        if (e && e.stopPropagation) {//非IE浏览器
+            e.stopPropagation();
+        } else {//IE浏览器
+            window.event.cancelBubble = true;
+        }
+    }
+
+</script>
+</body>
+</html>

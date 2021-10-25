@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>绑定学生卡</title>
+<!-- head 中 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+<style type="text/css">
+.wrapper {
+	padding: 10px;
+} 
+
+.bind-btn {
+	margin-top: 50px;
+}
+
+.border-radius {
+	border-radius: 5px;
+}
+
+body {
+	width: 100%;
+	background:
+		url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528103153968&di=976b0ff6f913b8416ad2e13aae78c2bd&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201511%2F29%2F20151129194142_hZzMP.jpeg")
+		no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+}
+
+.code-button {
+	color: red;
+	width: 112px;
+	font-size: 14px;
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<div id="bind-box" style="display: none;">
+			<div id="bind-raltion" class="weui-cells weui-cells_form border-radius">
+
+				<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">学生卡：</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" id="rfid" type="number" placeholder="请输入学生卡号">
+					</div>
+				</div>
+				<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">家长手机号：</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" id="friendId" type="number" pattern="[0-9]*" placeholder="请输入家长手机号">
+					</div>
+				</div>
+
+			</div>
+
+			<div class="bind-btn">
+				<button id="bind-relation" class="weui-btn weui-btn_primary">开始绑定</button>
+			</div>
+
+		</div>
+
+
+		<div id="register-box">
+			<div id="regiset" class="weui-cells weui-cells_form border-radius">
+
+				<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">手机号：</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" id="mobile" type="number" placeholder="请输入手机号" value="">
+					</div>
+				</div>
+
+				<div class="weui-cell">
+					<div class="weui-cell__hd">
+						<label class="weui-label">密码：</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" id="password" type="password" placeholder="请输入帐号密码" value="">
+					</div>
+				</div>
+
+				<div class="weui-cell weui-cell_vcode">
+					<div class="weui-cell__hd">
+						<label class="weui-label">验证码：</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" type="number" placeholder="请输入验证码" id="v_code" value="">
+					</div>
+					<div class="weui-cell__ft">
+						<button id="code-button" class="weui-vcode-btn code-button">获取验证码</button>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="bind-btn">
+				<button id="register-btn" class="weui-btn weui-btn_primary weui-btn_warn">注册</button>
+				<button id="register-btn" class="weui-btn weui-btn_primary" onclick="existAccount()">已有帐号？</button>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		$(".wrapper").css({
+			position : "absolute",
+			top : ($(window).height() - $(".wrapper").height()) / 2
+		});
+	});
+
+	$("#bind-relation").click(function() {
+		var rfid = $('#rfid').val();
+		var friendId = $('#friendId').val();
+
+		$.post('/wechat/v2/student/addRfidRealtion', {
+			rfid : rfid,
+			friendId : friendId,
+			_sign : '5DC54A6A5EDB8FA819F5CF2DB86D45D1',
+			_time : 1525842696825
+		}, function(success) {
+			if (success.code == 200) {
+				$.toast("操作成功");
+			} else {
+				$.toast(success.msg, "cancel");
+			}
+		}, 'json');
+	});
+
+	$('#code-button').click(function() {
+		if (sendSmsCode($('#mobile').val())) {
+			countdown_('.weui-vcode-btn', '获取验证码');
+		} else {
+
+		}
+
+	});
+
+	$('#register-btn').click(function() {
+		register();
+	});
+
+	var account_global = '';
+	var rfid_global = '';
+
+	function register() {
+
+		var account = $('#mobile').val();
+		var password = $('#password').val();
+		var vCode = $('#v_code').val();
+
+		$.ajax({
+			type : "post",
+			url : "/wechat/v2/user/registerAccount",
+			data : {
+				_sign : 'DCA1C5B4944369937A1995982BF01054',
+				_time : 1525842696825,
+				mobile : account,
+				password : password,
+				code : vCode
+			},
+			async : false,
+			dataType : "json",
+			beforeSend : function() {
+			},
+			complete : function() {
+			},
+			success : function(success) {
+				if (success.code == 200) {
+					account_global = success.data;
+					$.toast("注册成功");
+					$('#friendId').val(success.data)
+					existAccount();
+
+				} else {
+					$.toast(success.msg, "forbidden");
+				}
+			}
+		});
+
+	}
+
+	var countdown_sec = 60;
+
+	var countdown_ = function countdown(element, text) {
+		var $_element = $(element);
+		if (countdown_sec == 0) {
+			$_element.removeAttr('disabled');
+			$_element.text('获取验证码');
+			countdown_sec = 60;
+			return;
+		} else {
+			$_element.attr("disabled", 'disabled');
+			$_element.text(countdown_sec + 'S');
+			countdown_sec--;
+		}
+
+		setTimeout(function() {
+			countdown_(element);
+		}, 1000);
+	}
+
+	function existAccount() {
+		$('#register-box').hide();
+		$('#bind-box').show();
+	}
+
+	function sendSmsCode(mobile) {
+
+		var status = false;
+
+		if (mobile) {
+			$.ajax({
+				type : "post",
+				url : "/wechat/v2/user/sendSmsCode",
+				data : {
+					mobile : mobile,
+					_sign : 'D6BFA93688E0090F075DB3EBDBA627F8',
+					_time : 1525842696825
+
+				},
+				async : false,
+				dataType : "json",
+				beforeSend : function() {
+				},
+				complete : function() {
+				},
+				success : function(success) {
+					if (success.code == 200) {
+						$.toast("验证码已发送");
+						status = true;
+					} else {
+						$.toast(success.msg, "forbidden");
+						status = false;
+					}
+				}
+			});
+		} else {
+			$.toast('请输入手机号', "forbidden");
+			status = false;
+		}
+
+		return status;
+	}
+</script>
+</html>

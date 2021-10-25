@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+.content{margin:0;}
+/*输入框部分样式*/
+.send-message ul{background-color:#fff;display: table;width:100%;}
+.footer-nav li{width:auto;display:table-cell;float:none;vertical-align: middle;}
+.footer-nav li.input-box{width:100%;border:1px solid #B3B3B3;border-radius: 8px;padding:0px 45px 0px 10px;position: relative;}
+.footer-nav li.input-box input[type='text']{width:100%;border:none;font: 16px/35px "微软雅黑";color:#333;}
+.footer-nav li.input-box input[type='button']{border:none;background-color:transparent;font: 16px/35px "微软雅黑";color:#333;position: absolute;top:0;right:0;}
+
+
+.footer-nav li.home span{background-position: 0px 0px;}
+.footer-nav li.order span{background-position: -40px 0px;}
+.footer-nav li.me span{background-position: -80px 0px;}
+.footer-nav li.home a:hover span{background-position: 0px 0px;}
+.footer-nav li.order a:hover span{background-position: -40px 0px;}
+.footer-nav li.me a:hover span{background-position: -80px 0px;}
+
+/*对话内容样式*/
+.model{display: none;}
+.dialog-box{background-color:#fff;min-height:400px;overflow: auto;padding:10px;}
+.dialog-box .dialog-text{position: relative;margin-bottom:10px;}
+.dialog-box .left-dialog .dialog-text {margin-left:50px;}
+.dialog-box .dialog-text img{width:40px;height:40px;border-radius: 50%;position: absolute;top:0;}
+.dialog-box .left-dialog .dialog-text img{left:-50px;}
+
+.dialog-box .dialog-text i.l-arrow{width:10px;height:10px;position: absolute;top:34px;background:url(../images/contact-icon.png) no-repeat;background-size:100%;}
+.dialog-box .left-dialog .dialog-text i.l-arrow{left:-8px;background-position:0px 0px;}
+
+.dialog-box .dialog-text p.name{font: 14px/30px "微软雅黑";color:#CDCDCD;}
+.dialog-box .dialog-text span{display:inline-block;padding:10px;border:1px solid #ccc;border-radius: 5px;font: 16px/25px "微软雅黑";color:#333;}
+
+.dialog-box .right-dialog{text-align: right;}
+.dialog-box .right-dialog .dialog-text {margin-right:50px;}
+.dialog-box .right-dialog .dialog-text img{right:-50px;}
+.dialog-box .right-dialog .dialog-text i.l-arrow{right:-8px;background-position:0px -10px;}
+.dialog-box .right-dialog .dialog-text span{color:#003859;}
+
+
+@media only screen and (min-width:768px ) {
+	.content-body{padding: 0;width:768px;}
+}

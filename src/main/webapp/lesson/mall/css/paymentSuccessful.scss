@@ -1,0 +1,100 @@
+@function px2rem($px){
+  $rem:37.5px;
+  @return ($px / $rem) + rem;
+}
+body{
+  background: rgba(255,255,255,1);
+}
+.success_prompt{
+  width: px2rem(375px);
+  height: px2rem(355px);
+  background: rgba(255,255,255,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+.success_icon{
+  width: px2rem(150px);
+  height: px2rem(150px);
+}
+.success_prompt span:nth-child(2){
+  font-size: px2rem(18px);
+  font-weight: 600;
+  color: rgba(25,26,30,1);
+  /*position: relative;
+  top: -10px;*/
+ /* margin-top: px2rem(-20px);*/
+}
+/*.success_prompt span:nth-child(3){
+  font-size: px2rem(14px);
+  font-weight: 400;
+  color: rgba(135,136,140,1);
+  margin-top: px2rem(-30px);
+}*/
+.success_prompt{
+  border-radius: px2rem(4px);
+}
+.btn_box{
+  width: px2rem(262px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.order_list_btn{
+}
+.goto_class,.order_list_btn{
+  width: px2rem(120px);
+  height: px2rem(40px);
+  background: rgba(255,255,255,1);
+  border: 2px solid rgba(227, 228, 232, 1);
+  border-radius: px2rem(20px);
+  text-align: center;
+  line-height: px2rem(40px);
+
+  font-size: px2rem(15px);
+  font-weight: 400;
+  color: rgba(85,86,90,1);
+}
+.invite_friends{
+  width: px2rem(351px);
+  height: px2rem(81px);
+  margin: 0 auto;
+  background:rgba(245,246,250,1);
+  border-radius: px2rem(4px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.invite_prompt{
+ /* font-size:16px;*/
+}
+.invite_prompt span:nth-child(1){
+  display: block;
+  font-size: px2rem(16px);
+  font-weight: 400;
+  color: rgba(25,26,30,1);
+}
+.invite_prompt span:nth-child(2){
+  display: block;
+  font-size: px2rem(12px);
+  font-weight: 400;
+  color: rgba(135,136,140,1);
+  padding-top: px2rem(5px);
+}
+
+.invite_btn{
+  width: px2rem(80px);
+  height: px2rem(40px);
+  background: linear-gradient(-90deg,rgba(38,219,255,1),rgba(38,183,255,1));
+  border-radius: px2rem(20px);
+  text-align: center;
+  line-height: px2rem(40px);
+
+  font-size: px2rem(14px);
+  font-weight: 400;
+  color: rgba(255,255,255,1);
+}

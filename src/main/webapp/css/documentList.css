@@ -1,0 +1,6 @@
+.documentList{margin-left:0px;}
+.documentList li{cursor:pointer;list-style: none;display: inline-block;margin:0px 10px 10px 0px;position: relative;padding:5px 15px;}
+.documentList li span{font-size:48px;}
+.documentList li .docName{text-align:center;}
+.documentList li .checkedMark{text-align:center;vertical-align:middle;background-color:rgba(0,0,0,.45);position: absolute;top:0;left:0;right:0;bottom:0;border-radius:4px;}
+.documentList li .checkedMark label{color:#fff;margin-top:42%;font-size:20px;}

@@ -1,0 +1,72 @@
+.header {
+	background-color: orange;
+	height: 30px;
+}
+.header a {
+    color: white;
+    font-size: 15px;
+    line-height: 30px;
+    margin-left: 10px;
+}
+.title {
+    width: 100%;
+    text-align: left;
+    padding: 10px 30px 0px 20px;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	line-height: 50px;
+	font-size: 14px;
+	background-color: orange;
+	width: 100%;
+}
+
+.video-buttons{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.jiange{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.video-button{
+	vertical-align: text-top;
+}
+
+.video{
+	padding:0px 8px 0px 9px;
+}
+
+.juzhong{
+	bottom: 116px;
+}
+
+.video video{
+	background: black;
+}
+
+.star-score{
+	text-align: center;
+	height: 50px;
+}
+.hide-hr0{
+	display: none;
+}
+.weui-grids:BEFORE {
+	right: 0;
+    height: 1px;
+    border-top: 0px solid #d9d9d9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.title a{
+	color: black;
+}
+

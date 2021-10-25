@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../css/studyRecord.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/media-box.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <script  src="../js/media-box.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="back-box">
+    <img class="stuHead" v-bind:src='avatarSrc'/>
+    <span class="stuName">{{studName}}</span>
+    <div class="desc">
+        <span class="class_des">我正在学习《{{classRoom.className}}》,快来看看我的精彩表现.</span>
+    </div>
+    <div class="backGround_div">
+        <img class="backGround_img" src="../images/bg_footer@2x%20_backGround.png" />
+
+        <div class="videoBackGround_div">
+            <img class= "video_backGround_img"   src="../images/bg_footer@2x%20_video.png">
+            <div class="player_box">
+                <media-box ref="myChild" v-bind:momentData="momentData"></media-box>
+                <img
+                        v-show="showPic"
+                        v-on:click="start"
+                        src="../images/player.png"
+                        class="play_btn"
+                />
+            </div>
+        </div>
+    </div>
+
+</div>
+<img  class="foot_pic"  src="../images/bg_footer@2x%20_last.png">
+
+<script>
+
+    var  uri;
+
+    function getQueryName(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return;
+    }
+
+    let avatar = getQueryName("avatar");
+    let studentName = window.sessionStorage.getItem("name");
+    let group = getQueryName("groupId");
+
+
+    if (uri ==undefined){
+       uri ="../images/defaultAvatar.png"
+    }else {
+        uri = decodeURI(avatar);
+    }
+
+
+
+    var temp;
+    var app = new Vue({
+
+        el: '#back-box',
+        data: function () {
+            return {
+                replyList: {},
+                momentData:[],
+                classRoom:[],
+                showPic:true,
+                avatarSrc:uri,
+                studName:studentName,
+                groupId:group,
+            }
+        },
+        mounted() {
+            let that = this;
+            $.ajax({
+                url:
+                    "http://test.fandoutech.com.cn/wechat/v2/lesson/lessonReplyGroup",
+                data: {
+                    member:0,
+                    group:group,
+                },
+                type: "post",
+                success: function(res) {
+
+                    that.classRoom = res.data.classRoom;
+
+                }
+            });
+
+        },
+
+
+        methods: {
+            start:function () {
+                this.$refs.myChild.start();
+                this.showPic=false;
+            },
+            stopPlay:function (test=123) {
+                console.log(test);
+                this.showPic=true;
+            }
+        },
+    })
+
+</script>
+
+<script type="text/javascript" src="../js/rem.js"></script>
+
+</body>
+</html>

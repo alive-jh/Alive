@@ -1,0 +1,296 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background:rgba(245,246,250,1);
+}
+#header{
+    width:100%;
+    height:48px;
+    background:rgba(255,255,255,1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+#all_card{
+    width: 50%;
+    height: 48px;
+    float: left;
+    text-align: center;
+    line-height: 48px;
+}
+#my_card{
+    width: 50%;
+    height: 48px;
+    float: left;
+    text-align: center;
+    line-height: 48px;
+}
+#header hr{
+    width: 24px;
+    height: 3px;
+    background:rgba(38,183,255,1);
+    border: 0;
+    margin: -5px auto 0 auto;
+}
+.checked_card{
+    width:auto;
+    height:auto;
+    font-size:16px;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+    color:rgba(25,26,30,1);
+}
+.un_checked_card{
+    width:auto;
+    height:auto;
+    font-size:16px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(135,136,140,1);
+}
+#all_comment{
+    margin-top: 50px;
+}
+.moment{
+    width: 100%;
+    background: rgba(255,255,255,1);
+    margin-bottom: 12px;
+    /*padding-right: 4%;*/
+}
+
+/*用户*/
+.user_info{
+    height:58px;
+    width: 100%;
+    padding-bottom: 16px;
+    /*background-color: #ffb100;*/
+}
+
+.publish_text,.publish_pic_and_video,.publish_audio,.course,.comment_and_like{
+    width: 79%;
+    margin-left: 64px;
+    padding-bottom: 16px;
+    /*   background-color: #ffb100;*/
+}
+.publish_pic_and_video{
+    padding-bottom: 13px;
+}
+.publish_audio,.course{
+    height: 50px;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+    background:rgba(235,248,255,1);
+    border-radius:50%;
+    margin-top: 17px;
+    margin-left: 12px;
+}
+.user_name,.time{
+    display: block;
+    margin-left: 64px;
+}
+.user_name{
+    margin-top:-50px;
+    font-size:16px;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+    color:rgba(87,107,149,1);
+}
+.time,.delete_moment_btn{
+    height: 10px;
+    font-size:13px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(135,136,140,1);
+    display: inline-block;
+}
+.delete_moment_btn{
+    color:rgba(87,107,149,1);
+    margin-left: 8px;
+}
+
+/*文本*/
+.paragraph{
+    max-height: 72px;
+    width: 100%;
+    font-size:16px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(25,26,30,1);
+    line-height:24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+/*图片与视频*/
+.publish_pic_and_video{
+    height: auto;
+}
+
+ul li{
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    position: relative;
+}
+ul{
+    list-style: none;
+    font-size: 0;
+}
+.av_bg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius:4px;
+}
+
+/*音频*/
+.myAudio{
+    width: 100%;
+    height: 50px;
+}
+/*视频*/
+.v_box{
+    position:fixed;left:0;top:0;
+    width:100%;
+    height:100%;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background-color: black;
+}
+#myVideo{
+    width: 100%;
+    height: 100%;
+    display: none;
+    /*object-fit: fill;*/
+}
+.v_close{
+    position: fixed;
+    top: 35px;
+    left: 30px;
+    z-index: 999;
+    display: none;
+    width: 30px;
+    height: 30px;
+}
+/*课程*/
+.course_info{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    height: 44px;
+    padding-top: 6px;
+    border-radius:4px;
+    background:rgba(245,246,250,1);
+}
+.course_img{
+    width: 38px;
+    height: 38px;
+    margin-left: 6px;
+    margin-right: 8px;
+    vertical-align:middle;
+}
+.course_name{
+    font-size:14px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(25,26,30,1);
+}
+
+
+/*点赞，评论*/
+.comment_and_like{
+    height: 35px;
+    /*padding-top: 3px;*/
+    padding-bottom: 7px;
+    /*background-color: #ffb100;*/
+}
+.share_btn{
+    display: inline-block;
+    margin-left: 3px;
+}
+.share_icon{
+    margin-right: 4px;
+}
+.like ,.comment_{
+    display: inline-block;
+    /*float: right;
+    margin-right: 3px;*/
+}
+.comment_{
+    margin-right: 32px;
+}
+.like_icon , .comment_icon ,.share_icon{
+    width:18px;
+    height:17px;
+    vertical-align:middle;
+}
+.comment_counts , .like_counts , .share_span{
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(85,86,90,1);
+    margin-right: 4px;
+}
+.play_btn{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+}
+.public_and_private{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 11px;
+    border-top: 1px solid rgba(245,246,250,1);
+}
+
+.public_btn{
+    border: 0;
+    outline: none;
+    background:rgba(255,255,255,1);
+    width:auto;
+    height:auto;
+    font-size:13px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(87,107,149,1);
+    margin-left: 64px;
+}
+
+.weui-gallery__img{
+    bottom: 0;
+    object-fit: cover;
+}
+
+.join{
+    width: 100%;
+    height:49px;
+    background:rgba(38,183,255,1);
+    text-align: center;
+    line-height: 49px;
+    position: fixed;
+    bottom: 0;
+}
+.join .text1{
+    width:87px;
+    height:17px;
+    font-size:18px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}

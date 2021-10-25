@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预约直播课</title>
+    <link rel="stylesheet" href="/wechat/live/css/booking.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+</head>
+<body>
+<div id="box">
+    <!--<input type="text" id='datetime-picker'/>-->
+    <form action="saveBooking" method="post">
+        <!--<div class="next">跳过</div>-->
+        <div class="title">
+            <div>预约英语实战PVP</div>
+            <div>(一节直播课约25分钟)</div>
+        </div>
+        <div class="input">
+            <div class="">联系方式：</div>
+            <div class="">
+                <input name="mobile" class="weui-input" type="number" pattern="[0-9]*" value="#(mobile)"
+                       placeholder="请输入手机号码">
+            </div>
+        </div>
+        <div class="input">
+            <div class="">预约时间：</div>
+            <div class="timeCol"><input name="appointTime" id="time_input" min="2019-06-01T08:30"
+                                        class="weui-input time_input"
+                                        type="text" value="" placeholder="请选择时间" required>
+            </div>
+            <span class="msg">
+                需提前2天预约<br>
+                可预约时间段：10:00 - 22:00
+                <!--选择您方便上课的时间-->
+        </span>
+        </div>
+        <!-- <div class="input">
+            <div class="">备选时间：</div>
+            <div class="timeCol">
+                <input name="spareTime" id="time_input1" class="weui-input time_input" type="text" value=""
+                       placeholder="选填">
+            </div>
+            <span class="msg">
+            预约提交后不可修改或取消，
+            请慎重选择。
+        </span>
+        </div>
+        <div class="input">
+            <div class="">备选时间：</div>
+            <div class="timeCol">
+                <input name="spareTime2" id="time_input2" class="weui-input time_input" type="text" value=""
+                       placeholder="选填">
+            </div>
+        </div> -->
+        <div class="phone" id="download_msg">
+            - 课程由专业外教直播平台提供，请下载<a class="download_url" href="https://m.eeo.cn/download.html">安装ClassIn</a>
+            -
+        </div>
+
+        <input type="hidden" name="scheduleId" value="#(scheduleId)">
+        <input type="hidden" name="studentId" value="#(studentId)">
+        <button class="btn">
+            提交
+        </button>
+    </form>
+    <div class="customer">客服电话：4009919799‬</div>
+</div>
+<script src="/wechat/live/js/isdevice.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script>
+    function fun_date(aa) {
+        var date1 = new Date(),
+            time1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();//time1表示当前时间
+        var date2 = new Date(date1);
+        date2.setDate(date1.getDate() + aa);
+        var Y = date2.getFullYear(), M = date2.getMonth() + 1, D = date2.getDate();
+        //处理月是一位的情况
+        if ((M + '').length == 1) {
+            M = '0' + (M + '');
+        }
+        //处理日是一位的情况
+        if ((D + '').length == 1) {
+            D = '0' + (D + '')
+        }
+        var curDay = Y + '-' + M + '-' + D;
+        // var time2 = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
+        return curDay;
+    }
+
+    console.log(fun_date(7))
+    $("#time_input").datetimePicker({
+        minutes: ['00', '15', '30', '45'],
+        hours: ['09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'],
+        min: fun_date(0),
+        value: "",
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#time_input1").datetimePicker({
+        minutes: ['00', '15', '30', '45'],
+        hours: ['09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'],
+        min: fun_date(0),
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#time_input2").datetimePicker({
+        minutes: ['00', '15', '30', '45'],
+        hours: ['09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'],
+        min: fun_date(0),
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    //
+    // $(function () {
+    //     console.log(fun_date(7))
+    //     $('.time_input').val(fun_date(7) + 'T21:00')
+    //     $('.time_input').attr("min",fun_date(7) + 'T21:00')
+    // });
+
+
+</script>
+</body>
+</html>

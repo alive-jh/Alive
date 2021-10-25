@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>凡豆体验课堂</title>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #FFF6E0;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	font-size: 0;
+}
+
+footer img {
+	width: 100%;
+}
+
+.lesson-box {
+	padding: 20px;
+	background-image: url(/wechat/articles/images/card@2x.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 30px;
+	height: 300px;
+}
+
+.lesson-box p {
+	margin: 0;
+	padding: 0;
+}
+
+.teacher-info {
+	height: 110px;
+	padding: 14px 0px 20px 0px;
+	text-align: center;
+	position: relative;
+	width: 250px;
+	margin: 0 auto;
+}
+
+.lesson-info {
+	height: 110px;
+	padding: 0px;
+	text-align: center;
+	margin-top: 46px;
+}
+
+.teacher-head {
+	width: 60pt;
+	height: 60pt;
+	position: absolute;
+	bottom: 0;
+	left: 83px;
+	position: absolute;
+	bottom: -25px;
+}
+
+.teacher-head img {
+	width: 44pt;
+	height: 44pt;
+	border: 3px solid white;
+	border-radius: 100pt;
+}
+
+.teacher-name {
+	margin: 0;
+	padding: 0;
+	font-size: 15px;
+	font-weight: 800;
+}
+
+.lesson-name {
+	font-weight: 800;
+	font-size: 15px;
+}
+
+.lesson-summary {
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 20px;
+}
+
+.teacher-info {
+	color: white;
+}
+
+.number-input {
+	float: left;
+}
+
+.input-box {
+	width: 75%;
+	margin: 0 auto;
+	background-color: white;
+	line-height: 50px;
+	border-radius: 13px;
+	height: 50px;
+	position: relative;
+	z-index: 999;
+}
+
+.number-input {
+	width: 54%;
+	float: left;
+}
+
+.number-btn {
+	width: 46%;
+	float: left;
+	text-align: center;
+}
+
+button {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 15px;
+	background-color: white;
+	padding: 9px;
+}
+
+input {
+	outline: none;
+	padding: 10px;
+	font-size: 15px;
+}
+
+button {
+	outline: none;
+	padding: 10px;
+	font-size: 85%;
+}
+
+.erweima1 {
+	position: absolute;
+	left: 42%;
+	top: 160%;
+}
+
+.teacher-say {
+	font-size: 14px;
+	line-height: 22px;
+}
+
+@media ( device-height : 736px) {	/* iphone6/6s Plus */
+	.input-box {
+		margin-top: 40px;
+	}
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/wechat/articles/css/home.css?ID=12345678">
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+</head>
+<body>
+	<div class="page">
+		<div class="lesson-box">
+			<div class="teacher-info">
+				<p class="teacher-say">大家好，我是#(teacherName),im from fandou,很高兴给你们带来我的课堂#(classRoomInfo.class_name),欢迎试听</p>
+				<div class="teacher-head">
+					<img class="member-headimg member" th:src="${inviteMember.headimgurl}" src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJEma36hMicqClxRyRficxlykkJP9CTMrn66Uo7sOw6tYrsbGjiaWEe7msSOuDktNVwm5ezBwn84hIibg/132">
+					<span class="teacher-name" style="color: black;">#(teacherName)</span>
+				</div>
+			</div>
+			<div class="lesson-info">
+				<p class="lesson-name">课程名称：#(classRoomInfo.class_name)</p>
+				<p class="lesson-summary">#(classRoomInfo.summary)</p>
+			</div>
+		</div>
+
+		<div class="input-box">
+			<div class="number-input">
+				<input type="tel" placeholder="请输入手机号" id="mobile-num" style="text-align: left; padding-left: 28px; border: 0;">
+			</div>
+			<div class="number-btn">
+				<button class="send-btn" style="color: red;" onclick="sendMsg()">获取VIP邀请码</button>
+			</div>
+			<img class="erweima1" alt="" src="/wechat/articles/images/ewm@2x.png" width="50px" height="50px" onclick="Ceng()" style="z-index: 9999">
+		</div>
+
+		<input id="classRoomId" type="hidden" value="#(classRoomInfo.class_room_id)">
+		<input id="memberId" type="hidden" value="#(memberId)">
+		<input id="recommendMID" type="hidden" value="#(recommendMID)">
+		<input id="isSend" type="hidden" value="#(isSend)">
+	</div>
+
+	<footer>
+		<img alt="" src="/wechat/articles/images/bg@2x.png">
+	</footer>
+
+	<div id="ceng" class="in-cen"></div>
+	<div id="close" class="in-pop">
+		<div class="in-self-info">
+			<a onclick="closeCeng()">
+				<img src="/wechat/articles/images/icon-close.png" alt="">
+			</a>
+			<div class="in-pop-text">
+				<img src="https://qr.api.cli.im/qr?data=http%253A%252F%252Fwww.fandoutech.com%252Fcare&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=8cb8f173acac1e2395f2df2939f9660a" alt="" width="100px" height="100px">
+				<p>长按扫描下载app(暂不支持苹果系统)</p>
+				<p>输入邀请码即可体验凡豆课程</p>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/wechat/js/wechat/wechat-share.js"></script>
+
+<script type="text/javascript">
+	$("input,textarea").focus(function() {
+		$("footer").css("position", "static");
+	}).blur(function() {
+		$("footer").css("position", "fixed");
+	});
+
+	var classRoomId = $('#classRoomId').val();
+	var memberId = $('#memberId').val();
+	var recommendMID = $('#recommendMID').val();
+
+	var img = '1';
+
+	var index = 1;
+
+	var config = {
+		link : "http://test.fandoutech.com.cn/wechat/h5/article/trialIntro?classRoomId="
+				+ classRoomId + "&recommendMID=" + memberId,
+		title : "凡豆免费课堂",
+		imgUrl : "http://wechat.fandoutech.com.cn/wechat/wechatImages/image/20161221/20161221161442_60.png",
+		desc : '现在能免费体验凡豆体验课堂啦,快来点击获取邀请码吧',
+		debug : false
+	}
+
+	$.wechatShare(config);
+
+	//二维码弹窗
+	function Ceng() {
+		document.getElementById('ceng').style.display = 'block';
+		document.getElementById('close').style.display = 'block';
+		$('.erweima1').hide();
+		return false;
+	}
+
+	function closeCeng() {
+		document.getElementById('ceng').style.display = 'none';
+		document.getElementById('close').style.display = 'none';
+		$('.erweima1').show();
+		return false;
+
+	}
+
+	function sendMsg() {
+		var oldMemberId = 0;
+		var mobile = $('#mobile-num').val();
+
+		if (mobile == '') {
+			$.toast("请输入手机号", "forbidden");
+			return;
+		}
+
+		var smsParams = {
+			classRoomId : classRoomId,
+			mobile : mobile,
+			memberId : memberId,
+			recommendMID : recommendMID
+		}
+
+		img = '<img id="captcha" src="/wechat/h5/article/captcha?captcha='
+				+ Number(new Date()) + '@' + mobile + '" />';//刷新二维码
+
+		$.prompt({
+			title : '',
+			text : img,
+			input : '请输入验证码',
+			empty : false, // 是否允许为空
+			onOK : function(input) {
+				smsParams.vCode = input;
+				sendMessage(smsParams);
+			},
+			onCancel : function() {
+
+			}
+		});
+
+	}
+
+	var countdown_sec = 60;
+
+	var countdown_ = function countdown(element) {
+		var $_element = $(element);
+		if (countdown_sec == 0) {
+			$_element.removeAttr('disabled');
+			console.log($_element.text());
+			$_element.text('获取VIP邀请码')
+			countdown_sec = 60;
+			return false;
+		} else {
+			$_element.attr("disabled", 'disabled');
+			$_element.text(countdown_sec + 'S');
+			countdown_sec--;
+		}
+
+		setTimeout(function() {
+			countdown_(element);
+		}, 1000);
+	}
+
+	function sendMessage(smsParams) {
+		$.ajax({
+			type : "post",
+			url : "/wechat/h5/article/sendSmsWithInvitationCode",
+			data : smsParams,
+			dataType : "json",
+			beforeSend : function() {
+				countdown_('.send-btn');
+			},
+			complete : function() {
+
+			},
+			success : function(success) {
+				if (success.code == 200) {
+					console.log(success);
+					/* $('.send-content')
+							.html(
+									'<h2><a style="color:#ff0000">邀请码发送成功，请在短信中查看<a></h2>'); */
+					$.toast("短信已经发送到您的手机");
+					setTimeout(function() {
+						Ceng()
+					}, 1000);
+				} else {
+
+					if (success.code == 20508) {
+						$.alert(success.msg);
+					} else {
+						$.toast(success.msg, 'forbidden');
+					}
+
+					countdown_sec = 0;
+
+				}
+			}
+		});
+	}
+
+	function openMsg() {
+		$
+				.prompt({
+					title : '请输入手机号码',
+					text : '邀请码会以短信的形式发送给您，请注意查收！',
+					input : '',
+					empty : false, // 是否允许为空
+					onOK : function(input) {
+
+						$
+								.post(
+										'/wechat/h5/article/sendSmsWithInvitationCode',
+										{
+											classRoomId : classRoomId,
+											mobile : input,
+											memberId : memberId,
+											recommendMID : recommendMID
+										},
+										function(success) {
+											if (success.code == 200) {
+												console.log(success);
+												$.toast("已发送");
+												$('.in-content-title h2')
+														.html(
+																'<a style="color:#ff0000" onclick="showImage()">查看邀请码如何使用<a>');
+											} else {
+												$.toast(success.msg);
+											}
+										}, "json");
+
+					},
+					onCancel : function() {
+						//点击取消
+					}
+				});
+	}
+
+	function showImage() {
+		//$('.weui-gallery').show();
+		$('#shuoming').show();
+		$("html,body").animate({
+			scrollTop : $("#shuoming").offset().top
+		}, 500);
+	}
+
+	function hidenImage() {
+		$('.weui-gallery').hide();
+	}
+
+	function change() {
+
+		$('#weui-gallery__img' + index).hide();
+		index++;
+		if (index == 4) {
+			index = 1;
+		}
+		$('#weui-gallery__img' + index).show();
+	}
+</script>
+</html>

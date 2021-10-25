@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+.search-block{
+	background-color:#eee;
+	padding:8px 10px;
+	margin-bottom:10px;	
+}
+.search-block input{
+	border:1px solid #ddd;
+	border-radius: 3px;
+	width:100%;
+	height:28px;
+	line-height: 28px;
+	font-size:15px;
+	color:#222;
+	text-indent: 30px;
+	background: url(../images/search-icon.png) no-repeat 10px center;
+	background-size:15px;
+	background-color:#fff;
+}
+
+.cake-list{
+	margin:0 10px;
+}
+.cake-list li{
+	margin-bottom:10px;
+}
+.cake-list li a{
+	display: table;
+	table-layout: fixed;
+	width:100%;
+	background-color:#fff;
+	border:1px solid #eee;
+}
+
+.cake-list li a .img-box{
+	display: table-cell;
+	vertical-align: middle;
+	width:130px;
+}
+.cake-list li a .img-box img{
+	padding:25px 5px;
+	width:100%;
+	max-width:110px;
+}
+
+.cake-list li a .text-info{
+	display: table-cell;
+	vertical-align: top;
+	position: relative;
+}
+.cake-list li a .text-info h3{
+	font-size:15px;
+	color:#222;
+	line-height: 30px;
+}
+
+.cake-list li a .text-info .price{
+	font-size:15px;
+	color:#f60;
+	line-height: 25px;
+	font-weight: bold;
+}
+
+.cake-list li a .text-info  .shoping-cart-btn{
+	position: absolute;
+	display: block;
+	bottom:5px;
+	right:10px;
+	width:30px;
+	height:30px;
+	background:url(../images/showcase-1416814739063.png) no-repeat 0 4px;
+	background-size:140%;
+}

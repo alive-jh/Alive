@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+.content{margin-bottom:60px;}
+.content.no-margin{margin-bottom:0;}
+.left{float:left;}
+.right{float:right;}
+:focus{outline: none;}
+
+.bg-img{position:absolute;top:0;left:0;bottom:0;right:0;max-width:768px;margin:auto;z-index:-1;padding-top:45px;background:url(../images/cont-bg.jpg) no-repeat center;background-size:cover;min-height:500px;overflow: auto;}
+/*头部header样式*/
+.header{paddign:10px;background-color:#003859;color:#fff;text-align: center;position: relative;}
+.header .head-title{font-size:18px;line-height: 45px;}
+.header .head-left{position: absolute;top:10px;left:10px;}
+.header .head-left a,.head-right a{display:inline-block;width:26px;height:26px;background:url(../images/s-icons.png) no-repeat;background-size:100%;}
+.header .head-left a{background-position: 0px 0px;}
+.header .head-right a{background-position: 0px -53px;}
+.header .head-right{position:absolute;top:10px;right:10px;}
+
+
+/*其他样式*/
+.sub-title{font-size:15px;color:#003859;line-height:35px;padding:0 10px;}
+.arrow{width:25px;height:25px;display:block;background:url(../images/arrow.png) no-repeat center;background-size:30%;padding:0;}
+.delete-icon,.add-icon,.edit-icon,.order-icon{display: block;width:25px;height:25px;background:url(../images/s-icons.png) no-repeat;background-size:100%;}
+.delete-icon{background-position: 0px -75px;}
+.edit-icon{background-position: 0px -100px;}
+.add-icon{background-position: 0px -150px;}
+.order-icon{background:url(../images/menu-icons.png) no-repeat 0 3px;background-size:100%;}
+.loading-icon{background:url(../images/loading.png) no-repeat center;background-size:100%;display: block;width:25px;height:25px;}
+.loading-icon{animation: rot 1s linear 0s infinite;-webkit-animation: rot 1s linear 0s infinite;-ms-animation: rot 1s linear 0s infinite;-moz-animation: rot 1s linear 0s infinite;-o-animation: rot 1s linear 0s infinite;}
+.input-icon{display:block;width:40px;height:40px;background:url(../images/login-icons.png) no-repeat;background-size:100%;}
+
+.input-icon.addr{background-position:0px -236px;}
+.input-icon.time{background-position:0px -156px;}
+.input-icon.location{background-position:0px -196px;}
+.input-icon.tel{background-position: 0px -38px;}
+.input-icon.check{background-position: 0px -76px;}
+.input-icon.pass{background-position: 0px -116px;}
+
+/*数字选择器样式*/
+.goods-num{position: absolute;top:0;right:0;background-color:#D6D6D6;border:1px solid #B3B3B3;border-radius: 5px;}
+.plus,.num-input,.minus{float:left;padding:0px 8px;font:16px/25px "微软雅黑";color:#333;}
+.num-input{border:none;border-left:1px solid #B3B3B3;border-right:1px solid #B3B3B3;max-width:25px;text-align: center;font:16px/25px "微软雅黑";background-color:transparent;}
+.minus.disabled,.plus.disabled{color:#aaa;}
+
+
+
+/*商品列表公共样式*/
+strong{font-weight: normal;}
+
+.goods-list{padding:10px;min-height:390px;border-top:1px solid #B2B2B2;border-bottom:1px solid #B2B2B2;background-color:#fff;}
+
+.goods-list ul li,.table-box{border:1px solid #003859;margin-bottom:10px;padding:3px 0;display: table;width: 100%;}
+.goods-list ul li .order-num,.table-box .order-num{display: table-caption;font:15px/30px "微软雅黑";color:#333;background-color:#fff;padding:5px 10px;border-bottom:1px dotted #ccc;}
+.goods-list ul li .order-num span.right,.table-box .order-num span.right{color:#F09000;}
+
+.goods-list ul li .goods-img,.goods-list ul li .goods-info,.table-box .goods-img,.table-box .goods-info{display: table-cell;vertical-align: middle;}
+.goods-list ul li .goods-img,.table-box .goods-img{min-width: 100px;padding-left:8px;}
+
+.goods-list ul li img,.table-box img{width:70px;height:70px;vertical-align: middle;}
+
+.goods-info{text-align: left;padding:0 8px;}
+.goods-info h3{font-size:16px;line-height: 25px;padding-right:30px;margin-botto:5px;position: relative;}
+.order-list .goods-info h3{padding-right:10px;}
+.goods-info .goods-price{font-size:15px;line-height: 25px;padding-right:60px;color:red;position: relative;}
+.goods-info .goods-price strong{font-size:20px;line-height: 26px;}
+
+
+/*价格结算公共样式*/
+.all-price{background-color:#fff;padding:10px;}
+.all-price h3{font-size:16px;line-height:35px;color:#083850;position: relative;}
+.all-price h3 span,.all-price h3 strong{color:red;}
+.all-price h3 strong{font-size:20px;}
+.all-price h3 a{position: absolute;top:0px;right:0px;line-height: 35px;font-size:16px;color:#fff;background-color:red;padding:0 15px;}
+
+
+/*底部footer-nav样式*/
+.footer-nav{width:100%;}
+.footer-nav ul{max-width: 768px;position:fixed;left:0;right:0;bottom:0;padding:5px 0;margin:0 auto;background-color:#DCDCDC;border-top:1px solid #B3B3B3;}
+.footer-nav li{float:left;width:25%;text-align: center;}
+.footer-nav li span{display: block;width:40px;height:35px;margin:0 auto;background:url(../images/nav-icons.png) no-repeat;background-size:400%;}
+.footer-nav li:nth-child(2) span{background-position:-40px 0;}
+.footer-nav li:nth-child(3) span{background-position:-80px 0;}
+.footer-nav li:nth-child(4) span{background-position:-122px 0;}
+.footer-nav li a:hover span,.footer-nav li.acitve span{background-position: 0px -35px;}
+.footer-nav li:nth-child(2) a:hover span,.footer-nav li:nth-child(2).acitve span{background-position: -40px -35px;}
+.footer-nav li:nth-child(3) a:hover span,.footer-nav li:nth-child(3).acitve span{background-position: -80px -35px;}
+.footer-nav li:nth-child(4) a:hover span,.footer-nav li:nth-child(4).acitve span{background-position: -122px -35px;}
+.footer-nav li p{font-size:14px;line-height: 18px;color:#7E7E80;}
+.footer-nav li a:hover p,.footer-nav li.acitve p{color:#19495C;}
+
+
+
+/*响应式布局*/
+@media only screen and (min-width:768px){
+	.footer-nav{width:768px;margin: 0 auto;margin-top: 16px;}
+	.content{width:768px;}
+	.content-body{width:748px;padding:10px;}
+	.fixed-block{width:768px;margin-left:-384px;left:50%;}
+
+}
+
+
+/*CSS3动画*/
+@keyframes rot{
+	from{transform: rotate(0deg);}
+	to{transform: rotate(360deg);}
+}
+@-webkit-keyframes rot{
+	from{-webkit-transform: rotate(0deg);}
+	to{-webkit-transform: rotate(360deg);}
+}
+@-ms-keyframes rot{
+	from{-ms-transform: rotate(0deg);}
+	to{-ms-transform: rotate(360deg);}
+}
+@-moz-keyframes rot{
+	from{-moz-transform: rotate(0deg);}
+	to{-moz-transform: rotate(360deg);}
+}
+@-o-keyframes rot{
+	from{-o-transform: rotate(0deg);}
+	to{-o-transform: rotate(360deg);}
+}

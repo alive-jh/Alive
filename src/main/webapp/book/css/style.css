@@ -1,0 +1,131 @@
+@charset "utf-8";
+/*菜单样式部分*/
+html, body {
+    -webkit-tap-highlight-color: transparent;
+}
+.menu-group{
+    position: fixed;
+    left:10px;
+    bottom:60px;
+    height:40px;
+    width:100%;
+    z-index: 100;
+}
+.menu-group ul li a{
+    display: inline-block;
+    top:0;
+    left:0;
+    width:40px;
+    height:40px;
+    border-radius: 40px;
+    border:2px solid #fff;
+    box-shadow: 0 0 6px rgba(100,100,100,.2);
+    background:url(../images/menu-icons.png) no-repeat 0 0;
+    background-size:100%;
+
+}
+
+
+
+.menu-group.off ul li a{
+    position: absolute;
+}
+.menu-group.on ul li a{
+    position: relative;
+    float:left;
+    margin-right:10px;
+}
+
+.menu-group.off ul li.switch-btn a{
+    z-index: 100;
+    background-position:0px 0px;
+}
+
+.menu-group.on ul li.switch-btn a{
+    background-position:0px -40px;
+}
+.menu-group ul li.shop-btn a{
+    background-position:0px -80px;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.menu-group ul li.me-btn a{
+    background-position:0px -120px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
+
+.menu-group ul li.local-btn a{
+    background-position:0px -160px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.menu-group.on ul li a:before{
+    content: "";
+    position: absolute;
+    top:-25px;
+    left:5px;
+    margin-bottom:5px;
+    width:30px;
+    background-color:#fff;
+    border-radius: 30px;
+    color:#333;
+    text-align: center;
+    font-size:0.8rem;
+    line-height: 1.5rem;
+    box-shadow: 0 0 6px rgba(100,100,100,.2);
+}
+
+.menu-group.on ul li.switch-btn a:before{
+    display: none;
+}
+.menu-group.on ul li.shop-btn a:before{
+    content:"书店";
+}
+.menu-group.on ul li.me-btn a:before{
+    content:"我的";
+}
+.menu-group.on ul li.local-btn a:before{
+    content:"书架";
+}
+
+
+/*列表前复选按钮样式*/
+.book-list li div.check-group{
+    width:25px;
+    height:25px;
+    line-height: 25px;
+    position: absolute;
+    top:5px;
+    left:-30px;
+    display: none;
+}
+.select-all{
+    line-height: 25px;
+    position: absolute;
+    top:5px;
+    left:10px;
+}
+
+.select-all span{
+    float: right;
+}
+.book-list li div.check-group input[type="checkbox"],.select-all input[type="checkbox"]{
+    display: none;
+}
+.book-list li div.check-group i.check-mark,.select-all i.check-mark{
+    width:25px;
+    height:25px;
+    display: block;
+    line-height: 25px;
+    background:url(../images/btn_checkbox_off.png) no-repeat center;
+    background-size:100%;
+}
+.book-list li.selected div.check-group i.check-mark,.select-all.selected i.check-mark{
+    background-image:url(../images/btn_checkbox_on.png);
+}
+div.select-all i.check-mark{
+    display: inline-block;
+}

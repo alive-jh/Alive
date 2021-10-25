@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正在预约直播课</title>
+    <link rel="stylesheet" href="/wechat/live/css/booking.css">
+</head>
+<body>
+<div class="menceng" id="menceng">
+    <div>
+        <div class="">提交成功</div>
+        <div>
+            <d>消耗1</d>
+            次预约次数，还
+            <d>剩#(specificNum)</d>
+            次<br>
+            <span>如果预约失败将返还次数</span>
+        </div>
+        <div class="onclBtn" onclick="clearAlert()">
+            确认
+        </div>
+    </div>
+</div>
+<div id="box" class="box2">
+    <div class="title">
+        <div>预约成功</div>
+        <div class="red694e">等待工作人员确认，结果请留意手机短信</div>
+    </div>
+    <div class="input">
+        <div class="col333">联系方式：</div>
+        <div class="">
+            <input type="text" class="weui-input" type="number" pattern="[0-11]*" value="#(liveBooking.mobile)"
+                   placeholder="手机号码" disabled>
+        </div>
+        <span class="msg col64a">
+            <!--客服电话：0769-38825356-->
+        </span>
+    </div>
+    <div class="input">
+        <div class="col333">预约时间：</div>
+        <div class=""><input type="datetime-local" value="#(appointTime)" placeholder="预约时间" disabled></div>
+        <span class="msg">
+            需提前2天预约<br>
+            可预约时间段：10:00 - 22:00
+
+        </span>
+    </div>
+    <div class="phone" id="download_msg">
+        - 课程由专业外教直播平台提供，请下载<a class="download_url" target="_blank" href="https://m.eeo.cn/download.html">安装ClassIn</a> -
+    </div>
+    <div class="btn">
+        提交
+    </div>
+</div>
+<div class="customer">客服电话：4009919799‬</div>
+<script src="/wechat/live/js/isdevice.js"></script>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    function clearAlert() {
+        console.log("关闭窗口")
+        let menceng = document.getElementById('menceng');
+        menceng.style.display = 'none';
+    }
+
+    window.onload = function (ev) {
+        var popup = getQueryString("popup");
+        if (!popup) {
+            document.getElementById('menceng').style.display = 'none'
+        }
+        console.log(getQueryString("popup"))
+    }
+</script>
+</body>
+</html>

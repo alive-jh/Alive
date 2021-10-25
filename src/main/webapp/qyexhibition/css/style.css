@@ -1,0 +1,107 @@
+body, html {
+    background-color: #f2f2f2;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.avatar-img {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.avatar-temp{
+	background-color: #d8d8d8;
+	border-radius: 50%;
+}
+
+.headimg-style{
+	width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #c1c1c1;
+}
+
+.avatar-img2 {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 80px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.avatar-img img {
+    vertical-align: middle;
+}
+.avatar-text {
+    text-align: center;
+    margin-top: 10px;
+    color: #999999;
+}
+.in-input {
+    margin-top: 20px;
+    padding: 0 30px;
+}
+.in-input > div {
+    border: 1px solid #dbdbdb;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+.in-input input {
+    font-size: 14px;
+    color: #333333;
+    border: none;
+    outline:none;
+    width: 100%;
+     background-color: #f2f2f2;
+}
+.in-input .yanz {
+    padding: 0 0 0 20px;
+    overflow: hidden;
+    height: 53px;
+    line-height: 53px;
+}
+.in-input .yanz input {
+    float: left;
+    width: 140px;
+    vertical-align: middle;
+    height: 100%;
+}
+.in-input .yanz div {
+    float: right;
+    width: 110px;
+    height: 100%;
+    border-left: 1px solid #dbdbdb;
+    text-align: center;
+}
+.in-input .btn {
+    text-align: center;
+    color: #fff;
+    background-color: #64aeeb;
+}
+.photo-temp1{
+	width: 60px;
+	height: 60px;
+}
+.code-btn{
+	border: 0;
+    background: none;
+    float: right;
+    width: 110px;
+    height: 100%;
+    border-left: 1px solid #dbdbdb;
+    text-align: center;
+}
+
+.content{
+	width: 100%;
+}
+
+.header{
+	margin-bottom: 50px;
+}

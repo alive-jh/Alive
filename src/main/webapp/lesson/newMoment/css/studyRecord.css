@@ -1,0 +1,105 @@
+body{
+    margin: 0px;
+}
+
+.stuHead{
+    width: 36px;
+    height: 36px;
+    border: 2px solid rgba(255,219,35,1);
+    margin-left: 0.5rem;
+    margin-top: 12px;
+    border-radius: 18px;
+    vertical-align: middle;
+}
+
+
+.stuName{
+    /*width:53px;*/
+    height:16px;
+    font-size:16px;
+    font-family:NotoSansHans-Medium,NotoSansHans;
+    font-weight:500;
+    color:rgba(47,50,57,1);
+    margin-left: 10px;
+    line-height: 18px;
+    margin-top: 12px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.desc{
+    width:19.19rem;
+    height:auto;
+    background:rgba(242,243,247,1);
+    border-radius:8px;
+    margin-left: 3.25rem;
+}
+
+.class_des{
+    font-size:16px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(47,50,57,1);
+    line-height:22px;
+    display:block;
+    text-indent:2em;
+    padding: 0.38rem 0.75rem;
+
+}
+
+.backGround_div{
+    margin-top: 0.88rem;
+    text-align: center;
+    position: relative;
+}
+
+.video_backGround{
+    width: 19.56rem;
+}
+
+.videoBackGround_div {
+    text-align: center;
+    top: 1.18rem;
+    left: 1.94rem;
+    margin-top: -29rem;
+}
+
+.player_box {
+    width: 15.6rem;
+    height: 9.51rem;
+    position: absolute;
+    left: 3.86rem;
+    top: 1.8rem;
+    border-radius:1.13rem;
+    border:0.095rem solid #fff;
+    overflow: hidden;
+    margin-top:0.65rem;
+}
+
+.audio_img{
+    width: 100%;
+}
+
+.play_btn{
+    width: 3.88rem;
+    height: 3.71rem;
+    position: absolute;
+    left: 5.69rem;
+    top: 2.94rem;
+
+}
+
+.backGround_img{
+    width: 21.44rem;
+
+}
+.video_backGround_img{
+    width: 19.56rem;
+    height: 17.31rem;
+}
+.foot_pic{
+    width: 23.44rem;
+    height: 6.25rem;
+    margin-top: 13.69rem;
+    display: block;
+}

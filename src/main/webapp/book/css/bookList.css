@@ -1,0 +1,57 @@
+.search-box{
+    background-color:#fff;
+    border-bottom:1px solid #ddd;
+    position:static;
+    height:46px;
+}
+.search-box h1{
+    text-align: center;
+    margin: 0;
+    line-height: 46px;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color:#333;
+    white-space: nowrap;
+}
+.search-box .head-left-btn{
+    left:1.5rem;
+    background-position:0.25rem 0.1rem;
+}
+.search-box button{
+    display: block;
+    position:absolute;
+    top:9px;
+    width:28px;
+    height:28px;
+    padding:0;
+    border:none;
+    border-radius:100%;
+    background:url(../images/icons-detail.png) no-repeat 0 0;
+    background-size:95%;
+    background-color:#fff;
+}
+
+.book-list li{
+    padding-left:15%;
+}
+
+.book-list li a{
+    position: relative;
+}
+
+.book-list li a .list-num{
+    position: absolute;
+    top:5px;
+    left:-30px;
+    display: block;
+    width:20px;
+    height:20px;
+    border-radius: 20px;
+    background-color:#E1DFDA;
+    font-size:12px;
+    line-height: 20px;
+    text-align: center;
+}
+.like-box .book-list li a .book-name{
+    white-space: inherit;
+}

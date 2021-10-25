@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预约失败</title>
+    <link rel="stylesheet" href="/wechat/live/css/booking.css">
+
+</head>
+<body>
+<div id="box" class="box2 box3 box4">
+    <!--<div class="next">跳过</div>-->
+    <div class="title">
+        <div>预约失败</div>
+        <div class="red694e">对不起，您的预约没通过。请重新预约</div>
+    </div>
+    <!--<div class="input">-->
+    <!--<div class="col333">联系方式：</div>-->
+    <!--<div class=""><input type="text" value="#(liveBooking.mobile)" placeholder="手机号码" disabled></div>-->
+    <!--<span class="msg col64a">-->
+    <!--客服电话：0731-888888-->
+    <!--</span>-->
+    <!--</div>-->
+    <div class="input">
+        <div class="col333">联系方式：</div>
+        <div class="">
+            <input type="text" class="weui-input" type="number" pattern="[0-11]*" value="#(liveBooking.mobile)"
+                   placeholder="手机号码" disabled>
+        </div>
+        <span class="msg col64a">
+
+        </span>
+    </div>
+    <div class="input">
+        <div class="col333">预约时间：</div>
+        <div class=""><input type="text" value="#(liveBooking.appoint_time)" placeholder="预约时间" disabled></div>
+        <span class="msg">
+            选择您方便上课的时间
+        </span>
+    </div>
+    <div class="input">
+        <div class="col333">备选时间：</div>
+        <div class=""><input type="text" placeholder="备选时间" value="#(liveBooking.spare_time)" disabled></div>
+        <span class="msg">
+            为确保预约成功，建议多选择两个时间；我们将按您选的其中一个时间，安排老师上课。
+        </span>
+    </div>
+    <div class="input">
+        <div class="col333">备选时间：</div>
+        <div class=""><input type="text" placeholder="备选时间" value="#(liveBooking.spare_time2)" disabled></div>
+    </div>
+    <div class="phone" id="download_msg">
+        请前往ClassIn使用以上账号密码登录上课<br>未安装ClassIn?<a class="download_url" href="https://m.eeo.cn/download.html">前往下载</a>
+        -
+    </div>
+    <!--<div class="phone2">-->
+        <!--开课24小时前可以取消预约，客服电话: 0731-888888-->
+    <!--</div>-->
+    <a class="btn2" href="againBooking?bookingId=#(liveBooking.id)&studentId=#(liveBooking.student_id)">
+        重新预约
+    </a>
+</div>
+<div class="customer">客服电话：4009919799‬</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+<script type="text/javascript">
+    var clipboard = new ClipboardJS('.account');
+    var pwd = new ClipboardJS('.password');
+
+    clipboard.on('success', function (e) {
+        console.log('复制的内容为:', e.text);
+        alert("复制成功")
+        e.clearSelection();
+    });
+    pwd.on('success', function (e) {
+        console.log('复制的内容为:', e.text);
+        alert("复制成功")
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function (e) {
+        alert("复制失败")
+    });
+    pwd.on('error', function (e) {
+        alert("复制失败")
+    });
+</script>
+</body>
+</html>

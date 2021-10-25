@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>课堂分享</title>
+<!-- head 中 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+<link rel="stylesheet" href="/wechat/lesson/2c/css/iconfont.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1044079_ao3srddo2xu.css">
+
+<style type="text/css">
+body {
+	background-color: white;
+}
+
+.app-bar {
+	height: 50px;
+	background-color: rgba(43, 48, 52, 1);
+	display: flex;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 88888;
+}
+
+.app-bar img {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.app-bar .title {
+	line-height: 16px;
+	margin-left: 8px;
+}
+
+.start-btn {
+	position: absolute;
+	border: 1px solid #FFFFFF;
+	border-radius: 6px;
+	right: 18px;
+	color: white;
+	width: 84px;
+	height: 34px;
+	text-align: center;
+	line-height: 34px;
+}
+
+.content {
+	position: relative;
+}
+
+.weui-navbar {
+	z-index: 0
+}
+
+.weui-navbar__item {
+	font-size: 14px;
+	background-color: white;
+}
+
+.weui-navbar__item:after {
+	display: none;
+}
+
+.weui-navbar__item.weui-bar__item--on {
+	font-family: PingFangSC-Medium;
+	font-size: 14px;
+	color: #64AEEB;
+	text-align: center;
+	background-color: white;
+}
+
+.weui-tab__bd {
+	padding: 10px;
+	background-color: white;
+}
+
+.weui-tab__bd-item .text {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+	line-height: 24px;
+}
+
+#tab3 ul li {
+	display: flex;
+	margin-top: 10px;
+	border-bottom: 1px solid #EEEEEE;;
+	padding: 10px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.weui-tab__bd-item ul li .box {
+	margin-left: 8px;
+	word-break: break-all;
+	width: 100%;
+}
+
+#tab3 ul li img {
+	width: 24px;
+	height: 24px;
+	border-radius: 24px;
+	border: 1px solid #F2F2F2;
+}
+
+.weui-tab__bd-item ul li .box .name {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #999999;
+	line-height: 16px;
+}
+
+.weui-tab__bd-item ul li .box .text {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #333333;
+	line-height: 21px;
+}
+
+#tab3 {
+	padding: 0 5px;
+	margin-bottom: 85px;
+}
+
+#mask {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 777777;
+}
+
+.bind-box {
+	background-color: white;
+	padding: 10px;
+	border-radius: 8px;
+	line-height: 60px;
+	position: relative;
+}
+
+.input-box {
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	padding: 10px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #999999;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.input-box input {
+	border: 0;
+	height: 100%;
+	border-right: 1px solid #DDDDDD;
+	margin-right: 10px;
+}
+
+.input-box button {
+	border: 0;
+	background-color: white;
+}
+
+.bind-box .code {
+	padding: 25px 0px;
+	height: 50px;
+	text-align: center;
+}
+
+.bind-box .code input {
+	width: 50px;
+	height: 50px;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	/* float: left; */
+	margin-right: 10px;
+	margin-left: 10px;
+	text-align: center;
+}
+
+.code-button {
+	text-align: center;
+	padding: 5px;
+}
+
+.enter-btn {
+	background: #72C0FF;
+	border-radius: 4px;
+	border: 0;
+	width: 250px;
+	height: 50px;
+}
+
+.weui-toptips {
+	z-index: 99999999
+}
+
+.disble {
+	background: #EEEEEE;
+	font-family: PingFangSC-Medium;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+#palyer {
+	height: 212px;
+	background-position-x: center;
+	background-size: 100%;
+	text-align: center;
+	position: relative;
+	margin-top: 50px;
+}
+
+.weui-toast {
+	z-index: 99999999
+}
+
+#palyer {
+	background-repeat: no-repeat;
+}
+
+#lesson-product {
+	background-image: linear-gradient(-90deg, #FBD249 0%, #F5A623 100%);
+	font-family: PingFangSC-Medium;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	position: fixed;
+	bottom: 0;
+}
+
+.downSend {
+	bottom: 0;
+}
+
+.upSend {
+	bottom: 46px;
+}
+
+#tab1 ul li {
+	display: block;
+}
+
+.reply-player {
+	text-align: center;
+	border-radius: 10px;
+	height: 190px;
+	background-size: 100%;
+}
+
+.reply .user {
+	padding: 10px 2px;
+}
+
+.reply .user {
+	padding: 10px 2px;
+}
+
+.reply .user .head {
+	border-radius: 100%;
+	vertical-align: middle;
+	width: 32px;
+	height: 32px;
+	border: 1px solid #DDDDDD;
+}
+
+.reply .user .name {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #333333;
+	line-height: 10px;
+}
+
+.reply .action {
+	padding: 0 10px;
+	height: 36px;
+}
+
+.reply .action ul li {
+	float: left;
+	width: 33%;
+	text-align: center;
+}
+
+.reply .action ul li span {
+	font-family: NotoSansHans-Regular;
+	font-size: 12px;
+	color: #333333;
+	padding: 5px;
+}
+
+#tab1 {
+	padding: 10px;
+}
+
+#video-player {
+	width: 100%;
+	height: 100%;
+	background: black;
+}
+
+.weui-popup__modal {
+	height: 80%;
+	border-radius: 30px 30px 0 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #ffffff;
+	z-index: 99999
+}
+
+.comment-list ul {
+	list-style: none;
+}
+
+.comment-list ul li {
+	display: flex;
+	margin-top: 10px;
+	border-bottom: 1px solid #EEEEEE;
+	padding: 10px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.comment-list ul li img {
+	width: 24px;
+	height: 24px;
+	border-radius: 24px;
+	border: 1px solid #F2F2F2;
+}
+
+.comment-list ul li .box {
+	margin-left: 8px;
+	word-break: break-all;
+	width: 100%;
+}
+
+.comment-list ul li .box .name {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #999999;
+	line-height: 16px;
+}
+
+.comment-list ul li .box .text {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #333333;
+	line-height: 21px;
+}
+
+.weui-border {
+	position: relative;
+	border-radius: 5px;
+}
+
+.weui-cell:before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 1px;
+	border-top: 1px solid #D9D9D9;
+	color: #D9D9D9;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scaleY(0.5);
+	transform: scaleY(0.5);
+}
+
+.reply-pic {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.reply-pic-top{
+	top: -60px;
+}
+
+.reply-video {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
+
+.ico-audio {
+	width: 54px;
+	height: 54px;
+	position: relative;
+	top: 50px;
+	z-index: 1
+}
+
+.reply-box {
+	height: 190px;
+}
+
+.icon-dianzan {
+	color: #ff9800;
+}
+
+@media screen and (orientation: landscape) {
+	#palyer {
+		height: 100%;
+	}
+}
+.bind-close1{
+    text-align: center;
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    /* bottom: -70px; */
+    top: -61px;
+    right: -133px;
+}
+</style>
+</head>
+<body>
+	<div id="app">
+		<div class="app-bar">
+			<img alt="" src="/wechat/lesson/2c/assets/app_icon@3x.png" width="30px" height="30px">
+			<div class="title">
+				<p style="font-family: PingFangSC-Medium; font-size: 15px; color: #FFFFFF;">阿凡豆</p>
+				<p style="pacity: 0.7; font-family: PingFangSC-Regular; font-size: 11px; color: #dadada;">下载app完整体验上课</p>
+			</div>
+			<div class="start-btn" v-on:click="openApp()">立即打开</div>
+		</div>
+
+		<div id="palyer" :style="{backgroundImage:'url('+playerbg+')'}">
+			<img alt="" v-bind:src="scriptPic" width="100%" height="100%" v-show="picShow">
+			<img id = "start-lesson" v-on:click="play(0)" alt="" src="/wechat/lesson/2c/assets/btn_ketang_play@3x.png" width="54px" height="54px" style="position: relative;top: 86px;" v-show="playBtn">
+			<img id="musicBtn" alt="" v-bind:src="audioBtnImage" width="54px" height="54px" style="position: relative;top: 50px;z-index: 99999" v-show="musicPlaying" v-on:click="pausedAudio()">
+		</div>
+		
+		<div style="padding-left: 15px; height: 40px; padding-top: 12px;overflow: hidden;">
+			<h3>{{lessonIntro.className}}</h3>
+		</div>
+		<div style="height: 10px; background: #F8F8F8;"></div>
+
+		<div class="weui-tab">
+			<div class="weui-navbar">
+				<a class="weui-navbar__item weui-bar__item--on" href="#tab1"> 学习记录</a>
+				<a class="weui-navbar__item" href="#tab2"> 课程介绍</a>
+				<a class="weui-navbar__item" href="#tab3"> 课程评价</a>
+			</div>
+			<div class="weui-tab__bd">
+				<div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+				
+					<div v-show="classRoomReply.length == 0">
+						<p class="text">本课程暂无反馈</p>
+						<p class="text">去App学习，分享你第一条精彩的记录吧～</p>
+					</div>
+					<div style="margin-bottom: 50px">
+					<ul v-for="(reply,index) in classRoomReply" >
+						<li class="reply">
+							<div class="reply-player" :style="{backgroundImage:'url('+createCover(reply.firstReply)+')'}">
+								<img v-bind:id = "'start-lesson'+index" alt="" src="/wechat/lesson/2c/assets/btn_ketang_play@3x.png" width="54px" height="54px" style="position: relative; top: 68px;" v-show="playReplyBtn"  v-on:click="lessonReply(reply.groupId,index)">
+								<div v-bind:id="'reply'+index" class="reply-box">
+								</div>
+							</div>
+							<div class="user">
+								<img class="head" alt="" v-bind:src="reply.avatar" width="30px" height="30px ">
+								<span class="name">{{reply.name}}</span>
+							</div>
+							<div class="action">
+								<ul>
+									<li><span class="iconbox"><i class="iconfont icon-eye"></i></span><span>0</span></li>
+									<li v-on:click="openReplyComtents(reply.groupId)"><span class="iconbox"><i class="iconfont icon-comment"></i></span><span>{{reply.commentCount}}</span></li>
+										<li v-on:click="replyLike(reply.groupId,reply.myLike,index)">
+											<span class="iconbox">
+												<i v-show="reply.myLike == 0" class="iconfont icon-dianzanqian"></i>
+												<i v-show="reply.myLike == 1" class="iconfont icon-dianzan"></i>
+											</span>
+											<span>{{reply.likeCount}}</span>
+										</li>
+									</ul>	    
+							</div>
+						</li>
+					</ul>	
+					</div>				
+				</div>
+				<div id="tab2" class="weui-tab__bd-item">
+					<div class="intro">
+						<p class="text">{{lessonIntro.summary}}</p>
+						<div class="content">
+						
+						</div>
+					</div>
+				</div>
+				<div id="tab3" class="weui-tab__bd-item">
+					<ul v-for="(lcomment,index) in lessonComments">
+						<li>
+							<img alt="" v-bind:src="lcomment.headimgurl" width="30px" height="30px ">
+							<div class="box">
+								<p class="name">{{lcomment.nickname}}</p>
+								<p class="text">{{lcomment.content}}</p>
+								<!-- <p>{{lcomment.createTime}}</p> -->
+								<p v-show="lcomment.userId == user" style="color: red;text-align: right;font-size:12px;" v-on:click="delComment(lcomment.id,index)">删除</p>
+							</div>
+						</li>
+					</ul>
+					
+					<div v-show="lessonComments.length == 0">
+						<p class="text">本课程暂无评价</p>
+						<p class="text">来留下你宝贵的第一条吧</p>
+					</div>
+
+					<div style="text-align: center;position: fixed;width: 100%;left: 0;padding: 5px 0px 5px 0px;background-color: white;"  :class="product>0?'upSend':'downSend'">
+						<input v-model = "lessonCommont" style="border: 1px solid #EEEEEE; border-radius: 4px; width: 80%; height: 34px;">
+						<span style="font-family: NotoSansHans-Regular; font-size: 14px; color: #F5A623;padding: 10px;"  v-on:click="sendComment()">发布</span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+		<div id="lesson-product" v-show="product>0" v-on:click="toProduct(product)">
+			我也要学
+		</div>
+
+		<div id="mask" v-show="mask">
+
+			<div class="bind-box">
+				<div style="text-align: center;">
+					<h5 style="line-height: 45px;">绑定手机</h5>
+				</div>
+				<div class="input-box">
+					<input type="number" v-model="mobile" placeholder="请输入手机号">
+					<button class="send-btn" v-on:click="sendCaptcha()">获取验证码</button>
+				</div>
+
+				<div class="code">
+					<input id="code0" oninput="if(value.length>1)value=value.slice(0,1)" type="number" v-on:input="inputChange(0)">
+					<input id="code1" oninput="if(value.length>1)value=value.slice(0,1)" type="number" v-on:input="inputChange(1)">
+					<input id="code2" oninput="if(value.length>1)value=value.slice(0,1)" type="number" v-on:input="inputChange(2)">
+					<input id="code3" oninput="if(value.length>1)value=value.slice(0,1)" type="number" v-on:input="inputChange(3)">
+				</div>
+
+				<div class="code-button">
+					<button class="enter-btn" v-bind:class="{disble:isDisble}" v-bind:disabled="isDisble"  v-on:click="bind()">确定</button>
+				</div>
+				
+				<div class="bind-close1" v-on:click="closeBindPanel()">
+					<i class="iconfont icon-guanbianniu" style="color: white;font-size: 38px"></i>
+				</div>
+
+			</div>
+
+		</div>
+		
+		<div id="mask" v-show="openAPP">
+
+			<div id="open-app" style="text-align: center;  line-height: 40px;background: #FFFFFF; border-radius: 10px;padding: 30px;position: relative;">
+				<i class="iconfont icon-close" style="position: absolute; top: 2px; right: 16px; font-size: 18px;" v-on:click="openAPP=false"></i>
+				<img alt="" v-bind:src="lessonIntro.cover" width="80px" height="100px" style="border-radius: 10px">
+				<h5 style="font-family: PingFangSC-Medium; font-size: 18px; color: #64AEEB; text-align: center; line-height: 35px;">微信无法播放这条指令</h5>
+				<p style="font-family: PingFangSC-Regular; font-size: 16px; color: #999999; text-align: center; line-height: 35px;">1.6万人正在上课</p>
+				<p style="font-family: PingFangSC-Regular; font-size: 16px; color: #64AEEB; text-align: center; line-height: 16px;">打开阿凡豆一起学习</p>
+
+				<div style="background-image: linear-gradient(-90deg, #94DFFF 0%, #72C0FF 100%); border-radius: 22px;color: white; margin-top: 22px;" v-on:click="openApp()">立即打开</div>
+				
+			</div>
+
+		</div>
+		
+		<div id="about" class="weui-popup__container">
+			<div class="weui-popup__overlay"></div>
+			<div class="weui-popup__modal">
+				<div>
+					<span class="iconfont icon-guanbi" v-on:click="closePopup()" style="display: -webkit-inline-box; padding: 10px;margin-left: 20px;"></span>
+					<div class="weui-cell"></div>
+				</div>
+				<div style="padding: 0 20px">
+					<div class="comment-list">
+						<ul v-for="(rcom,index) in replyComtentLis">
+							<li>
+								<img alt="" v-bind:src="rcom.headimgurl" src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJEma36hMicqClxRyRficxlykkJP9CTMrn66Uo7sOw6tYrsbGjiaWEe7msgzxmyb3O4dRib0vYHkJbWug/132" width="30px" height="30px ">
+								<div class="box">
+									<p class="name">{{rcom.nickname}}</p>
+									<p class="text">{{rcom.comment}}</p>
+									<p v-show="rcom.memberId == user" style="color: red; text-align: right; font-size: 12px;" v-on:click="delReplyComment(rcom.id,index)">删除</p>
+								</div>
+							</li>
+						</ul>
+						<div style="text-align: center; position: fixed; width: 100%; left: 0; padding: 5px 0px 5px 0px; background-color: white;" :class="product>0?'upSend':'downSend'">
+							<input v-model="replyComment" style="border: 1px solid #EEEEEE; border-radius: 4px; width: 80%; height: 34px;">
+							<span style="font-family: NotoSansHans-Regular; font-size: 14px; color: #F5A623; padding: 10px;" v-on:click="sendReplyComment()">发布</span>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+
+	</div>
+		
+</body>
+<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script> 
+<script src="/wechat/js/wechat/wx-jssdk-reg_wechat.js"></script>
+<script>
+    var classRoomId = #(classRoom);
+    var inviter = #(inviter);
+
+    var data = {
+        mobile:'',
+        mask:false,
+        isDisble :true,
+        lessonIntro : {},
+        vShow : false,
+        lessonScripts:[],
+        playBtn:false,
+        musicPlaying:false,
+        openAPP : false,
+        playerbg:'',
+        picShow : false,
+        scriptPic :'',
+        lessonCommont:'',
+        lessonComments:[],
+        opend:'#(openId)',
+        audioBtnImage:'http://image.fandoutech.com.cn/ico_megaphone@3x.gif',
+        product:0,
+        classRoomReply : [],
+        playReplyBtn:true,
+        replyComtentLis:[],
+        selectGroup : 0,
+        replyComment : '',
+        user: '#(user)'
+
+    }
+</script>
+<script src="/wechat/lesson/2c/js/main.js"></script>
+</html>

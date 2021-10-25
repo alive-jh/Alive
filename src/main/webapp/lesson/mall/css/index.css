@@ -1,0 +1,177 @@
+.my_header {
+  width: 9.36rem;
+  height: 8.08rem;
+  background: white;
+  padding: 0.32rem; }
+
+.search {
+  width: 9.36rem;
+  height: 34px;
+  border-radius: 4px;
+  background: #f5f6fa;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.search_icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 7px; }
+
+.search > span {
+  color: #bebfc3;
+  font-size: 15px;
+  font-weight: 400; }
+
+/*.advertising img{
+  width: px2rem(351px);
+  height: px2rem(140px);
+  border-radius: px2rem(4px);
+  margin-top: px2rem(12px);
+  object-fit: cover;
+}*/
+.swiper-container {
+  width: 9.36rem;
+  height: 3.7333333333rem;
+  margin-top: 0.32rem; }
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.1066666667rem;
+  object-fit: fill; }
+
+.swiper-pagination-bullet-active {
+  background-color: white; }
+
+.category {
+  width: 9.36rem;
+  height: 2.16rem;
+  margin-top: 0.64rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.category_item {
+  width: 2.9066666667rem;
+  height: 0.9066666667rem;
+  background: #f5f6fa;
+  border-radius: 0.4533333333rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1333333333rem 0.1066666667rem; }
+
+.category_item span {
+  width: 2.2666666667rem;
+  font-size: 0.3733333333rem;
+  font-weight: 400;
+  color: #191a1e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center; }
+
+.daily_recommend, .activity_area {
+  width: 9.36rem;
+  height: 6.9866666667rem;
+  background: white;
+  border-radius: 0.1066666667rem;
+  margin: 0.32rem auto; }
+
+.top {
+  width: 9.36rem;
+  height: 1.44rem;
+  border-radius: 0.1066666667rem 0.1066666667rem 0 0;
+  line-height: 1.44rem; }
+
+.top .title {
+  font-size: 0.4266666667rem;
+  color: #191a1e;
+  float: left;
+  margin-left: 0.32rem; }
+
+.top .more_icon {
+  font-size: 0.32rem;
+  font-weight: 400;
+  color: #87888c;
+  float: right;
+  margin-right: 0.32rem; }
+  .top .more_icon:after {
+    margin-left: 0.16rem;
+    content: ' ';
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    background-size: cover;
+    background-image: url("../images/mall_jiantou_icon.png");
+    position: relative;
+    top: 0.0266666667rem; }
+
+.product_item {
+  width: 8.72rem;
+  height: 2.1333333333rem;
+  padding: 0.32rem; }
+
+.product_item:last-child {
+  border-radius: 0 0 0.1066666667rem 0.1066666667rem; }
+
+.product_pic {
+  width: 2.1333333333rem;
+  height: 2.1333333333rem;
+  border-radius: 0.1066666667rem;
+  float: left;
+  margin-right: 0.32rem;
+  object-fit: fill; }
+
+.product_info_right {
+  width: 6.2666666667rem;
+  height: 2.1333333333rem;
+  float: left;
+  position: relative; }
+
+.product_name {
+  width: 6.1066666667rem;
+  font-size: 0.4266666667rem;
+  color: #191a1e;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.details {
+  font-size: 0.3733333333rem;
+  font-weight: 400;
+  color: #87888c;
+  margin-top: 0.1066666667rem; }
+
+.price_info {
+  font-size: 0.4266666667rem;
+  position: absolute;
+  bottom: 0; }
+
+.price_info span:nth-child(1) {
+  font-size: 0.4266666667rem;
+  color: #ffa526;
+  font-weight: 500; }
+
+.price_info span:nth-child(2) {
+  font-size: 0.32rem;
+  color: #ffa526;
+  font-weight: 500; }
+
+.price_info span:nth-child(3) {
+  font-size: 0.32rem;
+  text-decoration: line-through;
+  color: #87888c;
+  font-weight: 400; }
+
+.purchased_num {
+  font-size: 0.32rem;
+  font-weight: 400;
+  color: #87888c;
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
+/*# sourceMappingURL=index.css.map */

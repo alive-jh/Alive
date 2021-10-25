@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5, maximum-scale=1.0, minimum-scale=1.0">
+    <title>确认订单</title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.min.css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/confirmOrder.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="product_item">
+        <img class="product_pic" v-bind:src="mallProduct.pics!=undefined?mallProduct.pics[0]:'../images/picture-81.png'">
+        <div class="product_info_right">
+            <b class="product_name">{{mallProduct.name}}</b>
+            <p class="details">{{mallProduct.desc}}</p>
+            <div class="price_info">
+                <span class="price">{{getPriceRange()}}</span><span>豆币</span>
+                <span v-show="oldPrice">价格{{mallProduct.originalCoin}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="stu_selection_box">
+        <p>请选择学生</p>
+        <div class="stu_selection">
+            <div class="stu_item" v-for="(item,index) in studentName">
+                <input v-bind:id="getStuIndex(index)" v-bind:value="item.studentId" type="radio" name="stu_name" v-bind:checked="getChecked(index)">
+                <label class="radio_label" v-bind:for="getStuIndex(index)">{{item.name}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="recharge" v-show="rechargeShow">
+        <img src="../images/bi_icon.png">
+        <span>{{coinInfo.coinNum}}</span>
+        <span>当前余额不足请先充值</span>
+        <div class="recharge_btn" v-on:click="rechargeFun">充值</div>
+    </div>
+
+    <div class="footer">
+        <div class="total">
+            <span>合计：</span><span class="price">{{getPriceRange()}}</span><span>豆币</span>
+        </div>
+
+        <div v-bind:class="{'pay_btn':sufficient,'pay_btn2':insufficient}" v-on:click="pay(this)">支付豆币</div>
+    </div>
+</div>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+<script src="../js/public.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="https://cn.vuejs.org/js/vue.js"></script>
+
+<script>
+
+    var host = window.location.protocol+"//"+window.location.host +"/snp/v2/";
+    var productId = getQueryString('productId');
+    //var productId = 5;
+    var app = new Vue({
+        el: '#app',
+        data: {
+            oldPrice:true,
+            rechargeShow:false,
+            sufficient:true,
+            insufficient:false,
+            coinInfo:{},
+            mallProduct:{
+                pics:[]
+            },
+            studentName:[],
+            payNum:{}
+        },
+        methods: {
+            init: function (productId) {
+                let that = this;
+                $.ajax({
+                    //http://test.fandoutech.com.cn
+                    url: host + 'mall/confirmOrder',
+                    data: {
+                        productId: productId,
+                    },
+                    type: "get",
+                    async: false,
+                    //withCredentials: true,//!跨域带cookies
+                    success: function (res) {
+                        if (res.code == 200) {
+                            console.log(res.data)
+                            that.mallProduct=res.data.mallProduct;
+                            that.mallProduct.pics = that.mallProduct.pics.split(",");
+                            that.coinInfo=res.data.coinInfo;
+                            that.studentName=res.data.studentName;
+                        }
+                    }
+                })
+            },
+            getStuIndex:function(index){
+                return "stu"+index;
+            },
+            rechargeBlock:function () {
+                var userCoin=this.coinInfo.coinNum;
+                var productCoin=this.mallProduct.coin;
+                if (userCoin==undefined) {
+                    userCoin=0;
+                }
+                if (userCoin<productCoin || userCoin == 0) {
+                    this.rechargeShow=true;
+                    this.sufficient=false;
+                    this.insufficient=true;
+                }
+            },
+            pay:function(){
+                var that=this;
+                if (that.insufficient) return;
+                $.confirm({
+                    title: '是否确定支付？',
+                    //点击确认
+                    onOK: function () {
+                        var studentId= $("input[name='stu_name']:checked").val();
+                        var packageId=that.mallProduct.classRoomPackageId;
+                        var specId=that.mallProduct.specId;
+                        $.ajax({
+                            //http://test.fandoutech.com.cn
+                            url: host + 'mall/coinPayInfo',
+                            data: {
+                                packageId:packageId,
+                                studentId:studentId,
+                                specId:specId,
+                            },
+                            type: "get",
+                            async: false,
+                            success: function (res) {
+                                if (res.code == 200) {
+                                    window.location='./paymentSuccessful.html';
+                                }else {
+                                    $.alert(res.msg);
+                                    //$.alert("豆币:"+that.coinInfo.coinNum);
+                                }
+                            }
+                        })
+                    },
+                    onCancel: function () {
+                        return;
+                    }
+                });
+            },
+            getChecked:function (index) {
+                if (index==0) {
+                    return true;
+                }
+                return ;
+            },
+            rechargeFun:function () {
+                var message = {
+
+                };
+                try {
+                    window.webkit.messageHandlers.rechargeFun.postMessage(message);
+                } catch (e) {
+                    console.log(e);
+                };
+                try {
+                    jsRecharge.recharge();
+                } catch (e) {
+                    console.log(e);
+                }
+            },
+            rechargeSuccess:function () {
+                $.alert("充值成功");
+                app.reload();
+                //location.reload();
+                //充值成功，刷新页面
+                //app.init(productId);
+                //app.recharge();
+                //this.rechargeShow=false;
+            },
+            getPayNumData:function(){
+                var that = this;
+                $.ajax({
+                    //http://test.fandoutech.com.cn
+                    url: host + 'mall/peoPleCount',
+                    data: {},
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            that.payNum=res.data;
+                        }
+                    }
+                })
+            },
+            getPayNum:function (id) {
+                return this.payNum[''+id];
+            },
+            getPriceRange:function () {
+                this.$nextTick(function () {
+                    var coin = this.mallProduct.coin;
+                    var originalCoin = this.mallProduct.originalCoin;
+                    console.log(coin)
+                    if (coin == undefined||coin == 0){
+                        this.oldPrice = false;
+                        $(".price").text(originalCoin);
+                    }
+                    $(".price").text(coin);
+                });
+            },
+        }
+    });
+
+    app.init(productId);
+    app.rechargeBlock();
+    app.getPayNumData();
+
+    window.onload=function () {
+
+    }
+</script>
+</body>
+</html>

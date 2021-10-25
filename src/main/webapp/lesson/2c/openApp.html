@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>正在打开...</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+<style type="text/css">
+#occlusion {
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    text-align: right;
+    display:none;
+    z-index: 999999999;
+}
+#occlusion img {
+    width: 313px;
+    margin-right: 25px;
+}
+.weui-dialog .weui-dialog__btn.default, .weui-toast .weui-dialog__btn.default{
+	color: #3cc51f;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var u = navigator.userAgent, app = navigator.appVersion;
+	var isAndroid = u.toLowerCase().indexOf('android') > -1 || u.toLowerCase().indexOf('linux') > -1; //g
+	var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+	window.onload = function(){
+		
+		if(isWeiXin()){
+			var occlusion =  document.getElementById("occlusion")
+			occlusion.style.display = "block";
+		}else{
+				toDownload();
+		}
+		
+		$("#carebg").css({
+			position : "absolute",
+			top : ($(window).height() - $("#carebg").height()) / 2
+		});
+	}
+	
+	function isWeiXin(){
+		var ua = navigator.userAgent.toLowerCase();
+		return ua.indexOf('micromessenger') != -1;
+	}
+	
+	function toDownload() {
+
+		$.confirm('是否打开阿凡豆?', function() {
+			location.href = "http://www.fandoutech.com/afandle/";
+		}, function() {
+			
+			openLocalUrl();
+			toDownload();
+			
+		});
+		
+		$('.weui-dialog__btn.default').text('打开阿凡豆')
+		$('.weui-dialog__btn.primary').text('去下载')
+
+	}
+	
+	function getUrlPara(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return;
+	}
+	
+	function openLocalUrl(){
+		var androidUrl = "fandou://com.fandou.afandle/alive?inviteCode="+getUrlPara("inviteCode");
+		var iosUrl = "afandle-linking://"+getUrlPara("inviteCode");
+		if(isIOS){
+			location.href = iosUrl;
+		}else{
+			location.href = androidUrl;
+		}
+	}
+</script>
+<div id="occlusion">
+    <div><img src="/wechat/lesson/2c/images/20190129162220.png" alt=""></div>
+</div>
+<div id="carebg"><img src="/wechat/lesson/2c/assets/download_bg@3x.png" alt="" width="100%"></div>
+   
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+</body>
+</html>

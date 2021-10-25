@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+
+.check-all{display: block;padding:10px 10px 10px 20px;font-size:16px;}
+
+/*商品数量编辑器样式*/
+
+.goods-info h3 a{display: block;width:25px;height:25px;position: absolute;top:0;right:0;background:url(../images/s-icons.png) no-repeat;background-size:100%;background-position: 0px -75px;}
+.goods-num{position: absolute;top:0;right:0;background-color:#D6D6D6;border:1px solid #B3B3B3;border-radius: 5px;}
+.goods-info .goods-price .plus-btn,.goods-info .goods-price .num-text,.goods-info .goods-price .minus-btn{float:left;padding:0px 8px;font-size:16px;color:#333;}
+.goods-info .goods-price .num-text{border-left:1px solid #B3B3B3;border-right:1px solid #B3B3B3;}
+.goods-info .goods-price .minus-btn.disable,.goods-info .goods-price .plus-btn.disable{color:#aaa;}
+
+@media only screen and (min-width:768px ) {
+	.content-body{padding: 0;width:768px;}
+}

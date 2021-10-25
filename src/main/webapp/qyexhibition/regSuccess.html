@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>注册成功</title>
+<style type="text/css">
+.success {
+	width: 100%;
+	text-align: center;
+	color: #64AEEB;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.say p{
+line-height: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="success">
+		<h2 style="color: #ffd586">注册成功</h2>
+		<img alt="" src="/wechat/qyexhibition/images/picture_zhucechenggong@2x.png" width="80%">
+		<h2 style="color: black;" id="name"></h2>
+		<div class="say" >
+			<p>很高兴认识你</p>
+			<p>我们现在已经成为好朋友了</p>
+			<p>快来跟我一起玩吧</p>
+		</div>
+
+	</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(window).load(function() {
+		$(".success").css({
+			position : "absolute",
+			top : ($(window).height() - $(".success").height()) / 2
+		});
+	});
+	
+
+	//获取Location对象的search属性值
+	var searchStr = location.search;
+	 
+	//由于searchStr属性值包括“?”，所以除去该字符
+	searchStr = searchStr.substr(1);
+	 
+	//将searchStr字符串分割成数组，数组中的每一个元素为一个参数和参数值
+	var searchs = searchStr.split("&");
+	
+	$('#name').text(decodeURI(searchs[0].split("=")[1]));
+	
+	 
+	//获得第一个参数和值
+
+</script>
+</html>

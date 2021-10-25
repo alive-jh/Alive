@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学习周报</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <link href="/snp/lesson/weekly/study_weekly.css" rel="stylesheet" type="text/css"/>
+    <link href="/snp/lesson/weekly/cycle_selection.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.min.js"></script>
+    <style></style>
+</head>
+<body>
+
+<div class="cycle_selection" onclick="openSelect(this)">
+    <input id='job' type="text" value=""/>
+    <span class="this_week" id="this_week">本周</span>
+    <img class="zhoubao_xiala_icon" src="/snp/lesson/weekly/images/zhoubao_xiala_icon.png">
+</div>
+
+<div id="content">
+    <div class="div_title">
+        <span class="title_font">本周聆听情况</span>
+        <span class="total_time">共计{{weeklyData.weeklyClassTime?parseInt(weeklyData.weeklyClassTime/60):0}}min</span>
+    </div>
+
+
+    <div class="tag schedule_tag">
+        <ul class="schedule_ul">
+            <li>
+                <span class="schedule_font">{{weeklyData.weeklyTime.day0?parseInt(weeklyData.weeklyTime.day0/60):0}}</span>
+                <div class="progress_bar" :style="'height:' +weeklyData.weeklyTime.day0/120+ 'px'"></div>
+                <div class="progress_bar2"></div>
+                <span class="day_font">周日</span>
+            </li>
+            <li>
+                <span class="schedule_font">{{weeklyData.weeklyTime.day1?parseInt(weeklyData.weeklyTime.day1/60):0}}</span>
+                <div class="progress_bar tuesday_progress_bar" :style="'height:' +weeklyData.weeklyTime.day1/120+ 'px'"></div>
+                <div class="progress_bar2 tuesday_progress_bar2"></div>
+                <span class="day_font">周一</span>
+            </li>
+            <li>
+                <span class="schedule_font">{{weeklyData.weeklyTime.day2?parseInt(weeklyData.weeklyTime.day2/60):0}}</span>
+                <div class="progress_bar wednesday_progress_bar" :style="'height:' +weeklyData.weeklyTime.day2/120+ 'px'"></div>
+                <div class="progress_bar2 wednesday_progress_bar2"></div>
+                <span class="day_font">周二</span>
+            </li>
+            <li>
+                <span class="schedule_font">{{weeklyData.weeklyTime.day3?parseInt(weeklyData.weeklyTime.day3/60):0 }}</span>
+                <div class="progress_bar thursday_progress_bar" :style="'height:' +weeklyData.weeklyTime.day3/120+ 'px'"></div>
+                <div class="progress_bar2 thursday_progress_bar2"></div>
+                <span class="day_font">周三</span>
+            </li>
+            <li>
+                <span class="schedule_font">{{weeklyData.weeklyTime.day4?parseInt(weeklyData.weeklyTime.day4/60):0}}</span>
+                <div class="progress_bar friday_progress_bar" :style="'height:' +weeklyData.weeklyTime.day4/120+ 'px'"></div>
+                <div class="progress_bar2 friday_progress_bar2"></div>
+                <span class="day_font">周四</span>
+            </li>
+            <li>
+                <span class="schedule_font">{{weeklyData.weeklyTime.day5?parseInt(weeklyData.weeklyTime.day5/60):0}}</span>
+                <div class="progress_bar saturday_progress_bar" :style="'height:' +weeklyData.weeklyTime.day5/120+ 'px'"></div>
+                <div class="progress_bar2 saturday_progress_bar2"></div>
+                <span class="day_font">周五</span>
+            </li>
+            <li>
+                <span class="schedule_font">{{weeklyData.weeklyTime.day6?parseInt(weeklyData.weeklyTime.day6/60):0}}</span>
+                <div class="progress_bar sunday_progress_bar" :style="'height:' +weeklyData.weeklyTime.day6/120+ 'px'"></div>
+                <div class="progress_bar2 saturday_progress_bar2"></div>
+                <span class="day_font">周六</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="div_title">
+        <span class="title_font">本周完成主课</span>
+    </div>
+    <div class="tag">
+        <span class="num_font">{{weeklyData.mainClass?weeklyData.mainClass:0}}</span>
+        <span class="unit_font">主课(单位:节)</span>
+    </div>
+
+    <div class="div_title">
+        <span class="title_font">本周完成早读、晚听课</span>
+    </div>
+    <div class="tag">
+        <div class="tag_left">
+            <span class="num_font left_num_font">{{weeklyData.earlyClass?weeklyData.earlyClass:0}}</span>
+            <span class="unit_font left_util_font">早读(单位:节)</span>
+        </div>
+        <div class="tag_right">
+            <span class="num_font right_num_font">{{weeklyData.lateClass?weeklyData.lateClass:0}}</span>
+            <span class="unit_font left_util_font">晚听(单位:节)</span>
+        </div>
+    </div>
+
+    <div class="div_title">
+        <span class="title_font">总课时和上课次数</span>
+    </div>
+    <div class="tag">
+        <div class="tag_left">
+            <span class="num_font left_num_font classHour_num_font">{{weeklyData.all.usedTime?parseInt(weeklyData.all.usedTime/60):0}}</span>
+            <span class="unit_font left_util_font classHour_util_font">总课时(单位:min)</span>
+        </div>
+        <div class="tag_right">
+            <span class="num_font right_num_font classNum_num_font">{{weeklyData.all.usedClass?weeklyData.all.usedClass:0}}</span>
+            <span class="unit_font left_util_font classNum_util_font">上课次数</span>
+        </div>
+    </div>
+
+    <div class="div_title" style="display: none">
+        <span class="title_font">课程完成率</span>
+        <span class="total_time">75%</span>
+    </div>
+    <div class="tag tag2" style="display: none">
+        <div class="icon"></div>
+        <span>已完成</span>
+        <div class="icon icon2"></div>
+        <span>总课程</span>
+
+        <div class="circleProgress_wrapper">
+            <div class="wrapper right">
+                <div class="circleProgress rightcircle2"></div>
+            </div>
+            <div class="wrapper left">
+                <div class="circleProgress leftcircle2"></div>
+            </div>
+        </div>
+
+        <div class="circleProgress_wrapper">
+            <div class="wrapper right">
+                <div class="circleProgress rightcircle"></div>
+            </div>
+            <div class="wrapper left">
+                <div class="circleProgress leftcircle"></div>
+            </div>
+        </div>
+        <div class="ratio">
+            <span>75%</span>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js"></script>
+<script>
+
+    var studentId = "#(studentId)";
+    //var timeSn;
+    var vm = new Vue({
+        el: '#content',
+        data: {
+            weeklyData: {
+                all: {},
+                weeklyTime:{}
+            }
+        },
+        methods: {
+            init: function (timeSn) {
+                var that = this;
+                $.ajax({
+                    url: '/snp/v2/lesson/studyWeekly',
+                    data:{
+                        studentId:studentId,
+                        timeSn:timeSn
+                    },
+                    type: "get",
+                    success: function (res) {
+                        console.log(res)
+                        if (res.code == 200) {
+                            that.weeklyData = res.data;
+                        }
+                    }
+                })
+            }
+        }
+    })
+    //vm.init();
+</script>
+<script>
+    var scrollT = null;
+    var LastScrollT = 0;
+    window.onscroll = function (e) {
+        scrollT = getScrollOffset().y;//滚动条距离
+    }
+    function getScrollOffset() {
+        if (window.pageXOffset) {
+            return {
+                x: window.pageXOffset,
+                y: window.pageYOffset
+            }
+        } else {
+            return {
+                x: document.body.scrollLeft || document.documentElement.scrollLeft,
+                y: document.body.scrollTop || document.documentElement.scrollTop
+            }
+        }
+    };
+    function hideBodyScroll() {
+        // 在这里获取滚动的距离，赋值给body，好让他不要跳上去。
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = -scrollT + 'px';//改变css中top的值，配合fixed使用
+        // 然后找个变量存一下刚才的scrolltop，要不然一会重新赋值，真正的scrollT会变0
+        LastScrollT = scrollT;
+    }
+    function showBodyScroll() {
+        document.body.style.overflow = 'auto';
+        document.body.style.position = 'static';
+        // 关闭close弹层的时候，改变js中的scrollTop值为上次保存的LastScrollT的值。并根据兼容性赋给对应的值。
+        if (window.pageXOffset) {
+            window.pageYOffset = LastScrollT;
+        } else {
+            document.body.scrollTop = LastScrollT;
+            document.documentElement.scrollTop = LastScrollT;
+        }
+    }
+
+    var cycleList=[];
+    function getInfo(year, month) {
+        var d = new Date();
+        // what day is first day
+        d.setFullYear(year, month-1, 2);
+        var w1 = d.getDay();
+        if (w1 == 0) w1 = 7;
+        // total day of month
+        d.setFullYear(year, month, 0);
+        var dd = d.getDate();
+        // first Monday
+        if (w1 != 1) d1 = 7 - w1 + 2;
+        else d1 = 1;
+        week_count = Math.ceil((dd-d1+1)/7);
+        //document.write(year + "年" + month + "月有" + week_count +"周");
+        for (var i = 0; i < week_count; i++) {
+            var monday = d1+i*7;
+            var sunday = monday + 6;
+            var from = d.getFullYear()+"-"+month+"-"+appendZero(monday)+"";
+            var to;
+            if (sunday <= dd) {
+                to = d.getFullYear()+"-"+month+"-"+appendZero(sunday)+"";
+            } else {
+                d.setFullYear(year, month-1, sunday);
+                to = d.getFullYear()+"-"+appendZero((d.getMonth()+1))+"-"+appendZero(d.getDate())+"";
+            }
+            //document.write("第"+(i+1)+"周 从" + from + " 到 " + to + "");
+            cycleList.push( from + "至" + to + "");
+            //return  from + "至" + to + "";
+        }
+        return cycleList;
+    }
+    //getInfo(new Date().getFullYear(),new Date().getMonth() + 1<10? "0"+(new Date().getMonth() + 1):new Date().getMonth() + 1);
+    //getInfo(new Date().getFullYear(),appendZero(new Date().getMonth()+1));
+   /* getInfo(2019,appendZero(1));
+    getInfo(2019,appendZero(2));
+    getInfo(2019,appendZero(3));
+    getInfo(2019,appendZero(4));
+    getInfo(2019,appendZero(5));
+    getInfo(2019,appendZero(6));
+    getInfo(2019,appendZero(7));
+    getInfo(2019,appendZero(8));
+    getInfo(2019,appendZero(9));
+    getInfo(2019,appendZero(10));
+    getInfo(2019,appendZero(11));
+    getInfo(2019,appendZero(12));
+*/
+    /*getInfo(2019,appendZero(7));
+    getInfo(2019,appendZero(8));*/
+
+   /* for(var i=1;i<=12;i++){
+        getInfo(2017,appendZero(i));
+    }
+    for(var i=1;i<=12;i++){
+        getInfo(2018,appendZero(i));
+    }
+    for(var i=1;i<=(new Date().getMonth()+1);i++){
+        getInfo(2019,appendZero(i));
+    }*/
+    //getInfo(new Date().getFullYear(),appendZero(new Date().getMonth()+1));
+
+    var year=new Date().getFullYear();
+    console.log(year)
+    for (var i = 0; i <= year-2017 ; i ++){
+        if((2017+i)==year){
+            for(var j=1;j<=(new Date().getMonth()+1);j++){
+                getInfo(year,appendZero(j));
+            }
+        }else {
+            for(var j=1;j<=12;j++){
+                getInfo(2017+i,appendZero(j));
+            }
+        }
+    }
+
+
+   // console.log(cycleList.reverse());
+
+
+
+    /*不足两位数补0*/
+    function appendZero(obj) {
+        if(obj<10) return "0" +""+ obj;
+        else return obj;
+    }
+
+    //本周起始日期
+    var begin;
+    //本周结束日期
+    var end;
+    function getDays(){
+        var date = new Date();
+        // 本周日的日期
+        date.setDate(date.getDate() - date.getDay());
+        begin = date.getFullYear() + "-" + appendZero((date.getMonth() + 1)) + "-" + appendZero(date.getDate());
+
+        // 本周六的日期
+        date.setDate(date.getDate() + 6);
+        end = date.getFullYear() + "-" + appendZero((date.getMonth() + 1)) + "-" + appendZero(date.getDate());
+
+        //$scope.registDate(begin,end);
+
+        return begin+"至"+end;
+    }
+
+    window.onload=function () {
+        //$('#job').val(getDays());
+        //alert(getDays().substring(0,10))
+        let begin=getDays().substring(0,10);
+        vm.init(begin);
+        $('#job').attr("value",getDays());
+        $('#job').attr("data-values",getDays());
+        console.log($('#job').data("values"));
+    }
+
+
+    var openTimeSn;
+    var closeTimeSn;
+    $("#job").select({
+        title: "选择日期",
+        items: cycleList.reverse(),
+        onOpen:function () {
+            $('.zhoubao_xiala_icon').attr("src","/snp/lesson/weekly/images/zhoubao_shouqi_icon.png");
+            hideBodyScroll();
+
+            openTimeSn=$('#job').val().substring(0,10);
+            console.log("open:"+openTimeSn);
+
+            $('#weui-select-id-'+getDays()).before("<span class='this_week2'>本周</span>")
+
+
+            /*$('.weui-select-modal .weui-cells').hide();
+
+            var html=
+
+            $('.weui-cells').before("<div id='setYear' class='set_year'>" +
+                "<div class='a_certain_year'><label onclick='f()'>2019</label></div>" +
+                "<div class='a_certain_year'><label onclick='f()'>2018</label></div>" +
+                "<div class='a_certain_year'><label onclick='f()'>2017</label></div>" +
+                "</div>");
+            */
+        },
+        onClose:function () {
+            showBodyScroll();
+            $('.zhoubao_xiala_icon').attr("src","/snp/lesson/weekly/images/zhoubao_xiala_icon.png");
+
+            closeTimeSn=$('#job').val().substring(0,10);
+            console.log("close:"+closeTimeSn);
+
+            if(openTimeSn!=closeTimeSn){
+                $('.progress_bar').height("0");
+                vm.init(closeTimeSn);
+            }
+
+            if (closeTimeSn!=begin){
+                $('#this_week').hide();
+            }else{
+                $('#this_week').show();
+            }
+        },
+        onChange:function () {
+
+        }
+    });
+    function openSelect(e) {
+        $("#job").select("open");
+        /*
+        console.log(e.childNodes.item(5));
+        if (e.childNodes.item(5).src!="./images/zhoubao_xiala_icon.png"){
+            $("#job").select("close");
+        }
+        if(e.childNodes.item(5).src!="./images/zhoubao_shouqi_icon.png"){
+            $("#job").select("open");
+        }
+       */
+    }
+
+/*    function f() {
+        $('#setYear').remove();
+        var html=
+        $('.weui-cells').before("<a onclick='f()'>月份：aaa</a>");
+    }*/
+
+</script>
+</body>
+</html>

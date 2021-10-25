@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <title>学习记录</title>
+</head>
+<body>
+
+<main>
+
+    <div id="studyAV">
+
+
+        <!--<img id="audioBg" src="./images/audio-bg-default.png">
+        <img id="megaphoneGif"  src="./images/megaphone.gif">-->
+
+        <!--<p id="paragraphID" class="paragraph">Would you like some tea?</p>-->
+        <!--<p class="paragraph2">Would you like some tea?</p>-->
+
+        <video  id="AV_source"  src=""  style="display:none"  playsinline x5-playsinline="true" playsinline="true"  webkit-playsinline="true" x5-video-player-type="h5-page">
+
+        </video>
+        <img id="audioBg" src="./images/audio-bg-default.png">
+        <img id="megaphoneGif" src="./images/megaphone.gif">
+
+            <!--<p id="paragraphID" class="paragraph"></p>-->
+
+        <div id="paragraphID" class="paragraph">
+                <p id="text" class="text"></p>
+        </div>
+
+        <img  id="playPause" src="./images/kaquan_play_icon@2x.png" onclick="playPause(this)">
+    </div>
+
+    <div id="study_title">
+        <span  class="span1" ><strong id="className"></strong></span>
+
+        <hr class="line">
+
+        <span class="countSpan">课程综合得分</span>
+
+        <div id="starCount" style="position: absolute;left: 155px;top:90px">
+            <!--<img src="star.png">
+            <img src="star.png">
+            <img src="star.png">
+            <img src="star.png">
+            <img src="star.png">-->
+        </div>
+
+        <img id="avatar" src="./images/defaultAvatar.png">
+        <span class="span2" id="studentName"></span>
+    </div>
+
+    <div id="hr">
+    </div>
+
+    <div id="play_list">
+
+        <div class="bar">
+            <span class="span3"><strong>播放列表</strong></span>
+            <div class="auto-play">
+                <span class="span4" >自动播放</span>
+                <img id="autoBtn" class="auto_radio" src="./images/switch-on.png" onclick="auto(this)">
+            </div>
+
+        </div>
+
+        <table id="listTable">
+
+
+        </table>
+
+    </div>
+
+    <div class="join" onclick="location.href='http://server.fandoutech.com.cn/sell/sellIndex?product='+product+'&inviter='+student" style="display: none">
+        <span class="text">我也要报名</span>
+
+    </div>
+</main>
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+
+    function isWeiXin(){
+        return window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger'
+    }
+
+</script>
+
+
+
+<script type="text/javascript">
+    var timeSn = getQueryString("timeSn");
+    var data={};
+    var product = 0;
+    var student = 0;
+
+    $.ajax({
+        url:"/wechat/v2/lesson/getLessonReply?_sign=3AC3A2630F99B120E44892E0BEDDAE3F&_time=1525842696825&",
+        data:{
+            "timeSn":timeSn
+        },
+        async: false,
+        type:"get",
+        success:function (res) {
+            data=res;
+            if (res.data.product && isWeiXin()){
+                $('.join').show();
+                product = res.data.product;
+                student = res.data.classStudent.id;
+            };
+
+        }
+    })
+</script>
+
+
+<script type="text/javascript">
+
+</script>
+
+
+
+
+<script type="text/javascript">
+
+
+    function testMap(command){
+        var m = {
+            201:'老师录音',
+            202:'播放课堂音频',
+            203:'语音合成',
+            206:'学生录音',
+            207:'学生录音',
+            211:'播放视频',
+            212:'播放课堂视频',
+            216:'学生录像',
+            221:'展示图片',
+            226:'学生拍照',
+            301:'跟读',
+            401:'选择题',
+            402:'填空题',
+            403:'问答题',
+            501:'音乐指令',
+        };
+
+        return m[command];
+
+    }
+
+
+
+    var replyScripts = [];
+
+    var totalScore=[];
+
+
+    console.log(data)
+    /*插入课程名称*/
+    $('#className').text(data.data.classRoom.class_name);
+    console.log((typeof data.data.classStudent.avatar))
+    if ((typeof data.data.classStudent.avatar)=="string"){
+        /*头像*/
+        $('#avatar').attr('src',data.data.classStudent.avatar);
+    } else {
+        $('#avatar').attr('src','./images/defaultAvatar.png');
+    }
+
+    /*用户昵称*/
+    $('#studentName').text(data.data.classStudent.name);
+
+    var lessonScriptReplies=data.data.lessonScriptReplies;
+
+    var name;
+    for(var i=0;i<lessonScriptReplies.length;i++){
+
+
+        if (data.data.lessonScriptReplies[i].replyScript[0].content==""){
+            continue;
+        }
+
+        console.log(data.data.lessonScriptReplies[i].replyScript[0].type)
+        if (data.data.lessonScriptReplies[i].replyScript[0].type=="text"){
+            data.data.lessonScriptReplies.splice(i,1);
+            i--;
+            continue;
+        }
+
+        replyScripts.push(lessonScriptReplies[i].replyScript[0]);
+
+        /*如果为语音类型*/
+        if (replyScripts[i].type=="audio"){
+            var playTime=replyScripts[i].audioLength;
+            if (playTime!=undefined){
+                playTime=playTime+'秒';
+            }else{
+                playTime='';
+            }
+            //console.log("command",data.data.lessonScriptReplies[i].classScriptContent[0].command);
+
+            for (var j=0;j<data.data.lessonScriptReplies[i].classScriptContent.length;j++){
+                if (data.data.lessonScriptReplies[i].classScriptContent[j].priority==1){
+                    name=testMap(data.data.lessonScriptReplies[i].classScriptContent[j].command).toString();
+                    break;
+                }
+            }
+
+            console.log(name);
+
+            var html='<tr>\n' +
+                '                <td>\n' +
+                '                    <div class="direct_name">\n' +
+                '                        <img class="img1" src="./images/audio.png">\n' +
+                '                        <span class="span5">'+(i+1)+'.'+name+'</span>\n' +
+                '                        <span class="span6">'+playTime+'</span>\n' +
+                '                        <img class="playPause2"  id="'+i+'" data-index="'+i+'" onclick="playPause(this)" src="./images/play2.png">\n' +
+                '                    </div>\n' +
+                '                </td>\n' +
+                '    </tr>';
+            $('#listTable').append(html);
+        }
+        /*如果为录像类型*/
+        if (replyScripts[i].type=="video"){
+            var playTime=replyScripts[i].audioLength;
+            if (playTime!=undefined){
+                playTime=playTime+'秒';
+            }else{
+                playTime='';
+            }
+            for (var j=0;j<data.data.lessonScriptReplies[i].classScriptContent.length;j++){
+                if (data.data.lessonScriptReplies[i].classScriptContent[j].priority==1){
+                    name=testMap(data.data.lessonScriptReplies[i].classScriptContent[j].command).toString();
+                    break;
+                }
+            }
+            var html='<tr>\n' +
+                '                <td>\n' +
+                '                    <div class="direct_name">\n' +
+                '                        <img class="img1" src="./images/video.png">\n' +
+                '                        <span class="span5">'+(i+1)+'.'+name+'</span>\n' +
+                '                        <span class="span6">'+playTime+'</span>\n' +
+                '                        <img class="playPause2"  id="'+i+'" data-index="'+i+'"  onclick="playPause(this)" src="./images/play2.png">\n' +
+                '                    </div>\n' +
+                '                </td>\n' +
+                '    </tr>';
+            $('#listTable').append(html);
+        }
+        /*如果为图片类型*/
+        if (replyScripts[i].type=="picture"){
+            for (var j=0;j<data.data.lessonScriptReplies[i].classScriptContent.length;j++){
+                if (data.data.lessonScriptReplies[i].classScriptContent[j].priority==1){
+                    name=testMap(data.data.lessonScriptReplies[i].classScriptContent[j].command).toString();
+                    break;
+                }
+            }
+            var html='<tr>\n' +
+                '                <td>\n' +
+                '                    <div class="direct_name">\n' +
+                '                        <img class="img1" src="./images/photo.png">\n' +
+                '                        <span class="span5">'+(i+1)+'.'+name+'</span>\n' +
+                '                        <span class="span6"></span>\n' +
+                '                        <img class="playPause2"  id="'+i+'" data-index="'+i+'"  onclick="playPause(this)" src="./images/play2.png">\n' +
+                '                    </div>\n' +
+                '                </td>\n' +
+                '    </tr>';
+            $('#listTable').append(html);
+        }
+        totalScore.push(lessonScriptReplies[i].score)
+    }
+    var statImg='<img src="./images/star.png">';
+    var max = Math.max.apply(null, totalScore);
+    var starCount = Math.floor(max/20);
+    if (max<=2){
+        for (var i=1;i<=2;i++){
+            $('#starCount').append(statImg);
+        }
+    } else {
+        for (var i=1;i<=starCount;i++){
+            $('#starCount').append(statImg);
+        }
+    }
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+
+    //是否自动播放
+    var autoPlay = true;
+
+    function auto(e) {
+        //如果是自动播放点击后改为false并修改按钮，否则相反
+        if (autoPlay){
+            autoPlay = false;
+            e.setAttribute('src','./images/switch-off.png')
+        } else {
+            autoPlay = true;
+            e.setAttribute('src','./images/switch-on.png')
+        }
+    }
+
+
+    /*获取大播放按钮*/
+    var playBtn=document.getElementById('playPause');
+
+
+    /*获取列表中播放按钮*/
+    var listPlayBtn=document.getElementsByClassName('playPause2');
+
+
+    console.log(replyScripts);
+
+    /*获取多媒体*/
+    var myVideo=document.getElementById("AV_source");
+
+    var curr = 0;
+    var a=0;
+
+    /*获取多媒体的总数*/
+    var vLen = replyScripts.length;
+
+    var ImggeTimeout;
+
+    /*监听播放结束事件*/
+    myVideo.addEventListener('ended', endFun);
+
+
+    /*监听播放暂停事件*/
+    myVideo.addEventListener('pause', pauseFun);
+
+    function pauseFun() {
+        $('#'+a).attr('src','./images/play3.png');
+        /*显示视频中央的按钮*/
+        $('#playPause').css('display','inline');
+        playBtn.setAttribute('src', './images/kaquan_play_icon@2x.png');
+        /*背景半透明*/
+        $('#studyAV').css('opacity', '0.5');
+    }
+
+
+    /*监听播放开始播放事件*/
+    myVideo.addEventListener('play', playFun);
+
+    function playFun() {
+        $('#'+a).attr('src','./images/pause.png');
+        $('#playPause').css('display','none');
+        /*背景半透明*/
+        $('#studyAV').css('opacity', '1');
+    }
+
+
+
+
+
+
+
+
+    /*自定义播放事件*/
+    function customizePlay() {
+        /*把按钮修改为正在播放*/
+        $('#'+curr).attr('src','./images/pause.png');
+
+        /*获取播放源*/
+        if (replyScripts[curr].type == 'picture') {
+            imageShow();
+            return;
+        }
+
+        myVideo.src = replyScripts[curr].content;
+        myVideo.load();
+
+        judgeType();
+    }
+
+    function endFun(){
+
+
+        ///如果非自动播放跳出方法执行
+        if (!autoPlay){
+            console.log('此条播放结束');
+            $('#'+a).attr('src', './images/play3.png');
+            //背景透明
+            $('#studyAV').css('opacity','0.5');
+            /*显示视频中央的按钮*/
+            $('#playPause').css('display','inline');
+            playBtn.setAttribute('src', './images/kaquan_play_icon@2x.png');
+            if(replyScripts[a].type=="audio"){
+                //重新显示背景图
+                $('#audioBg').css('display','inline')
+                //设置背景图
+                $('#audioBg').attr('src','./images/audio-bg-default.png');
+                //重新显示小喇叭gif
+                $('#megaphoneGif').css('display','inline')
+            }
+            else if(replyScripts[a].type=="picture"){
+                $('#audioBg').css('display','none')
+                $('#megaphoneGif').css('display','none')
+                $('#audioBg').attr('src',replyScripts[a].content);
+            }else if(replyScripts[a].type=="video"){
+                $('#audioBg').css('display','none')
+                $('#megaphoneGif').css('display','none')
+            }
+            return;
+        }
+
+        console.log('上条播放结束');
+        //把播放完的按钮变回灰色
+        $('#'+a).attr('src','./images/play2.png');
+        a++;
+
+        //如果播放到最后一条
+        if(curr>=vLen){
+            //光标回到首条
+            $('#0').attr('src','./images/play3.png');
+
+            if(replyScripts[0].type=="audio"){
+                //重新显示背景图
+                $('#audioBg').css('display','inline')
+                //设置背景图
+                $('#audioBg').attr('src','./images/audio-bg-default.png');
+                //重新显示小喇叭gif
+                $('#megaphoneGif').css('display','inline')
+            }
+            else if(replyScripts[0].type=="picture"){
+                //重新显示背景图
+                $('#audioBg').css('display','inline')
+                $('#megaphoneGif').css('display','none')
+                $('#audioBg').attr('src',replyScripts[0].content);
+            }else if(replyScripts[0].type=="video"){
+                $('#audioBg').css("display","inline");
+                $('#audioBg').attr("src","./images/audio-bg-default.png");
+                $('#megaphoneGif').css('display','none')
+            }
+
+            $('#playPause').css('display','inline');
+            playBtn.setAttribute('src', './images/kaquan_play_icon@2x.png');
+
+            //视频中央显示播放按钮
+            playBtn.setAttribute('src','./images/kaquan_play_icon@2x.png');
+            //背景透明
+            $('#studyAV').css('opacity','0.5');
+            curr=0;
+            //如果最后一条
+            if(a>=(vLen-1)){
+                a=0;
+            }
+            return;
+        }
+        //调用自定义播放事件
+        customizePlay();
+    }
+
+    function judgeType() {
+        /*如果为图片*/
+        $("#AV_source").css("display","none");
+        /*如果为音频*/
+        if(replyScripts[curr].type=='audio'){
+            //重新显示背景图
+            $('#audioBg').css('display','inline')
+            //设置背景图
+            $('#audioBg').attr('src','./images/audio-bg-default.png');
+            //重新显示小喇叭gif
+            $('#megaphoneGif').css('display','inline')
+            $('#megaphoneGif').attr('src', './images/megaphone.gif');
+
+            if(replyScripts[curr].remark==undefined){
+                $('#paragraphID').css('display','inline');
+                $('#paragraphID').attr("class","paragraph");
+                document.getElementById('text').innerText='';
+            }else {
+                //重新显示文本样式
+                $('#paragraphID').css('display','inline')
+                //修改class(css样式)
+                $('#paragraphID').attr("class","paragraph2");
+                //插入文本
+                document.getElementById('text').innerText=replyScripts[curr].remark;
+            }
+        }
+        else if(replyScripts[curr].type=='video'){
+
+            $("#AV_source").css("display","block")
+
+            //隐藏背景
+            $('#audioBg').css('display','none')
+            //隐藏小喇叭gif
+            $('#megaphoneGif').css('display','none')
+            //隐藏文本
+            $('#paragraphID').css('display','none')
+        }
+        myVideo.play();
+
+        curr++;
+
+    }
+
+    /*点击播放事件*/
+    function playPause(e) {
+        /*获取点击指令的下标*/
+        var index = $(e).data("index");
+
+        $("#AV_source").css("display","none");
+
+        /*如果点击了正在播放按钮（双竖杠）*/
+        if (e.getAttribute('src') == './images/pause.png') {
+            /*变为蓝色暂停按钮*/
+            e.setAttribute('src', './images/play3.png');
+            /*显示视频中央的按钮*/
+            $('#playPause').css('display','inline');
+            playBtn.setAttribute('src', './images/kaquan_play_icon@2x.png');
+            /*背景半透明*/
+            $('#studyAV').css('opacity', '0.5');
+
+            if (replyScripts[index].type=='picture') {
+                window.clearTimeout(ImggeTimeout);
+            }
+            if (replyScripts[index].type=='video') {
+                $('#audioBg').css("display","inline");
+                $('#audioBg').attr("src","./images/audio-bg-default.png");
+            }
+            /*暂停*/
+            curr = index;
+            myVideo.pause();
+            return;
+        }
+
+        for (var i = 0; i < listPlayBtn.length; i++) {
+            /*所有按钮变为灰色按钮*/
+            listPlayBtn[i].setAttribute('src', './images/play2.png');
+        }
+
+        /*如果点击了视频中央按钮*/
+        if (e.getAttribute('src') == './images/kaquan_play_icon@2x.png') {
+            //隐藏点击的按钮
+            //e.setAttribute('src', '');
+            $('#playPause').css('display','none');
+            //背景非透明
+            $('#studyAV').css('opacity', '1');
+
+            //调用自定义播放事件
+            customizePlay();
+
+            return;
+        }
+        //如果点击了蓝色或者灰色播放按钮
+        if (e.getAttribute('src') == './images/play2.png' || e.getAttribute('src') == './images/play3.png') {
+
+            window.clearTimeout(ImggeTimeout);
+
+            $('#playPause').css('display','none');
+
+            //改变按钮（双竖杠）
+            e.setAttribute('src', './images/pause.png');
+            //隐藏视频中央播放按钮
+            playBtn.setAttribute('src', '')
+            //背景非透明
+            $('#studyAV').css('opacity', '1');
+
+            //设置当前点击指令的播放源
+            myVideo.src = replyScripts[index].content;
+            /* $('#paragraphID').attr("class","paragraph2");
+            document.getElementById('paragraphID').innerText=replyScripts[index].remark;*/
+
+
+            /*如果为图片*/
+            if (replyScripts[index].type == 'picture') {
+                //放图片
+                $('#audioBg').attr('src', replyScripts[index].content);
+                //$('#megaphoneGif').attr('src','');
+                //隐藏样式
+                $('#megaphoneGif').css('display', 'none')
+                $('#paragraphID').css('display', 'none')
+
+                ImggeTimeout = setTimeout(function () {
+                    //关闭图片
+                    $('#audioBg').attr('src', '');
+                    curr = index+1;
+                    a = index;
+                    endFun();
+                }, 5000)
+            } else {
+                //否则为视频/音频
+                //如果是音频
+                if (replyScripts[index].type == 'audio') {
+                    //重新显示
+                    $('#audioBg').css('display', 'inline');
+                    $('#audioBg').attr('src', './images/audio-bg-default.png');
+                    $('#megaphoneGif').css('display', 'inline');
+                    $('#megaphoneGif').attr('src', './images/megaphone.gif');
+                    if(replyScripts[index].remark==undefined){
+                        $('#paragraphID').css('display','inline')
+                        $('#paragraphID').attr("class","paragraph");
+                        document.getElementById('text').innerText='';
+                    }else {
+                        //重新显示文本样式
+                        $('#paragraphID').css('display','inline')
+                        //修改class(css样式)
+                        $('#paragraphID').attr("class","paragraph2");
+                        //插入文本
+                        document.getElementById('text').innerText=replyScripts[index].remark;
+                    }
+
+                } else if (replyScripts[index].type == 'video') {
+
+                    $("#AV_source").css("display","block")
+
+                    //是录像，隐藏样式
+                    $('#audioBg').css('display', 'none');
+                    $('#megaphoneGif').css('display', 'none');
+                    $('#paragraphID').css('display', 'none');
+                }
+                myVideo.play();
+
+                curr = index + 1;
+                a = index;
+
+                return;
+            }
+
+        }
+    }
+
+
+    function imageShow() {
+        //放图片
+        $('#audioBg').attr('src', replyScripts[curr].content);
+        //$('#megaphoneGif').attr('src','');
+        //隐藏样式
+        $('#megaphoneGif').css('display', 'none')
+        $('#paragraphID').css('display', 'none')
+
+        $('#playPause').css('display','none');
+        /*背景半透明*/
+        $('#studyAV').css('opacity', '1');
+
+        ImggeTimeout = setTimeout(function () {
+            //关闭图片
+            console.log("關閉圖片")
+            $('#audioBg').attr('src', '');
+            a = curr;
+            curr++;
+            endFun();
+        }, 5000)
+    }
+
+</script>
+
+
+<!--初始化加载-->
+<script type="text/javascript">
+    $(function actionFun(){
+        document.getElementsByClassName('playPause2')[0].setAttribute('src','./images/play3.png');
+
+        if(replyScripts[curr].type=='audio'){
+            $('#audioBg').attr('src','./images/audio-bg-default.png');
+            $('#megaphoneGif').attr('src','./images/megaphone.gif')
+        }
+        if(replyScripts[curr].type=='video'){
+            $('#audioBg').css("display","inline");
+            $('#audioBg').attr("src","./images/audio-bg-default.png");
+            $('#megaphoneGif').attr('src','')
+        }
+        if(replyScripts[curr].type=='picture') {
+            $('#audioBg').attr('src', replyScripts[curr].content);
+            $('#megaphoneGif').attr('src', '');
+        }
+    });
+</script>
+
+<style type="text/css">
+    body{
+        padding: 0px;
+        margin: 0px;
+        background:rgba(255,255,255,1);
+    }
+    main{
+        width: 100%;
+        height: auto;
+    }
+    header{
+        width: 100%;
+        height: 56px;
+        background:rgba(242,242,242,1);
+    }
+    #studyAV{
+        width: 100%;
+        height: 210px;
+        background:rgba(0,0,0,1);
+        opacity:0.5;
+        position: relative;
+        text-align: center;
+    }
+    #playPause{
+        position: absolute;
+        top: 77px;
+        /* left: 42.67%; */
+        margin-left: -32px;
+        border: 0px;
+    }
+    #AV_source{
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 210px;
+        left: 0px;
+        top: 0px;
+    }
+    #audioBg{
+        position: absolute;
+        width: 100%;
+        height: 210px;
+        left: 0px;
+        top: 0px;
+    }
+    #megaphoneGif{
+        position: absolute;
+        top: 60px;
+        left: 0px;
+        display: none;
+    }
+    .paragraph{
+        position: absolute;
+        left: 8%;
+        top: 5%;
+        width: 84%;
+        text-align: center;
+        /*超出隐藏*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* white-space: nowrap; */
+        /* word-break: break-all; */
+        word-wrap: break-word;
+        padding: 2px;
+    }
+    .paragraph2{
+        position: absolute;
+        left: 8%;
+        top: 8%;
+        width: 84%;
+        text-align: center;
+        height: 182px;
+        background: rgba(255,255,255,0.3);
+        font-size: 16px;
+        font-family: PingFangSC-Medium;
+        font-weight: 600;
+        color: rgba(51,51,51,1);
+        line-height: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* white-space: nowrap; */
+        /* word-break: break-all; */
+        word-wrap: break-word;
+        padding: 2px;
+    }
+    #paragraphID .text{
+        padding: 0;
+        margin: 4px;
+        position: absolute;
+        /*bottom: 0;*/
+        width: 97%;
+    }
+
+    #study_title{
+        width: 100%;
+        height: 122px;
+        position: relative;
+    }
+    #study_title > .span1{
+        width:auto;
+        height:16px;
+        font-size:16px;
+        font-family:NotoSansHans-Medium;
+        font-weight:500;
+        color:rgba(0,0,0,0.87);
+        line-height:24px;
+        position: absolute;
+        top: 14px;
+        left: 20px;
+    }
+    .countSpan{
+        width: auto;
+        height: auto;
+        font-size: 12px;
+        font-family: NotoSansHans-Regular;
+        font-weight: 400;
+        color: rgba(153,153,153,1);
+        line-height: 18px;
+        position: absolute;
+        left: 78px;
+        top: 90px;
+    }
+
+    #avatar{
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        position: absolute;
+        top: 64px;
+        left: 20px;
+    }
+    #study_title > .span2{
+        width: auto;
+        height: 14px;
+        font-size: 14px;
+        font-family: NotoSansHans-Regular;
+        font-weight: 400;
+        color:rgba(25,26,30,1);
+        line-height: 21px;
+        position: absolute;
+        top: 65px;
+        left: 80px;
+    }
+    div#hr{
+        width: 100%;
+        height:5px;
+        background:rgba(248,248,248,1);
+    }
+    #play_list{
+        width: 100%;
+        /* height: auto; */
+        position: relative;
+        /* text-align: center; */
+        padding: 20px;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+    }
+    #play_list > .span3{
+        width:auto;
+        height:15px;
+        font-size:15px;
+        font-family:NotoSansHans-Medium;
+        font-weight:500;
+        color:rgba(51,51,51,1);
+        line-height:23px;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+    }
+    #play_list > .span4{
+        width:auto;
+        height:12px;
+        font-size:12px;
+        font-family:NotoSansHans-Regular;
+        font-weight:400;
+        color:rgba(153,153,153,1);
+        line-height:18px;
+        position: absolute;
+        top: 17px;
+        right: 54px;
+    }
+    #play_list > .auto_radio{
+        position: absolute;
+        top: 17px;
+        right: 20px;
+    }
+    table{
+        width: 100%;
+        margin: 0 auto;
+    }
+    table td>div{
+        margin-bottom: 5px;
+    }
+    .direct_name{
+        width: 100%;
+        height:50px;
+        background:rgba(245,245,245,1);
+        border-radius:8px;
+        position: relative;
+    }
+    .direct_name > .img1{
+        /*margin-top: 12px;
+        margin-left: 13px;*/
+        position: absolute;
+        top: 12px;
+        left: 13px;
+    }
+    .direct_name > .span5{
+        width:auto;
+        height:15px;
+        font-size:15px;
+        font-family:NotoSansHans-Regular;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        line-height:23px;
+        position: absolute;
+        left: 45px;
+        top: 14px;
+    }
+    .direct_name > .span6{
+        width:auto;
+        height:12px;
+        font-size:12px;
+        font-family:NotoSansHans-Regular;
+        font-weight:400;
+        color:rgba(153,153,153,1);
+        line-height:18px;
+        position: absolute;
+        right: 48px;
+        top: 16px;
+    }
+    .playPause2{
+        position: absolute;
+        top: 13px;
+        right: 14px;
+    }
+    .line{
+        border:0px;
+        width:100%;
+        height:1px;
+        background:rgba(228,229,233,0.6);
+        position: absolute;
+        top:40px
+    }
+
+    .join{
+        width: 100%;
+        height:49px;
+        background:rgba(38,183,255,1);
+        text-align: center;
+        line-height: 49px;
+        position: fixed;
+        bottom: 0;
+    }
+    .join .text{
+        width:87px;
+        height:17px;
+        font-size:18px;
+        font-family:PingFang-SC-Medium;
+        font-weight:500;
+        color:rgba(255,255,255,1);
+    }
+
+    .bar{
+        height: 50px;
+        line-height: 50px;
+    }
+    .auto-play{
+        display: inline-block;
+        float: right;
+    }
+
+    .auto-play .auto_radio{
+        vertical-align: middle;
+        margin-bottom: 3px;
+    }
+</style>
+
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5, maximum-scale=1.0, minimum-scale=1.0">
+    <title>分类</title>
+</head>
+<link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+<link href="../css/productList.css" rel="stylesheet" type="text/css"/>
+<body>
+<div id="app" v-cloak>
+    <div class="header">
+        <div class="search" v-on:click="search">
+            <img class="search_icon" src="../images/chaxun_icon.png">
+            <span>输入关键字查询</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content_left">
+            <ul class="product_nav">
+                <li v-on:click="checkCategoryNameIndex(item.id)" v-for="item in categoryNameList"
+                    v-bind:class="{active:item.id==categoryNameIndex}">
+                    <p>{{item.name}}</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content_right">
+            <p class="product_num">{{getClassNum()}}</p>
+            <div v-for="item in productList" class="product_item" v-on:click="courseDetails(item.id)">
+                <img class="product_pic" v-bind:src="getProductPicUrl(item)">
+                <div class="product_info_right">
+                    <b class="product_name">{{item.name}}</b>
+                    <p class="details">{{item.desc}}</p>
+                    <div class="price_info">
+                        <span>{{getPriceRange(item)}}</span><span>豆币</span>
+                        <span v-show="oldPrice">价格{{item.originalCoin}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+<script src="../js/public.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cn.vuejs.org/js/vue.js"></script>
+<script>
+
+    var host = window.location.protocol+"//"+window.location.host +"/snp/v2/";
+
+    var categoryNameIndex = getQueryString('categoryNameIndex');
+    let app = new Vue({
+        el: '#app',
+        data: {
+            oldPrice:true,
+            categoryNameList: [],
+            categoryNameIndex: categoryNameIndex,
+            productList: [],
+        },
+        methods: {
+            setCategoryList: function () {
+                let that = this
+                $.ajax({
+                    url: host + 'mall/mallIndex',
+                    data: {},
+                    type: "get",
+                    async: false,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            that.categoryNameList = res.data.categoryName;
+                        }
+                    }
+                });
+                this.getProductList();
+            },
+            checkCategoryNameIndex: function (index) {
+                this.categoryNameIndex = index;
+                this.getProductList();
+            },
+            getProductList: function () {
+                let that = this;
+                $.ajax({
+                    url: host + 'mall/categoryInfo',
+                    data: {
+                        categoryId: that.categoryNameIndex
+                    },
+                    type: "get",
+                    async: true,
+                    success: function (res) {
+                        if (res.code == 200) {
+                            that.productList = res.data;
+                            console.log(that.productList)
+                            // console.log(that.categoryNameList)
+                        }
+                    }
+                });
+            },
+            search: function () {
+                window.location = "./searchResult.html";
+            },
+            courseDetails:function(productId){
+                window.location ="./courseDetails.html?productId="+productId;
+            },
+            getClassNum:function () {
+                return '共有'+this.productList.length+'个课程包';
+            },
+            getProductPicUrl:function(item){
+                if (item.pics!=undefined){
+                    return  item.pics.split(',')[0];
+                }
+                return '../images/picture-81.png'
+            },
+            getPriceRange:function (item) {
+                if (item.priceRange==undefined||item.priceRange==0){
+                    this.oldPrice=false;
+                    return item.originalCoin;
+                }
+                return item.priceRange;
+            }
+        }
+    });
+
+
+    $(function (e) {
+        console.log("打开页面");
+        app.setCategoryList();
+        app.checkCategoryNameIndex(categoryNameIndex);
+    });
+</script>
+</body>
+</html>

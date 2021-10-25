@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="AUI, a-ui.com">
+<title>课程试听</title>
+<link rel="stylesheet" type="text/css" href="/wechat/articles/css/base.css">
+<link rel="stylesheet" type="text/css" href="/wechat/articles/css/home.css">
+<style>
+.shade-mask {
+	position: fixed;
+	z-index: 999;
+	left: 0;
+	top: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.shade-login {
+	left: 0;
+	top: 40%;
+	z-index: 9999;
+	display: block;
+	width: 80%;
+	margin: 0 10%;
+	text-align: center;
+	position: fixed !important;
+	background-size: cover;
+	background: rgba(255, 255, 255, 0.9);
+	padding: 30px;
+	height: 140px;
+}
+
+.shade-login h3 {
+	padding-bottom: 20px;
+	font-size: 16px;
+}
+
+.shade-login a {
+	background: #d9464f;
+	width: 150px;
+	height: 34px;
+	line-height: 34px;
+	border-radius: 5px;
+	display: inline-block;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+}
+
+p {
+	text-indent: 0 !important;
+}
+
+.auto_fellow p {
+	text-indent: 2em !important;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+</head>
+
+<body>
+	<div class="in-body">
+		<header id="header">
+			<div class="in-header">
+				<img src="/wechat/articles/images/head.png" alt="">
+				<div class="in-teachersluanl">
+					<p>大家好，我是#(teacherName)，im from fandou,很高兴给你们带来我的课堂#(classRoomInfo.class_name),欢迎试听</p>
+					<i></i>
+				</div>
+				<div style="position: absolute;top: 135px">
+					<span>#(classRoomInfo.name)</span>
+				</div>
+			</div>
+			<div class="in-button-box">
+				<!-- <div class="in-button" id="myBtn">
+                    <img src="/wechat/articles/images/icon-btn.png" alt="">
+                </div> -->
+			</div>
+			<div class="in-code" onclick="Ceng()">
+				<img src="/wechat/articles/images/ewm.png" alt="">
+			</div>
+			<!-- pop begin -->
+			<div id="ceng" class="in-cen"></div>
+			<div id="close" class="in-pop">
+				<div class="in-self-info">
+					<a onclick="closeCeng()"> <img src="/wechat/articles/images/icon-close.png" alt="">
+					</a>
+					<div class="in-pop-text">
+						<img src="https://qr.api.cli.im/qr?data=http%253A%252F%252Fwww.fandoutech.com%252Fcare&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=8cb8f173acac1e2395f2df2939f9660a" alt="" width="100px" height="100px">
+						<p>长按扫描下载app</p>
+						<p>输入邀请码即可体验凡豆课程</p>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section id="content">
+			<div class="in-content">
+				<div class="in-content-line"></div>
+				<div class="in-content-box">
+					<div class="in-content-title">
+						<div class="send-content">
+							<div class="weui-cell weui-cell_vcode">
+								<div class="weui-cell__bd">
+									<input class="weui-input" type="tel" placeholder="请输入手机号" id="mobile-num" style="text-align: center;">
+								</div>
+								<div class="weui-cell__ft">
+									<button class="weui-vcode-btn" style="color: red;" onclick="sendMsg()">获取VIP邀请码</button>
+								</div>
+							</div>
+						</div>
+						<div class="in-line-left">
+							<img src="/wechat/articles/images/icon-line.png" alt="">
+						</div>
+						<div class="in-line-right">
+							<img src="/wechat/articles/images/icon-line.png" alt="">
+						</div>
+					</div>
+					<div class="in-content-links">
+						<a href="javascript:;">
+							<div class="in-content-bd">
+								<p>课程名称：#(classRoomInfo.class_name)</p>
+							</div>
+						</a>
+					</div>
+					<div class="in-content-fellow">
+						<div class="auto_fellow">
+							<div class="auto_fellow">#(classRoomInfo.summary)</div>
+						</div>
+					</div>
+				</div>
+				<audio src="http://source.fandoutech.com.cn/15233237402163352.mp3" style="display: none"></audio>
+		</section>
+
+		<input id="classRoomId" type="hidden" value="#(classRoomInfo.class_room_id)"> <input id="memberId" type="hidden" value="#(memberId)"> <input id="recommendMID" type="hidden" value="#(recommendMID)"> <input id="isSend" type="hidden" value="#(isSend)">
+	</div>
+	<div id="shuoming" style="padding: 20px; display: none; height: 700px;">
+		<img alt="" src="http://image.fandoutech.com.cn/_20180503112436.jpg" width="100%">
+		<!--  <img alt="" src="http://image.fandoutech.com.cn/_20180503112601.jpg" width="100%">
+			<img alt="" src="http://image.fandoutech.com.cn/_20180503112633.jpg" width="100%">  -->
+		<div></div>
+	</div>
+	<div class="weui-gallery" style="display: none">
+		<!-- <div onclick="change()">
+			<span id="weui-gallery__img1" class="weui-gallery__img" style="background-image: url(http://image.fandoutech.com.cn/_20180503092254.png);top: 30px;"></span>
+			<span id="weui-gallery__img2" class="weui-gallery__img" style="background-image: url(http://image.fandoutech.com.cn/_20180503092300.png);top: 30px;display: none;"></span>
+			<span id="weui-gallery__img3" class="weui-gallery__img" style="background-image: url(http://image.fandoutech.com.cn/_20180503092305.png);top: 30px;display: none;"></span>
+		</div> -->
+
+
+
+		<div class="weui-gallery__opr">
+			<a href="javascript:" onclick="hidenImage()" class="weui-gallery__del"> <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+			</a>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="/wechat/js/wechat/wechat-share.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+	<script type="text/javascript">
+		var classRoomId = $('#classRoomId').val();
+		var memberId = $('#memberId').val();
+		var recommendMID = $('#recommendMID').val();
+
+		var index = 1;
+
+		var config = {
+			link : "http://test.fandoutech.com.cn/wechat/h5/article/trialIntro?classRoomId="
+					+ classRoomId + "&recommendMID=" + memberId,
+			title : "凡豆免费课堂",
+			imgUrl : "http://wechat.fandoutech.com.cn/wechat/wechatImages/image/20161221/20161221161442_60.png",
+			desc : '现在能免费体验凡豆体验课堂啦,快来点击获取邀请码吧',
+			debug : false
+		}
+
+		$.wechatShare(config);
+
+		//二维码弹窗
+		function Ceng() {
+			document.getElementById('ceng').style.display = 'block';
+			document.getElementById('close').style.display = 'block';
+			return false;
+		}
+		
+		function closeCeng() {
+			document.getElementById('ceng').style.display = 'none';
+			document.getElementById('close').style.display = 'none';
+			return false;
+
+		}
+
+		function sendMsg() {
+			var oldMemberId = 0;
+			var mobile =  $('#mobile-num').val();
+			
+			$.ajax({
+				type : "post",
+				url : "/wechat/v2/user/isExist",
+				data : {
+					account : mobile,
+					_sign : '776F55866F0177C59B24A833940B8F30',
+					_time : '1525842696825',
+					type :1
+				},
+				async : false,
+				dataType : "json",
+				beforeSend : function() {
+				},
+				complete : function() {
+				},
+				success : function(success) {
+					if (success.code == 200) {
+						oldMemberId = success.data.memberId;
+					}
+				}
+			});
+			
+			var smsParams = {
+					classRoomId : classRoomId,
+					mobile : mobile,
+					memberId : memberId,
+					recommendMID : recommendMID
+				}
+			
+			sendMessage(smsParams);
+			
+		}
+		
+		var countdown_sec=60;
+		
+		var countdown_ = function countdown(element) {
+			var $_element = $(element);
+		    if (countdown_sec == 0) {  
+		    	$_element.removeAttr('disabled');
+		    	console.log($_element.text());
+		    	$_element.text('获取VIP邀请码')
+		    	countdown_sec = 60;  
+		        return false;  
+		    } else {  
+		    	$_element.attr("disabled", 'disabled');  
+		    	$_element.text(countdown_sec+'S');  
+		    	countdown_sec--;  
+		    }
+		    
+		    setTimeout(function() {  
+		    	countdown_(element);  
+		    },1000);  
+		}
+		
+		function sendMessage(smsParams){
+			$.ajax({
+				type : "post",
+				url : "/wechat/h5/article/sendSmsWithInvitationCode",
+				data : smsParams,
+				dataType : "json",
+				beforeSend : function() {
+					countdown_('.weui-vcode-btn');
+				},
+				complete : function() {
+					
+				},
+				success : function(success) {
+					if (success.code == 200) {
+						console.log(success);
+						/* $('.send-content')
+								.html(
+										'<h2><a style="color:#ff0000">邀请码发送成功，请在短信中查看<a></h2>'); */
+						$.toast("短信已经发送到您的手机");
+						setTimeout(function() {
+							Ceng()
+						}, 1000);
+					} else {
+						
+						if(success.code==20508){
+							$.alert(success.msg);
+						}else{
+							$.toast(success.msg, 'forbidden');
+						}
+						
+						countdown_sec=0;
+						
+					}
+				}
+			});
+		}
+
+		function openMsg() {
+			$.prompt({
+						title : '请输入手机号码',
+						text : '邀请码会以短信的形式发送给您，请注意查收！',
+						input : '',
+						empty : false, // 是否允许为空
+						onOK : function(input) {
+
+							$.post(
+											'/wechat/h5/article/sendSmsWithInvitationCode',
+											{
+												classRoomId : classRoomId,
+												mobile : input,
+												memberId : memberId,
+												recommendMID : recommendMID
+											},
+											function(success) {
+												if (success.code == 200) {
+													console.log(success);
+													$.toast("已发送");
+													$('.in-content-title h2')
+															.html(
+																	'<a style="color:#ff0000" onclick="showImage()">查看邀请码如何使用<a>');
+												} else {
+													$.toast(success.msg);
+												}
+											}, "json");
+
+						},
+						onCancel : function() {
+							//点击取消
+						}
+					});
+		}
+
+		function showImage() {
+			//$('.weui-gallery').show();
+			$('#shuoming').show();
+			$("html,body").animate({
+				scrollTop : $("#shuoming").offset().top
+			}, 500);
+		}
+
+		function hidenImage() {
+			$('.weui-gallery').hide();
+		}
+
+		function change() {
+
+			$('#weui-gallery__img' + index).hide();
+			index++;
+			if (index == 4) {
+				index = 1;
+			}
+			$('#weui-gallery__img' + index).show();
+		}
+	</script>
+
+
+</body>
+
+</html>

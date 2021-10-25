@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+            name="viewport"/>
+    <title>学习记录</title>
+    <!-- head 中 -->
+    <link rel="stylesheet"
+          href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <link rel="stylesheet"
+          href="/wechat/lesson/2c/css/lesson.css">
+    <link rel="stylesheet" href="/wechat/lesson/2c/css/iconfont.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1044079_ao3srddo2xu.css">
+</head>
+<style type="text/css">
+    body {
+        background: #fff;
+    }
+
+    .top {
+        text-align: center;
+        padding: 5px;
+    }
+
+    .top .head {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .top .head img {
+        border: 2px solid #F2F2F2;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        vertical-align: middle;
+    }
+
+    .top .head .name {
+        font-family: NotoSansHans-Medium;
+        font-size: 14px;
+        color: #333;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .top .say {
+        font-family: NotoSansHans-Regular;
+        font-size: 14px;
+        color: #333333;
+    }
+
+    .lesson-reply {
+        height: 220px;
+        background: #FFFFFF;
+        /*box-shadow: 2px 3px 0 0 #5294CB;*/
+        /*border-radius: 16px;*/
+        /*padding: 10px;*/
+        /*margin-bottom: 20px;*/
+    }
+
+    .lesson-reply .title {
+        padding: 10px 0;
+    }
+
+    .line {
+        background: #EEEEEE;
+        height: 1px;
+    }
+
+    #player {
+        height: 220px;
+        /*margin-top: 20px;*/
+        text-align: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        /*border-radius: 8px;*/
+    }
+
+    #play-btn {
+        position: relative;
+        top: 88px;
+    }
+
+    .top .say {
+        padding: 5px 0;
+        text-align: left;
+    }
+
+    .while-line {
+        background: #FFFFFF;
+    }
+
+    .like {
+        padding: 20px 0;
+    }
+
+    .like .btn {
+        background: #FF784D;
+        border: 1px solid #C3E6FF;
+        border-radius: 32px;
+        width: 100px;
+        height: 64px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 5px;
+    }
+
+    .like .btn p {
+        font-family: NotoSansHans-Regular;
+        font-size: 12px;
+        color: #FFFFFF;
+    }
+
+    #learn {
+        background: #FFC308;
+        font-family: NotoSansHans-Medium;
+        font-size: 16px;
+        color: #FFFFFF;
+        text-align: center;
+        line-height: 44px;
+        /*margin: 20px auto;*/
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .comment .list ul li {
+        list-style-type: none;
+        display: flex;
+    }
+
+    .comment .list .head {
+        padding: 0px 5px;
+    }
+
+    .comment .list .head img {
+        width: 24px;
+        height: 24px;
+        border: 1px solid #F2F2F2;
+        border-radius: 100%;
+    }
+
+    .comment .list .content {
+        width: 100%;
+        word-break: break-all;
+    }
+
+    .comment .list .content .name {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #666666;
+        line-height: 16px;
+    }
+
+    .comment .list .text {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #333333;
+        line-height: 21px;
+    }
+
+    #reply-video {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        display: none
+    }
+
+    .mask {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+    }
+
+    .offica-qc {
+        padding: 0px 10px 0px 10px;
+    }
+
+    .m-content {
+        text-align: center;
+    }
+
+    .qc-text {
+        font-size: 18px;
+        color: white;
+    }
+
+    .pull-right {
+        float: right;
+        margin-right: 8px;
+        margin-top: 1 xp
+    }
+
+    .close-btn {
+        text-align: right;
+        padding-right: 50px;
+        position: relative;
+        top: 65px;
+    }
+
+    .action ul li {
+
+    }
+
+</style>
+<body>
+<div id="header-share" class="row view-alert"
+     style="z-index: 99; width: 100%; margin-left: 0px; margin-right: 0px; padding-top: 30px; padding-bottom: 30px; box-shadow: rgba(22, 22, 23, 0.619608) 0px -10px 16px inset; background: rgb(52, 52, 52);display: none">
+    <div class="col-md-12 text-left" style="padding-right: 50px; padding-left: 30px;">
+        <p style="color: #7f7e7e; margin: 0px;font-size: 14px">点击右上角按钮分享给好友或朋友圈，让更多人看到孩子的精彩表现~</p>
+    </div>
+    <div class="col-md-12 pull-right">
+        <img src="https://static.pgyer.com/static-20180507/assets/img/alert-arrow.png" class="pull-right"
+             style="width: 30px; margin-top: -68px;">
+    </div>
+</div>
+<div id="app">
+    <div class="top">
+        <div class="head">
+            <img alt="" src="/wechat/lesson/2c/images/pic_boy@2x.png">
+            <span class="name">{{classRoom.studentName}}</span>
+        </div>
+
+        <div class="say">
+            <!--我正在跟 {{classRoom.teacherName}}老师 -->
+            我正在学习《{{classRoom.className}}》，
+            快来看看我的精彩表现吧！
+        </div>
+    </div>
+
+    <div class="lesson-reply">
+        <!--<div class="title">-->
+        <!--<h4>{{classRoom.className}}</h4>-->
+        <!--</div>-->
+
+        <!--<div class="line"></div>-->
+
+        <div id="player" :style="{backgroundImage:'url('+playerbg+')'}">
+            <img id="play-btn" alt="播放"
+                 src="/wechat/lesson/2c/assets/btn_ketang_play@3x.png" width="55px"
+                 height="55px" v-show="showPlayBtn" v-on:click="play(0)"> <img
+                alt="" id="replyPic" v-bind:src="replyPic" v-show="showReplyPic" width="100%"
+                height="100%"/>
+            <video id="reply-video"></video>
+            <div style="background-color: #fff8b9; height: 100%; text-align: center; height: 174px;overflow:hidden; display: table-cell; vertical-align: middle;"
+                 v-show="showReplyText">
+                <p>{{replyText}}</p>
+            </div>
+            <img alt="" v-bind:src="audioBtnImage" width="54px" height="54px"
+                 style="position: relative;top: 50px;z-index: 99999" v-show="showAudioBtn">
+        </div>
+
+    </div>
+
+    <div class="line while-line"></div>
+
+    <div class="action">
+        <ul>
+            <li><span class="iconbox"><i class="iconfont icon-eye"></i></span><span>0</span></li>
+            <li v-on:click="openReplyComtents(likeInfo.groupId,true)"><span class="iconbox"><i
+                    class="iconfont icon-comment"></i></span><span>{{commentList.length}}</span></li>
+            <li v-on:click="like()">
+											<span class="iconbox">
+												<i v-show="likeInfo.myLike == 0" class="iconfont icon-dianzanqian"></i>
+												<i v-show="likeInfo.myLike == 1" class="iconfont icon-dianzan"></i>
+											</span>
+                <span>{{likeInfo.likeCount}}</span>
+            </li>
+        </ul>
+        <div class="qu"></div>
+    </div>
+
+    <!--<div class="like">-->
+    <!--<div class="btn" v-on:click="like()">-->
+    <!--<img v-show="likeInfo.myLike == 0" src="/wechat/lesson/2c/images/zan_normal.png"-->
+    <!--alt="" width="36px" height="36px"> <img-->
+    <!--v-show="likeInfo.myLike == 1" src="/wechat/lesson/2c/images/zan_press.png" alt=""-->
+    <!--width="36px" height="36px">-->
+    <!--<p>{{likeInfo.likeCount}}</p>-->
+    <!--</div>-->
+
+    <!--<div id="learn" v-on:click="toLessonInfo()" v-show="from!='toParents'">我也要学</div>-->
+    <!--<div id="learn" v-on:click="toShare()" v-show="from=='toParents'">我要分享</div>-->
+    <!--</div>-->
+
+    <div class="while-block"></div>
+
+
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="#tab2"> 课程介绍</a>
+            <a class="weui-navbar__item" href="#tab3"> 查看更多</a>
+        </div>
+        <div class="weui-tab__bd">
+            <div id="tab2" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <div class="intro">
+                    <p class="text">{{lessonIntro.summary}}</p>
+                    <div class="content">
+
+                    </div>
+                </div>
+                <!--<div id="learn" v-on:click="toShare()" v-show="from=='toParents'">我要分享</div>-->
+
+            </div>
+            <div id="tab3" class="weui-tab__bd-item">
+
+                <div v-show="classRoomReply.length == 0">
+                    <p class="text">本课程暂无反馈</p>
+                    <p class="text">去App学习，分享你第一条精彩的记录吧～</p>
+                </div>
+                <div style="margin-bottom: 50px">
+                    <ul v-for="(reply,index) in classRoomReply">
+                        <li class="reply">
+                            <div class="reply-player"
+                                 :style="{backgroundImage:'url('+createCover(reply.firstReply)+')'}">
+                                <img v-bind:id="'start-lesson'+index" alt=""
+                                     src="/wechat/lesson/2c/assets/btn_ketang_play@3x.png" width="54px" height="54px"
+                                     style="position: relative; top: 68px;" v-show="playReplyBtn"
+                                     v-on:click="lessonReply(reply.groupId,index)">
+                                <div v-bind:id="'reply'+index" class="reply-box">
+                                </div>
+                            </div>
+                            <div class="user">
+                                <img class="head" alt="" v-bind:src="reply.avatar" width="30px" height="30px ">
+                                <span class="name">{{reply.name}}</span>
+                            </div>
+                            <div class="action">
+                                <ul>
+                                    <li><span class="iconbox"><i class="iconfont icon-eye"></i></span><span>0</span>
+                                    </li>
+                                    <li v-on:click="openReplyComtents(reply.groupId)"><span class="iconbox"><i
+                                            class="iconfont icon-comment"></i></span><span>{{reply.commentCount}}</span>
+                                    </li>
+                                    <li v-on:click="replyLike(reply.groupId,reply.myLike,index)">
+											<span class="iconbox">
+												<i v-show="reply.myLike == 0" class="iconfont icon-dianzanqian"></i>
+												<i v-show="reply.myLike == 1" class="iconfont icon-dianzan"></i>
+											</span>
+                                        <span>{{reply.likeCount}}</span>
+                                    </li>
+                                </ul>
+                                <div class="qu"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<div class="comment">-->
+    <!--<div style="padding: 5px 0">-->
+    <!--<h4>学生评价</h4>-->
+    <!--</div>-->
+    <!--<div class="list">-->
+    <!--<ul v-for="(comment,index) in commentList.list">-->
+    <!--<li>-->
+    <!--<div class="head">-->
+    <!--<img alt=""-->
+    <!--v-bind:src="comment.headimgurl"-->
+    <!--width="30px" height="30px ">-->
+    <!--</div>-->
+    <!--<div class="content">-->
+    <!--<p class="name">{{comment.nickname}}</p>-->
+    <!--<p class="text">{{comment.comment}}</p>-->
+    <!--&lt;!&ndash; <p>{{lcomment.createTime}}</p> &ndash;&gt;-->
+    <!--<p style="color: red; text-align: right; font-size: 12px;"-->
+    <!--v-show="comment.memberId == member.id" v-on:click="delComment(comment.id,index)">删除</p>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!--<div-->
+    <!--style="width: 100%; text-align: right; font-family: PingFangSC-Regular; font-size: 14px; color: #FFFFFF; padding: 10px 10px;margin-bottom: 40px;">-->
+    <!--<p style="margin-right: 20px" v-on:click="getReplysComment(++pageNumber,pageSize)"-->
+    <!--v-show="commentList.isLastPage == false">查看更多>>></p>-->
+    <!--</div>-->
+
+    <!--<div style="text-align: center;position: fixed; bottom: 0;width: 100%;left: 0;padding: 5px 0px 5px 0px;background-color: white;">-->
+    <!--<input v-model="lessonCommont"-->
+    <!--style="border: 1px solid #EEEEEE; border-radius: 4px; width: 80%; height: 34px;">-->
+    <!--<span style="font-family: NotoSansHans-Regular; font-size: 14px; color: #F5A623;padding: 10px;"-->
+    <!--v-on:click="sendComment()">发布</span>-->
+    <!--</div>-->
+
+    <div id="about" class="weui-popup__container">
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal">
+            <div>
+                <span class="iconfont icon-guanbi" v-on:click="closePopup()"
+                      style="display: -webkit-inline-box; padding: 10px;margin-left: 20px;"></span>
+                <div class="weui-cell"></div>
+            </div>
+            <div style="padding: 0 20px">
+                <div class="comment-list">
+                    <ul v-for="(rcom,index) in commentList.list">
+                        <li>
+                            <img alt="" v-bind:src="rcom.headimgurl" width="30px" height="30px ">
+                            <div class="box">
+                                <p class="name">{{rcom.nickname}}</p>
+                                <p class="text">{{rcom.comment}}</p>
+                                <p v-show="rcom.memberId == member.id"
+                                   style="color: red; text-align: right; font-size: 12px;"
+                                   v-on:click="delReplyComment(rcom.id,index)">删除</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div style="text-align: center;position: fixed; bottom: 0;width: 100%;left: 0;padding: 5px 0px 5px 0px;background-color: white;">
+                        <input v-model="lessonCommont"
+                               style="border: 1px solid #EEEEEE; border-radius: 4px; width: 80%; height: 34px;">
+                        <span style="font-family: NotoSansHans-Regular; font-size: 14px; color: #F5A623;padding: 10px;"
+                              v-on:click="sendComment()">发布</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="mask" v-show="mask">
+
+        <div class="bind-box">
+            <div style="text-align: center;">
+                <h5 style="line-height: 45px;">绑定手机</h5>
+            </div>
+            <div class="input-box">
+                <input type="number" v-model="mobile" placeholder="请输入手机号">
+                <button class="send-btn" v-on:click="sendCaptcha()">获取验证码</button>
+            </div>
+
+            <div class="code">
+                <input id="code0" oninput="if(value.length>1)value=value.slice(0,1)" type="number"
+                       v-on:input="inputChange(0)">
+                <input id="code1" oninput="if(value.length>1)value=value.slice(0,1)" type="number"
+                       v-on:input="inputChange(1)">
+                <input id="code2" oninput="if(value.length>1)value=value.slice(0,1)" type="number"
+                       v-on:input="inputChange(2)">
+                <input id="code3" oninput="if(value.length>1)value=value.slice(0,1)" type="number"
+                       v-on:input="inputChange(3)">
+            </div>
+
+            <div class="code-button">
+                <button class="enter-btn" v-bind:class="{disble:isDisble}" v-bind:disabled="isDisble"
+                        v-on:click="bind()">确定
+                </button>
+            </div>
+
+            <div class="bind-close1" v-on:click="closeBindPanel()">
+                <i class="iconfont icon-guanbianniu" style="color: white;font-size: 38px"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--<div id="learn" v-on:click="toShare()">我要分享</div>-->
+    <div id="learn" v-on:click="openApp()">我也要学</div>
+</div>
+
+
+<!--<div class="mask" v-if="mask">-->
+
+<!--<div class="m-content">-->
+<!--<div class="close-btn">-->
+<!--<img alt="" src="/wechat/lesson/2c/images/share_btn_closed@2x.png" width="30px" height="30px"-->
+<!--v-on:click="closeMask()">-->
+<!--</div>-->
+<!--<div class="offica-qc">-->
+<!--<img alt="" src="/wechat/lesson/2c/images/share_pic_qr@2x.png" width="100%">-->
+<!--</div>-->
+<!--<div class="qc-text">-->
+<!--<p>长按识别二维码,关注公众号-->
+<!--<p>-->
+<!--<p>随时了解孩子的学习动态-->
+<!--<p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!-- body 最后 -->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script
+        src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+</body>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+<script type="text/javascript">
+    var member = 0;
+    var group = 0;
+    var classRoomId = 0;
+
+    var replyIndex = 0;
+    var countdown_sec = 60;
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+
+    window.onload = function () {
+
+        $.ajaxSetup({
+
+            beforeSend: function (XMLHttpRequest) {
+                $.showLoading();
+            },
+            complete: function () {
+                $.hideLoading();
+            },
+            error: function (data) {
+                $.toptip("网络似乎有点问题 ~", 'error');
+            }
+
+        });
+
+        member = getQueryString("wechat");
+        group = getQueryString("group");
+        classRoomId = getQueryString("classRoomId");
+
+        app.init();
+    }
+
+    var app = new Vue(
+        {
+
+            el: "#app",
+            data: {
+                showPlayBtn: true,
+                lessonReplys: [],
+                replyPic: '',
+                showReplyPic: false,
+                replyText: '',
+                showReplyText: false,
+                audioBtnImage: 'http://image.fandoutech.com.cn/ico_megaphone@3x.gif',
+                showAudioBtn: false,
+                playerbg: '',
+                product: 0,
+                member: {},
+                classRoom: {},
+                likeInfo: {},
+                commentList: {},
+                lessonCommont: '',
+                classRoomReply: {},
+                pageNumber: 1,
+                pageSize: 5,
+                lessonIntro: {},
+                mask: false,
+                playReplyBtn: true,
+                from: '',
+                isDisble: true,
+                mobile: ''
+            },
+            methods: {
+                init: function () {
+
+                    $.get('/wechat/v2/lesson/lessonIntro?classRoom=' + classRoomId, function (result) {
+                        if (result.code == 200) {
+                            app.lessonIntro = result.data;
+                            app.playerbg = app.lessonIntro.cover;
+                        } else {
+                            $.toptip(result.msg, 'error');
+                        }
+                    });
+
+                    this.getLessonReply();
+                    this.getReplysComment(this.pageNumber, this.pageSize);
+                    app.from = getQueryString("from");
+                    this.getClassRoomReply();
+                },
+                getLessonReply: function () {
+                    console.log("请求");
+                    $.get('/wechat/v2/lesson/lessonReplyGroup', {
+                        member: member,
+                        group: group
+                    }, function (result) {
+                        if (result.code == 200) {
+                            app.lessonReplys = result.data.lessonReplys;
+                            app.member = result.data.member;
+                            app.classRoom = result.data.classRoom;
+                            app.playerbg = app.classRoom.cover;
+                            app.likeInfo = result.data.likeInfo;
+
+                            $.wechatShare({
+                                link: "http://test.fandoutech.com.cn/wechat/v2/lesson/lessonReplyShare?group=" + group,
+                                title: '我家' + app.classRoom.studentName + '正在学习《' + app.classRoom.className + '》课程，快来看看吧！',
+                                imgUrl: "https://source.fandoutech.com.cn/home_bg000001.png",
+                                desc: '老师请到家，学习So Easy',
+                                debug: false,
+                                success: function () {
+                                    app.checkSubscribe(member);
+                                }
+                            });
+                        }
+                    });
+
+                },
+                play: function (index) {
+                    app.showPlayBtn = false;
+
+                    if (index >= app.lessonReplys.length) {
+                        app.showPlayBtn = true;
+                        replyIndex = 0;
+                        return;
+                    }
+
+                    var replyId = app.lessonReplys[index].classScriptContent[0].command;
+
+                    if (replyId == 226) {
+                        app.showReplyPic = true;
+                        app.replyPic = app.lessonReplys[index].replyScript[0].content;
+
+                        $('#replyPic').load(function () {
+                            setTimeout(function () {
+                                app.showReplyPic = false;
+                                app.play(++replyIndex);
+                            }, 5000)
+                        });
+
+                    } else if (replyId == 216) {
+
+                        var $video = $('#reply-video');
+                        $video.show();
+                        var sourceDom = $("<source src=\"" + app.lessonReplys[index].replyScript[0].content + "\">");
+                        $video.append(sourceDom);
+                        $video.load();
+                        $video[0].play();
+                        $video[0].onended = function () {
+                            $video.hide();
+                            app.play(++replyIndex);
+                        }
+
+                    } else if (replyId == 207) {
+                        this.showAudioBtn = true;
+                        app.playerbg = 'http://image.fandoutech.com.cn/bg@3x.png';
+                        app.playMusic(app.lessonReplys[index].replyScript[0].content, function () {
+                            app.showAudioBtn = false;
+                            app.showReplyText = false;
+                            app.playerbg = app.classRoom.cover;
+                            app.play(++replyIndex);
+                        });
+                    } else if (replyId == 301) {
+                        app.replyText = app.lessonReplys[index].replyScript[0].remark;
+                        app.showReplyText = true;
+                        app.playMusic(app.lessonReplys[index].replyScript[0].content, function () {
+                            app.showAudioBtn = false;
+                            app.showReplyText = false;
+                            app.play(++replyIndex);
+                        });
+                    }
+
+                },
+                getClassroomProduct: function () {
+                    $.get('/wechat/v2/lesson/getClassroomProduct?classroom=' + this.lessonReplys[0].classRoomId, function (result) {
+                        if (result.code == 200) {
+                            app.product = result.data.productId;
+                        }
+                    })
+                },
+                playMusic: function (src, ended) {
+                    var audio = new Audio(src);
+                    $(audio).bind('ended', ended);
+                    audio.play();
+                },
+                like: function () {
+
+                    $.post('/wechat/v2/lesson/lessonReplyLikeH5', {
+                        wechat: member,
+                        group: group,
+                        like: 1 ^ app.likeInfo.myLike
+                    }, function (result) {
+                        if (result.code == 200) {
+                            app.likeInfo = result.data.likeInfo;
+                        }
+                    });
+                },
+                getReplysComment: function (pageNumber, pageSize) {
+                    $.get('/wechat/v2/lesson/lessonReplsCommens?group=' + this.selectGroup, {
+                        pageNumber: pageNumber,
+                        pageSize: pageSize
+                    }, function (result) {
+                        if (result.code == 200) {
+
+                            app.commentList = result.data;
+
+                        }
+                    });
+                },
+                getReplysCommentOne: function (pageNumber, pageSize) {
+                    $.get('/wechat/v2/lesson/lessonReplsCommens?group=' + group, {
+                        pageNumber: pageNumber,
+                        pageSize: pageSize
+                    }, function (result) {
+                        if (result.code == 200) {
+
+                            app.commentList = result.data;
+
+                        }
+                    });
+                },
+                sendComment: function () {
+
+                    $.post('/wechat/v2/lesson/saveLessonReplsCommens', {
+                        member: member,
+                        group: group,
+                        comment: this.lessonCommont
+                    }, function (result) {
+                        if (result.code == 200) {
+                            app.commentList.list.push(result.data);
+                            app.lessonCommont = '';
+                        }
+                    })
+                },
+                delComment: function (id, index) {
+                    $.post('/wechat/v2/lesson/delComment?_sign=464D93E21A0915D1543D21476E2CFE28&_time=1525842696825', {
+                        id: id,
+                    }, function (success) {
+                        if (success.code == 200) {
+                            app.commentList.list.splice(index, 1);
+                        }
+                    }, 'json')
+                },
+                checkSubscribe: function (wechat) {
+
+                    $.get('/wechat/v2/lesson/checkSubscribe?wechat=' + wechat, function (success) {
+                        if (success.code == 200) {
+                            if (success.data.subscribe == 0) {
+                                app.mask = true
+                            }
+                        } else {
+                            $.toptip(success.msg, 'warning');
+                        }
+                    })
+                },
+                closeMask: function () {
+                    this.mask = false;
+                },
+                toLessonInfo: function () {
+                    location.href = "/wechat/v2/lesson/lessonInfo?classroom=" + this.lessonReplys[0].classRoomId;
+                }, toShare: function () {
+                    $('html,body').animate({scrollTop: '0px'});
+                    $('#header-share').slideDown(2000);
+                },
+                openReplyComtents: function (group, flag) {
+
+                    this.selectGroup = group;
+
+                    if (flag) {
+                        this.getReplysCommentOne(this.pageNumber, this.pageSize);
+                    } else {
+                        this.getReplysComment(this.pageNumber, this.pageSize);
+                    }
+                    $("#about").popup();
+                },
+                closePopup: function () {
+                    $.closePopup();
+                    // this.getClassRoomReply();
+
+                },
+                getCode: function () {
+                    var code = '';
+                    $('.bind-box .code input').each(function (index, element) {
+                        code += element.value;
+                    });
+                    return code;
+                },
+                inputChange: function (index) {
+
+                    $('#code' + (index + 1)).focus();
+
+                    if (this.getCode().length == 4) {
+                        this.isDisble = false;
+                    } else {
+                        this.isDisble = true;
+                    }
+
+                },
+                bind: function (callBack) {
+
+                    $.post('/wechat/v2/lesson/bindAccount', {
+                        mobile: app.mobile,
+                        code: this.getCode()
+                    }, function (result) {
+                        if (result.code == 200) {
+                            app.openApp();
+                        } else {
+                            $.toptip(result.msg, 'error');
+                        }
+                    })
+                },
+                closeBindPanel:function(){
+                    app.mask = false;
+                    // video.style.display="";
+                },
+                createCover: function (script) {
+
+                    var type = script[0].type;
+
+                    if (type == 'picture') {
+                        return script[0].content;
+                    } else if (type == 'audio') {
+                        return 'http://image.fandoutech.com.cn/bg@3x.png';
+                    } else if (type == 'video') {
+                        return script[0].content + '?vframe/jpg/offset/1/w/480/h/360';
+                    }
+
+                },
+                getClassRoomReply: function () {
+
+                    $.get('/wechat/v2/lesson/classRoomReply?pageSize=1000&member=' + member + '&classroom=' + classRoomId, function (result) {
+                        if (result.code == 200) {
+                            app.classRoomReply = result.data.list;
+                        }
+                    })
+
+                },
+                getInviteCode: function (callBack) {
+                    var that = this
+                    $.ajax({
+                        url: '/wechat/v2/lesson/getInviteCode?classRoom=' + classRoomId + "&inviter=" + that.member.id,
+                        type: "get",
+                        async: false,
+                        success: function (result) {
+                            callBack(result);
+                        }
+                    })
+
+                    /* $.get('/wechat/v2/lesson/getInviteCode?classRoom='+classRoomId+"&inviter="+inviter, function(result) {
+                        callBack(result);
+                    }); */
+
+                },
+                copy: function (str) {
+
+                    var oInput = document.createElement('input');
+                    oInput.value = str;
+                    document.body.appendChild(oInput);
+
+                    var u = navigator.userAgent, app = navigator.appVersion;
+                    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+                    if (isIOS) {
+                        var range = document.createRange();
+                        range.selectNode(oInput);
+                        window.getSelection().addRange(range);
+                        var successful = document.execCommand('copy');
+                    } else {
+                        oInput.select(); // 选择对象
+                        document.execCommand("Copy"); // 执行浏览器复制命令
+                        oInput.className = 'oInput';
+                        oInput.style.display = 'none';
+                    }
+
+
+                },
+                countdown_: function (element) {
+                    var $_element = $(element);
+                    if (countdown_sec == 0) {
+                        $_element.removeAttr('disabled');
+                        $_element.text('获取验证码')
+                        countdown_sec = 60;
+                        return false;
+                    } else {
+                        $_element.attr("disabled", 'disabled');
+                        $_element.text(countdown_sec + 'S');
+                        countdown_sec--;
+                    }
+
+                    setTimeout(function () {
+                        app.countdown_(element);
+                    }, 1000);
+                },
+                sendCaptcha: function () {
+
+                    $.post('/wechat/v2/lesson/sendCaptcha', {mobile: app.mobile}, function (result) {
+
+                        if (result.code == 200) {
+
+                            app.countdown_('.send-btn');
+
+                        } else if (result.code == 20501) {
+
+                            $.toptip("请输入正确的手机号码", 'error');
+
+                        } else {
+                            $.toptip(result.msg, 'error');
+                        }
+
+                    });
+                },
+                openApp: function () {
+
+                    app.getInviteCode(function (result) {
+                        if (result.code == 200) {
+                            app.mask = false;
+                            app.copy(result.data.inviteCode);
+                            /* window.open("/wechat/lesson/2c/openApp.html?inviteCode="+result.data.inviteCode); */
+                            window.open("/wechat/lesson/2c/start.html?inviteCode=" + result.data.inviteCode);
+
+                        } else if (result.code == 20501) {
+                            app.mask = true;
+                            // video.style.display = 'none';
+                            // video.pause();
+                        } else {
+                            $.toptip(result.msg, 'error');
+                        }
+                    });
+
+                },
+
+
+                //------------------------------------------------------
+                lessonReply: function (groupId, index) {
+
+                    lessonReplyIndex = 0;
+
+                    $.get('/wechat/v2/lesson/lessonReplyGroup?member=0&group=' + groupId, function (result) {
+                        if (result.code == 200) {
+                            app.replyPlayer(result.data.lessonReplys, index);
+                        }
+                    })
+
+                },
+                replyPlayer: function (lessonReplys, index) {
+
+                    if (lessonReplyIndex >= lessonReplys.ggg) {
+                        app.showPlayBtn = true;
+                        replyIndex = 0;
+                        return;
+                    }
+
+                    var replyId = lessonReplys[lessonReplyIndex].classScriptContent[0].command;
+
+                    $playBtn = $('#start-lesson' + index);
+                    $playBtn.hide();
+
+                    if (replyId == 226) {
+
+                        $('#reply' + index).append('<img class="reply-pic" alt="" src="http://localhost:8080/wechat/lesson/2c/assets/app_icon@3x.png">');
+
+                        $('.reply-pic').load(function () {
+                            setTimeout(function () {
+                                $playBtn.show();
+                                $('#reply' + index).empty();
+                            }, 5000)
+                        });
+
+
+                    } else if (replyId == 216) {
+
+                        var $video = $(document.createElement('video'));
+                        var sourceDom = $("<source src=\"" + lessonReplys[lessonReplyIndex].replyScript[0].content + "\">");
+                        $video.append(sourceDom);
+                        $video.load();
+                        $video[0].onended = function () {
+                            $('#reply' + index).empty();
+                        }
+                        $video.addClass('reply-video')
+                        $('#reply' + index).append($video);
+                        $video[0].play();
+
+                    } else if (replyId == 207) {
+
+                        app.playMusic(lessonReplys[lessonReplyIndex].replyScript[0].content, function () {
+                            $('#reply' + index).append('<img class="ico-audio" alt="" src="http://image.fandoutech.com.cn/ico_megaphone@3x.gif">');
+                            $('#reply' + index).append('<img class="reply-pic" alt="" src="http://image.fandoutech.com.cn/bg@3x.png">');
+                        }, function () {
+                            $('#reply' + index).empty();
+                            $playBtn.show();
+                        });
+                    } else if (replyId == 301) {
+
+                        app.playMusic(lessonReplys[lessonReplyIndex].replyScript[0].content, function () {
+                            $('#reply' + index).append('<img class="ico-audio" alt="" src="http://image.fandoutech.com.cn/ico_megaphone@3x.gif">');
+                            $('#reply' + index).append('<img class="reply-pic" alt="" src="http://image.fandoutech.com.cn/bg@3x.png">');
+                        }, function () {
+                            $('#reply' + index).empty();
+                            $playBtn.show();
+                        });
+
+                        /* app.replyText = app.lessonReplys[index][0].remark;
+                        app.showReplyText = true;
+                        app.playMusic(app.lessonReplys[index].replyScript[0].content,function(){
+                            app.showAudioBtn = false;
+                            app.showReplyText = false;
+                            app.play(++replyIndex);
+                        }); */
+                    }
+
+                },
+            }
+
+        });
+
+</script>
+<script type="text/javascript" src="/wechat/js/wechat/wechat-share.js"></script>
+</html>

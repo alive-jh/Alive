@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>grade</title>
+    <link href="../css/reply_public.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/reply_grade.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="all">
+    <!--<div class="a_grade">
+        <div class="user_info">
+            <img class="avatar" src="../images/defaultAvatar.png">
+            <span class="user_name">陈小龙</span>
+        </div>
+        <div class="grade_resource">
+            <div class="green_grade_icon">A</div>
+            <div class="paragraph">
+                <p>
+                    What is tiananmen square like in
+                    Beijing, China
+                </p>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/reply.js"></script>
+</body>
+</html>

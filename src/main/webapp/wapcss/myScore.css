@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+
+body{background-color:#fff;}
+
+/*积分头部样式*/
+.score-header{border-bottom:1px solid #D6D6D6;padding:10px;}
+.score-header p{font:16px/30px "微软雅黑";color:#333;}
+.score-header p span,.score-header p i{color:#003859;}
+
+/*积分内容样式*/
+.score-content{}
+
+/*无内容样式*/
+.score-content .empty{margin-top:80px;text-align: center;}
+.score-content .empty img{display: block;margin:0 auto;width:30%;max-width:110px;margin-bottom:10px;}
+.score-content .empty h3,.score-content .empty p{font:16px/25px "微软雅黑";color:#333;}
+.score-content .empty h3{color:#003859;}
+
+/*表格样式*/
+.score-table{background-color:#F0F0F0;padding:3px 5px;}
+.score-table table{width:100%;text-align: center;vertical-align: middle;font: 15px/35px "微软雅黑"; color:#333;table-layout: fixed;}
+.score-table table tr th{background-color:#fff;line-height: 40px;font-size:16px;}
+.score-table table tr th:last-child{width:15%;}
+.score-table table tr td{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.score-table table tr{border-bottom:1px solid #F7F7F7;}
+

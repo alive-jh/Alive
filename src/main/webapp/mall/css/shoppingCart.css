@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+body{background-color:#F9F9F9;}
+.content{margin-top:0;}
+.footer{margin-top:0;margin-bottom:45px;}
+.footer .copyright .ft-copyright{border:none;}
+/*tab样式更改*/
+.tab-head li{width:25%;}
+.tab-cont{min-height:450px;}
+
+
+/*购物车Tab样式*/
+
+.shop-name{margin-top:8px;font-size:16px;color:#333;font-family:"微软雅黑";line-height: 30px;border-top: 1px solid #F1F1F1;border-bottom: 1px solid #F1F1F1;background-color:#fff;padding:10px;position: relative;}
+.shop-name input[type='button']{font-size:16px;color:#00A0F8;font-family:"微软雅黑";background-color:transparent;border: none;position: absolute;right:10px;top:10px;outline: none;}
+
+.order-list{}
+
+.order-list .order-mesg{padding:10px;background-color:#fff;border-bottom:1px solid #F1F1F1;}
+
+.order-list .goods-mesg{padding:10px 0;}
+.order-list .goods-mesg .m-checkbox{float: left;margin-top:25px;}
+.order-list .goods-img{vertical-align: middle;width:90px;float:left;margin:0 10px;}
+.order-list .goods-img img{width:100%;max-width: 100%;}
+.order-list .goods-name{display:inline-block;float: left;}
+.order-list .goods-name h3,.order-list .goods-price h3{font-size:16px;color:#333;font-family:"微软雅黑";line-height: 30px;}
+.order-list .goods-name p,.order-list .goods-price p{font-size:15px;color:#ccc;font-family:"微软雅黑";line-height: 30px;}
+.order-list .goods-price{display:inline-block;float: right;text-align: right;}
+.order-list .goods-price p{color:#333;}
+.order-list .goods-num{display: none;}
+.order-list .goods-num .num-btn{position: static;border:1px solid #EEEEEE;border-radius: 0;}
+.order-list .goods-num .num-btn a{display:block;float:left;line-height: 30px;text-align: center;background-color:#F2F2F2;}
+.order-list .goods-num .num-btn input[type='text']{height:30px;border-color:#EEEEEE;padding:0 5px;float: left;text-align: center;}
+
+.order-list ~ .control-btn{max-width:768px;padding:10px;background-color:#fff;box-shadow: 0 -1px 2px #ccc;color:#f60;position: fixed;bottom:0;left:0;right:0px;margin:0 auto;}
+.order-list ~ .control-btn.disabled{color:#C9C9C9;}
+.order-list ~ .control-btn .m-checkbox{top:2px;}
+.order-list ~ .control-btn h3{display: inline-block;width:70%;text-align: center;}
+.order-list ~ .control-btn h3 span{font-weight: bold;}
+.order-list ~ .control-btn input[type='button']{position:absolute;right:30px;top:5px;padding:3px 8px;background-color:#f60;border:none;color:#fff;font:16px/25px "微软雅黑";border:none;border-radius: 3px;outline: none;}
+.order-list ~ .control-btn input[type='button'].disabled{background-color:#C9C9C9;}
+
+.m-checkbox[name='orderDelete'] .m-checked{background-color:#f60;}
+.m-checkbox[name='orderDelete']{display:none;}
+
+.empty{padding:50px 0 30px;text-align:center;background-color:#fff;margin-top:10px;font-family:"微软雅黑";border-top:1px solid #F1F1F1;border-bottom:1px solid #f1f1f1;}
+.empty h3{font-size:18px;line-height: 40px;color:#333;}
+.empty p{font-size:15px;color:#999;line-height: 30px;}
+.empty input[type='button']{border:1px solid #f60;background-color:#fff;color:#f60;font:16px/35px "微软雅黑";padding:0px 10px;border-radius: 3px;margin-top:10px;outline: none;}
+
+
+/*购物记录Tab样式*/
+.celp-login{border-bottom: 1px solid #f1f1f1;background-color:#fff;padding:10px;position: relative;margin-bottom:10px;}
+.celp-login h3{font:17px/40px "微软雅黑";color:#333;}
+.celp-login input[type='button']{background-color:#06BF04;color:#fff;border:none;border-radius:3px;font:16px/25px "微软雅黑";padding:3px 10px;position: absolute;top:15px;right:10px;}
+
+.order-mesg.order-info{margin-bottom:10px;border-top: 1px solid #F1F1F1;}
+
+.order-id{border-bottom:1px solid #f1f1f1;position: relative;}
+.order-id h3{font-size:16px;line-height: 35px;margin-bottom:10px;}
+.order-id input[type='button']{color:#00A0F8;font:16px/25px "微软雅黑";border:none;background-color:transparent;position: absolute;right:10px;top:0px;}
+.all-price{position: relative;padding-top:10px;border-top:1px solid #f6f6f6;margin-top:10px;}
+.all-price h3{font:16px/35px "微软雅黑";color:#333;}
+.all-price h3 span{color:#f60;}
+.all-price input[type='button']{border:1px solid #f1f1f1;border-radius:3px;background-color:#fff;color:#999;font:16px/25px "微软雅黑";padding:3px 10px;position: absolute;top:10px;right:10px;outline: none;}
+.all-price input[type='button'].active{border:none;color:#fff;background-color:#f60;}
+
+.more-order{margin:10px;}
+.more-order input[type='button']{width:100%;font:16px/25px "微软雅黑";color:#333;border:1px solid #f1f1f1;border-radius:3px;background-color:#fff;padding:8px 0;text-align:center;outline: none;}

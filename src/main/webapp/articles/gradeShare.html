@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>班级分享页面</title>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.page {
+	max-width: 640px;
+	margin: 0 auto;
+	
+	#if(padding==1)
+		padding-top: 20%;
+	#end
+	
+	
+}
+
+.page img {
+	width: 100%;
+	display: block;
+}
+
+.lessons {
+	position: relative;
+	text-align: center;
+}
+
+.lesson-category {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+	color: white;
+	z-index: 99999;
+}
+
+.books {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 40px;
+}
+
+.books img {
+	width: 29%;
+	display: inline-block;
+	margin-left: 22px;
+	margin-right: 12px;
+}
+
+</style>
+</head>
+<body>
+
+		<div class="page">
+			<img alt="" src="http://image.fandoutech.com.cn/Page 1@22x.png">
+			
+			#for(category : categorys)
+			
+				<div class="content">
+						#for(classroom : category.value)
+							
+							#if(for.even)
+								<div class="lessons">
+									#if(for.index==1)
+									<h3 class="lesson-category">#(category.key)</h3>
+									#end
+									<div class="books">
+										<img class="lesson" id="#(category.value[(for.index)-1].id)" alt="" src="#(category.value[(for.index)-1].cover)">
+										<img class="lesson" id="#(category.value[for.index].id)" alt="" src="#(category.value[for.index].cover)">
+									</div>
+									<img alt="" src="http://image.fandoutech.com.cn/Page 2@2x.png">
+								</div>	
+							#end
+							
+							#if((for.size % 2 != 0) && for.index == (for.size-1))
+								<div class="lessons">
+									<div class="books">
+										<img id="#(classroom.id)" class="lesson" alt="" src="#(classroom.cover)" style="margin-left: 0px;margin-right: 0px;">
+									</div>
+									<img alt="" src="http://image.fandoutech.com.cn/Page 2@2x.png">
+								</div>
+							#end
+							
+						#end 
+					</div>
+				
+			#end
+			
+			#if(!categorys)
+			<img alt="" src="http://image.fandoutech.com.cn/Page 2@2x.png">
+			<img alt="" src="http://image.fandoutech.com.cn/Page 2@2x.png">
+			#end
+			
+			<img alt="" src="http://image.fandoutech.com.cn/Page 3@2x.png">
+		</div>
+	
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	$('.lesson').click(function(){
+		var classRoomId = this.id;
+		location.href="/wechat/h5/article/trialIntro?classRoomId="+classRoomId+"&recommendMID=#(memberId)";
+	});
+</script>
+</html>

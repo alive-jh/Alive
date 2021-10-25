@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <link href="../css/circlip.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div style="width:100%;height:48px;position: fixed;top: 0;left: 0;right: 0;z-index: 999;">
+
+    <div id="allCard">
+        <span id="allCard_span" class="checked_span" onclick=""></span>
+        <hr id="allCard_hr" class="hr" style="display: block"/>
+    </div>
+
+    <div id="myCard">
+        <span id="myCard_span" class="unChecked_span"></span>
+        <hr  id="myCard_hr" class="hr" style="display: none"/>
+    </div>
+
+
+</div>
+
+
+
+
+<div id="div1" style="padding-top: 50px;"></div>
+
+<div class="weui-loadmore" id="infinite_div">
+    <i class="weui-loading"></i>
+    <span class="weui-loadmore__tips" id="weui-loadmore__tips"></span>
+</div>
+
+
+<div id="about" class="weui-popup__container popup-bottom">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal" id="popup__modal111">
+        <div class="comment" id="View">
+            <div class="Top">
+                <span id="pinglunqu"></span>
+                <img onclick="closeComment()" class='closepopup' src="../images/pinglun_guanbi_icon@2x.png">
+            </div>
+            <div id="randcomment" class="BigComment">
+                <div id="test" >
+
+                </div>
+            </div>
+
+
+            <div class="weui-loadmore"   id="lastrolad">
+                <i class="weui-loading"></i>
+                <span class="weui-loadmore__tips" id="weui-loadmore__tips2"></span>
+            </div>
+
+
+            <div>
+                <div style="position: fixed; bottom: 0;width: 93%; height:54px;word-wrap:break-word;margin: 0px 3.5%;">
+                    <form id="form"  method="post">
+                        <textarea id="text" class="input" placeholder="在此处输入评论"></textarea>
+                        <button type="button" onclick="save(txt,momentId,studentId,teacherId)" class="Button"  id="fabiaoBtn"></button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+
+<script type="text/javascript">
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+</script>
+
+
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+
+<script type="text/javascript" src="../js/data.js"></script>
+<script type="text/javascript" src="../js/comment-data.js"></script>
+<script type="text/javascript" src="../js/share.js"></script>
+
+<!--文本框高度随输入行数增高或降低-->
+<script type="text/javascript">
+    $(function(){
+        $("#text").on("input propertychange",function(e){
+            var target = e.target;
+            var dh = $(target).attr('defaultHeight') || 0;
+            console.log(dh)
+            if (!dh) {
+                dh = target.clientHeight-16;
+                $(target).attr('defaultHeight', dh);
+            }
+            console.log("dh"+dh)
+            target.style.height = dh + 'px';
+            console.log(target.style.height)
+            var clientHeight = target.clientHeight-16;
+            var scrollHeight = target.scrollHeight-16;
+            if (clientHeight !== scrollHeight) {
+                target.style.height = scrollHeight + 0 + "px";
+            }
+
+        });
+    });
+</script>
+
+
+</html>

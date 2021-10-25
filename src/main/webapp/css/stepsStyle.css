@@ -1,0 +1,255 @@
+.ml10 {
+	margin-left: 10px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mb10 {
+	margin-bottom: 10px;
+}
+
+.grbgbord {
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+
+.form-inline .form-group {
+	margin-bottom: 10px;
+}
+
+.form-group input[type="text"] {
+	max-width: 150px;
+}
+
+.input-group-addon {
+	line-height: 1.1;
+	padding-top: 7px;
+	border-left: none;
+	border-radius: 0;
+	cursor: default;
+}
+
+.tableNB {
+	margin: 0;
+}
+
+.table tbody>tr>td {
+	vertical-align: middle;
+}
+
+.tableNB tbody>tr>td {
+	border: none;
+	padding: 8px 0;
+}
+
+.itemName {
+	width: 100%;
+	display: inline-block;
+	line-height: 25px;
+	font-weight: bold;
+	text-align: center;
+	color: #ccc;
+	padding: 10px 0;
+}
+
+.itemNum {
+	width: 100%;
+	height: 5px;
+	background-color: #ccc;
+	text-align: center;
+	position: relative;
+}
+
+.itemNum span {
+	background-color: #ccc;
+	color: #fff;
+	padding: 0px 6px;
+	border-radius: 50%;
+	position: absolute;
+	margin-top: -7px;
+	left: 50%;
+	margin-left: -10px;
+}
+
+.itemNumSing {
+	margin-top: -12px;
+}
+
+.itemMesg {
+	background-color: #ccc;
+	margin-top: 14px;
+	padding: 5px;
+	color: #fff;
+	border-radius: 3px;
+}
+
+.itemSponsor,.itemTime {
+	width: 98%;
+	display: inline-block;
+	text-align: center;
+}
+
+.stateLine td {
+	max-width: 200px;
+	word-break: break-all;
+}
+
+.tableNB tbody>tr.stateLine>td {
+	vertical-align: top;
+}
+
+.itemReason {
+	display: block;
+	text-align: left;
+}
+
+.dropdown-menu {
+	margin-bottom: 20px;
+}
+
+/**颜色变化**/
+.itemDone {
+	color: #87b87f;
+}
+
+.itemNumDone {
+	background-color: #87b87f;
+}
+
+.itemNumDone span {
+	background-color: #87b87f;
+}
+
+.itemMesgDone {
+	background-color: #87b87f;
+}
+
+.itemWarn {
+	color: #ffb752;
+}
+
+.itemNumWarn {
+	background-color: #ffb752;
+}
+
+.itemNumWarn span {
+	background-color: #ffb752;
+}
+
+.itemMesgWarn {
+	background-color: #ffb752;
+}
+
+.itemRepair {
+	color: #00CCFF;
+}
+
+.itemNumRepair {
+	background-color: #00CCFF;
+}
+
+.itemNumRepair span {
+	background-color: #00CCFF;
+}
+
+.itemMesgRepair {
+	background-color: #00CCFF;
+}
+
+
+.itemDefault {
+	color: #3366CC;
+}
+
+.itemNumDefault {
+	background-color: #3366CC ;
+}
+
+.itemNumDefault span {
+	background-color: #3366CC;
+}
+
+.itemMesgDefault {
+	background-color: #3366CC;
+}
+
+
+
+.itemError {
+	color: #d15b47;
+}
+
+.itemNumError {
+	background-color: #d15b47;
+}
+
+.itemNumError span {
+	background-color: #d15b47;
+}
+
+.itemMesgError {
+	background-color: #d15b47;
+}
+/**颜色变化end**/
+
+/*.stepDetails .itemNumSing{width:30px;margin-top:-11px;}*/
+.stepDetails .itemNumSing {
+	width: 100%;
+	position: absolute;
+	top: 65px;
+}
+
+.itemNumSingBox {
+	width: 30px;
+	position: relative;
+	min-width: 5px;
+}
+
+.table .tableNB {
+	background-color: transparent;
+}
+
+.tableDetail {
+	min-width: 830px;
+}
+
+.tableDetail .itemNumSing {
+	margin-top: -10px
+} /*@@@@@@*/
+
+/*单位弹出信息框样式*/
+.unitName .tooltip-inner {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	color: #333;
+	text-shadow: none;
+	max-width: 400px;
+	-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+/*图片预览弹出信息框样式*/
+.imgTip .tooltip-inner {
+	-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+	border: 1px solid #ccc;
+	color: #333;
+	text-shadow: none;
+	max-width: 600px;
+}
+
+.imgTip .tooltip-inner {
+	max-width: 100%;
+}
+
+.imgTip .tooltip-arrow {
+	border-top-color: #ddd;
+}
+
+

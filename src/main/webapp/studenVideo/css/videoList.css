@@ -1,0 +1,69 @@
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+    margin: 0;
+    padding: 0;
+}
+.title-bar{
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(#e56a6a, #970808);
+    text-align: center;
+    position: relative;
+}
+.title-bar h4{
+    line-height: 50px;
+    color: white;
+}
+.title-bar img{
+
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.video-list{
+	width: 100%;
+}
+.video-conten{
+	width: 100%;
+}
+.video-play{
+    height: 100px;
+    position: relative;
+    border-radius: 10px;
+    float: left;
+    margin: 10px 15px;
+    padding: 5px;
+}
+.play-ico{
+	    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 99;
+    left: 85px;
+    top: 40px;
+}
+.video-cover{
+	width: 200px;
+    height: 112px;
+    border-radius: 10px;
+}
+.video-text{
+	    width: 30%;
+    float: left;
+    padding: 33px 0px;
+}
+.video-text div{
+	height: 38px;
+}
+.back{
+	width: 10%;
+    float: left;
+    line-height: 55px;
+    color: white;
+    font-size: 25px;
+    position: absolute;
+}

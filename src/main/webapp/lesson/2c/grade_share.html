@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>班级分享</title>
+<link rel="stylesheet" href="../../jquery-weui/css/weui.min.css">
+<link rel="stylesheet" href="../../jquery-weui/css/jquery-weui.min.css">
+<style type="text/css">
+#app {
+	padding: 20px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.line {
+	border-top: 1px solid rgba(219, 219, 219, 1);
+	clear: both;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	width: 200%;
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	-o-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scale(0.5, 0.5);
+	-ms-transform: scale(0.5, 0.5);
+	-o-transform: scale(0.5, 0.5);
+	transform: scale(0.5, 0.5);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transform-origin: 0 0;
+}
+
+.lesson-box {
+	text-align: left;
+}
+
+.lesson {
+	display: inline;
+	display: -webkit-inline-box;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width: 100%;
+}
+
+.lesson .cover {
+	width: 42%;
+}
+
+.lesson .cover img {
+	width: 100%;
+	border: 2px solid #eeeeee;
+	border-radius: 6px;
+}
+
+.lesson .info {
+	width: 50%;
+	padding: 10px;
+	padding-left: 24px;
+	position: relative;
+}
+
+.lesson .info .name {
+	height: 120px;
+	padding-right: 10px;
+	position: absolute;
+	top: 16px;
+}
+
+.lesson .info .name p {
+	line-height: 27px;
+	font-size: 18px;
+	font-weight: bolder;
+}
+
+.ty-btn {
+	width: 112px;
+	height: 36px;
+	border: 1px solid orange;
+	border-radius: 100px;
+	background-color: #ffff;
+	color: orange;
+}
+
+button {
+	background-color: transparent;
+}
+
+.btn {
+	text-align: left;
+	position: absolute;
+	bottom: 20px;
+}
+
+.grade-name {
+	display: -webkit-inline-box;
+	line-height: 15px;
+	margin: 10px 0px 10px 0px;
+}
+
+.ico {
+	width: 4px;
+	background-color: #64AEEB;
+	border-radius: 2px;
+	height: 15px;
+	margin-right: 6px;
+}
+</style>
+</head>
+<body>
+	<div id="app">
+		<div class="title-box">
+			<h1>课程体验</h1>
+		</div>
+
+		<div class="line"></div>
+
+		<div class="grade-name">
+			<div class="ico"></div>
+			<p>{{gradeName}}</p>
+		</div>
+		<div class="lesson-box" v-for="clasRoom in data.page.list">
+			<div class="lesson">
+				<div class="cover">
+					<img alt="" v-bind:src="clasRoom.cover || './images/pic_cover_default@3x.png'"  onerror="javascript:this.src='./images/pic_cover_default@2x.png';">
+				</div>
+
+				<div class="info">
+					<div class="name">
+						<p>{{clasRoom.className}}</p>
+					</div>
+					<div class="btn">
+						<button class="ty-btn" v-on:click="toLesson(clasRoom.id)">立即体验</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="weui-loadmore" v-if="load_status">
+			<i class="weui-loading"></i>
+			<span class="weui-loadmore__tips">正在加载</span>
+		</div>
+
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../jquery-weui/js/jquery-weui.min.js"></script>
+<script src="https://vuejs.org/js/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js"></script>
+<script type="text/javascript">
+
+	var server = "/";
+
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+
+	var grade = getQueryString("grade");
+	var product = getQueryString("product");
+
+	var page = {
+		pageNumber : 1,
+		pageSize : 10
+	}
+
+	var loading = false; //状态标记
+
+	window.onload = function() {
+
+		$.ajaxSetup({
+			beforeSend : function(XMLHttpRequest) {
+				$.showLoading();
+			},
+			complete : function() {
+				$.hideLoading();
+			},
+			error : function(data) {
+				$.toptip("网络似乎有点问题 ~", 'error');
+			}
+		});
+
+		app.classRooms(grade, page.pageNumber, page.pageSize);
+
+		if (product != 0){
+			app.buy = true;
+		}
+
+		$(document.body).infinite(100);
+
+		$(document.body).infinite().on("infinite", function() {
+
+			if (loading)
+				return;
+			loading = true;
+			app.load_status = true;
+
+			app.classRooms(grade, ++page.pageNumber, page.pageSize);
+
+		});
+
+	}
+
+	var app = new Vue(
+			{
+				el : '#app',
+				data : {
+
+					data : {
+						page : {
+							list : []
+						}
+					},
+					gradeName : '',
+					load_status : true,
+					buy:false
+				},
+				methods : {
+					classRooms : function(grade, pageNumber, pageSize, more) {
+
+						$
+								.get(
+										server
+												+ 'wechat/v2/lesson/gradeLessons?_sign=4A3CA6DCC17EECE98DEA461CBAFF5DFD&_time=1525842696825',
+										{
+											grade : grade,
+											pageNumber : pageNumber,
+											pageSize : pageSize
+										},
+										function(success) {
+
+											if (success.code == 200) {
+
+												app.gradeName = success.data.classGrades.classGradesName;
+
+												if (success.data.page.list.length > 0) {
+
+													if (success.data.page.pageNumber == 1) {
+														app.data = success.data
+													} else {
+														app.data.page.list = app.data.page.list
+																.concat(success.data.page.list);
+
+													}
+
+												} else {
+
+													$(document.body)
+															.destroyInfinite();
+
+												}
+												loading = false;
+												app.load_status = false;
+											}
+
+										}, 'json');
+
+					},
+					toLesson : function(classRoom) {
+						window.location.href = "http://test.fandoutech.com.cn/wechat/h5/article/trialIntro?classRoomId="
+								+ classRoom + "&recommendMID=137569";
+					},
+					tobuy : function(){
+						location.href = "http://server.fandoutech.com.cn/sell/sellIndex?product="+product+"&inviter=16521"
+					}
+					
+				},
+				filters:{
+					
+				}
+			})
+</script>
+</html>

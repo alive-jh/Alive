@@ -1,0 +1,121 @@
+body{
+    background-color: #3a0255;
+}
+.header1{
+    width: 100%;
+    height: 130px;
+    background:url("../../img/headerbg.png");
+    background-repeat: no-repeat;
+    background-size:100% 130px;
+    padding: 30px 30px 30px 30px;
+}
+.vote_info{
+    width: 100%;
+    padding: 2px 2px 2px 2px;
+    background-color: orange;
+    height: 50px;
+    border-radius:6px;
+    position: relative;
+}
+.vote_info ul{
+    list-style: none;
+}
+.vote_info ul li{
+    width:30%;
+    padding:0px;
+    text-align:center;
+    font-size: 12px;
+    color: #fff;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    float: left;
+}
+.left-border{
+    border-left:1px solid #fff;
+}
+.header_text{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+    color: white;
+}
+.ranking_data{
+    width: 100%;
+    text-align: center;
+}
+h4{
+    color: white;
+}
+.ranking_title1 {
+    width: 95%;
+    height: 50px;
+    margin: 0 auto;
+    border:1px solid #5d00a2;
+    border-bottom: none;
+}
+.ranking_title1 div{
+    float: left;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-size: 15px;
+}
+.ranking_title {
+    width: 95%;
+    height: 50px;
+    margin: 0 auto;
+    border:1px solid #5d00a2;
+    border-bottom: none;
+}
+.ranking_title div{
+    float: left;
+    text-align: center;
+    line-height: 50px;
+    color: yellow;
+    font-size: 15px;
+}
+.ranking_title a{
+    color: yellow;
+}
+.d1{
+    width: 20%;
+    height: 50px;
+    position:relative;
+}
+.d2{
+    width: 60%;
+    height: 50px;
+}
+.d3{
+    width: 20%;
+    height: 50px;
+}
+.num{
+    width: 40px;
+    height: 38px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: orange;
+    position:absolute;
+    margin-top:-19px;
+    top:50%;
+    margin-left: -20px;
+    left: 50%;
+    font-weight: bold;
+
+}
+.num span{
+    height:38px; line-height:38px; display:block; text-align:center;
+}
+.ranking_title2{
+    width: 95%;
+    margin: 0 auto;
+    border:1px solid #5d00a2;
+    border-bottom: none;
+}
+.stuInfo{
+	font-size: 14px;
+}

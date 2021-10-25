@@ -1,0 +1,78 @@
+@charset "utf-8";
+/*产品详情样式*/
+
+
+.container .content{margin-top: 0;}
+.footer{margin-top:0;margin-bottom:70px;}
+
+
+/*图片轮播样式更改*/
+.swiper-pagination-bullet{width:5px;height:5px;background-color:#fff;opacity: 1;}
+.swiper-pagination-bullet-active{background-color:#FF6600;}
+
+
+/*产品概要样式*/
+.goods-sinfo{width:100%;text-align: left;padding-top: 5px;background-color:#fff;}
+.goods-sinfo .info-header,.info-text,.shop-info .shop-credit{padding:10px;border-bottom:1px solid #F1F1F1;}
+.goods-sinfo .info-header h3,.name-info h3{font-size: 18px;color:#333;line-height: 1.5;margin-bottom:10px;}
+.goods-sinfo .goods-price{color:#f60;font-size:22px;font-weight:bold;}
+
+.goods-sinfo .info-text label{font-size:15px;display: block;color: #999;line-height: 30px;}
+.goods-sinfo .info-text label span{color:#333;font-size:16px;font-family: "黑体";}
+
+
+/*商家信息样式*/
+.shop-info{margin-top:15px;border-bottom:1px solid #F1F1F1;background-color:#fff;}
+.shop-info .shop-name{padding:10px;border-bottom: 1px solid #F1F1F1;}
+.shop-info .name-info{position: relative;display: block;}
+.shop-info .name-info h3{font-size:16px;padding-left:30px;margin-bottom: 0;}
+.shop-info .shop-icon{position:absolute;left:0;top:4px;width:18px;height:18px;background:url(../images/goods_c9431a6d41.png) no-repeat -40px 0px;}
+.shop-info .name-info .enter-shop{position:absolute;right:0;top:2px;font-size:15px;color:#999;}
+.shop-info .name-info .enter-shop .right-icon{display: inline-block;width:15px;height:13px;background:url(../images/goods_c9431a6d41.png) no-repeat -36px -16px;}
+
+.shop-info .shop-credit span{line-height: 30px;color:#999;font-size:15px;padding-left:20px;position:relative;}
+.shop-info .check-icon{position:absolute;top:4px;left:0;width:18px;height:18px;background:url(../images/goods_c9431a6d41.png) no-repeat -18px -30px;}
+
+
+/*产品详情样式*/
+.goods-linfo{margin-top:15px}
+.goods-linfo .tab-head{border-bottom:1px solid #F1F1F1;}
+.goods-linfo .tab-head li{display:block;float: left;width:50%;text-align: center;background-color:#fff;border-bottom:1px solid #F1F1F1;line-height: 30px;font-size:16px;color:#333;font-family: "黑体";padding:5px 0;}
+.goods-linfo .tab-head li.active{border-color:#f60;}
+.goods-linfo .tab-head li.active a{color:#f60;}
+
+.goods-linfo .tab-body{}
+.goods-linfo .tab-cont{display: none;}
+.goods-linfo .tab-cont.active{display: block;}
+
+.goods-linfo .linfo-adText{text-align: center;line-height:45px;}
+.goods-linfo .linfo-adText h3{font-size: 20px;font-weight: bold;color:#333;line-height:45px}
+.goods-linfo .linfo-adText p{font-size:16px;color:#93D051;}
+
+.goods-linfo .linfo-pic{margin-top: 15px;}
+.goods-linfo .linfo-pic img{width:100%;max-width: 100%;display: block;}
+
+.goods-linfo .linfo-table{margin:15px;}
+.goods-linfo .linfo-table table{width:100%;}
+.goods-linfo .tab-cont .linfo-table table td{border:1px solid #ccc;text-align: left;color:#333;padding:10px;vertical-align: middle;line-height: 25px;}
+.goods-linfo .linfo-table table td li{margin-bottom:15px;}
+.goods-linfo .linfo-table table td li:last-child{margin: 0;}
+
+.goods-linfo .linfo-text{margin:20px 15px;border-top: 1px dotted #ccc;}
+.goods-linfo .linfo-text ul li{margin:20px 0; color:#C0504D;line-height: 30px;}
+.goods-linfo .linfo-text ul li h3{font-size:16px;font-weight: bold;line-height: 30px;}
+
+
+
+.goods-linfo .tab-cont table{color:#333;line-height: 30px;width:100%;}
+.goods-linfo .tab-cont table th{padding:15px;}
+.goods-linfo .tab-cont table td{padding:15px;text-align: center;vertical-align: middle;background-color:#fff;border-bottom:1px solid #F1F1F1;}
+
+
+/*选购按钮样式*/
+.order-box{max-width:768px;margin:0 auto;position: fixed;left: 0;right:0;bottom: 0;z-index:100;padding:15px;background-color:#FCFCFC;border-top:2px solid #ccc;}
+.order-box input[type='button']{display:block;float:left;width:30%;border:1px solid #333;border-radius:5px;color:#333;font-size:16px;font-family:'微软雅黑';line-height:35px;text-align: center;background-color:#fff;outline:none;}
+.order-box input[type='button']:nth-child(2){margin:0 4%;}
+.order-box input[type='button'].active{background-color:#FF6600;color:#fff;border:none;}
+.order-box input[type='button'].btn-block{width:100%;margin:0;}
+

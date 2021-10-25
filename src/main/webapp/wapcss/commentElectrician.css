@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+.content-body{background-color:#fff;}
+.electrician-info{background-color:#fff;padding:10px 0;display: table;width:100%;}
+.info-pic{min-width:30%;background-color:#fff;display: table-cell;vertical-align: middle;text-align:right;}
+.info-pic img{width:75%;max-width:100px;margin-right:20px;}
+.info-text{display: table-cell;vertical-align: middle;}
+.info-text h3{font:19px/35px "微软雅黑";font-weight: bold;}
+.info-text p,.info-input p{font:16px/22px "微软雅黑";color:#333;}
+.info-text p.gray{font-size:15px;color:#999;}
+
+.info-input{text-align: center;padding:10px;}
+.info-input textarea{width:100%;max-width:100%;max-height:60px;height:60px;margin-top:5px;border:none;font:16px/22px "微软雅黑";color:#333;}
+
+
+
+.attr-star{padding:10px;text-align: center;}
+.attr-star p{font:16px/30px "微软雅黑";color:#333;}
+.attr-star ul li{width:25px;height:25px;margin:0 2%;display:inline-block;background:url(../images/stars.png) no-repeat;background-size:100%;}
+.attr-star ul li.acitve{background-position: 0px -25px;}
+
+.info-com{background-color:#fff;border-bottom:1px solid #ccc;border-top:1px solid #ccc;}
+.info-com h3{padding:10px;font:18px/35px "微软雅黑";color:#333;}
+
+.control-bar{position:fixed;width:100%;bottom:0;max-width:768px;background-color:#fff;text-align: right;}
+.control-bar input[type='button']{padding:5px 15px;font:16px/30px "微软雅黑";color:#fff;background-color:#0C7ABB;border:none;}

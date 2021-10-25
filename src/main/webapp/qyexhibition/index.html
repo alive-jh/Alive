@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>人脸识别注册</title>
+<link rel="stylesheet" href="/wechat/qyexhibition/css/style.css?idd=66666666">
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+</head>
+<body>
+	<div class="content">
+		<div class="header">
+			<div id="img-box" class="avatar-img avatar-temp">
+				<img id="photo-temp" class="photo-temp1" src="/wechat/qyexhibition/images/ico_camera@2x.png" alt="">
+			</div>
+			<div class="avatar-text">点击上传头像</div>
+		</div>
+		
+		<form action="/wechat/v2/qyExhibition/saveQyStudent" method="post" id="form1">
+			<div class="in-input">
+				<div>
+					<input placeholder="请输入昵称" type="text" name="name">
+				</div>
+				<div>
+					<input placeholder="请输入手机号码" type="text" name="tel" id="telphone">
+				</div>
+				<input type="text" name="photo" id="photo" style="display: none" value="">
+				<div class="yanz">
+					<input placeholder="请输入验证码" type="text" name="vCode">
+					<button class="code-btn" type="button" onclick="snedMessage()">发送验证码</button>
+				</div>
+				<p id="error-text" style="color: red; text-align: center; display: none">请输入请输入</p>
+				<div class="btn" onclick="save()">确定</div>
+			</div>
+			<input type="hidden" name = "qyClass" value="667227">
+			<input type="hidden" name = "serverId" id="serverId">
+		</form>
+
+		<input type="file" name="headeimg" id="headeimg" style="display: none">
+	</div>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/wechat/js/wechat/wx-jssdk-reg.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		$(".content").css({
+			position : "absolute",
+			top : ($(window).height() - $(".content").height()) / 3
+		});
+	});
+		
+	$.wechatShare(config = {
+			debug : false,
+			jsApiList:['chooseImage','uploadImage']
+	});
+	
+	var localIds = "";
+	
+	$('.avatar-img').click(function() {
+		
+			wx.chooseImage({
+				count: 1, // 默认9
+				sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+				sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+				success: function (res) {
+					/* alert(JSON.stringify(res)); */
+					localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+					document.querySelector('#photo-temp').src = localIds;
+					$('.avatar-img').removeClass('avatar-temp');
+					$('#photo-temp').removeClass('photo-temp1');
+					$('#photo-temp').addClass('headimg-style');
+					$('#img-box').removeClass('avatar-img');
+					$('#img-box').addClass('avatar-img2');
+				}
+			});
+			
+	});
+
+
+	function save() {
+
+		var $_errorText = $('#error-text');
+		$_errorText.hide();
+
+		var name = $("input[name='name']").val();
+		var tel = $("input[name='tel']").val();
+		var vCode = $("input[name='vCode']").val();
+
+		var $_errorText = $('#error-text');
+
+		if (!name) {
+			$_errorText.text("请输入昵称");
+			$_errorText.show();
+			return;
+		}
+
+		if (!tel) {
+			$_errorText.text("请输入手机号码");
+			$_errorText.show();
+			return;
+		}
+
+		if (!vCode) {
+			$_errorText.text("请输入验证码");
+			$_errorText.show();
+			return;
+		} 
+		
+		if (localIds=="") {
+			$_errorText.text("请先选择头像");
+			$_errorText.show();
+			return;
+		}
+		
+		uploadImage(localIds); 
+	}
+
+	function uploadImage(localId) {
+		
+			wx.uploadImage({
+				localId: localId.toString(), // 需要上传的图片的本地ID，由chooseImage接口获得
+				isShowProgressTips: 1, // 默认为1，显示进度提示
+				success: function (res) {
+					var serverId = res.serverId; // 返回图片的服务器端ID
+					$('#serverId').val(res.serverId);
+					sumbitForm();
+				}
+			});
+	}
+
+	function sumbitForm() {
+		
+		$.ajax({
+			url : '/wechat/v2/qyExhibition/saveQyStudent?_sign=28E6F657A8656C810AE56D67F5F92104&_time=1525842696825',
+			type : 'POST',
+			data : $('#form1').serialize(),
+			contentType : "application/x-www-form-urlencoded; charset=utf-8",
+			cache : false,
+			processData : false
+		}).done(function(rsp) {
+			if(rsp.code == 200){
+				location.href="/wechat/qyexhibition/regSuccess.html?name="+$("input[name='name']").val();
+			}else if(rsp.code == 20602){
+				location.href="http://test.fandoutech.com.cn/wechat/v2/qyExhibition/index?sj=123456";
+			}else{
+				$.toast(rsp.msg,'forbidden');
+			}
+			console.log(rsp);
+		});
+	}
+
+	//获取 七牛token
+	function getToken() {
+		var token;
+		$.ajax({
+			url : '/wechat/api/getUptoken?bucketName=image',
+			type : 'get',
+			async : false
+		}).done(function(data) {
+			token = $.parseJSON(data).uptoken;
+		});
+		return token;
+	}
+
+	function snedMessage() {
+
+		$.post('/wechat/v2/qyExhibition/sendSmsCode?_sign=D20C345FA1087C1560C9D832342D93FC&_time=1525842696825', {
+			tel : $('#telphone').val()
+		}, function(success) {
+			if (success.code == 200) {
+				countdown_('.code-btn');
+			} else if (success.code == 203) {
+				$.toast("请输入手机号码", "forbidden");
+			} else {
+				$.toast(success.msg,"forbidden");
+			}
+		})
+
+	}
+
+	var countdown_sec = 60;
+
+	var countdown_ = function countdown(element) {
+		var $_element = $(element);
+		if (countdown_sec == 0) {
+			$_element.removeAttr('disabled');
+			$_element.text('发送验证码')
+			countdown_sec = 60;
+			return false;
+		} else {
+			$_element.attr("disabled", 'disabled');
+			$_element.text(countdown_sec + 'S');
+			countdown_sec--;
+		}
+
+		setTimeout(function() {
+			countdown_(element);
+		}, 1000);
+	}
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <link href="../css/sharecirclip.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div id="moment">
+</div>
+
+
+<!--<div class="join" onclick="location.href='http://server.fandoutech.com.cn/sell/sellIndex?type='+type1+'&product='+product+'&inviter='+student" style="display: none">-->
+<!--    <span class="text1">我也要报名</span>-->
+<!--</div>-->
+<div class="join" onclick="jump()">
+    <span class="text1">我也要报名</span>
+</div>
+
+<script type="text/javascript">
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+
+    function jump() {
+        var id = getQueryString("courseId");
+        $.get('/snp/v2/lesson/getGradeId?id='+id,function(rs){
+            if (rs.code == 200){
+                id = rs.data.classGradesId;
+            }
+            location.href = "http://www.fandoutech.com/snp/?grade="+id;
+        });
+
+    }
+</script>
+
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+
+
+<script type="text/javascript" src="../js/data.js"></script>
+
+</body>
+
+</html>

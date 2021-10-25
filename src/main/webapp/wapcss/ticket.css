@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+body{background-color:#fff;}
+.content-body{padding:10px;}
+/*优惠券样式*/
+
+/*图片边框样式*/
+.tickets li a.border-img{
+	border-image:url(../images/ticket-bg.png)  27 round;
+	-moz-border-image:url(../images/ticket-bg.png) 27 round;	/* Old Firefox */
+	-webkit-border-image:url(../images/ticket-bg.png) 27 round;	/* Safari and Chrome */
+	-o-border-image:url(../images/ticket-bg.png)  27 round;		/* Opera */
+}
+
+.tickets li:not(:last-child){margin-bottom:10px;}
+.tickets li a{display:block;position:relative;border:15px solid transparent;color:#999;padding:0 0px;}
+
+.tickets .ticket-text{float:left;width:70%;}
+.tickets .ticket-text h3{font:18px/35px "微软雅黑";color:#0C7ABB;}
+.tickets .ticket-text h4,.tickets .ticket-text p{font:15px/20px "微软雅黑";}
+.tickets .ticket-text p{color:#f60;}
+
+.tickets .ticket-price{position:absolute;top:-15px;bottom:-15px;right:0;width:28%;text-align: center;background-color:#0C7ABB;}
+.tickets .ticket-price h3{font:16px/55px "微软雅黑";padding-top:5px;color:#fff;border-bottom:1px solid #fff;margin:0px 10px;}
+.tickets .ticket-price h3 span{font-size:25px;}
+.tickets .ticket-price p{font:15px/35px "微软雅黑";color:#fff;}
+
+/*不可用样式*/
+.tickets li.disable a.border-img{
+	border-image-source: url(../images/ticket-bg2.png);
+	-moz-border-image-source: url(../images/ticket-bg2.png);
+	-webkit-border-image-source: url(../images/ticket-bg2.png);
+	-o-border-image-source: url(../images/ticket-bg2.png);
+}
+.tickets li.disable .ticket-text h3,.tickets li.disable .ticket-text p{color:#999;}
+.tickets li.disable .ticket-price{background-color:#ABABAB;}

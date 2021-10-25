@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+.content{margin-bottom:57px;}
+.content-body{background-color:#DBDBDB;}
+.sub-title{color:#989898;padding:0;}
+
+/*商品列表样式更改*/
+.goods-list{border:none;background-color:transparent;min-height: 0px;}
+.goods-list ul li{border:none;background-color:#fff;}
+.goods-list ul li:last-child{margin-bottom: 0;}
+.goods-list ul li .goods-img{padding-left:3px;min-width: 70px;}
+.goods-list ul li .goods-num-text{display: table-cell;vertical-align: middle;padding-right: 10px;}
+
+/*收货人信息*/
+.info-block{margin:0 10px 10px;font:16px/25px "微软雅黑";color:#333;}
+.info-block .info-text{line-height:25px;background-color:#fff;padding:10px;position: relative;border-bottom: 1px solid #D9D9D9;}
+.info-block .info-tex:last-child{border:none;}
+.consignee-info.info-block h3{position: relative;margin-bottom:10px;}
+.consignee-info.info-block h3 a{font-size:15px;display: block;position: absolute;top:0px;right:0px;padding:0px 10px;background-color:#023957;color:#fff;}
+.info-block .info-text a{display: block;position: absolute;top:10px;right:10px;}
+.info-block .info-text a.arrow{width:25px;height:25px;background:url(../images/arrow.png) no-repeat center;background-size:30%;padding:0;}
+
+/*自定义check按钮*/
+.check-box{position: absolute;top:10px;right:10px;width:45px;height:25px;border:1px solid #ccc;border-radius: 20px;}
+.check-box .check-btn{position:absolute;top:0;left:0;width:25px;height:25px;box-shadow: 1px 1px 3px #aaa;border-radius: 20px;;}
+.check-box.active .check-btn{background-color:#3879D9;left:auto;right:0;}
+.check-box.active .check-btn{transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;-moz-transition: all 0.5s;-ms-transition: all 0.5s;}
+.check-box input[type="checkbox"]{opacity: 0;visibility: hidden;}
+
+.price-list.info-block .goods-price-text{display: inline-block;float: right;color:#9C9C9C;}
+.price-list.info-block .goods-price-text.acitve{color:red;}
+.price-list.info-block .info-text{line-height: 20px;}
+.price-list.info-block{padding-bottom:10px;}
+
+.info-block .tip-text{margin-right:30px;color:#ccc;}
+
+.tog-text.active{transform: rotateZ(90deg);-webkit-transform: rotateZ(90deg);-moz-transform: rotateZ(90deg);-o-transform: rotateZ(90deg);-ms-transform: rotateZ(90deg);}
+.info-block .toggle-text{width:100%;border:none;font:16px/25px "微软雅黑";padding:0;color:#333;display:none;margin-top:5px;border-top:1px solid #ccc;}
+
+/*总价样式更改*/
+.all-price{max-width:768px;position: fixed;left:0;right:0;bottom:0;margin:0 auto;}
+
+.all-price.price-text{position: static;background-color:transparent;padding:0 10px;margin-top:-10px;text-align: right;;}
+
+/*操作按钮样式*/
+.goods-list ul li .order-info{padding:5px 0;}
+.goods-list ul li .order-info:not(last-child){border-bottom:1px solid #ccc;}
+
+.order-info{display:table;width:100%;}
+.control-btn{text-align: right;padding:5px;}
+.control-btn input[type='button']{background-color:#fff;border:1px solid #333;font:14px/25px "微软雅黑";display: inline-block;min-width:25%;}
+.control-btn input[type='button'].active{background-color:red;color:#fff;border-color:red;}
+.control-btn.fixed-bottom{left:0;right:0;bottom:0;margin:0 auto;text-align: center;}
+
+
+/*pullUp Reflash样式更改*/
+#wrapper{padding:0;max-width:768px;}
+#scroller ul{width:auto;padding:10px;}
+#scroller ul li{padding:0;}
+
+
+@media only screen and (min-width:768px){
+	.fixed-block{width:748px;margin-left:-384px;left:50%;}
+}

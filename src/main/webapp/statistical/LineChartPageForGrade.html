@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数据统计</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .weui_navbar_item.weui_bar_item_on {
+            background-color: #46fff2;
+        }
+    </style>
+    <link rel="stylesheet" href="/wechat/res/css/jquery-weui.css">
+    <link rel="stylesheet" href="/wechat/res/css/weui.min.css">
+    <script src="/wechat/res/js/jquery-1.8.0.min.js"></script>
+    <script src="/wechat/res/js/jquery-weui.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/wechat/statistical/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+</head>
+<body>
+<div class="weui_tab">
+    <div class="weui_navbar" style="position: absolute">
+        <a href="#tab1" class="weui_navbar_item weui_bar_item_on">
+            学习统计
+        </a>
+<!--         <a href="#tab2" class="weui_navbar_item">
+            勤奋榜
+        </a> -->
+    </div>
+
+    <style>
+        .clear {
+            clear: both;
+        }
+
+        .margin_50 {
+            margin-top: 52px;
+        }
+
+        .pad_6 {
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+
+        .mag_item {
+            width: 100%;
+            height: auto;
+        }
+
+        .mag_item img {
+            width: 100%;
+            height: auto;
+            border: 0;
+        }
+
+        .weui_cell_primary p {
+            color: rgba(12, 12, 12, 0.48);
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 13px;
+        }
+    </style>
+    <div class="clear margin_50"></div>
+    <div class="weui_tab_bd">
+        <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active pad_6">
+            <div class="container">
+
+                <div class="row">
+                    <div style="height: 15px"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <button class="btn btn-default btn-lg btn-block btn-primary" onclick="clickBtn('day',this)">天
+                        </button>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <button class="btn btn-default btn-lg btn-block" onclick="clickBtn('week',this)">周</button>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <button class="btn btn-default btn-lg btn-block" onclick="clickBtn('month',this)">月</button>
+                    </div>
+                </div>
+                <div class="row" id="dayRecord" style="background: white">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div id="RecordTable" style="width: 100%;height:500px;margin-top: 50px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="weui_tab_bd_item">
+            <div id="replace">
+                <div style="padding:40px;background-image: url(/wechat/res/img/ranking/headBack.jpg);background-position: 100% 50%; border-radius: 6px 6px 0 0;background-repeat:no-repeat; background-size:100% 100%;">
+                    <h1 style="text-align: left;font-size: 49px;font-weight: 900;font-family: '华文行楷';color: rgb(216, 64, 15);">
+                        勤奋榜</h1>
+                    <p style="margin-top: -15px;color: rgba(255, 0, 0, 0.66);text-align: left;font-size: 18px;font-family: '华文行楷';">
+                        同学们都好棒 继续加油</p>
+                </div>
+                <div style="width: 100%;height: 35px;background-color: rgba(254, 252, 129, 0.11);margin-bottom: -20px;">
+                    <div style="display: flex;padding-top: 10px;font-family: '华文行楷';color: rgba(199, 188, 57, 0.89);">
+                        <p style="text-align: left;width: 35%;padding-left: 15px;">七天排行</p>
+                        <p style="text-align: center;width: 30%">#(gradeName)</p>
+                        <p style="text-align: right;width: 35%;padding-right: 15px;">学习时长</p>
+                    </div>
+                </div>
+                <div class="weui_cells " style="background: #fffff1">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 20px;width: 100%"><p style="text-align: center;">©2017 凡豆科技. 版权所有.</p></div>
+</div>
+
+<script>
+	
+    $(function () {
+        var isFirst = 0;
+        var i = 0;
+        $(".weui_navbar a").bind("click", function () {
+
+            //css操作
+            i++;
+            //操作导航栏
+            $(".weui_bar_item_on").removeClass('weui_bar_item_on');
+            //console.log($(this).find("a"));
+            $(this).addClass("weui_bar_item_on");
+
+            //操作内容切换
+            $(".weui_tab_bd .weui_tab_bd_item_active").removeClass('weui_tab_bd_item_active');
+            var data_toggle = jQuery(this).attr("href");
+            $(data_toggle).addClass("weui_tab_bd_item_active");
+            // $(this).addClass("weui_tab_bd_item_active");
+            if (isFirst == 0) {
+                //将排行榜换成图片
+                event.preventDefault();
+				html2canvas($("#replace"), {
+					onrendered: function(canvas) {
+						var url = canvas.toDataURL(); //base64数据
+						var image = new Image();
+						image.src = url;
+						$("#replace").html(image);
+						document.title = '勤奋榜';
+						$(".layout").css("display", "block");
+					}
+				});
+                isFirst = 1;
+            }
+        });
+    });
+
+</script>
+<script>
+
+    //初始化
+    $(document).ready(function () {
+        //更新界面
+        getData("grade", "day");
+    });
+
+    function clickBtn(dateType, btn) {
+
+        getData("grade", dateType)
+        $(".btn-primary").removeClass("btn-primary");
+        $(btn).addClass("btn-primary")
+    }
+
+    function showRecord(objectType, dateType, data) {
+
+        var myChart = echarts.init(document.getElementById('RecordTable'));
+        myChart.clear();
+        option = createChartOption(objectType, dateType, data);
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    }
+
+    function getData(objectType, dateType) {
+        var id = #(id);
+        if (objectType == "grade") {
+            $.ajax({
+                type: "POST",
+                url: '/wechat/ajax/statistical/getDataForLineChart?id=' + id + '&dateType=' + dateType + '&objectType=' + objectType,
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                },
+                success: function (data) {
+                    if (data.code != 200) {
+//                $.slideMsg("操作失败，请稍后重试");
+                    } else {
+                        showRecord(objectType, dateType, data);
+                        makeRanking(data.rankData);
+                    }
+                }
+            })
+        }
+    }
+
+    function makeRanking(rankData) {
+
+        for (var i = 0; i < rankData.length; i++) {
+        	var newContent=""
+            if(i>=3){
+                newContent =   "<p style='width:20px;margin-right:5px;display:block;text-align: center;'>"+(i + 1)+"</p>"
+            }else{
+            	newContent = "<img src='/wechat/res/img/ranking/" + (i + 1) + ".png' alt='icon' style='width:20px;margin-right:5px;display:block'>"
+            }
+            $(".weui_cells").append("<a class='weui_cell'>" +
+                "                    <div class='weui_cell_hd'>" + newContent +
+                "                    </div>" +
+                "                    <div class='weui_cell_bd weui_cell_primary'>" +
+                "                        <p>" + rankData[i].name + "</p>" +
+                "                    </div>" +
+                "                    <div class='weui_cell_ft'>" + rankData[i].total +
+                "                         分钟" +
+                "                    </div>" +
+                "                </a>")
+        }
+    }
+
+    function createChartOption(objectType, dateType, data) {
+        var raw = {
+            title: {
+                itemGap: 5,
+                text: '学习统计',
+                padding: [
+                    5,  // 上
+                    10, // 右
+                    30,  // 下
+                    10, // 左
+                ]
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['--']
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ["--"]
+            },
+            yAxis: {
+                name: '单位：人次',
+                nameLocation: 'end',
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            },
+            series: [
+                {
+                    name: '最高气温',
+                    type: 'line',
+                    data: [11, 11, 15, 13, 12, 13, 10],
+                    markPoint: {
+                        data: [
+                            {type: 'max', name: '最大值'},
+                            {type: 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name: '最低气温',
+                    type: 'line',
+                    data: [1, -2, 2, 5, 3, 2, 0],
+                    markPoint: {
+                        data: [
+                            {type: 'max', name: '最大值'},
+                            {type: 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
+                }
+            ]
+        };
+
+        if (objectType == "grade") {
+            raw.title.text = "上课人次统计";
+            raw.legend.data = ["上课人次"];
+            var x = {
+                name: '上课人次',
+                type: 'line',
+                data: [11, 11, 15, 13, 12, 13, 10],
+                markPoint: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
+                    ]
+                },
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ]
+                }
+            };
+            x.data = data.data._xData;
+            raw.series = [x];
+            raw.xAxis.data = data.data._xAxis;
+            console.log(data);
+            console.log(raw);
+            return raw;
+        }
+    }
+
+</script>
+</body>
+</html>

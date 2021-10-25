@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+body{background-color:#fff;}
+
+/*图片轮播部分样式*/
+.swiper-wrapper{}
+.swiper-wrapper .swiper-slide a{width:100%;}
+.swiper-wrapper .swiper-slide a .title{position: absolute;bottom: 0px;left:0px;width:100%;margin:0 auto;text-align: left;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;padding:5px 15px;z-index: 10;background-color:rgba(0,0,0,.8);color:#fff;font-size:14px;line-height: 1.5;}
+.swiper-wrapper .swiper-slide a img{width:100%;min-width:100%;max-width: 100%;max-height: 100%;border: none;}
+
+/*原有样式更改*/
+.swiper-pagination-bullet{width:5px;height:5px;background-color:#fff;opacity: 1;}
+.swiper-pagination-bullet-active{background-color:#FF6600;}
+
+
+/*漂浮按钮样式*/
+.head-swiper{position:relative;}
+.back-aroow,.collect{position:absolute;top:10px;cursor: pointer;z-index: 10;}
+.back-aroow{left:10px;}
+.collect{right:10px;}
+.back-icon,.collect-icon{width:30px;height:30px;}
+.back-icon{background-position:0px -164px;}
+.collect-icon{background-position:0px -80px;}
+
+/*商品简介部分样式*/
+.goods-sInfo{position:relative;margin:10px 10px 0;padding-bottom:10px;border-bottom:1px solid #ccc;}
+.goods-sInfo .main-title{font-weight: bold;}
+.goods-sInfo .main-title span{padding-left:3px;}
+.goods-sInfo h3{font:14px/25px "微软雅黑";color:red;}
+.goods-sInfo h3 span{font-size:16px;font-weight:bold;}
+.goods-sInfo .goods-num{top:30px;right:0px;}
+
+/*商品详情链接部分样式*/
+.dInfo-links{margin:0 10px;}
+.dInfo-links ul li:not(:last-child){border-bottom:1px solid #ccc;}
+.dInfo-links ul li a{display: block;font:16px/30px "微软雅黑";color:#333;position: relative;padding:10px;}
+.dInfo-links ul li a span{position:absolute;top:10px;right:10px;}
+
+/*其他喜欢的样式*/
+.like-list{	padding:8px;}
+.like-list h2{background-color:#ccc;font:16px/30px "微软雅黑";color:#666;text-indent:10px;margin-bottom:1px;}
+.like-list ul li{display: block;float: left;width:33.3%;border:1px solid #ccc;box-sizing:border-box;-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;}
+.like-list ul li:nth-child(3n+2){border-left:none;border-right:none;}
+.like-list ul li a{display: block;width:100%;}
+.like-list ul li a img{width:100%;}
+.like-list ul li a h3{font:14px/25px "微软雅黑";color:#333;padding:0px 3px;border-top:1px solid #ccc;}
+.like-list ul li a h3 span{margin-left:3px;}
+.like-list ul li a p{font:14px/25px "微软雅黑";color:red;padding:0px 3px;}
+.like-list ul li a p span{font-size: 16px;;}
+
+/*加入购物车部分样式*/
+.add-cart{position:fixed;width:100%;bottom:0;max-width:768px;background-color:#fff;padding:10px 0;border-top:1px solid #ccc;}
+.add-cart .shopping-cart{width:40px;height:40px;background:url(../images/menu-icons.png) no-repeat;background-size:100%;background-position:0 -253px;position:relative;margin-left:10px;}
+.add-cart .shopping-cart span{font:12px/15px "微软雅黑";color:#fff;background-color:red;border-radius: 50%;position: absolute;padding:2px 6px;top:0px;right:-8px;}
+.add-cart input[type="button"]{font:16px/30px "微软雅黑";color:#fff;background-color:red;padding:5px 8px;border:none;margin-right:10px;}
+
+@media only screen and (min-width:768px ) {
+	.content-body{padding: 0;width:768px;}
+}
